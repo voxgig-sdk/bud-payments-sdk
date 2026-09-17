@@ -1,0 +1,4218 @@
+{
+ "openapi": "3.0.3",
+ "info": {
+  "version": "1.0.0",
+  "title": "Payments API",
+  "contact": {
+   "name": "API Support",
+   "url": "http://www.thisisbud.com/support",
+   "email": "contact@thisisbud.com"
+  },
+  "x-logo": {
+   "url": "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAATAAAABuCAQAAAAKAYdLAAAACXBIWXMAAC4jAAAuIwF4pT92AAAAB3RJTUUH4wQDDggcbXcx7wAABeJJREFUeNrt3W2IFVUcx/HvXRW1VdQedy1bZVfoYX0osVQyfSGElKbRA5oFIaIlhAkWUYm6gvqqDMHMoBeKlhayCCZC2AMRPay7aJrSZmauZhQqaj7t7u1Fi965987s7D1n7pk7/j73zX2Y85//mXt2Zu45Z2ZBREREREREREREREREREREREREREREREREREREREREREREREREROIiZSFGH+YxgsOs5U/X1bFiPDPpQT3bu1DmcaZyg+vErWpjD+s47zoN6Mte0qRJc4Iq18lYMJv2jvosD11mRUeJpD32UO7664BFGQl94DoZY704fbU2rQwKVWYwbc6bQlSPBaYbtMz4K7nP53lpGkK/q8+7MTxUmeEWtmJcGX+j5psmM0I3l9vCirKAV36OuE46QsbfaHL/9opnL9tcpxBf3V0nkAgzWMRj9HadhrH+3Gk7pBqYDZdY3oXfnHE2gc1U2gyoQ6Rk+pKZdgOqgYnXF7TYDGe3gcWgW85QH9cJxMAVm8HsNrBqhhV1U9g33XUCzo1gsM1wdhtYio8ZWsytYdksFrpOwbGhbLYb0PavyLs5wA+c9v28lRa+Zzt/+y5RwwKqaOCdgCjZRvEit/A1a7jou8xwJjOMAb7D+ylqqCmw1imeZ0oCBrv7Mzp+/QofFTDCdZG13Jw3Wi1nOpbZT9+QGUziUkeZ3T49z+P4pqCRuCkhM1jjfMwwqsdG182rsAaWJs0JxuWJ9knGEq+EzODHjDLTcj5NsbjgwehwDazm6vyL5D2MG5i7booKdjE25917M57XhoxUG1hmJUsjrmWtlVl18ZQ2DeCyH6ycT7kpIJ+wuQWVeZJXI69HcpsXHDQN4LajtZIlkcbvzWqn9St1R3nPNIT93wzt/MSZPO+nqKA65699Nos5FdHmgZkMzHnvIj9zLm9+Q7jd0nqP8VtkdSqWNppYxT+u08g+yW8OnKRXw4ac08hnPUscyvjkw5AZXM4os9jzyY6sdZ3h5YC++jLm0lrASf50T5krzEn0QbOLbB8in2FvwKfNPJczCXd0hLV7wPPqL8bybt691//aWWfhkPo2681PjZPDbgP7lYZOl1nNJs9rW4elXD2zfkK8wIFOy2w1XuuWyOpTkuw2sHOhlqrzvIqu59gbuYEdIcqcjSyb65SLX5EHOepgrbuKtJ6nHNQtxtx0U5xM8DoXMkez7K5xM7Tp4iS4WOvszvss5feSP9Fvo5EVnDDfHGJfpd157Y48xFRGmfaEaWcu/qqYZxpCDcxcqR8Mg9xlGkANzNz+BDcx4zEJNTBzv5gPCSeXTvJtmM+3PJqIKdNj6GE3pJsG5mIwOMp1ptnABgd1sq+G7ebnXZncHCKjG3+M1zpLTzMz7AZ00cBG5pmlFb3JmkQTSpPd21HZbWD9Qy21zPPK/zricNH6+B7mvZFreTpEtAFWt0dpsnoWZreBVTG+kyVS1GVN4/vDd9lJVIRY5yzfPdPlrPHHdTwYItr1bkLcTia8M1qPM9F3yRRjcuaYprNmHxzyfNbQyQlnGTM47ynhndFan7WuCywLODz35I2sC9DCXheZHBNpsXvZmu1fkZXs5rjPnPzb8hyAzrIzINr9HOBIwNXat+ZcleS1hame1714izc55jNvbVDBtz7pyWuJuI15P/tnx1F0UwzsQpprO5nil2KIQSZbqcspnwp57+iu2MQT1mMmhNue/MMR3xfwMi8VYRhnmJqXP/MG1lZwyVNMy9l/FR4tf/mdvB553Uz2sXFn+n1YaGCNBZZr5mH25by7xzCb3PKrmM+lgmK1BV4hdc0+2g2zjq8m1wlAOY1dvqXGKep87oZYzUmDW3Vs8+myuIf6Am6AsiT0Nljp/CYl0Twaze9ZaaN3u5w5jAy5L2ylhe/4nAu+S1Qwl+oCsrjCV2wM2KXfwSPUcmPIGv9LPZ91Ye1TEnEb80ztNLE+Dv8MS0RERERERERERERERERERERERERERERERERERERERERERERERERs+Q/rhi5WauEgfQAAAABJRU5ErkJggg=="
+  },
+  "description": "\nThese endpoints allow Bud's Clients to initiate (i.e. make) payments through the use of Open Banking Payment APIs.\nBud manages the connections to each of the payment providers, and serves these connections under a single set of API endpoints, enabling Bud's clients (and in turn their customers) to initiate a payment from one of these providers to a chosen recipient.\n\nBud currently supports two methods for initiating payments with available providers:\n\n  1. If you are not regulated to provide payment initiation services, or if you are regulated but do not wish to use\n  your own permissions, then use Bud's [TPP Initiation](#tag/TPP-Initiation) endpoints.\n  2. If on the other hand, your are regulated as an Payment Initiation Service Provider (PISP), then you are able to use Bud\n  as a Technical Service Provider (see [TSP Initiation](#tag/TSP-Initiation)).\n"
+ },
+ "servers": [
+  {
+   "url": "https://api-sandbox.thisisbud.com",
+   "description": "Bud sandbox"
+  }
+ ],
+ "paths": {
+  "/v1/payments/single": {
+   "post": {
+    "tags": [
+     "Initiate Payment - Client license"
+    ],
+    "summary": "Create Single Payment",
+    "description": "Create a unique single payment identifier and retrieve the authorisation url for the specific payment provider. Please note that this endpoint can only be used in the event that you are using Bud as a Technical Service Provider (TSP), i.e. you must be regulated as an Payment Initiation Service Provider (PISP)",
+    "operationId": "v1_payments_single_post",
+    "security": [
+     {
+      "OAuth2": []
+     }
+    ],
+    "parameters": [
+     {
+      "$ref": "#/paths/~1v1~1payments~1single/get/parameters/0"
+     }
+    ],
+    "requestBody": {
+     "required": true,
+     "content": {
+      "application/json": {
+       "schema": {
+        "title": "Single Payment Request Payload",
+        "type": "object",
+        "description": "Expected request payload structure",
+        "required": [
+         "provider",
+         "payment_details"
+        ],
+        "properties": {
+         "redirect_url": {
+          "type": "string",
+          "description": "This is the url that your Customer will be redirected to when using the Bud user interface. If you wish to use your own license and callback infrastructure this parameter will have no effect and the provider_redirect_url parameter should be used instead."
+         },
+         "provider_redirect_url": {
+          "type": "string",
+          "description": "This is the url that your Customer will be redirected to once they have authorised with the relevant provider. This should only be used when using your own license and wish to use the Submit Authorisation Codes endpoint. If you wish to use Bud's call back then the redirect_url must be provided."
+         },
+         "provider": {
+          "type": "string",
+          "description": "The name (identifier) of the payment provider"
+         },
+         "payment_details": {
+          "title": "Single Payment Details",
+          "type": "object",
+          "description": "Payment details required to make a Single Payment",
+          "required": [
+           "reference",
+           "recipient",
+           "sender",
+           "amount"
+          ],
+          "properties": {
+           "reference": {
+            "type": "string",
+            "description": "The payment reference"
+           },
+           "recipient": {
+            "title": "Payment Recipient",
+            "type": "object",
+            "description": "Details of the recipient of the payment",
+            "required": [
+             "type",
+             "name",
+             "account_number"
+            ],
+            "properties": {
+             "type": {
+              "$ref": "#/paths/~1v1~1payments~1single/post/requestBody/content/application~1json/schema/properties/payment_details/properties/sender/properties/type"
+             },
+             "name": {
+              "type": "string",
+              "description": "Account holder name of the recipient",
+              "minLength": 1,
+              "maxLength": 70
+             },
+             "account_number": {
+              "type": "string",
+              "description": "Account identifier of the recipient",
+              "minLength": 14,
+              "maxLength": 32
+             }
+            }
+           },
+           "sender": {
+            "title": "Payment Sender",
+            "type": "object",
+            "description": "Details of the payment sender",
+            "required": [
+             "user_id",
+             "name"
+            ],
+            "properties": {
+             "user_id": {
+              "type": "string",
+              "description": "A string that can be used to uniquely identify a user within the Client's application",
+              "minLength": 1,
+              "maxLength": 120
+             },
+             "type": {
+              "title": "Account Type",
+              "type": "string",
+              "description": "The account type structure for the payment sender or receiver",
+              "enum": [
+               "SortCodeAccountNumber",
+               "IBAN"
+              ]
+             },
+             "name": {
+              "type": "string",
+              "description": "Account holder name of the sender",
+              "minLength": 1,
+              "maxLength": 70
+             },
+             "account_number": {
+              "type": "string",
+              "description": "Account identifier of the sender",
+              "minLength": 14,
+              "maxLength": 32
+             },
+             "provider": {
+              "type": "string",
+              "description": "The name (identifier) of the payment provider"
+             }
+            }
+           },
+           "amount": {
+            "title": "Standard Bud Amount",
+            "type": "object",
+            "description": "The monetary amount.",
+            "required": [
+             "value",
+             "currency"
+            ],
+            "properties": {
+             "value": {
+              "title": "Monetary Value",
+              "description": "The value of the monetary amount. The value is formatted with the number of decimal places for the respective currency. \n\nExample: `10.98`\n",
+              "type": "string"
+             },
+             "currency": {
+              "title": "Currency",
+              "description": "The three-letter [ISO currency code](https://www.iso.org/iso-4217-currency-codes.html) of the monetary amount.\n\nExample: `GBP`\n",
+              "type": "string"
+             }
+            }
+           }
+          }
+         }
+        }
+       },
+       "examples": {
+        "Create Payment UK": {
+         "value": {
+          "redirect_url": "https://your-app.com/connected?my-parameter=xyz",
+          "provider": "lloyds",
+          "payment_details": {
+           "reference": "PAYMENT REFERENCE",
+           "recipient": {
+            "type": "SortCodeAccountNumber",
+            "name": "MR TEST RECIPIENT",
+            "account_number": "01234501234567"
+           },
+           "sender": {
+            "user_id": "client-defined-user-id",
+            "name": "MR TEST SENDER"
+           },
+           "amount": {
+            "value": "2.50",
+            "currency": "GBP"
+           }
+          }
+         }
+        },
+        "Create Payment Europe": {
+         "value": {
+          "redirect_url": "https://your-app.com/connected?my-parameter=xyz",
+          "provider": "commerzbank",
+          "payment_details": {
+           "reference": "PAYMENT REFERENCE",
+           "recipient": {
+            "type": "IBAN",
+            "name": "MR TEST RECIPIENT",
+            "account_number": "DE40100100103307118605"
+           },
+           "sender": {
+            "user_id": "client-defined-user-id",
+            "type": "IBAN",
+            "name": "MR TEST SENDER",
+            "account_number": "DE02100100109307118608"
+           },
+           "amount": {
+            "value": "2.50",
+            "currency": "EUR"
+           }
+          }
+         }
+        }
+       }
+      }
+     }
+    },
+    "responses": {
+     "200": {
+      "description": "Successful request",
+      "content": {
+       "application/json": {
+        "schema": {
+         "title": "Single Payment Response",
+         "type": "object",
+         "required": [
+          "operation_id",
+          "data"
+         ],
+         "properties": {
+          "operation_id": {
+           "$ref": "#/paths/~1v1~1payments~1single/get/responses/200/content/application~1json/schema/properties/operation_id"
+          },
+          "data": {
+           "type": "object",
+           "description": "Single Payment Response",
+           "required": [
+            "authorisation_url",
+            "payment_id"
+           ],
+           "properties": {
+            "authorisation_url": {
+             "type": "string",
+             "description": "The authorisation URL for a relevant payment provider. Redirect your Customer to this url to allow them to authorise their payment"
+            },
+            "payment_id": {
+             "type": "string",
+             "description": "Unique identifier for the single payment resource"
+            },
+            "required_action": {
+             "type": "string",
+             "description": "If present, this fild will indicate the next required action (if any) to be taken by the client in order to complete the payment flow\n\n| Value  |  Description |\n|:-------|:-------------|\n| confirm_single_payment | Indicates that the client must confirm the single payment using the Confirm Single Payment endpoint in order to complete the payment flow. |\n",
+             "enum": [
+              "confirm_single_payment"
+             ]
+            }
+           }
+          }
+         }
+        },
+        "example": {
+         "operation_id": "v1_payments_single_post",
+         "data": {
+          "payment_id": "56caec01-85cc-4fc6-8080-cc0f7ed03a7e",
+          "authorisation_url": "https://www.thisisbud.com/provider/specific/redirect/url",
+          "required_action": "confirm_single_payment"
+         }
+        }
+       }
+      }
+     },
+     "400": {
+      "description": "The request contains an invalid payload.",
+      "content": {
+       "application/json": {
+        "schema": {
+         "$ref": "#/paths/~1v1~1payments~1single/get/responses/404/content/application~1json/schema"
+        },
+        "example": {
+         "operation_id": "v1_payments_single_post",
+         "code_id": "failed_validation",
+         "message": "Failed validation",
+         "errors": {
+          "recipient.sort_code": "Sort code must match `^\\d{6}$`"
+         }
+        }
+       }
+      }
+     },
+     "401": {
+      "description": "Unauthorised request"
+     },
+     "405": {
+      "description": "An unexpected HTTP method was used"
+     },
+     "5XX": {
+      "description": "An unexpected error occurred on the server side"
+     }
+    }
+   },
+   "get": {
+    "tags": [
+     "Manage Payments"
+    ],
+    "summary": "Search for Single Payments",
+    "description": "Retrieve and view the status of multiple payments",
+    "operationId": "v1_payment_get",
+    "security": [
+     {
+      "OAuth2": []
+     }
+    ],
+    "parameters": [
+     {
+      "in": "header",
+      "name": "X-Client-Id",
+      "schema": {
+       "type": "string"
+      },
+      "required": true,
+      "description": "The API Client Identifier (Service Application Identifier).",
+      "example": "8711bbef-b357-4c2d-97ca-0d9df4206e9a"
+     },
+     {
+      "in": "header",
+      "name": "X-Payment-Id",
+      "required": false,
+      "description": "Payment ID filter",
+      "example": "84470aa9-71a2-4da2-8fa4-660adbf2c9b2",
+      "schema": {
+       "type": "string"
+      }
+     },
+     {
+      "in": "header",
+      "name": "X-Page-Number",
+      "required": false,
+      "description": "Page number filter",
+      "example": "1",
+      "schema": {
+       "type": "string"
+      }
+     },
+     {
+      "in": "header",
+      "name": "X-Sender-Providers",
+      "required": false,
+      "description": "comma separated list of providers name filter",
+      "example": "Lloyds,Nationwide",
+      "schema": {
+       "type": "string"
+      }
+     },
+     {
+      "in": "header",
+      "name": "X-Status-Codes",
+      "required": false,
+      "description": "comma separated list of status codes filter",
+      "example": [
+       "CREATED",
+       "SETTLED"
+      ],
+      "schema": {
+       "type": "array",
+       "items": {
+        "type": "string",
+        "enum": [
+         "CREATED",
+         "AWAITING_AUTH",
+         "AUTHENTICATED",
+         "ACCEPTED",
+         "FUNDS_CONFIRMED",
+         "INITIATING",
+         "SETTLED",
+         "FAILED"
+        ]
+       }
+      }
+     },
+     {
+      "in": "header",
+      "name": "X-Date-From",
+      "description": "Date from filter",
+      "example": "2020-06-01T15:00:00Z",
+      "schema": {
+       "type": "string"
+      }
+     },
+     {
+      "in": "header",
+      "name": "X-Date-To",
+      "description": "Date to filter",
+      "example": "2020-06-01T15:00:00Z",
+      "schema": {
+       "type": "string"
+      }
+     },
+     {
+      "in": "header",
+      "name": "X-Amount-From",
+      "required": false,
+      "description": "Amount from filter",
+      "example": "10.00",
+      "schema": {
+       "type": "string"
+      }
+     },
+     {
+      "in": "header",
+      "name": "X-Amount-To",
+      "required": false,
+      "description": "Amount to filter",
+      "example": "10000.00",
+      "schema": {
+       "type": "string"
+      }
+     }
+    ],
+    "responses": {
+     "200": {
+      "description": "Successful request",
+      "content": {
+       "application/json": {
+        "schema": {
+         "title": "List Payment Status Response",
+         "type": "object",
+         "required": [
+          "operation_id",
+          "data",
+          "metadata"
+         ],
+         "properties": {
+          "operation_id": {
+           "title": "Operation Id Field",
+           "type": "string",
+           "description": "A unique identifier/reference associated with a given endpoint/operation"
+          },
+          "data": {
+           "description": "Array of Single Payment Status Objects",
+           "type": "array",
+           "items": {
+            "$ref": "#/paths/~1v1~1payments~1single~1{payment_id}/get/responses/200/content/application~1json/schema/properties/data"
+           }
+          },
+          "metadata": {
+           "type": "object",
+           "description": "Metadata for the response including pagination details",
+           "required": [
+            "total_results",
+            "results",
+            "page",
+            "total_pages"
+           ],
+           "properties": {
+            "total_results": {
+             "type": "integer",
+             "description": "The total number of payment results for the request"
+            },
+            "results": {
+             "type": "integer",
+             "description": "The number of payment results currently displayed on the page"
+            },
+            "page": {
+             "type": "integer",
+             "description": "The current page number"
+            },
+            "total_pages": {
+             "type": "integer",
+             "description": "The total number of pages for the request"
+            }
+           }
+          }
+         }
+        },
+        "examples": {
+         "Payment Status List UK": {
+          "value": {
+           "operation_id": "v1_payment_get",
+           "data": [
+            {
+             "payment_id": "89f80199-1199-400e-9092-17208f6f39f5",
+             "organisation_id": "22f80199-1199-400e-9092-17208f6f39f0",
+             "client_id": "22f80199-1199-400e-9092-17208f6f39f0",
+             "method": "FPS",
+             "reference": "Rent",
+             "recipient": {
+              "type": "SortCodeAccountNumber",
+              "name": "MR TEST RECIPIENT",
+              "account_number": "01234501234567"
+             },
+             "amount": {
+              "value": "10.00",
+              "currency": "GBP"
+             },
+             "sender": {
+              "user_id": "client-defined-user-id",
+              "name": "MR RANDOM SENDER",
+              "provider": "Natwest"
+             },
+             "known_charges": {
+              "recipient_charge": {
+               "charge": "1.50",
+               "currency": "GBP",
+               "recipient_receives": "7.00"
+              },
+              "sender_charge": {
+               "charge": "1.50",
+               "currency": "GBP",
+               "bank_sends": "10.00",
+               "total_cost": "11.50"
+              }
+             },
+             "state": {
+              "status_code": "SETTLED",
+              "status_message": "Payment Settlement Complete",
+              "history": [
+               {
+                "datetime": "2020-02-02T12:29:33.428944815Z",
+                "code": "CREATED",
+                "message": "Payment created"
+               },
+               {
+                "datetime": "2020-02-02T12:29:33.428944815Z",
+                "code": "AWAITING_AUTH",
+                "message": "Awaiting Authentication"
+               },
+               {
+                "datetime": "2020-02-02T12:29:33.428944815Z",
+                "code": "AUTHENTICATED",
+                "message": "Authenticated; Confirming Funds"
+               },
+               {
+                "datetime": "2020-02-02T12:29:33.428944815Z",
+                "code": "FUNDS_CONFIRMED",
+                "message": "Funds Confirmed; Awaiting Payment Initiation"
+               },
+               {
+                "datetime": "2020-02-02T12:29:33.428944815Z",
+                "code": "INITIATING",
+                "message": "Initiating Payment"
+               },
+               {
+                "datetime": "2020-02-02T12:29:33.428944815Z",
+                "code": "ACCEPTED",
+                "message": "Payment Order Accepted"
+               },
+               {
+                "datetime": "2020-02-02T12:29:33.428944815Z",
+                "code": "SETTLED",
+                "message": "Payment Settlement Complete"
+               }
+              ]
+             },
+             "supplementary_status": {
+              "payment_order": {
+               "status": "AcceptedSettlementInProgress",
+               "history": [
+                {
+                 "datetime": "2020-02-02T12:29:37.628944815Z",
+                 "status": "Pending"
+                },
+                {
+                 "datetime": "2020-02-02T12:29:38.628944815Z",
+                 "status": "AcceptedSettlementInProgress"
+                }
+               ]
+              },
+              "consent": {
+               "status": "Authorised",
+               "history": [
+                {
+                 "datetime": "2020-02-02T12:29:34.828944815Z",
+                 "status": "AwaitingAuthorisation"
+                },
+                {
+                 "datetime": "2020-02-02T12:29:35.028944815Z",
+                 "status": "Authorised"
+                }
+               ]
+              },
+              "confirmation_of_funds": {
+               "status": "Available",
+               "history": [
+                {
+                 "datetime": "2020-02-02T12:29:35.028944815Z",
+                 "status": "Available"
+                }
+               ]
+              }
+             },
+             "required_action": "confirm_single_payment",
+             "errors": [
+              {
+               "code": "FAILED_FUNDS_CONFIRMATION",
+               "description": "The call to the provider to confirm funds returned an error"
+              }
+             ],
+             "created_at": "2020-02-02T12:29:33.428944815Z"
+            }
+           ],
+           "metadata": {
+            "total_results": 1000000,
+            "results": 10,
+            "page": 1,
+            "total_pages": 100000
+           }
+          }
+         },
+         "Payment Status List Europe": {
+          "value": {
+           "operation_id": "v1_payment_get",
+           "data": [
+            {
+             "payment_id": "89f80199-1199-400e-9092-17208f6f39f5",
+             "organisation_id": "22f80199-1199-400e-9092-17208f6f39f0",
+             "client_id": "22f80199-1199-400e-9092-17208f6f39f0",
+             "method": "SEPA",
+             "reference": "Rent",
+             "recipient": {
+              "type": "IBAN",
+              "name": "MR TEST RECIPIENT",
+              "account_number": "DE40100100103307118605"
+             },
+             "amount": {
+              "value": "10.00",
+              "currency": "EUR"
+             },
+             "sender": {
+              "user_id": "client-defined-user-id",
+              "type": "IBAN",
+              "name": "MR RANDOM SENDER",
+              "account_number": "DE02100100109307118606",
+              "provider": "commerzbank"
+             },
+             "known_charges": {
+              "recipient_charge": {
+               "charge": "1.50",
+               "currency": "EUR",
+               "recipient_receives": "7.00"
+              },
+              "sender_charge": {
+               "charge": "1.50",
+               "currency": "EUR",
+               "bank_sends": "10.00",
+               "total_cost": "11.50"
+              }
+             },
+             "state": {
+              "status_code": "SETTLED",
+              "status_message": "Payment Settlement Complete",
+              "history": [
+               {
+                "datetime": "2020-02-02T12:29:33.428944815Z",
+                "code": "CREATED",
+                "message": "Payment created"
+               },
+               {
+                "datetime": "2020-02-02T12:29:33.428944815Z",
+                "code": "AWAITING_AUTH",
+                "message": "Awaiting Authentication"
+               },
+               {
+                "datetime": "2020-02-02T12:29:33.428944815Z",
+                "code": "AUTHENTICATED",
+                "message": "Authenticated; Confirming Funds"
+               },
+               {
+                "datetime": "2020-02-02T12:29:33.428944815Z",
+                "code": "FUNDS_CONFIRMED",
+                "message": "Funds Confirmed; Awaiting Payment Initiation"
+               },
+               {
+                "datetime": "2020-02-02T12:29:33.428944815Z",
+                "code": "INITIATING",
+                "message": "Initiating Payment"
+               },
+               {
+                "datetime": "2020-02-02T12:29:33.428944815Z",
+                "code": "ACCEPTED",
+                "message": "Payment Order Accepted"
+               },
+               {
+                "datetime": "2020-02-02T12:29:33.428944815Z",
+                "code": "SETTLED",
+                "message": "Payment Settlement Complete"
+               }
+              ]
+             },
+             "supplementary_status": {
+              "payment_order": {
+               "status": "AcceptedSettlementInProgress",
+               "history": [
+                {
+                 "datetime": "2020-02-02T12:29:37.628944815Z",
+                 "status": "Pending"
+                },
+                {
+                 "datetime": "2020-02-02T12:29:38.628944815Z",
+                 "status": "AcceptedSettlementInProgress"
+                }
+               ]
+              },
+              "consent": {
+               "status": "Authorised",
+               "history": [
+                {
+                 "datetime": "2020-02-02T12:29:34.828944815Z",
+                 "status": "AwaitingAuthorisation"
+                },
+                {
+                 "datetime": "2020-02-02T12:29:35.028944815Z",
+                 "status": "Authorised"
+                }
+               ]
+              },
+              "confirmation_of_funds": {
+               "status": "Available",
+               "history": [
+                {
+                 "datetime": "2020-02-02T12:29:35.028944815Z",
+                 "status": "Available"
+                }
+               ]
+              }
+             },
+             "required_action": "confirm_single_payment",
+             "errors": [
+              {
+               "code": "FAILED_FUNDS_CONFIRMATION",
+               "description": "The call to the provider to confirm funds returned an error"
+              }
+             ],
+             "created_at": "2020-02-02T12:29:33.428944815Z"
+            }
+           ],
+           "metadata": {
+            "total_results": 1000000,
+            "results": 10,
+            "page": 1,
+            "total_pages": 100000
+           }
+          }
+         }
+        }
+       }
+      }
+     },
+     "401": {
+      "description": "Unauthorised request"
+     },
+     "404": {
+      "description": "Resource not found",
+      "content": {
+       "application/json": {
+        "schema": {
+         "title": "Bad Request Response",
+         "type": "object",
+         "description": "Expected response structure",
+         "required": [
+          "operation_id",
+          "code_id",
+          "message",
+          "errors"
+         ],
+         "properties": {
+          "operation_id": {
+           "$ref": "#/paths/~1v1~1payments~1single/get/responses/200/content/application~1json/schema/properties/operation_id"
+          },
+          "code_id": {
+           "type": "string",
+           "description": "A descriptive enough string that is linked to the reason for the error."
+          },
+          "message": {
+           "type": "string"
+          },
+          "errors": {
+           "anyOf": [
+            {
+             "title": "Error Object",
+             "type": "object",
+             "nullable": true,
+             "description": "Contains a field specific error message",
+             "additionalProperties": {
+              "type": "string"
+             }
+            },
+            {
+             "title": "Array of Error Object",
+             "description": "Contains a list of error messages",
+             "type": "object",
+             "additionalProperties": {
+              "type": "array",
+              "items": {
+               "type": "string"
+              }
+             }
+            }
+           ]
+          }
+         }
+        },
+        "example": {
+         "operation_id": "v1_payments_payment_id_get",
+         "code_id": "failed_validation",
+         "message": "Failed validation",
+         "errors": {
+          "payment_id": "Value not found"
+         }
+        }
+       }
+      }
+     },
+     "405": {
+      "description": "An unexpected HTTP method was used"
+     },
+     "5XX": {
+      "description": "An unexpected error occurred on the server side"
+     }
+    }
+   }
+  },
+  "/v1/payments/single/{payment_id}": {
+   "get": {
+    "tags": [
+     "Manage Payments"
+    ],
+    "summary": "Retrieve Single Payment Status",
+    "description": "Retrieve and view the status of a payment",
+    "operationId": "v1_payments_single_payment_id_get",
+    "security": [
+     {
+      "OAuth2": []
+     }
+    ],
+    "parameters": [
+     {
+      "in": "path",
+      "name": "payment_id",
+      "required": true,
+      "schema": {
+       "type": "string"
+      },
+      "description": "Bud Payment Identifier"
+     },
+     {
+      "$ref": "#/paths/~1v1~1payments~1single/get/parameters/0"
+     }
+    ],
+    "responses": {
+     "200": {
+      "description": "Successful request",
+      "content": {
+       "application/json": {
+        "schema": {
+         "title": "Payment Status Response",
+         "type": "object",
+         "required": [
+          "operation_id",
+          "data"
+         ],
+         "properties": {
+          "operation_id": {
+           "$ref": "#/paths/~1v1~1payments~1single/get/responses/200/content/application~1json/schema/properties/operation_id"
+          },
+          "data": {
+           "title": "Single Payment Status",
+           "description": "Detailed information for a given payment and it's status",
+           "type": "object",
+           "required": [
+            "payment_id",
+            "organisation_id",
+            "client_id",
+            "method",
+            "reference",
+            "recipient",
+            "amount",
+            "sender",
+            "known_charges",
+            "state",
+            "supplementary_status",
+            "errors",
+            "created_at",
+            "required_action"
+           ],
+           "properties": {
+            "payment_id": {
+             "type": "string",
+             "description": "Payment Identifier"
+            },
+            "organisation_id": {
+             "type": "string",
+             "description": "Bud's Organisation Identifier"
+            },
+            "client_id": {
+             "type": "string",
+             "description": "Bud's Client/App Identifier"
+            },
+            "method": {
+             "type": "string",
+             "description": "The payment method",
+             "enum": [
+              "BACS",
+              "FPS",
+              "SEPA"
+             ]
+            },
+            "reference": {
+             "type": "string",
+             "description": "Reference to use for this payment",
+             "maxLength": 18
+            },
+            "recipient": {
+             "$ref": "#/paths/~1v1~1payments~1single/post/requestBody/content/application~1json/schema/properties/payment_details/properties/recipient"
+            },
+            "amount": {
+             "$ref": "#/paths/~1v1~1payments~1single/post/requestBody/content/application~1json/schema/properties/payment_details/properties/amount"
+            },
+            "sender": {
+             "$ref": "#/paths/~1v1~1payments~1single/post/requestBody/content/application~1json/schema/properties/payment_details/properties/sender"
+            },
+            "known_charges": {
+             "title": "Known Charges",
+             "type": "object",
+             "description": "A list detailing information surrounding any known charges that may be associated with the payment",
+             "required": [
+              "recipient_charge",
+              "sender_charge"
+             ],
+             "properties": {
+              "recipient_charge": {
+               "type": "object",
+               "description": "The charge details applied to the recipient",
+               "required": [
+                "charge",
+                "currency",
+                "recipient_receives"
+               ],
+               "properties": {
+                "charge": {
+                 "type": "string",
+                 "description": "A number of monetary units specified in an active currency where the unit of currency is explicit and compliant with ISO 4217."
+                },
+                "currency": {
+                 "type": "string",
+                 "description": "A code allocated to a currency by a Maintenance Agency under an international identification scheme, as described in the latest edition of the international standard ISO 4217 \"Codes for the representation of currencies and funds\""
+                },
+                "recipient_receives": {
+                 "type": "string",
+                 "description": "A number of monetary units specified in an active currency where the unit of currency is explicit and compliant with ISO 4217."
+                }
+               }
+              },
+              "sender_charge": {
+               "type": "object",
+               "description": "The charge details applied by the sender",
+               "required": [
+                "charge",
+                "currency",
+                "bank_sends",
+                "total_cost"
+               ],
+               "properties": {
+                "charge": {
+                 "type": "string",
+                 "description": "A number of monetary units specified in an active currency where the unit of currency is explicit and compliant with ISO 4217."
+                },
+                "currency": {
+                 "type": "string",
+                 "description": "A code allocated to a currency by a Maintenance Agency under an international identification scheme, as described in the latest edition of the international standard ISO 4217 \"Codes for the representation of currencies and funds\""
+                },
+                "bank_sends": {
+                 "type": "string",
+                 "description": "A number of monetary units specified in an active currency where the unit of currency is explicit and compliant with ISO 4217."
+                },
+                "total_cost": {
+                 "type": "string",
+                 "description": "A number of monetary units specified in an active currency where the unit of currency is explicit and compliant with ISO 4217."
+                }
+               }
+              }
+             }
+            },
+            "state": {
+             "type": "object",
+             "description": "Details of the payment state and history",
+             "required": [
+              "status_code",
+              "status_message",
+              "history"
+             ],
+             "properties": {
+              "status_code": {
+               "type": "string",
+               "description": "The payment status code",
+               "enum": [
+                "CREATED",
+                "AWAITING_AUTH",
+                "AUTHENTICATED",
+                "AUTH_REJECTED",
+                "AUTH_COMPLETED",
+                "FUNDS_CONFIRMED",
+                "INSUFFICIENT_FUNDS",
+                "INITIATING",
+                "ACCEPTED",
+                "SETTLED",
+                "PAYMENT_REJECTED",
+                "FAILED"
+               ]
+              },
+              "status_message": {
+               "type": "string",
+               "description": "The payment status message",
+               "enum": [
+                "Payment created",
+                "Awaiting Authentication",
+                "Authenticated; Confirming Funds",
+                "Funds Confirmed; Awaiting Payment Initiation",
+                "Insufficient Funds In Account; Payment Aborted",
+                "Initiating Payment",
+                "Payment Order Accepted",
+                "Payment Settlement Complete",
+                "Payment Settlement Rejected",
+                "Failed"
+               ]
+              },
+              "history": {
+               "type": "array",
+               "items": {
+                "type": "object",
+                "required": [
+                 "datetime",
+                 "code",
+                 "message"
+                ],
+                "properties": {
+                 "datetime": {
+                  "type": "string",
+                  "description": "A datetime string ISO 8601 defining the date and time at which the state change occurred"
+                 },
+                 "code": {
+                  "$ref": "#/paths/~1v1~1payments~1single~1{payment_id}/get/responses/200/content/application~1json/schema/properties/data/properties/state/properties/status_code"
+                 },
+                 "message": {
+                  "$ref": "#/paths/~1v1~1payments~1single~1{payment_id}/get/responses/200/content/application~1json/schema/properties/data/properties/state/properties/status_message"
+                 }
+                }
+               }
+              }
+             }
+            },
+            "supplementary_status": {
+             "type": "object",
+             "description": "A list of supplementary states associated with the payment as described by the specific provider",
+             "required": [
+              "payment_order",
+              "consent",
+              "confirmation_of_funds"
+             ],
+             "properties": {
+              "payment_order": {
+               "$ref": "#/paths/~1v1~1payments~1single~1{payment_id}/get/responses/200/content/application~1json/schema/properties/data/properties/supplementary_status/properties/consent"
+              },
+              "consent": {
+               "type": "object",
+               "description": "The payment supplementary as described by the provider",
+               "required": [
+                "status",
+                "history"
+               ],
+               "properties": {
+                "status": {
+                 "type": "string",
+                 "description": "The status description as returned by the provide"
+                },
+                "history": {
+                 "type": "array",
+                 "description": "A list of any historical changes in the state",
+                 "items": {
+                  "type": "object",
+                  "required": [
+                   "datetime",
+                   "status"
+                  ],
+                  "properties": {
+                   "datetime": {
+                    "type": "string",
+                    "description": "A datetime string (ISO 8601) defining the date and time at which the state change occurred"
+                   },
+                   "status": {
+                    "type": "string",
+                    "description": "The status message"
+                   }
+                  }
+                 }
+                }
+               }
+              },
+              "confirmation_of_funds": {
+               "$ref": "#/paths/~1v1~1payments~1single~1{payment_id}/get/responses/200/content/application~1json/schema/properties/data/properties/supplementary_status/properties/consent"
+              }
+             }
+            },
+            "errors": {
+             "title": "Payment Errors",
+             "type": "array",
+             "description": "A list of any errors that may be associated with the payment",
+             "items": {
+              "title": "Payment_Error",
+              "type": "object",
+              "description": "Details surrounding any error that may be associated with the payment",
+              "required": [
+               "code",
+               "description"
+              ],
+              "properties": {
+               "code": {
+                "type": "string",
+                "description": "Error Code"
+               },
+               "description": {
+                "type": "string",
+                "description": "Text string used to give a description of the payment error"
+               }
+              }
+             }
+            },
+            "created_at": {
+             "title": "Created at timestamp",
+             "type": "string",
+             "description": "The created at timestamp for the payment"
+            },
+            "required_action": {
+             "type": "string",
+             "enum": [
+              "confirm_single_payment"
+             ],
+             "nullable": true,
+             "description": "This field will indicate that there is an action required to be taken by the client in order to complete the payment.\n\n| Value  |  Description |\n|:-------|:-------------|\n| confirm_single_payment | If present, this value indicates that client has yet to confirm the single payment once the customer has successfully authorised the payment with the provider. This confirmation can be accomplished using the Confirm Single Payment API Endpoint. Please note this step will only be relevant for clients using Bud as a Technical Service Provider (TSP) |\n"
+            }
+           }
+          }
+         }
+        },
+        "examples": {
+         "Payment Status UK": {
+          "value": {
+           "operation_id": "v1_payments_single_payment_id_get",
+           "data": {
+            "payment_id": "89f80199-1199-400e-9092-17208f6f39f5",
+            "organisation_id": "22f80199-1199-400e-9092-17208f6f39f0",
+            "client_id": "22f80199-1199-400e-9092-17208f6f39f0",
+            "method": "FPS",
+            "reference": "Rent",
+            "recipient": {
+             "type": "SortCodeAccountNumber",
+             "name": "MR TEST RECIPIENT",
+             "account_number": "01234501234567"
+            },
+            "amount": {
+             "value": "10.00",
+             "currency": "GBP"
+            },
+            "sender": {
+             "user_id": "client-defined-user-id",
+             "name": "MR TEST SENDER",
+             "provider": "Natwest"
+            },
+            "known_charges": {
+             "recipient_charge": {
+              "charge": "1.50",
+              "currency": "GBP",
+              "recipient_receives": "7.00"
+             },
+             "sender_charge": {
+              "charge": "1.50",
+              "currency": "GBP",
+              "bank_sends": "10.00",
+              "total_cost": "11.50"
+             }
+            },
+            "state": {
+             "status_code": "SETTLED",
+             "status_message": "Payment Settlement Complete",
+             "history": [
+              {
+               "datetime": "2020-02-02T12:29:33.428944815Z",
+               "code": "CREATED",
+               "message": "Payment created"
+              },
+              {
+               "datetime": "2020-02-02T12:29:33.428944815Z",
+               "code": "AWAITING_AUTH",
+               "message": "Awaiting Authentication"
+              },
+              {
+               "datetime": "2020-02-02T12:29:33.428944815Z",
+               "code": "AUTHENTICATED",
+               "message": "Authenticated; Confirming Funds"
+              },
+              {
+               "datetime": "2020-02-02T12:29:33.428944815Z",
+               "code": "FUNDS_CONFIRMED",
+               "message": "Funds Confirmed; Awaiting Payment Initiation"
+              },
+              {
+               "datetime": "2020-02-02T12:29:33.428944815Z",
+               "code": "INITIATING",
+               "message": "Initiating Payment"
+              },
+              {
+               "datetime": "2020-02-02T12:29:33.428944815Z",
+               "code": "ACCEPTED",
+               "message": "Payment Order Accepted"
+              },
+              {
+               "datetime": "2020-02-02T12:29:33.428944815Z",
+               "code": "SETTLED",
+               "message": "Payment Settlement Complete"
+              }
+             ]
+            },
+            "supplementary_status": {
+             "payment_order": {
+              "status": "AcceptedSettlementInProgress",
+              "history": [
+               {
+                "datetime": "2020-02-02T12:29:37.628944815Z",
+                "status": "Pending"
+               },
+               {
+                "datetime": "2020-02-02T12:29:38.628944815Z",
+                "status": "AcceptedSettlementInProgress"
+               }
+              ]
+             },
+             "consent": {
+              "status": "Authorised",
+              "history": [
+               {
+                "datetime": "2020-02-02T12:29:34.828944815Z",
+                "status": "AwaitingAuthorisation"
+               },
+               {
+                "datetime": "2020-02-02T12:29:35.028944815Z",
+                "status": "Authorised"
+               }
+              ]
+             },
+             "confirmation_of_funds": {
+              "status": "Available",
+              "history": [
+               {
+                "datetime": "2020-02-02T12:29:35.028944815Z",
+                "status": "Available"
+               }
+              ]
+             }
+            },
+            "required_action": "confirm_single_payment",
+            "errors": [
+             {
+              "code": "FAILED_FUNDS_CONFIRMATION",
+              "description": "The call to the provider to confirm funds returned an error"
+             }
+            ],
+            "created_at": "2020-02-02T12:29:33.428944815Z"
+           },
+           "metadata": {}
+          }
+         },
+         "Payment Status Europe": {
+          "value": {
+           "operation_id": "v1_payments_single_payment_id_get",
+           "data": {
+            "payment_id": "89f80199-1199-400e-9092-17208f6f39f5",
+            "organisation_id": "22f80199-1199-400e-9092-17208f6f39f0",
+            "client_id": "22f80199-1199-400e-9092-17208f6f39f0",
+            "method": "SEPA",
+            "reference": "Rent",
+            "recipient": {
+             "type": "IBAN",
+             "name": "MR TEST RECIPIENT",
+             "account_number": "DE40100100103307118609"
+            },
+            "amount": {
+             "value": "10.00",
+             "currency": "EUR"
+            },
+            "sender": {
+             "user_id": "client-defined-user-id",
+             "type": "IBAN",
+             "name": "MR TEST SENDER",
+             "account_number": "DE02100100109307118606",
+             "provider": "commerzbank"
+            },
+            "known_charges": {
+             "recipient_charge": {
+              "charge": "1.50",
+              "currency": "EUR",
+              "recipient_receives": "7.00"
+             },
+             "sender_charge": {
+              "charge": "1.50",
+              "currency": "EUR",
+              "bank_sends": "10.00",
+              "total_cost": "11.50"
+             }
+            },
+            "state": {
+             "status_code": "SETTLED",
+             "status_message": "Payment Settlement Complete",
+             "history": [
+              {
+               "datetime": "2020-02-02T12:29:33.428944815Z",
+               "code": "CREATED",
+               "message": "Payment created"
+              },
+              {
+               "datetime": "2020-02-02T12:29:33.428944815Z",
+               "code": "AWAITING_AUTH",
+               "message": "Awaiting Authentication"
+              },
+              {
+               "datetime": "2020-02-02T12:29:33.428944815Z",
+               "code": "AUTHENTICATED",
+               "message": "Authenticated; Confirming Funds"
+              },
+              {
+               "datetime": "2020-02-02T12:29:33.428944815Z",
+               "code": "FUNDS_CONFIRMED",
+               "message": "Funds Confirmed; Awaiting Payment Initiation"
+              },
+              {
+               "datetime": "2020-02-02T12:29:33.428944815Z",
+               "code": "INITIATING",
+               "message": "Initiating Payment"
+              },
+              {
+               "datetime": "2020-02-02T12:29:33.428944815Z",
+               "code": "ACCEPTED",
+               "message": "Payment Order Accepted"
+              },
+              {
+               "datetime": "2020-02-02T12:29:33.428944815Z",
+               "code": "SETTLED",
+               "message": "Payment Settlement Complete"
+              }
+             ]
+            },
+            "supplementary_status": {
+             "payment_order": {
+              "status": "AcceptedSettlementInProgress",
+              "history": [
+               {
+                "datetime": "2020-02-02T12:29:37.628944815Z",
+                "status": "Pending"
+               },
+               {
+                "datetime": "2020-02-02T12:29:38.628944815Z",
+                "status": "AcceptedSettlementInProgress"
+               }
+              ]
+             },
+             "consent": {
+              "status": "Authorised",
+              "history": [
+               {
+                "datetime": "2020-02-02T12:29:34.828944815Z",
+                "status": "AwaitingAuthorisation"
+               },
+               {
+                "datetime": "2020-02-02T12:29:35.028944815Z",
+                "status": "Authorised"
+               }
+              ]
+             },
+             "confirmation_of_funds": {
+              "status": "Available",
+              "history": [
+               {
+                "datetime": "2020-02-02T12:29:35.028944815Z",
+                "status": "Available"
+               }
+              ]
+             }
+            },
+            "required_action": "confirm_single_payment",
+            "errors": [
+             {
+              "code": "FAILED_FUNDS_CONFIRMATION",
+              "description": "The call to the provider to confirm funds returned an error"
+             }
+            ],
+            "created_at": "2020-02-02T12:29:33.428944815Z"
+           },
+           "metadata": {}
+          }
+         }
+        }
+       }
+      }
+     },
+     "401": {
+      "description": "Unauthorised request"
+     },
+     "404": {
+      "description": "Resource not found",
+      "content": {
+       "application/json": {
+        "schema": {
+         "$ref": "#/paths/~1v1~1payments~1single/get/responses/404/content/application~1json/schema"
+        },
+        "example": {
+         "operation_id": "v1_payments_single_payment_id_get",
+         "code_id": "failed_validation",
+         "message": "Failed validation",
+         "errors": {
+          "payment_id": "Value not found"
+         }
+        }
+       }
+      }
+     },
+     "405": {
+      "description": "An unexpected HTTP method was used"
+     },
+     "5XX": {
+      "description": "An unexpected error occurred on the server side"
+     }
+    }
+   }
+  },
+  "/v1/payments/authorisation-codes": {
+   "post": {
+    "tags": [
+     "Initiate Payment - Client license"
+    ],
+    "summary": "Submit Authorisation Codes",
+    "description": "When using Bud as a TSP (Technical Service Provider) and doing full app-to-app authorisation, the customer is returned from the provider directly back to your app. Your app will then need to send all the query and hash fragment parameters to Bud so that we can continue with the payment flow.\n\nQuery and fragment parameters should be merged with query taking precedence. If you receive a request /path?a=1#a=2&b=3 then you should perform this request with {\"a\":\"1\",\"b\":\"3\"}. Given the nature of the fragment queries most server side languages will not process these so javascript may be required to correctly gather both parameters.\n\nRegardless of what parameters are present, all of them should be sent to Bud so that we can choose to either continue the connection or to map and record the error.\n\nState, Code and error are the most common parameters you will see, but this object may contain any number of unspecified properties. Currently state is a common property among all authorisation flows and is the current task ID. The state property is not guaranteed for the future of this API contract and will not be treated as backwards incompatible if a new authentication flow does not use it.\n",
+    "operationId": "v1_payments_authorisation_codes_post",
+    "security": [
+     {
+      "OAuth2": []
+     }
+    ],
+    "parameters": [
+     {
+      "$ref": "#/paths/~1v1~1payments~1single/get/parameters/0"
+     }
+    ],
+    "requestBody": {
+     "required": true,
+     "content": {
+      "application/json": {
+       "schema": {
+        "title": "Authorisation Codes Request Payload",
+        "type": "object",
+        "required": [
+         "state"
+        ],
+        "additionalProperties": true,
+        "properties": {
+         "state": {
+          "type": "string",
+          "description": "The task ID"
+         },
+         "code": {
+          "type": "string",
+          "description": "Code parameter returned in redirect parameters"
+         }
+        }
+       },
+       "examples": {
+        "Success": {
+         "value": {
+          "state": "e017bd1c-9b39-40cc-b9ec-e21fce26719e",
+          "code": "803A940E-2416-4A34-BF5F-4AC8C9977AC4"
+         }
+        },
+        "Error": {
+         "value": {
+          "state": "e017bd1c-9b39-40cc-b9ec-e21fce26719e",
+          "error": "access_denied"
+         }
+        }
+       }
+      }
+     }
+    },
+    "responses": {
+     "200": {
+      "description": "Successful request.",
+      "content": {
+       "application/json": {
+        "schema": {
+         "title": "Authorisation Codes Response Payload",
+         "type": "object",
+         "required": [
+          "operation_id",
+          "data"
+         ],
+         "properties": {
+          "operation_id": {
+           "$ref": "#/paths/~1v1~1payments~1single/get/responses/200/content/application~1json/schema/properties/operation_id"
+          },
+          "data": {
+           "type": "object",
+           "description": "Details regarding the response object for the authorisation codes response.",
+           "properties": {
+            "result": {
+             "type": "string",
+             "enum": [
+              "success",
+              "auth_invalid",
+              "auth_expired",
+              "provider_failure",
+              "internal_error"
+             ]
+            },
+            "payment_id": {
+             "type": "string",
+             "description": "Payment Identifier"
+            },
+            "payment_type": {
+             "type": "string",
+             "description": "The type of payment iniated through Bud's Payments Service",
+             "enum": [
+              "single",
+              "scheduled",
+              "standing-order"
+             ]
+            }
+           }
+          }
+         }
+        },
+        "example": {
+         "operation_id": "v1_payments_authorisation_codes_post",
+         "data": {
+          "result": "success",
+          "payment_id": "5edb14fe-ab4b-4357-ae15-98765c599fb5",
+          "payment_type": "single"
+         }
+        }
+       }
+      }
+     },
+     "400": {
+      "description": "Request contained invalid/missing data",
+      "content": {
+       "application/json": {
+        "schema": {
+         "type": "object",
+         "description": "Payments Error Response",
+         "required": [
+          "operation_id",
+          "code_id",
+          "message",
+          "errors"
+         ],
+         "properties": {
+          "operation_id": {
+           "type": "string",
+           "enum": [
+            "v1_payments_providers_get",
+            "v1_payments_single_get",
+            "v1_payments_single_post",
+            "v1_payments_single_payment_id_auth_token_post",
+            "v1_payments_single_payment_id_get",
+            "v1_payments_single_confirm_post",
+            "v1_payments_authorisation_codes_post"
+           ]
+          },
+          "code_id": {
+           "type": "string",
+           "enum": [
+            "failed_validation",
+            "internal_error",
+            "not_found",
+            "provider_in_maintenance_mode"
+           ]
+          },
+          "message": {
+           "type": "string",
+           "enum": [
+            "Failed validation",
+            "Internal server error has occurred",
+            "Resource not found",
+            "[ProviderName] is currently in a maintenance mode, please try again later."
+           ]
+          },
+          "errors": {
+           "type": "object"
+          }
+         }
+        },
+        "example": {
+         "operation_id": "v1_payments_authorisation_codes_post",
+         "code_id": "failed_validation",
+         "message": "Failed validation",
+         "errors": {
+          "payment": [
+           "unable to find payment for [Payment ID]"
+          ]
+         }
+        }
+       }
+      }
+     },
+     "500": {
+      "description": "An internal server error has occurred",
+      "content": {
+       "application/json": {
+        "schema": {
+         "$ref": "#/paths/~1v1~1payments~1authorisation-codes/post/responses/400/content/application~1json/schema"
+        },
+        "example": {
+         "operation_id": "v1_payments_authorisation_codes_post",
+         "code_id": "internal_error",
+         "message": "Internal server error has occurred",
+         "errors": {
+          "db": "could not fetch payment resource"
+         }
+        }
+       }
+      }
+     }
+    }
+   }
+  },
+  "/v1/payments/providers": {
+   "get": {
+    "tags": [
+     "Initiate Payment - Bud license",
+     "Initiate Payment - Client license"
+    ],
+    "summary": "Retrieve Providers",
+    "description": "This endpoint is used list the payment service providers (PSPs) supported via Bud's Payment APIs.",
+    "operationId": "v1_payments_providers_get",
+    "security": [
+     {
+      "OAuth2": []
+     }
+    ],
+    "parameters": [
+     {
+      "$ref": "#/paths/~1v1~1payments~1single/get/parameters/0"
+     },
+     {
+      "in": "query",
+      "name": "country",
+      "description": "Country filter as a comma separated list of country codes following the ISO 3166 alpha-3 code format.",
+      "example": "GBR,DEU",
+      "schema": {
+       "type": "string"
+      }
+     },
+     {
+      "in": "query",
+      "name": "product",
+      "description": "Product filter as a comma separated list of bud supported products",
+      "schema": {
+       "title": "Payment Services",
+       "description": "A payment service supported by a payment provider",
+       "type": "array",
+       "minItems": 1,
+       "items": {
+        "type": "string",
+        "enum": [
+         "domestic-single-payment",
+         "domestic-standing-order",
+         "domestic-scheduled-payment"
+        ]
+       }
+      }
+     },
+     {
+      "in": "query",
+      "required": false,
+      "name": "type",
+      "description": "A comma separated list of Bud support provider types to be shown. If no filter is applied, all the providers are returned.",
+      "schema": {
+       "type": "string",
+       "enum": [
+        "sandbox",
+        "business",
+        "retail"
+       ]
+      }
+     }
+    ],
+    "responses": {
+     "200": {
+      "description": "Successful request",
+      "content": {
+       "application/json": {
+        "schema": {
+         "title": "Payment Providers Response",
+         "type": "object",
+         "required": [
+          "operation_id",
+          "data"
+         ],
+         "properties": {
+          "operation_id": {
+           "$ref": "#/paths/~1v1~1payments~1single/get/responses/200/content/application~1json/schema/properties/operation_id"
+          },
+          "data": {
+           "title": "Retrieve Providers",
+           "description": "A list of the supported payment providers",
+           "type": "array",
+           "items": {
+            "title": "Payment Provider",
+            "description": "Information surrounding a supported payment provider",
+            "type": "object",
+            "required": [
+             "provider",
+             "display_name",
+             "icon",
+             "services",
+             "maintenance_status",
+             "maintenance_window",
+             "country_code",
+             "implementation_type",
+             "supported_currencies",
+             "required_actions"
+            ],
+            "properties": {
+             "provider": {
+              "type": "string",
+              "description": "The name (identifier) of the payment provider"
+             },
+             "display_name": {
+              "type": "string",
+              "description": "The name of the payment provider to be used for display purposes (e.g. within a frontend application)"
+             },
+             "icon": {
+              "type": "string",
+              "description": "A URL for the icon of the corresponding provider"
+             },
+             "services": {
+              "$ref": "#/paths/~1v1~1payments~1providers/get/parameters/2/schema"
+             },
+             "maintenance_status": {
+              "type": "string",
+              "description": "The status of the maintenance window associated with the provider",
+              "enum": [
+               "active",
+               "inactive"
+              ]
+             },
+             "maintenance_window": {
+              "anyOf": [
+               {
+                "title": "Maintenance Window Object",
+                "type": "object",
+                "description": "Details on any scheduled maintenance windows",
+                "properties": {
+                 "start": {
+                  "type": "string",
+                  "description": "The start datetime (ISO8601) of the maintenance window"
+                 },
+                 "end": {
+                  "type": "string",
+                  "nullable": true,
+                  "description": "The end datetime (ISO8601) of the maintenance window. When this value is `null` it means Bud will manually remove the maintenance flag when the provider is back healthy."
+                 }
+                }
+               },
+               {
+                "type": "object",
+                "nullable": true
+               }
+              ]
+             },
+             "country_code": {
+              "type": "string",
+              "description": "Provider country code following the ISO 3166 alpha-3 code format"
+             },
+             "implementation_type": {
+              "type": "string",
+              "enum": [
+               "OpenbankingUK",
+               "BerlinGroup",
+               "CBIGlobe"
+              ],
+              "description": "The implementation standard adopted by the provider"
+             },
+             "supported_currencies": {
+              "title": "Payment provider supported currencies",
+              "description": "The currencies supported by the payment provider",
+              "type": "array",
+              "minItems": 1,
+              "items": {
+               "type": "string",
+               "enum": [
+                "GBP",
+                "EUR"
+               ]
+              }
+             },
+             "required_actions": {
+              "description": "An array of enum fields to indicate if any additional actions are required in order to complete a given payment flow for the given provider.\n\n| Value  |  Description |\n|:-------|:-------------|\n| confirm_single_payment | If present, this value indicates that clients must complete an additional step in the single payments flow whereby they must confirm the payment once the customer has successfully authorised the payment with the provider. This confirmation can be accomplished using the Confirm Single Payment API Endpoint. Please note this step is only relevant for clients using Bud as a Technical Service Provider (TSP) |\n| confirm_standing_order | If present, this value indicates that clients must complete an additional step in the standing order payments flow whereby they must confirm the payment once the customer has successfully authorised the standing order with the provider. This confirmation can be accomplished using the Confirm Standing Order API Endpoint. Please note this step is only relevant for clients using Bud as a Technical Service Provider (TSP) |\n| confirm_scheduled_payment | If present, this value indicates that clients must complete an additional step in the scheduled payments flow whereby they must confirm the payment once the customer has successfully authorised the scheduled order with the provider. This confirmation can be accomplished using the Confirm Scheduled Payment API Endpoint. Please note this step is only relevant for clients using Bud as a Technical Service Provider (TSP) |\n",
+              "items": {
+               "type": "string",
+               "enum": [
+                "confirm_single_payment",
+                "confirm_standing_order",
+                "confirm_scheduled_payment"
+               ]
+              }
+             }
+            }
+           }
+          }
+         }
+        },
+        "example": {
+         "operation_id": "v1_payments_providers_get",
+         "data": [
+          {
+           "provider": "barclays",
+           "display_name": "Barclays",
+           "icon": "https://www.thisisbud.com/provider/resource/#1",
+           "services": [
+            "domestic-single-payment",
+            "domestic-standing-order",
+            "domestic-scheduled-payment"
+           ],
+           "maintenance_status": "active",
+           "maintenance_window": {
+            "start": "2019-08-07T11:48:00+0000",
+            "end": "2019-08-07T11:00:00+0000"
+           },
+           "country_code": "GBR",
+           "implementation_type": "OpenbankingUK",
+           "supported_currencies": [
+            "GBP"
+           ],
+           "required_actions": [
+            "confirm_single_payment",
+            "confirm_standing_order"
+           ]
+          }
+         ]
+        }
+       }
+      }
+     },
+     "401": {
+      "description": "Unauthorised request"
+     },
+     "405": {
+      "description": "An unexpected HTTP method was used"
+     },
+     "5XX": {
+      "description": "An unexpected error occurred on the server side"
+     }
+    }
+   }
+  },
+  "/v1/payments/single/bud-pay-url": {
+   "post": {
+    "tags": [
+     "Initiate Payment - Bud license"
+    ],
+    "summary": "Retrieve Bud Pay URL - Single Payment",
+    "description": "Retrieve a Bud Pay URL to initiate a single payment. Please note that this endpoint should be used if you are using Bud as a Third Party Provider (TPP), i.e. you are not yourself regulated as an Payment Initiation Service Provider (PISP)",
+    "operationId": "v1_payments_single_bud_pay_url_post",
+    "security": [
+     {
+      "OAuth2": []
+     }
+    ],
+    "parameters": [
+     {
+      "$ref": "#/paths/~1v1~1payments~1single/get/parameters/0"
+     }
+    ],
+    "requestBody": {
+     "required": true,
+     "content": {
+      "application/json": {
+       "schema": {
+        "title": "Payments Single Bud Pay URL Payload",
+        "type": "object",
+        "required": [
+         "redirect_url",
+         "provider",
+         "payment_details"
+        ],
+        "properties": {
+         "redirect_url": {
+          "type": "string",
+          "description": "URL where the user will be redirected to once they have completed the TPP Connection flow. This can be a web based URL or a mobile application internal URL.",
+          "nullable": false,
+          "maxLength": 2083
+         },
+         "provider": {
+          "type": "string",
+          "description": "The name (identifier) of the payment provider"
+         },
+         "provider_types": {
+          "$ref": "#/paths/~1v1~1payments~1scheduled/post/requestBody/content/application~1json/schema/properties/provider_types"
+         },
+         "payment_details": {
+          "type": "object",
+          "$ref": "#/paths/~1v1~1payments~1single/post/requestBody/content/application~1json/schema/properties/payment_details"
+         }
+        }
+       },
+       "examples": {
+        "Bud Pay URL UK": {
+         "value": {
+          "redirect_url": "https://client-redirect-url/example",
+          "provider": "natwest",
+          "provider_types": [
+           "retail"
+          ],
+          "payment_details": {
+           "reference": "PAYMENT REFERENCE",
+           "recipient": {
+            "type": "SortCodeAccountNumber",
+            "name": "MR TEST RECIPIENT",
+            "account_number": "01234501234567"
+           },
+           "sender": {
+            "user_id": "client-defined-user-id",
+            "name": "Mr TEST SENDER"
+           },
+           "amount": {
+            "value": "2.50",
+            "currency": "GBP"
+           }
+          }
+         }
+        },
+        "Bud Pay URL Europe": {
+         "value": {
+          "redirect_url": "https://client-redirect-url/foo",
+          "provider": "commerzbank",
+          "payment_details": {
+           "reference": "REFERENCE FOR PAYMENT",
+           "recipient": {
+            "type": "IBAN",
+            "name": "MR TEST RECIPIENT",
+            "account_number": "DE40100100103307118603"
+           },
+           "sender": {
+            "user_id": "client-defined-user-id",
+            "name": "Mr TEST SENDER",
+            "type": "IBAN",
+            "account_number": "DE50100100103307118608"
+           },
+           "amount": {
+            "value": "2.50",
+            "currency": "EUR"
+           }
+          }
+         }
+        }
+       }
+      }
+     }
+    },
+    "responses": {
+     "200": {
+      "description": "Successful request",
+      "content": {
+       "application/json": {
+        "schema": {
+         "title": "Bud Pay URL Response",
+         "type": "object",
+         "description": "Bud Pay Response Object",
+         "required": [
+          "operation_id",
+          "data"
+         ],
+         "properties": {
+          "operation_id": {
+           "$ref": "#/paths/~1v1~1payments~1single/get/responses/200/content/application~1json/schema/properties/operation_id"
+          },
+          "data": {
+           "title": "Bud_Pay_URL",
+           "description": "Bud Pay URL Object",
+           "required": [
+            "bud_pay_url",
+            "payment_id"
+           ],
+           "properties": {
+            "bud_pay_url": {
+             "type": "string",
+             "description": "A Bud Pay URL, allowing Customers to complete (authenticate) a relevant payment resource with the relevant payment service provider."
+            },
+            "payment_id": {
+             "type": "string",
+             "description": "Unique identifier for the payment"
+            }
+           }
+          }
+         }
+        },
+        "example": {
+         "operation_id": "v1_payments_single_bud_pay_url_post",
+         "data": {
+          "bud_pay_url": "https://www.thisisbud.com/v1/payment/bud-pay",
+          "payment_id": "56caec01-85cc-4fc6-8080-cc0f7ed03a7e"
+         }
+        }
+       }
+      }
+     },
+     "400": {
+      "description": "The request contains an invalid payload.",
+      "content": {
+       "application/json": {
+        "schema": {
+         "$ref": "#/paths/~1v1~1payments~1single/get/responses/404/content/application~1json/schema"
+        },
+        "example": {
+         "operation_id": "v1_payments_single_bud_pay_url_post",
+         "code_id": "failed_validation",
+         "message": "Failed validation",
+         "errors": {
+          "redirect_url": "This value should not be blank"
+         }
+        }
+       }
+      }
+     },
+     "401": {
+      "description": "Unauthorised request"
+     },
+     "405": {
+      "description": "An unexpected HTTP method was used"
+     },
+     "5XX": {
+      "description": "An unexpected error occurred on the server side"
+     }
+    },
+    "callbacks": {
+     "payment-event": {
+      "{$request.body#/endpoint}": {
+       "description": "This callback is sent to your configured Payment Status Updates webhook URL once a payment task has been successfully completed.\n",
+       "post": {
+        "parameters": [
+         {
+          "in": "header",
+          "name": "X-Signature",
+          "description": "The signed request body JWT",
+          "required": true,
+          "schema": {
+           "type": "string"
+          }
+         },
+         {
+          "in": "header",
+          "name": "X-Signing-ID",
+          "description": "The public key ID which should be used to verify the X-Signature header. Bud's list of public keys can be found at https://assets.thisisbud.com/bud-callback.jwks",
+          "required": true,
+          "schema": {
+           "type": "string"
+          }
+         }
+        ],
+        "summary": "Payment Update Notification Callback",
+        "security": [],
+        "requestBody": {
+         "content": {
+          "application/json": {
+           "schema": {
+            "title": "Payment Status Update Notification Body",
+            "type": "object",
+            "required": [
+             "data"
+            ],
+            "properties": {
+             "data": {
+              "description": "Request which is sent to the subscribed URL when the status related to a payment has changed",
+              "required": [
+               "event",
+               "payment_id",
+               "service",
+               "user_id"
+              ],
+              "properties": {
+               "payment_id": {
+                "description": "The payment ID to which this event is associated",
+                "type": "string",
+                "example": "19677d9f-90e7-44a6-a32e-566990623da4"
+               },
+               "service": {
+                "type": "string",
+                "enum": [
+                 "domestic-single-payment",
+                 "domestic-scheduled-payment",
+                 "domestic-standing-order"
+                ],
+                "description": "The type of payment to which this event is related"
+               },
+               "user_id": {
+                "description": "The sender.user_id provided when the payment was created",
+                "type": "string",
+                "example": "19677d9f-90e7-44a6-a32e-566990623da4"
+               },
+               "event": {
+                "type": "string",
+                "enum": [
+                 "payment.success",
+                 "payment.failure"
+                ],
+                "description": "The event related to the payment"
+               }
+              }
+             }
+            }
+           },
+           "example": {
+            "data": {
+             "payment_id": "c8c934f0-366c-4656-a686-ada2aacd0d9f",
+             "service": "domestic-single-payment",
+             "user_id": "client-defined-user-id",
+             "event": "payment.success"
+            }
+           }
+          }
+         }
+        },
+        "responses": {
+         "200": {
+          "description": "Your server returns this code if it accepts the callback"
+         },
+         "300": {
+          "description": "The notification will not be retried, redirects will not be followed"
+         },
+         "400": {
+          "description": "The notification will not be retried"
+         },
+         "500": {
+          "description": "The request will be retried shortly. If it fails multiple times, we will stop attempting to deliver the notification for this single event.\n"
+         }
+        }
+       }
+      }
+     }
+    }
+   }
+  },
+  "/v1/payments/scheduled/bud-pay-url": {
+   "post": {
+    "tags": [
+     "Initiate Payment - Bud license"
+    ],
+    "summary": "Retrieve Bud Pay URL - Scheduled Payment",
+    "description": "Retrieve a Bud Pay URL to initiate a Scheduled Payment. Please note that this endpoint should be used if you are using Bud as a Third Party Provider (TPP), i.e. you are not yourself regulated as an Payment Initiation Service Provider (PISP)",
+    "operationId": "v1_payments_scheduled_bud_pay_url_post",
+    "security": [
+     {
+      "OAuth2": []
+     }
+    ],
+    "parameters": [
+     {
+      "$ref": "#/paths/~1v1~1payments~1single/get/parameters/0"
+     }
+    ],
+    "requestBody": {
+     "required": true,
+     "content": {
+      "application/json": {
+       "schema": {
+        "title": "Scheduled Payment Bud Pay URL Payload",
+        "type": "object",
+        "required": [
+         "redirect_url",
+         "provider",
+         "scheduled_payment_details"
+        ],
+        "properties": {
+         "redirect_url": {
+          "type": "string",
+          "description": "URL where the user will be redirected to once they have completed the TPP Connection flow. This can be a web based URL or a mobile application internal URL."
+         },
+         "provider": {
+          "type": "string",
+          "description": "The name (identifier) of the payment provider"
+         },
+         "provider_types": {
+          "$ref": "#/paths/~1v1~1payments~1scheduled/post/requestBody/content/application~1json/schema/properties/provider_types"
+         },
+         "scheduled_payment_details": {
+          "$ref": "#/paths/~1v1~1payments~1scheduled/post/requestBody/content/application~1json/schema/properties/scheduled_payment_details"
+         }
+        }
+       },
+       "example": {
+        "redirect_url": "https://client-redirect-url/example",
+        "provider": "natwest",
+        "provider_types": [
+         "retail"
+        ],
+        "scheduled_payment_details": {
+         "reference": "PAYMENT REFERENCE",
+         "recipient": {
+          "type": "SortCodeAccountNumber",
+          "name": "MR TEST RECIPIENT",
+          "account_number": "01234501234567"
+         },
+         "sender": {
+          "user_id": "client-defined-user-id",
+          "name": "MR TEST SENDER"
+         },
+         "amount": {
+          "value": "2.50",
+          "currency": "GBP"
+         },
+         "requested_execution_date": "2023-01-20T15:00:00Z"
+        }
+       }
+      }
+     }
+    },
+    "responses": {
+     "200": {
+      "description": "Successful request",
+      "content": {
+       "application/json": {
+        "schema": {
+         "$ref": "#/paths/~1v1~1payments~1single~1bud-pay-url/post/responses/200/content/application~1json/schema"
+        },
+        "example": {
+         "operation_id": "v1_payments_scheduled_bud_pay_url_post",
+         "data": {
+          "bud_pay_url": "https://www.thisisbud.com/v1/payment/bud-pay",
+          "payment_id": "56caec01-85cc-4fc6-8080-cc0f7ed03a7e"
+         }
+        }
+       }
+      }
+     },
+     "400": {
+      "description": "The request contains an invalid payload.",
+      "content": {
+       "application/json": {
+        "schema": {
+         "$ref": "#/paths/~1v1~1payments~1single/get/responses/404/content/application~1json/schema"
+        },
+        "example": {
+         "operation_id": "v1_payments_scheduled_bud_pay_url_post",
+         "code_id": "failed_validation",
+         "message": "Failed validation",
+         "errors": {
+          "redirect_url": "This value should not be blank"
+         }
+        }
+       }
+      }
+     },
+     "401": {
+      "description": "Unauthorised request"
+     },
+     "405": {
+      "description": "An unexpected HTTP method was used"
+     },
+     "5XX": {
+      "description": "An unexpected error occurred on the server side"
+     }
+    },
+    "callbacks": {
+     "payment-event": {
+      "{$request.body#/endpoint}": {
+       "description": "This callback is sent to your configured Payment Status Updates webhook URL once a payment task has been successfully completed.\n",
+       "post": {
+        "parameters": [
+         {
+          "$ref": "#/paths/~1v1~1payments~1single~1bud-pay-url/post/callbacks/payment-event/{$request.body#~1endpoint}/post/parameters/0"
+         },
+         {
+          "$ref": "#/paths/~1v1~1payments~1single~1bud-pay-url/post/callbacks/payment-event/{$request.body#~1endpoint}/post/parameters/1"
+         }
+        ],
+        "summary": "Payment Update Notification Callback",
+        "security": [],
+        "requestBody": {
+         "content": {
+          "application/json": {
+           "schema": {
+            "$ref": "#/paths/~1v1~1payments~1single~1bud-pay-url/post/callbacks/payment-event/{$request.body#~1endpoint}/post/requestBody/content/application~1json/schema"
+           },
+           "example": {
+            "data": {
+             "payment_id": "c8c934f0-366c-4656-a686-ada2aacd0d9f",
+             "service": "domestic-scheduled-payment",
+             "user_id": "client-defined-user-id",
+             "event": "payment.success"
+            }
+           }
+          }
+         }
+        },
+        "responses": {
+         "200": {
+          "description": "Your server returns this code if it accepts the callback"
+         },
+         "300": {
+          "description": "The notification will not be retried, redirects will not be followed"
+         },
+         "400": {
+          "description": "The notification will not be retried"
+         },
+         "500": {
+          "description": "The request will be retried shortly. If it fails multiple times, we will stop attempting to deliver the notification for this single event.\n"
+         }
+        }
+       }
+      }
+     }
+    }
+   }
+  },
+  "/v1/payments/scheduled": {
+   "post": {
+    "tags": [
+     "Initiate Payment - Client license"
+    ],
+    "summary": "Create Scheduled Payment",
+    "description": "Create a new scheduled payment identifier and retrieve the authorisation url for the specific payment provider. Please note that this endpoint can only be used in the event that you are using Bud as a Technical Service Provider (TSP), i.e. you must be regulated as an Payment Initiation Service Provider (PISP)",
+    "operationId": "v1_payments_scheduled_post",
+    "security": [
+     {
+      "OAuth2": []
+     }
+    ],
+    "parameters": [
+     {
+      "$ref": "#/paths/~1v1~1payments~1single/get/parameters/0"
+     }
+    ],
+    "requestBody": {
+     "required": true,
+     "content": {
+      "application/json": {
+       "schema": {
+        "title": "Create Scheduled Payment Request",
+        "type": "object",
+        "required": [
+         "provider",
+         "scheduled_payment_details"
+        ],
+        "properties": {
+         "redirect_url": {
+          "type": "string",
+          "description": "This is the url that your Customer will be redirected to when using the Bud user interface. If you wish to use your own license and callback infrastructure this parameter will have no effect and the provider_redirect_url parameter should be used instead."
+         },
+         "provider_redirect_url": {
+          "type": "string",
+          "description": "This is the url that your Customer will be redirected to once they have authorised with the relevant provider. This should only be used when using your own license and wish to use the Submit Authorisation Codes endpoint. If you wish to use Bud's call back then the redirect_url must be provided."
+         },
+         "provider": {
+          "type": "string",
+          "description": "The name (identifier) of the payment provider"
+         },
+         "provider_types": {
+          "title": "Provider Types",
+          "type": "array",
+          "description": "One or more provider types that can be used to filter the list of providers that are shown to the customer during the connection flow. If no filter is applied, all types of provider are returned. Note that on Bud's sandbox environment, only sandbox providers will be returned.",
+          "items": {
+           "type": "string",
+           "enum": [
+            "business",
+            "retail",
+            "sandbox"
+           ]
+          }
+         },
+         "scheduled_payment_details": {
+          "title": "Scheduled Payment Details",
+          "type": "object",
+          "additionalProperties": false,
+          "description": "Details of the scheduled payment",
+          "required": [
+           "reference",
+           "recipient",
+           "sender",
+           "amount",
+           "requested_execution_date"
+          ],
+          "properties": {
+           "reference": {
+            "type": "string",
+            "description": "Reference to use for the payment made through this scheduled instruction",
+            "maxLength": 18
+           },
+           "recipient": {
+            "$ref": "#/paths/~1v1~1payments~1single/post/requestBody/content/application~1json/schema/properties/payment_details/properties/recipient"
+           },
+           "sender": {
+            "$ref": "#/paths/~1v1~1payments~1single/post/requestBody/content/application~1json/schema/properties/payment_details/properties/sender"
+           },
+           "amount": {
+            "$ref": "#/paths/~1v1~1payments~1single/post/requestBody/content/application~1json/schema/properties/payment_details/properties/amount"
+           },
+           "requested_execution_date": {
+            "type": "string",
+            "format": "date-time",
+            "description": "Date-time (ISO 8601) the payment should be made. Must be at least one day in the future.",
+            "example": "2020-06-01T15:00:00Z"
+           }
+          }
+         }
+        }
+       },
+       "example": {
+        "redirect_url": "https://your-app.com/connected?my-parameter=xyz",
+        "provider": "lloyds",
+        "scheduled_payment_details": {
+         "reference": "PAYMENT REFERENCE",
+         "recipient": {
+          "type": "SortCodeAccountNumber",
+          "name": "MR TEST RECIPIENT",
+          "account_number": "01234501234567"
+         },
+         "sender": {
+          "user_id": "client-defined-user-id",
+          "name": "MR TEST SENDER"
+         },
+         "amount": {
+          "value": "2.50",
+          "currency": "GBP"
+         },
+         "requested_execution_date": "2020-02-02T12:29:33.428944815Z"
+        }
+       }
+      }
+     }
+    },
+    "responses": {
+     "200": {
+      "description": "Successful request",
+      "content": {
+       "application/json": {
+        "schema": {
+         "title": "Create Scheduled Payment Response",
+         "type": "object",
+         "description": "Response structure when creating a Scheduled Payment",
+         "required": [
+          "operation_id",
+          "data"
+         ],
+         "properties": {
+          "operation_id": {
+           "$ref": "#/paths/~1v1~1payments~1single/get/responses/200/content/application~1json/schema/properties/operation_id"
+          },
+          "data": {
+           "type": "object",
+           "description": "Scheduled Payment Response Object",
+           "required": [
+            "payment_id",
+            "authorisation_url"
+           ],
+           "properties": {
+            "payment_id": {
+             "type": "string",
+             "description": "Payment Identifier"
+            },
+            "authorisation_url": {
+             "type": "string",
+             "description": "The authorisation URL for a relevant payment provider. Redirect your Customer to this url to allow them to authorise the scheduled instruction"
+            },
+            "required_action": {
+             "type": "string",
+             "nullable": true,
+             "description": "If present, this fild will indicate the next required action (if any) to be taken by the client in order to complete the payment flow\n\n| Value  |  Description |\n|:-------|:-------------|\n| confirm_scheduled_payment | Indicates that the client must confirm the scheduled payment using the Confirm Scheduled Payment endpoint in order to complete the payment flow. |\n",
+             "enum": [
+              "confirm_scheduled_payment"
+             ]
+            }
+           }
+          }
+         }
+        },
+        "example": {
+         "operation_id": "v1_payments_scheduled_post",
+         "data": {
+          "authorisation_url": "https://www.thisisbud.com/provider/specific/redirect/url",
+          "payment_id": "56caec01-85cc-4fc6-8080-cc0f7ed03a7e",
+          "required_action": "confirm_scheduled_payment"
+         }
+        }
+       }
+      }
+     },
+     "400": {
+      "description": "The request contains an invalid payload.",
+      "content": {
+       "application/json": {
+        "schema": {
+         "$ref": "#/paths/~1v1~1payments~1single/get/responses/404/content/application~1json/schema"
+        },
+        "example": {
+         "operation_id": "v1_payments_scheduled_post",
+         "code_id": "failed_validation",
+         "message": "Failed validation",
+         "errors": {
+          "recipient.sort_code": "Sort code must match `^\\d{6}$`",
+          "standing_order_details.recipient.name": "Name must not be empty"
+         }
+        }
+       }
+      }
+     },
+     "401": {
+      "description": "Unauthorised request"
+     },
+     "405": {
+      "description": "An unexpected HTTP method was used"
+     },
+     "5XX": {
+      "description": "An unexpected error occurred on the server side"
+     }
+    }
+   },
+   "get": {
+    "tags": [
+     "Manage Payments"
+    ],
+    "summary": "Search for Scheduled Payments",
+    "description": "Retrieve and view the status of multiple Scheduled Payments",
+    "operationId": "v1_payments_scheduled_get",
+    "security": [
+     {
+      "OAuth2": []
+     }
+    ],
+    "parameters": [
+     {
+      "$ref": "#/paths/~1v1~1payments~1single/get/parameters/0"
+     },
+     {
+      "$ref": "#/paths/~1v1~1payments~1single/get/parameters/1"
+     },
+     {
+      "$ref": "#/paths/~1v1~1payments~1single/get/parameters/2"
+     },
+     {
+      "$ref": "#/paths/~1v1~1payments~1single/get/parameters/3"
+     },
+     {
+      "$ref": "#/paths/~1v1~1payments~1single/get/parameters/4"
+     },
+     {
+      "$ref": "#/paths/~1v1~1payments~1single/get/parameters/5"
+     },
+     {
+      "$ref": "#/paths/~1v1~1payments~1single/get/parameters/6"
+     },
+     {
+      "$ref": "#/paths/~1v1~1payments~1single/get/parameters/7"
+     },
+     {
+      "$ref": "#/paths/~1v1~1payments~1single/get/parameters/8"
+     }
+    ],
+    "responses": {
+     "200": {
+      "description": "Successful request",
+      "content": {
+       "application/json": {
+        "schema": {
+         "title": "List Scheduled Payment Response",
+         "type": "object",
+         "description": "Response structure when retrieving a filtered list of Scheduled Payment status'",
+         "required": [
+          "operation_id",
+          "data",
+          "metadata"
+         ],
+         "properties": {
+          "operation_id": {
+           "$ref": "#/paths/~1v1~1payments~1single/get/responses/200/content/application~1json/schema/properties/operation_id"
+          },
+          "data": {
+           "description": "Array of Scheduled Payment Status Objects",
+           "type": "array",
+           "items": {
+            "$ref": "#/paths/~1v1~1payments~1scheduled~1{payment_id}/get/responses/200/content/application~1json/schema/properties/data"
+           }
+          },
+          "metadata": {
+           "description": "Metadata associated with response",
+           "type": "object",
+           "required": [
+            "total_results",
+            "results",
+            "page",
+            "total_pages"
+           ],
+           "properties": {
+            "total_results": {
+             "type": "integer",
+             "description": "The total number of payment results for the request"
+            },
+            "results": {
+             "type": "integer",
+             "description": "The number of payment results currently displayed on the page"
+            },
+            "page": {
+             "type": "integer",
+             "description": "The current page number"
+            },
+            "total_pages": {
+             "type": "integer",
+             "description": "The total number of pages for the request"
+            }
+           }
+          }
+         }
+        },
+        "example": {
+         "operation_id": "v1_payments_scheduled_get",
+         "data": [
+          {
+           "payment_id": "89f80199-1199-400e-9092-17208f6f39f5",
+           "organisation_id": "22f80199-1199-400e-9092-17208f6f39f0",
+           "client_id": "22f80199-1199-400e-9092-17208f6f39f0",
+           "reference": "Rent",
+           "recipient": {
+            "type": "SortCodeAccountNumber",
+            "name": "MR TEST RECIPIENT",
+            "account_number": "01234501234567"
+           },
+           "amount": {
+            "value": "10.00",
+            "currency": "GBP"
+           },
+           "sender": {
+            "user_id": "client-defined-user-id",
+            "name": "MR RANDOM SENDER",
+            "provider": "Natwest"
+           },
+           "known_charges": {
+            "recipient_charge": {
+             "charge": "1.50",
+             "currency": "GBP",
+             "recipient_receives": "7.00"
+            },
+            "sender_charge": {
+             "charge": "1.50",
+             "currency": "GBP",
+             "bank_sends": "10.00",
+             "total_cost": "11.50"
+            }
+           },
+           "state": {
+            "status_code": "COMPLETED",
+            "status_message": "Scheduled Payment Creation Completed",
+            "history": [
+             {
+              "datetime": "2020-02-02T12:29:33.428944815Z",
+              "code": "CREATED",
+              "message": "Scheduled Payment Created"
+             },
+             {
+              "datetime": "2020-02-02T12:29:33.428944815Z",
+              "code": "AWAITING_AUTH",
+              "message": "Awaiting Customer Authentication"
+             },
+             {
+              "datetime": "2020-02-02T12:29:33.428944815Z",
+              "code": "AUTH_COMPLETED",
+              "message": "Authentication Completed"
+             },
+             {
+              "datetime": "2020-02-02T12:29:33.428944815Z",
+              "code": "PENDING",
+              "message": "Payment Order Pending"
+             },
+             {
+              "datetime": "2020-02-02T12:29:33.428944815Z",
+              "code": "COMPLETED",
+              "message": "Scheduled Payment Creation Completed"
+             }
+            ]
+           },
+           "errors": [
+            {
+             "code": "FAILED",
+             "description": "The call to the provider to confirm funds returned an error"
+            }
+           ],
+           "created_at": "2020-02-02T12:29:33.428944815Z",
+           "requested_execution_date": "2020-02-02T12:29:33.428944815Z"
+          }
+         ],
+         "metadata": {
+          "total_results": 1000000,
+          "results": 10,
+          "page": 1,
+          "total_pages": 100000
+         }
+        }
+       }
+      }
+     },
+     "400": {
+      "description": "The request contains an invalid payload.",
+      "content": {
+       "application/json": {
+        "schema": {
+         "$ref": "#/paths/~1v1~1payments~1single/get/responses/404/content/application~1json/schema"
+        },
+        "example": {
+         "operation_id": "v1_payments_scheduled_get",
+         "code_id": "failed_validation",
+         "message": "Failed validation",
+         "errors": {
+          "filter": "X-Date-From is in the wrong format (expected 2006-01-02T15:04:05Z)"
+         }
+        }
+       }
+      }
+     },
+     "401": {
+      "description": "Unauthorised request"
+     },
+     "405": {
+      "description": "An unexpected HTTP method was used"
+     },
+     "5XX": {
+      "description": "An unexpected error occurred on the server side"
+     }
+    }
+   }
+  },
+  "/v1/payments/scheduled/{payment_id}": {
+   "get": {
+    "tags": [
+     "Manage Payments"
+    ],
+    "summary": "Retrieve Scheduled Payment Status",
+    "description": "Retrieve and view the status of a specific Scheduled payment",
+    "operationId": "v1_payments_scheduled_payment_id_get",
+    "security": [
+     {
+      "OAuth2": []
+     }
+    ],
+    "parameters": [
+     {
+      "$ref": "#/paths/~1v1~1payments~1single~1{payment_id}/get/parameters/0"
+     },
+     {
+      "$ref": "#/paths/~1v1~1payments~1single/get/parameters/0"
+     }
+    ],
+    "responses": {
+     "200": {
+      "description": "Successful request",
+      "content": {
+       "application/json": {
+        "schema": {
+         "title": "Get Scheduled Payment Response",
+         "type": "object",
+         "description": "Response structure when retrieving a specific Scheduled Payment status",
+         "required": [
+          "operation_id",
+          "data"
+         ],
+         "properties": {
+          "operation_id": {
+           "$ref": "#/paths/~1v1~1payments~1single/get/responses/200/content/application~1json/schema/properties/operation_id"
+          },
+          "data": {
+           "title": "Scheduled Payment Data",
+           "type": "object",
+           "description": "Data structure for the Scheduled Payment object",
+           "required": [
+            "payment_id",
+            "organisation_id",
+            "client_id",
+            "reference",
+            "recipient",
+            "sender",
+            "known_charges",
+            "state",
+            "errors",
+            "created_at",
+            "requested_execution_date"
+           ],
+           "properties": {
+            "payment_id": {
+             "type": "string",
+             "description": "Payment Identifier"
+            },
+            "organisation_id": {
+             "type": "string",
+             "description": "Bud's Organisation Identifier"
+            },
+            "client_id": {
+             "type": "string",
+             "description": "Bud's Client/App Identifier"
+            },
+            "reference": {
+             "type": "string",
+             "description": "Reference to use for this payment"
+            },
+            "recipient": {
+             "$ref": "#/paths/~1v1~1payments~1single/post/requestBody/content/application~1json/schema/properties/payment_details/properties/recipient"
+            },
+            "recurring_amount": {
+             "$ref": "#/paths/~1v1~1payments~1single/post/requestBody/content/application~1json/schema/properties/payment_details/properties/amount"
+            },
+            "sender": {
+             "$ref": "#/paths/~1v1~1payments~1single/post/requestBody/content/application~1json/schema/properties/payment_details/properties/sender"
+            },
+            "known_charges": {
+             "$ref": "#/paths/~1v1~1payments~1single~1{payment_id}/get/responses/200/content/application~1json/schema/properties/data/properties/known_charges"
+            },
+            "state": {
+             "type": "object",
+             "required": [
+              "status_code",
+              "status_message",
+              "history"
+             ],
+             "properties": {
+              "status_code": {
+               "title": "Scheduled Payment Status Codes",
+               "type": "string",
+               "description": "The payment status code for a Scheduled Payment",
+               "enum": [
+                "CREATED",
+                "AWAITING_AUTH",
+                "AUTH_REJECTED",
+                "AUTH_COMPLETED",
+                "PENDING",
+                "FAILED",
+                "COMPLETED"
+               ]
+              },
+              "status_message": {
+               "title": "Scheduled Payment Status Message",
+               "type": "string",
+               "description": "The payment status message for a Scheduled Payment",
+               "enum": [
+                "Scheduled Payment Created",
+                "Awaiting Customer Authentication",
+                "Authentication Failed",
+                "Authentication Completed",
+                "Payment Order Pending",
+                "Scheduled Payment Creation Failed",
+                "Scheduled Payment Creation Completed"
+               ]
+              },
+              "history": {
+               "type": "array",
+               "items": {
+                "type": "object",
+                "required": [
+                 "datetime",
+                 "code",
+                 "message"
+                ],
+                "properties": {
+                 "datetime": {
+                  "type": "string"
+                 },
+                 "code": {
+                  "$ref": "#/paths/~1v1~1payments~1scheduled~1{payment_id}/get/responses/200/content/application~1json/schema/properties/data/properties/state/properties/status_code"
+                 },
+                 "message": {
+                  "$ref": "#/paths/~1v1~1payments~1scheduled~1{payment_id}/get/responses/200/content/application~1json/schema/properties/data/properties/state/properties/status_message"
+                 }
+                }
+               }
+              }
+             }
+            },
+            "errors": {
+             "type": "array",
+             "description": "Details surrounding any errors when attempting to initiate a Scheduled Payment",
+             "items": {
+              "type": "object",
+              "required": [
+               "code",
+               "description"
+              ],
+              "properties": {
+               "code": {
+                "type": "string",
+                "description": "Error Code"
+               },
+               "description": {
+                "type": "string",
+                "description": "Text string used to give a description of the payment error"
+               }
+              }
+             }
+            },
+            "created_at": {
+             "type": "string",
+             "format": "date-time",
+             "description": "Date-time (ISO 8601) of when the Scheduled Payment was created",
+             "example": "2020-06-01T15:00:00Z"
+            },
+            "requested_execution_date": {
+             "type": "string",
+             "format": "date-time",
+             "description": "Date-time (ISO 8601) the Scheduled Payment should be made. Must be future date.",
+             "example": "2020-06-01T15:00:00Z"
+            },
+            "required_action": {
+             "type": "string",
+             "nullable": true,
+             "description": "This field will indicate that there is an action required to be taken by the client in order to complete the payment.\n\n| Value  |  Description |\n|:-------|:-------------|\n| confirm_scheduled_payment | If present, this value indicates that client has yet to confirm the Scheduled Payment once the customer has successfully authorised the payment with the provider. This confirmation can be accomplished using the Confirm Scheduled Payment API Endpoint. Please note this step will only be relevant for clients using Bud as a Technical Service Provider (TSP) |\n",
+             "enum": [
+              "confirm_scheduled_payment"
+             ]
+            }
+           }
+          },
+          "metadata": {
+           "type": "object"
+          }
+         }
+        },
+        "example": {
+         "operation_id": "v1_payments_scheduled_payment_id_get",
+         "data": {
+          "payment_id": "89f80199-1199-400e-9092-17208f6f39f5",
+          "organisation_id": "22f80199-1199-400e-9092-17208f6f39f0",
+          "client_id": "22f80199-1199-400e-9092-17208f6f39f0",
+          "method": "FPS",
+          "reference": "Rent",
+          "recipient": {
+           "type": "SortCodeAccountNumber",
+           "name": "MR TEST RECIPIENT",
+           "account_number": "01234501234567"
+          },
+          "amount": {
+           "value": "10.00",
+           "currency": "GBP"
+          },
+          "sender": {
+           "user_id": "client-defined-user-id",
+           "name": "MR TEST SENDER",
+           "provider": "Natwest"
+          },
+          "known_charges": {
+           "recipient_charge": {
+            "charge": "1.50",
+            "currency": "GBP",
+            "recipient_receives": "7.00"
+           },
+           "sender_charge": {
+            "charge": "1.50",
+            "currency": "GBP",
+            "bank_sends": "10.00",
+            "total_cost": "11.50"
+           }
+          },
+          "state": {
+           "status_code": "COMPLETED",
+           "status_message": "Scheduled Payment Creation Completed",
+           "history": [
+            {
+             "datetime": "2020-02-02T12:29:33.428944815Z",
+             "code": "CREATED",
+             "message": "Scheduled Payment Created"
+            },
+            {
+             "datetime": "2020-02-02T12:29:33.428944815Z",
+             "code": "AWAITING_AUTH",
+             "message": "Awaiting Customer Authentication"
+            },
+            {
+             "datetime": "2020-02-02T12:29:33.428944815Z",
+             "code": "AUTH_COMPLETED",
+             "message": "Authentication Completed"
+            },
+            {
+             "datetime": "2020-02-02T12:29:33.428944815Z",
+             "code": "PENDING",
+             "message": "Payment Order Pending"
+            },
+            {
+             "datetime": "2020-02-02T12:29:33.428944815Z",
+             "code": "COMPLETED",
+             "message": "Scheduled Payment Creation Completed"
+            }
+           ]
+          },
+          "errors": [
+           {
+            "code": "FAILED",
+            "description": "The call to the provider to confirm funds returned an error"
+           }
+          ],
+          "created_at": "2020-02-02T12:29:33.428944815Z",
+          "requested_execution_date": "2020-02-02T12:29:33.428944815Z",
+          "required_action": "confirm_scheduled_payment"
+         }
+        }
+       }
+      }
+     },
+     "401": {
+      "description": "Unauthorised request"
+     },
+     "404": {
+      "description": "Resource not found",
+      "content": {
+       "application/json": {
+        "schema": {
+         "$ref": "#/paths/~1v1~1payments~1single/get/responses/404/content/application~1json/schema"
+        },
+        "example": {
+         "operation_id": "v1_payments_scheduled_payment_id_get",
+         "code_id": "failed_validation",
+         "message": "Failed validation",
+         "errors": {
+          "payment_id": "Value not found"
+         }
+        }
+       }
+      }
+     },
+     "405": {
+      "description": "An unexpected HTTP method was used"
+     },
+     "5XX": {
+      "description": "An unexpected error occurred on the server side"
+     }
+    }
+   }
+  },
+  "/v1/payments/scheduled/{payment_id}/confirm": {
+   "post": {
+    "tags": [
+     "Initiate Payment - Client license"
+    ],
+    "summary": "Confirm Scheduled Payment",
+    "description": "Confirm and execute a Scheduled Payment for a specific payment id.",
+    "operationId": "v1_payments_scheduled_payment_id_confirm_post",
+    "security": [
+     {
+      "OAuth2": []
+     }
+    ],
+    "parameters": [
+     {
+      "$ref": "#/paths/~1v1~1payments~1single~1{payment_id}/get/parameters/0"
+     },
+     {
+      "$ref": "#/paths/~1v1~1payments~1single/get/parameters/0"
+     }
+    ],
+    "responses": {
+     "201": {
+      "description": "Request to create scheduled payment succeeded",
+      "content": {
+       "application/json": {
+        "example": {
+         "operation_id": "v1_payments_scheduled_payment_id_confirm_post"
+        }
+       }
+      }
+     },
+     "400": {
+      "description": "Not allowed to confirm payment. Either there is no consent, not authorised or the payment order has already been created",
+      "content": {
+       "application/json": {
+        "schema": {
+         "$ref": "#/paths/~1v1~1payments~1single/get/responses/404/content/application~1json/schema"
+        },
+        "example": {
+         "operation_id": "v1_payments_scheduled_payment_id_confirm_post",
+         "code_id": "failed_validation",
+         "message": "Failed validation",
+         "errors": {
+          "payment": "Payment initiation failed"
+         }
+        }
+       }
+      }
+     },
+     "401": {
+      "description": "Unauthorised request"
+     },
+     "404": {
+      "description": "Resource not found",
+      "content": {
+       "application/json": {
+        "schema": {
+         "$ref": "#/paths/~1v1~1payments~1single/get/responses/404/content/application~1json/schema"
+        },
+        "example": {
+         "operation_id": "v1_payments_scheduled_payment_id_confirm_post",
+         "code_id": "failed_validation",
+         "message": "Failed validation",
+         "errors": {
+          "payment_id": "Value not found"
+         }
+        }
+       }
+      }
+     },
+     "405": {
+      "description": "An unexpected HTTP method was used"
+     },
+     "5XX": {
+      "description": "An unexpected error occurred on the server side"
+     }
+    }
+   }
+  },
+  "/v1/payments/single/{payment_id}/confirm": {
+   "post": {
+    "tags": [
+     "Initiate Payment - Client license"
+    ],
+    "summary": "Confirm Single Payment",
+    "description": "Confirm and execute payment order for a specific payment.",
+    "operationId": "v1_payments_single_confirm_post",
+    "security": [
+     {
+      "OAuth2": []
+     }
+    ],
+    "parameters": [
+     {
+      "$ref": "#/paths/~1v1~1payments~1single~1{payment_id}/get/parameters/0"
+     },
+     {
+      "$ref": "#/paths/~1v1~1payments~1single/get/parameters/0"
+     }
+    ],
+    "responses": {
+     "201": {
+      "description": "Payment order created successfully",
+      "content": {
+       "application/json": {
+        "example": {
+         "operation_id": "v1_payments_single_confirm_post"
+        }
+       }
+      }
+     },
+     "400": {
+      "description": "Not allowed to confirm payment. Either there is no consent, not authorised or the payment order has already been created",
+      "content": {
+       "application/json": {
+        "schema": {
+         "$ref": "#/paths/~1v1~1payments~1single/get/responses/404/content/application~1json/schema"
+        },
+        "example": {
+         "operation_id": "v1_payments_single_confirm_post",
+         "code_id": "failed_validation",
+         "message": "Failed validation",
+         "errors": {
+          "payment": [
+           "Payment initiation failed"
+          ]
+         }
+        }
+       }
+      }
+     },
+     "401": {
+      "description": "Unauthorised request"
+     },
+     "404": {
+      "description": "Resource not found",
+      "content": {
+       "application/json": {
+        "schema": {
+         "$ref": "#/paths/~1v1~1payments~1single/get/responses/404/content/application~1json/schema"
+        },
+        "example": {
+         "operation_id": "v1_payments_single_confirm_post",
+         "code_id": "failed_validation",
+         "message": "Failed validation",
+         "errors": {
+          "payment_id": "Value not found"
+         }
+        }
+       }
+      }
+     },
+     "405": {
+      "description": "An unexpected HTTP method was used"
+     },
+     "5XX": {
+      "description": "An unexpected error occurred on the server side"
+     }
+    }
+   }
+  },
+  "/v1/payments/standing-order/bud-pay-url": {
+   "post": {
+    "tags": [
+     "Initiate Payment - Bud license"
+    ],
+    "summary": "Retrieve Bud Pay URL - Standing Order",
+    "description": "Retrieve a Bud Pay URL to initiate a Standing Order. Please note that this endpoint should be used if you are using Bud as a Third Party Provider (TPP), i.e. you are not yourself regulated as an Payment Initiation Service Provider (PISP)",
+    "operationId": "v1_payments_standing_order_bud_pay_url_post",
+    "security": [
+     {
+      "OAuth2": []
+     }
+    ],
+    "parameters": [
+     {
+      "$ref": "#/paths/~1v1~1payments~1single/get/parameters/0"
+     }
+    ],
+    "requestBody": {
+     "required": true,
+     "content": {
+      "application/json": {
+       "schema": {
+        "title": "Payments Standing Order Bud Pay URL Payload",
+        "type": "object",
+        "required": [
+         "redirect_url",
+         "provider",
+         "standing_order_details"
+        ],
+        "properties": {
+         "redirect_url": {
+          "type": "string",
+          "description": "URL where the user will be redirected to once they have completed the TPP Connection flow. This can be a web based URL or a mobile application internal URL."
+         },
+         "provider": {
+          "type": "string",
+          "description": "The name (identifier) of the payment provider"
+         },
+         "provider_types": {
+          "$ref": "#/paths/~1v1~1payments~1scheduled/post/requestBody/content/application~1json/schema/properties/provider_types"
+         },
+         "standing_order_details": {
+          "$ref": "#/paths/~1v1~1payments~1standing-order/post/requestBody/content/application~1json/schema/properties/standing_order_details"
+         }
+        }
+       },
+       "example": {
+        "redirect_url": "https://client-redirect-url/example",
+        "provider_types": [
+         "retail"
+        ],
+        "provider": "BankOfBudOBUK",
+        "standing_order_details": {
+         "reference": "PAYMENT REFERENCE",
+         "recipient": {
+          "type": "SortCodeAccountNumber",
+          "name": "MR TEST RECIPIENT",
+          "account_number": "01234501234567"
+         },
+         "sender": {
+          "user_id": "client-defined-user-id",
+          "name": "MR TEST SENDER"
+         },
+         "recurring_amount": {
+          "value": "2.50",
+          "currency": "GBP"
+         },
+         "first_payment_date": "2023-02-10T15:00:00Z",
+         "last_payment_date": "2023-02-10T15:00:00Z",
+         "frequency": "monthly"
+        }
+       }
+      }
+     }
+    },
+    "responses": {
+     "200": {
+      "description": "Successful request",
+      "content": {
+       "application/json": {
+        "schema": {
+         "$ref": "#/paths/~1v1~1payments~1single~1bud-pay-url/post/responses/200/content/application~1json/schema"
+        },
+        "example": {
+         "operation_id": "v1_payments_standing_order_bud_pay_url_post",
+         "data": {
+          "bud_pay_url": "https://www.thisisbud.com/v1/payment/bud-pay",
+          "payment_id": "56caec01-85cc-4fc6-8080-cc0f7ed03a7e"
+         }
+        }
+       }
+      }
+     },
+     "400": {
+      "description": "The request contains an invalid payload.",
+      "content": {
+       "application/json": {
+        "schema": {
+         "$ref": "#/paths/~1v1~1payments~1single/get/responses/404/content/application~1json/schema"
+        },
+        "example": {
+         "operation_id": "v1_payments_standing_order_bud_pay_url_post",
+         "code_id": "failed_validation",
+         "message": "Failed validation",
+         "errors": {
+          "redirect_url": "This value should not be blank"
+         }
+        }
+       }
+      }
+     },
+     "401": {
+      "description": "Unauthorised request"
+     },
+     "405": {
+      "description": "An unexpected HTTP method was used"
+     },
+     "5XX": {
+      "description": "An unexpected error occurred on the server side"
+     }
+    },
+    "callbacks": {
+     "payment-event": {
+      "{$request.body#/endpoint}": {
+       "description": "This callback is sent to your configured Payment Status Updates webhook URL once a payment task has been successfully completed.\n",
+       "post": {
+        "parameters": [
+         {
+          "$ref": "#/paths/~1v1~1payments~1single~1bud-pay-url/post/callbacks/payment-event/{$request.body#~1endpoint}/post/parameters/0"
+         },
+         {
+          "$ref": "#/paths/~1v1~1payments~1single~1bud-pay-url/post/callbacks/payment-event/{$request.body#~1endpoint}/post/parameters/1"
+         }
+        ],
+        "summary": "Payment Update Notification Callback",
+        "security": [],
+        "requestBody": {
+         "content": {
+          "application/json": {
+           "schema": {
+            "$ref": "#/paths/~1v1~1payments~1single~1bud-pay-url/post/callbacks/payment-event/{$request.body#~1endpoint}/post/requestBody/content/application~1json/schema"
+           },
+           "example": {
+            "data": {
+             "payment_id": "c8c934f0-366c-4656-a686-ada2aacd0d9f",
+             "service": "domestic-standing-order",
+             "user_id": "client-defined-user-id",
+             "event": "payment.success"
+            }
+           }
+          }
+         }
+        },
+        "responses": {
+         "200": {
+          "description": "Your server returns this code if it accepts the callback"
+         },
+         "300": {
+          "description": "The notification will not be retried, redirects will not be followed"
+         },
+         "400": {
+          "description": "The notification will not be retried"
+         },
+         "500": {
+          "description": "The request will be retried shortly. If it fails multiple times, we will stop attempting to deliver the notification for this single event.\n"
+         }
+        }
+       }
+      }
+     }
+    }
+   }
+  },
+  "/v1/payments/standing-order": {
+   "post": {
+    "tags": [
+     "Initiate Payment - Client license"
+    ],
+    "summary": "Create Standing Order",
+    "description": "Create a new Standing Order payment identifier and retrieve the authorisation url for the specific payment provider. Please note that this endpoint can only be used in the event that you are using Bud as a Technical Service Provider (TSP), i.e. you must be regulated as an Payment Initiation Service Provider (PISP)",
+    "operationId": "v1_payments_standing_order_post",
+    "security": [
+     {
+      "OAuth2": []
+     }
+    ],
+    "parameters": [
+     {
+      "$ref": "#/paths/~1v1~1payments~1single/get/parameters/0"
+     }
+    ],
+    "requestBody": {
+     "required": true,
+     "content": {
+      "application/json": {
+       "schema": {
+        "title": "Create Standing Order Request",
+        "type": "object",
+        "required": [
+         "provider",
+         "standing_order_details"
+        ],
+        "properties": {
+         "redirect_url": {
+          "type": "string",
+          "description": "This is the url that your Customer will be redirected to when using the Bud user interface. If you wish to use your own license and callback infrastructure this parameter will have no effect and the provider_redirect_url parameter should be used instead."
+         },
+         "provider_redirect_url": {
+          "type": "string",
+          "description": "This is the url that your Customer will be redirected to once they have authorised with the relevant provider. This should only be used when using your own license and wish to use the Submit Authorisation Codes endpoint. If you wish to use Bud's call back then the redirect_url must be provided."
+         },
+         "provider": {
+          "type": "string",
+          "description": "The name (identifier) of the payment provider"
+         },
+         "provider_types": {
+          "$ref": "#/paths/~1v1~1payments~1scheduled/post/requestBody/content/application~1json/schema/properties/provider_types"
+         },
+         "standing_order_details": {
+          "title": "Standing Order Details",
+          "type": "object",
+          "additionalProperties": false,
+          "description": "Details of the standing order",
+          "required": [
+           "reference",
+           "recipient",
+           "sender",
+           "recurring_amount",
+           "first_payment_date",
+           "frequency"
+          ],
+          "properties": {
+           "reference": {
+            "type": "string",
+            "description": "Reference to use for payments made through this Standing Order",
+            "maxLength": 18
+           },
+           "recipient": {
+            "$ref": "#/paths/~1v1~1payments~1single/post/requestBody/content/application~1json/schema/properties/payment_details/properties/recipient"
+           },
+           "sender": {
+            "$ref": "#/paths/~1v1~1payments~1single/post/requestBody/content/application~1json/schema/properties/payment_details/properties/sender"
+           },
+           "recurring_amount": {
+            "$ref": "#/paths/~1v1~1payments~1single/post/requestBody/content/application~1json/schema/properties/payment_details/properties/amount"
+           },
+           "first_payment_date": {
+            "type": "string",
+            "format": "date-time",
+            "description": "Date-time (ISO 8601) the first payment should be made. Must be a minimum of 3 business days in the future and must be on a business day.",
+            "example": "2020-06-01T15:00:00Z"
+           },
+           "last_payment_date": {
+            "type": "string",
+            "format": "date-time",
+            "description": "Date-time (ISO 8601) after which payments should stop. Must be after `first_payment_date`.",
+            "example": "2020-06-01T15:00:00Z"
+           },
+           "frequency": {
+            "title": "Standing Order Frequency",
+            "type": "string",
+            "description": "The payment frequency for a Standing Order",
+            "enum": [
+             "daily",
+             "weekly",
+             "fortnightly",
+             "monthly",
+             "quarterly",
+             "semiannually",
+             "yearly"
+            ]
+           }
+          }
+         }
+        }
+       },
+       "example": {
+        "redirect_url": "https://your-app.com/connected?my-parameter=xyz",
+        "provider": "lloyds",
+        "standing_order_details": {
+         "reference": "PAYMENT REFERENCE",
+         "recipient": {
+          "type": "SortCodeAccountNumber",
+          "name": "MR TEST RECIPIENT",
+          "account_number": "01234501234567"
+         },
+         "sender": {
+          "user_id": "client-defined-user-id",
+          "name": "MR TEST SENDER"
+         },
+         "recurring_amount": {
+          "value": "2.50",
+          "currency": "GBP"
+         },
+         "first_payment_date": "2020-02-02T12:29:33.428944815Z",
+         "last_payment_date": "2021-02-02T12:29:33.428944815Z",
+         "frequency": "monthly"
+        }
+       }
+      }
+     }
+    },
+    "responses": {
+     "200": {
+      "description": "Successful request",
+      "content": {
+       "application/json": {
+        "schema": {
+         "title": "Create Standing Order Response",
+         "type": "object",
+         "description": "Response structure when creating a Standing Order payment",
+         "required": [
+          "operation_id",
+          "data"
+         ],
+         "properties": {
+          "operation_id": {
+           "$ref": "#/paths/~1v1~1payments~1single/get/responses/200/content/application~1json/schema/properties/operation_id"
+          },
+          "data": {
+           "type": "object",
+           "description": "Standing Order Response Object",
+           "required": [
+            "payment_id",
+            "authorisation_url"
+           ],
+           "properties": {
+            "payment_id": {
+             "type": "string",
+             "description": "Payment Identifier"
+            },
+            "authorisation_url": {
+             "type": "string",
+             "description": "The authorisation URL for a relevant payment provider. Redirect your Customer to this url to allow them to authorise the Standing Order"
+            },
+            "required_action": {
+             "type": "string",
+             "description": "If present, this fild will indicate the next required action (if any) to be taken by the client in order to complete the payment flow\n\n| Value  |  Description |\n|:-------|:-------------|\n| confirm_standing_order | Indicates that the client must confirm the standing order using the Confirm Standing Order endpoint in order to complete the payment flow. |\n",
+             "enum": [
+              "confirm_standing_order"
+             ]
+            }
+           }
+          }
+         }
+        },
+        "example": {
+         "operation_id": "v1_payments_standing_order_post",
+         "data": {
+          "authorisation_url": "https://www.thisisbud.com/provider/specific/redirect/url",
+          "payment_id": "56caec01-85cc-4fc6-8080-cc0f7ed03a7e",
+          "required_action": "confirm_standing_order"
+         }
+        }
+       }
+      }
+     },
+     "400": {
+      "description": "The request contains an invalid payload.",
+      "content": {
+       "application/json": {
+        "schema": {
+         "$ref": "#/paths/~1v1~1payments~1single/get/responses/404/content/application~1json/schema"
+        },
+        "example": {
+         "operation_id": "v1_payments_standing_order_post",
+         "code_id": "failed_validation",
+         "message": "Failed validation",
+         "errors": {
+          "recipient.sort_code": "Sort code must match `^\\d{6}$`",
+          "standing_order_details.recipient.name": "Name must not be empty"
+         }
+        }
+       }
+      }
+     },
+     "401": {
+      "description": "Unauthorised request"
+     },
+     "405": {
+      "description": "An unexpected HTTP method was used"
+     },
+     "5XX": {
+      "description": "An unexpected error occurred on the server side"
+     }
+    }
+   },
+   "get": {
+    "tags": [
+     "Manage Payments"
+    ],
+    "summary": "Search for Standing Orders",
+    "description": "Retrieve and view the status of multiple Standing Orders",
+    "operationId": "v1_payments_standing_order_get",
+    "security": [
+     {
+      "OAuth2": []
+     }
+    ],
+    "parameters": [
+     {
+      "$ref": "#/paths/~1v1~1payments~1single/get/parameters/0"
+     },
+     {
+      "$ref": "#/paths/~1v1~1payments~1single/get/parameters/1"
+     },
+     {
+      "$ref": "#/paths/~1v1~1payments~1single/get/parameters/2"
+     },
+     {
+      "$ref": "#/paths/~1v1~1payments~1single/get/parameters/3"
+     },
+     {
+      "$ref": "#/paths/~1v1~1payments~1single/get/parameters/4"
+     },
+     {
+      "$ref": "#/paths/~1v1~1payments~1single/get/parameters/5"
+     },
+     {
+      "$ref": "#/paths/~1v1~1payments~1single/get/parameters/6"
+     },
+     {
+      "$ref": "#/paths/~1v1~1payments~1single/get/parameters/7"
+     },
+     {
+      "$ref": "#/paths/~1v1~1payments~1single/get/parameters/8"
+     }
+    ],
+    "responses": {
+     "200": {
+      "description": "Successful request",
+      "content": {
+       "application/json": {
+        "schema": {
+         "title": "List Standing Order Response",
+         "type": "object",
+         "description": "Response structure when retrieving a filtered list of Standing Order status'",
+         "required": [
+          "operation_id",
+          "data",
+          "metadata"
+         ],
+         "properties": {
+          "operation_id": {
+           "$ref": "#/paths/~1v1~1payments~1single/get/responses/200/content/application~1json/schema/properties/operation_id"
+          },
+          "data": {
+           "description": "Array of Standing Order Payment Status Objects",
+           "type": "array",
+           "items": {
+            "$ref": "#/paths/~1v1~1payments~1standing-order~1{payment_id}/get/responses/200/content/application~1json/schema/properties/data"
+           }
+          },
+          "metadata": {
+           "description": "Metadata associated with response",
+           "type": "object",
+           "required": [
+            "total_results",
+            "results",
+            "page",
+            "total_pages"
+           ],
+           "properties": {
+            "total_results": {
+             "type": "integer",
+             "description": "The total number of payment results for the request"
+            },
+            "results": {
+             "type": "integer",
+             "description": "The number of payment results currently displayed on the page"
+            },
+            "page": {
+             "type": "integer",
+             "description": "The current page number"
+            },
+            "total_pages": {
+             "type": "integer",
+             "description": "The total number of pages for the request"
+            }
+           }
+          }
+         }
+        },
+        "example": {
+         "operation_id": "v1_payments_standing_order_get",
+         "data": [
+          {
+           "payment_id": "89f80199-1199-400e-9092-17208f6f39f5",
+           "organisation_id": "22f80199-1199-400e-9092-17208f6f39f0",
+           "client_id": "22f80199-1199-400e-9092-17208f6f39f0",
+           "reference": "Rent",
+           "recipient": {
+            "type": "SortCodeAccountNumber",
+            "name": "MR TEST RECIPIENT",
+            "account_number": "01234501234567"
+           },
+           "recurring_amount": {
+            "value": "10.00",
+            "currency": "GBP"
+           },
+           "sender": {
+            "user_id": "client-defined-user-id",
+            "name": "MR RANDOM SENDER",
+            "provider": "Natwest"
+           },
+           "known_charges": {
+            "recipient_charge": {
+             "charge": "1.50",
+             "currency": "GBP",
+             "recipient_receives": "7.00"
+            },
+            "sender_charge": {
+             "charge": "1.50",
+             "currency": "GBP",
+             "bank_sends": "10.00",
+             "total_cost": "11.50"
+            }
+           },
+           "state": {
+            "status_code": "COMPLETED",
+            "status_message": "Standing Order Creation Completed",
+            "history": [
+             {
+              "datetime": "2020-02-02T12:29:33.428944815Z",
+              "code": "CREATED",
+              "message": "Standing Order Created"
+             },
+             {
+              "datetime": "2020-02-02T12:29:33.428944815Z",
+              "code": "AWAITING_AUTH",
+              "message": "Awaiting Customer Authentication"
+             },
+             {
+              "datetime": "2020-02-02T12:29:33.428944815Z",
+              "code": "AUTH_COMPLETED",
+              "message": "Authentication Completed"
+             },
+             {
+              "datetime": "2020-02-02T12:29:33.428944815Z",
+              "code": "PENDING",
+              "message": "Payment Order Pending"
+             },
+             {
+              "datetime": "2020-02-02T12:29:33.428944815Z",
+              "code": "COMPLETED",
+              "message": "Standing Order Creation Completed"
+             }
+            ]
+           },
+           "errors": [
+            {
+             "code": "FAILED",
+             "description": "The call to the provider to confirm funds returned an error"
+            }
+           ],
+           "created_at": "2020-02-02T12:29:33.428944815Z",
+           "first_payment_date": "2020-02-02T12:29:33.428944815Z",
+           "last_payment_date": "2021-02-02T12:29:33.428944815Z",
+           "frequency": "monthly",
+           "required_action": "confirm_standing_order"
+          }
+         ],
+         "metadata": {
+          "total_results": 1000000,
+          "results": 10,
+          "page": 1,
+          "total_pages": 100000
+         }
+        }
+       }
+      }
+     },
+     "400": {
+      "description": "The request contains an invalid payload.",
+      "content": {
+       "application/json": {
+        "schema": {
+         "$ref": "#/paths/~1v1~1payments~1single/get/responses/404/content/application~1json/schema"
+        },
+        "example": {
+         "operation_id": "v1_payments_standing_order_get",
+         "code_id": "failed_validation",
+         "message": "Failed validation",
+         "errors": {
+          "filter": "X-Date-From is in the wrong format (expected 2006-01-02T15:04:05Z)"
+         }
+        }
+       }
+      }
+     },
+     "401": {
+      "description": "Unauthorised request"
+     },
+     "405": {
+      "description": "An unexpected HTTP method was used"
+     },
+     "5XX": {
+      "description": "An unexpected error occurred on the server side"
+     }
+    }
+   }
+  },
+  "/v1/payments/standing-order/{payment_id}/confirm": {
+   "post": {
+    "tags": [
+     "Initiate Payment - Client license"
+    ],
+    "summary": "Confirm Standing Order",
+    "description": "Confirm and execute a Standing Order for a specific payment id.",
+    "operationId": "v1_payments_standing_order_confirm_post",
+    "security": [
+     {
+      "OAuth2": []
+     }
+    ],
+    "parameters": [
+     {
+      "$ref": "#/paths/~1v1~1payments~1single~1{payment_id}/get/parameters/0"
+     },
+     {
+      "$ref": "#/paths/~1v1~1payments~1single/get/parameters/0"
+     }
+    ],
+    "responses": {
+     "201": {
+      "description": "Standing order created successfully",
+      "content": {
+       "application/json": {
+        "example": {
+         "operation_id": "v1_payments_standing_order_confirm_post"
+        }
+       }
+      }
+     },
+     "400": {
+      "description": "Not allowed to confirm payment. Either there is no consent, not authorised or the payment order has already been created",
+      "content": {
+       "application/json": {
+        "schema": {
+         "$ref": "#/paths/~1v1~1payments~1single/get/responses/404/content/application~1json/schema"
+        },
+        "example": {
+         "operation_id": "v1_payments_standing_order_confirm_post",
+         "code_id": "failed_validation",
+         "message": "Failed validation",
+         "errors": {
+          "payment": "Payment initiation failed"
+         }
+        }
+       }
+      }
+     },
+     "401": {
+      "description": "Unauthorised request"
+     },
+     "404": {
+      "description": "Resource not found",
+      "content": {
+       "application/json": {
+        "schema": {
+         "$ref": "#/paths/~1v1~1payments~1single/get/responses/404/content/application~1json/schema"
+        },
+        "example": {
+         "operation_id": "v1_payments_standing_order_confirm_post",
+         "code_id": "failed_validation",
+         "message": "Failed validation",
+         "errors": {
+          "payment_id": "Value not found"
+         }
+        }
+       }
+      }
+     },
+     "405": {
+      "description": "An unexpected HTTP method was used"
+     },
+     "5XX": {
+      "description": "An unexpected error occurred on the server side"
+     }
+    }
+   }
+  },
+  "/v1/payments/standing-order/{payment_id}": {
+   "get": {
+    "tags": [
+     "Manage Payments"
+    ],
+    "summary": "Retrieve Standing Order Payment Status",
+    "description": "Retrieve and view the status of a specific Standing Order payment",
+    "operationId": "v1_payments_standing_order_payment_id_get",
+    "security": [
+     {
+      "OAuth2": []
+     }
+    ],
+    "parameters": [
+     {
+      "$ref": "#/paths/~1v1~1payments~1single~1{payment_id}/get/parameters/0"
+     },
+     {
+      "$ref": "#/paths/~1v1~1payments~1single/get/parameters/0"
+     }
+    ],
+    "responses": {
+     "200": {
+      "description": "Successful request",
+      "content": {
+       "application/json": {
+        "schema": {
+         "title": "Standing Order Status Response",
+         "type": "object",
+         "required": [
+          "operation_id",
+          "data"
+         ],
+         "properties": {
+          "operation_id": {
+           "$ref": "#/paths/~1v1~1payments~1single/get/responses/200/content/application~1json/schema/properties/operation_id"
+          },
+          "data": {
+           "title": "Standing Order Data",
+           "type": "object",
+           "description": "Data structure for the Standing Order object",
+           "required": [
+            "payment_id",
+            "organisation_id",
+            "client_id",
+            "reference",
+            "recipient",
+            "recurring_amount",
+            "sender",
+            "known_charges",
+            "state",
+            "errors",
+            "created_at",
+            "frequency",
+            "first_payment_date",
+            "required_action"
+           ],
+           "properties": {
+            "payment_id": {
+             "type": "string",
+             "description": "Payment Identifier"
+            },
+            "organisation_id": {
+             "type": "string",
+             "description": "Bud's Organisation Identifier"
+            },
+            "client_id": {
+             "type": "string",
+             "description": "Bud's Client/App Identifier"
+            },
+            "reference": {
+             "type": "string",
+             "description": "Reference to use for this payment"
+            },
+            "recipient": {
+             "$ref": "#/paths/~1v1~1payments~1single/post/requestBody/content/application~1json/schema/properties/payment_details/properties/recipient"
+            },
+            "recurring_amount": {
+             "$ref": "#/paths/~1v1~1payments~1single/post/requestBody/content/application~1json/schema/properties/payment_details/properties/amount"
+            },
+            "sender": {
+             "$ref": "#/paths/~1v1~1payments~1single/post/requestBody/content/application~1json/schema/properties/payment_details/properties/sender"
+            },
+            "known_charges": {
+             "$ref": "#/paths/~1v1~1payments~1single~1{payment_id}/get/responses/200/content/application~1json/schema/properties/data/properties/known_charges"
+            },
+            "state": {
+             "type": "object",
+             "required": [
+              "status_code",
+              "status_message",
+              "history"
+             ],
+             "properties": {
+              "status_code": {
+               "title": "Standing Order Status Codes",
+               "type": "string",
+               "description": "The payment status code for a Standing Order",
+               "enum": [
+                "CREATED",
+                "AWAITING_AUTH",
+                "AUTH_REJECTED",
+                "AUTH_COMPLETED",
+                "PENDING",
+                "FAILED",
+                "COMPLETED"
+               ]
+              },
+              "status_message": {
+               "title": "Standing Order Status Message",
+               "type": "string",
+               "description": "The payment status message for a Standing Order",
+               "enum": [
+                "Standing Order Created",
+                "Awaiting Customer Authentication",
+                "Authentication Failed",
+                "Authentication Completed",
+                "Payment Order Pending",
+                "Standing Order Creation Failed",
+                "Standing Order Creation Completed"
+               ]
+              },
+              "history": {
+               "type": "array",
+               "items": {
+                "type": "object",
+                "required": [
+                 "datetime",
+                 "code",
+                 "message"
+                ],
+                "properties": {
+                 "datetime": {
+                  "type": "string"
+                 },
+                 "code": {
+                  "$ref": "#/paths/~1v1~1payments~1standing-order~1{payment_id}/get/responses/200/content/application~1json/schema/properties/data/properties/state/properties/status_code"
+                 },
+                 "message": {
+                  "$ref": "#/paths/~1v1~1payments~1standing-order~1{payment_id}/get/responses/200/content/application~1json/schema/properties/data/properties/state/properties/status_message"
+                 }
+                }
+               }
+              }
+             }
+            },
+            "errors": {
+             "type": "array",
+             "description": "Details surrounding any errors when attempting to initiate a Standing Order",
+             "items": {
+              "type": "object",
+              "required": [
+               "code",
+               "description"
+              ],
+              "properties": {
+               "code": {
+                "type": "string",
+                "description": "Error Code"
+               },
+               "description": {
+                "type": "string",
+                "description": "Text string used to give a description of the payment error"
+               }
+              }
+             }
+            },
+            "created_at": {
+             "type": "string",
+             "format": "date-time",
+             "description": "Date-time (ISO 8601) of when the Standing Order was created",
+             "example": "2020-06-01T15:00:00Z"
+            },
+            "first_payment_date": {
+             "type": "string",
+             "format": "date-time",
+             "description": "Date-time (ISO 8601) the first payment should be made. Must be future date.",
+             "example": "2020-06-01T15:00:00Z"
+            },
+            "last_payment_date": {
+             "type": "string",
+             "format": "date-time",
+             "description": "Date-time (ISO 8601) after which payments should stop. Must be after `first_payment_date`.",
+             "example": "2020-06-01T15:00:00Z"
+            },
+            "frequency": {
+             "$ref": "#/paths/~1v1~1payments~1standing-order/post/requestBody/content/application~1json/schema/properties/standing_order_details/properties/frequency"
+            },
+            "required_action": {
+             "type": "string",
+             "nullable": true,
+             "description": "This field will indicate that there is an action required to be taken by the client in order to complete the payment.\n\n| Value  |  Description |\n|:-------|:-------------|\n| confirm_standing_order | If present, this value indicates that client has yet to confirm the standing order once the customer has successfully authorised the payment with the provider. This confirmation can be accomplished using the Confirm Standing Order API Endpoint. Please note this step will only be relevant for clients using Bud as a Technical Service Provider (TSP) |\n",
+             "enum": [
+              "confirm_standing_order"
+             ]
+            }
+           }
+          }
+         }
+        },
+        "example": {
+         "operation_id": "v1_payments_standing_order_payment_id_get",
+         "data": {
+          "payment_id": "89f80199-1199-400e-9092-17208f6f39f5",
+          "organisation_id": "22f80199-1199-400e-9092-17208f6f39f0",
+          "client_id": "22f80199-1199-400e-9092-17208f6f39f0",
+          "method": "FPS",
+          "reference": "Rent",
+          "recipient": {
+           "type": "SortCodeAccountNumber",
+           "name": "MR TEST RECIPIENT",
+           "account_number": "01234501234567"
+          },
+          "recurring_amount": {
+           "value": "10.00",
+           "currency": "GBP"
+          },
+          "sender": {
+           "user_id": "client-defined-user-id",
+           "name": "MR TEST SENDER",
+           "provider": "Natwest"
+          },
+          "known_charges": {
+           "recipient_charge": {
+            "charge": "1.50",
+            "currency": "GBP",
+            "recipient_receives": "7.00"
+           },
+           "sender_charge": {
+            "charge": "1.50",
+            "currency": "GBP",
+            "bank_sends": "10.00",
+            "total_cost": "11.50"
+           }
+          },
+          "state": {
+           "status_code": "COMPLETED",
+           "status_message": "Standing Order Creation Completed",
+           "history": [
+            {
+             "datetime": "2020-02-02T12:29:33.428944815Z",
+             "code": "CREATED",
+             "message": "Standing Order Created"
+            },
+            {
+             "datetime": "2020-02-02T12:29:33.428944815Z",
+             "code": "AWAITING_AUTH",
+             "message": "Awaiting Customer Authentication"
+            },
+            {
+             "datetime": "2020-02-02T12:29:33.428944815Z",
+             "code": "AUTH_COMPLETED",
+             "message": "Authentication Completed"
+            },
+            {
+             "datetime": "2020-02-02T12:29:33.428944815Z",
+             "code": "PENDING",
+             "message": "Payment Order Pending"
+            },
+            {
+             "datetime": "2020-02-02T12:29:33.428944815Z",
+             "code": "COMPLETED",
+             "message": "Standing Order Creation Completed"
+            }
+           ]
+          },
+          "errors": [
+           {
+            "code": "FAILED",
+            "description": "The call to the provider to confirm funds returned an error"
+           }
+          ],
+          "created_at": "2020-02-02T12:29:33.428944815Z",
+          "first_payment_date": "2020-02-02T12:29:33.428944815Z",
+          "last_payment_date": "2021-02-02T12:29:33.428944815Z",
+          "frequency": "monthly",
+          "required_action": "confirm_standing_order"
+         },
+         "metadata": {}
+        }
+       }
+      }
+     },
+     "401": {
+      "description": "Unauthorised request"
+     },
+     "404": {
+      "description": "Resource not found",
+      "content": {
+       "application/json": {
+        "schema": {
+         "$ref": "#/paths/~1v1~1payments~1single/get/responses/404/content/application~1json/schema"
+        },
+        "example": {
+         "operation_id": "v1_standing_order_get",
+         "code_id": "failed_validation",
+         "message": "Failed validation",
+         "errors": {
+          "payment_id": "Value not found"
+         }
+        }
+       }
+      }
+     },
+     "405": {
+      "description": "An unexpected HTTP method was used"
+     },
+     "5XX": {
+      "description": "An unexpected error occurred on the server side"
+     }
+    }
+   }
+  }
+ },
+ "components": {
+  "securitySchemes": {
+   "OAuth2": {
+    "type": "oauth2",
+    "flows": {
+     "clientCredentials": {
+      "tokenUrl": "/v1/oauth/token",
+      "scopes": {}
+     }
+    },
+    "description": "\nAuthentication flow:\n\n1. Perform OAuth2 Client Credentials authentication using API Credentials (`client_id`,`client_secret`) to obtain an `access_token` against `/v1/oauth/token` endpoint,\n2. Use `access_token` as Bearer Authorisation for every other API request,\n3. Include `X-Client-Id` (=client_id) within the header of every API request,\n4. Note that some of the requests may also require `X-Customer-Id` to be provided within the request header.\n\n### Examples\nObtain OAuth2 `access_token` and `refresh_token` using `grant_type=client_credentials` and HTTP Basic auth header\n\n```\ncurl --basic --user {{client_id}}:{{client_secret}} \\\n  -X POST https://api-sandbox.thisisbud.com/v1/oauth/token \\\n  -H 'Content-Type: application/x-www-form-urlencoded' \\\n  -d grant_type=client_credentials\n```\n\nSuccessful response:\n```\n{\n  \"operation_id\": \"oauth_token_post\",\n  \"data\": {\n    \"access_token\": \"dd0c17e3fd6d2ce94aa091257a3ea393b4f9b5cf3d3e998f07dc9826da86ff15\",\n    \"token_type\": \"bearer\",\n    \"expires_in\": 3600,\n    \"refresh_token\": \"fac32cca7559d9f6e8f1dfe9a99c71fa1dcfeb482bedf287d7934d2667ae54b3\"\n  }\n}\n```\n\nRefresh `access_token` token using `refresh_token` against `/v1/oauth/token` endpoint with `grant_type=refresh_token`\n\n```\ncurl -X POST \\\n  https://api-sandbox.thisisbud.com/v1/oauth/token \\\n  -H 'Content-Type: application/x-www-form-urlencoded' \\\n  -H 'X-Client-Id: {{client_id}}' \\\n  -d 'grant_type=refresh_token&refresh_token={{refresh_token}}'\n```\n\nSuccessful response:\n```\n{\n    \"operation_id\": \"oauth_token_post\",\n    \"data\": {\n        \"access_token\": \"cc0c17e3fd6d2ce94aa091257a3ea393b4f9b5cf3d3e998f07dc9826da86ff94\",\n        \"token_type\": \"bearer\",\n        \"expires_in\": 3600,\n        \"refresh_token\": \"ffc30cca7559d9f6e8f1dfe9a99c71fa1dcfeb482bedf287d7934d2667ae54b3\"\n    }\n}\n```\n"
+   }
+  }
+ }
+}
