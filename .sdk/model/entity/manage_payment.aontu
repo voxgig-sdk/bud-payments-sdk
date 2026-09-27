@@ -1,0 +1,893 @@
+# Entity: manage_payment
+
+main: kit: entity: manage_payment: {
+
+  alias: field: {}
+
+  fields: {
+    amount: {
+      h: "Amount"
+      n: "amount"
+      r: true
+      sh: "The monetary amount."
+      t: "`$OBJECT`"
+    }
+    client_id: {
+      h: "Client Id"
+      n: "client_id"
+      r: true
+      sh: "Bud's Client/App Identifier"
+      t: "`$STRING`"
+    }
+    created_at: {
+      fo: "date-time"
+      h: "Created At"
+      n: "created_at"
+      r: true
+      sh: "The created at timestamp for the payment"
+      t: "`$STRING`"
+    }
+    data: {
+      h: "Data"
+      n: "data"
+      r: true
+      sh: "Data structure for the Scheduled Payment object"
+      t: "`$OBJECT`"
+    }
+    errors: {
+      h: "Errors"
+      n: "errors"
+      r: true
+      sh: "A list of any errors that may be associated with the payment"
+      t: "`$ARRAY`"
+    }
+    first_payment_date: {
+      fo: "date-time"
+      h: "First Payment Date"
+      n: "first_payment_date"
+      r: true
+      sh: "Date-time (ISO 8601) the first payment should be made."
+      t: "`$STRING`"
+    }
+    frequency: {
+      h: "Frequency"
+      n: "frequency"
+      r: true
+      sh: "The payment frequency for a Standing Order"
+      t: "`$STRING`"
+    }
+    known_charges: {
+      h: "Known Charges"
+      n: "known_charges"
+      r: true
+      sh: "A list detailing information surrounding any known charges that may be associated with the payment"
+      t: "`$OBJECT`"
+    }
+    last_payment_date: {
+      fo: "date-time"
+      h: "Last Payment Date"
+      n: "last_payment_date"
+      r: false
+      sh: "Date-time (ISO 8601) after which payments should stop."
+      t: "`$STRING`"
+    }
+    metadata: {
+      h: "Metadata"
+      n: "metadata"
+      r: false
+      t: "`$OBJECT`"
+    }
+    method: {
+      h: "Method"
+      n: "method"
+      r: true
+      sh: "The payment method"
+      t: "`$STRING`"
+    }
+    operation_id: {
+      h: "Operation Id"
+      n: "operation_id"
+      r: true
+      sh: "A unique identifier/reference associated with a given endpoint/operation"
+      t: "`$STRING`"
+    }
+    organisation_id: {
+      h: "Organisation Id"
+      n: "organisation_id"
+      r: true
+      sh: "Bud's Organisation Identifier"
+      t: "`$STRING`"
+    }
+    payment_id: {
+      h: "Payment Id"
+      n: "payment_id"
+      r: true
+      sh: "Payment Identifier"
+      t: "`$STRING`"
+    }
+    recipient: {
+      h: "Recipient"
+      n: "recipient"
+      r: true
+      sh: "Details of the recipient of the payment"
+      t: "`$OBJECT`"
+    }
+    recurring_amount: {
+      h: "Recurring Amount"
+      n: "recurring_amount"
+      r: true
+      sh: "The monetary amount."
+      t: "`$OBJECT`"
+    }
+    reference: {
+      h: "Reference"
+      n: "reference"
+      r: true
+      sh: "Reference to use for this payment"
+      t: "`$STRING`"
+    }
+    requested_execution_date: {
+      fo: "date-time"
+      h: "Requested Execution Date"
+      n: "requested_execution_date"
+      r: true
+      sh: "Date-time (ISO 8601) the Scheduled Payment should be made."
+      t: "`$STRING`"
+    }
+    required_action: {
+      h: "Required Action"
+      n: "required_action"
+      op: {
+        list: {
+          req: false
+          type: "`$STRING`"
+        }
+      }
+      r: true
+      sh: "This field will indicate that there is an action required to be taken by the client in order to complete the payment."
+      t: "`$STRING`"
+    }
+    sender: {
+      h: "Sender"
+      n: "sender"
+      r: true
+      sh: "Details of the payment sender"
+      t: "`$OBJECT`"
+    }
+    state: {
+      h: "State"
+      n: "state"
+      r: true
+      sh: "Details of the payment state and history"
+      t: "`$OBJECT`"
+    }
+    supplementary_status: {
+      h: "Supplementary Status"
+      n: "supplementary_status"
+      r: true
+      sh: "A list of supplementary states associated with the payment as described by the specific provider"
+      t: "`$OBJECT`"
+    }
+  }
+
+  name: "manage_payment"
+  op: {
+    create: {
+      name: "create"
+      points: [
+        {
+          co: {
+            id: "POST /v1/payments/scheduled/{payment_id}/confirm"
+            source: "openapi3"
+            version: 2
+          }
+          g: {
+            header: [
+              {
+                ex: "8711bbef-b357-4c2d-97ca-0d9df4206e9a"
+                k: "header"
+                n: "x_client_id"
+                or: "x_client_id"
+                r: true
+                t: "`$STRING`"
+              }
+            ]
+            params: [
+              {
+                k: "param"
+                n: "scheduled_id"
+                or: "payment_id"
+                r: true
+                t: "`$STRING`"
+              }
+            ]
+          }
+          m: "POST"
+          o: "/v1/payments/scheduled/{payment_id}/confirm"
+          q: {
+            "$action": "confirm"
+            exist: [
+              "scheduled_id"
+              "x_client_id"
+            ]
+          }
+          r: {
+            param: {
+              payment_id: "scheduled_id"
+            }
+          }
+          s: [
+            {
+              lit: "v1"
+            }
+            {
+              lit: "payments"
+            }
+            {
+              lit: "scheduled"
+            }
+            {
+              var: "scheduled_id"
+            }
+            {
+              lit: "confirm"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body`"
+          }
+        }
+        {
+          co: {
+            id: "POST /v1/payments/single/{payment_id}/confirm"
+            source: "openapi3"
+            version: 2
+          }
+          g: {
+            header: [
+              {
+                ex: "8711bbef-b357-4c2d-97ca-0d9df4206e9a"
+                k: "header"
+                n: "x_client_id"
+                or: "x_client_id"
+                r: true
+                t: "`$STRING`"
+              }
+            ]
+            params: [
+              {
+                k: "param"
+                n: "single_id"
+                or: "payment_id"
+                r: true
+                t: "`$STRING`"
+              }
+            ]
+          }
+          m: "POST"
+          o: "/v1/payments/single/{payment_id}/confirm"
+          q: {
+            "$action": "confirm"
+            exist: [
+              "single_id"
+              "x_client_id"
+            ]
+          }
+          r: {
+            param: {
+              payment_id: "single_id"
+            }
+          }
+          s: [
+            {
+              lit: "v1"
+            }
+            {
+              lit: "payments"
+            }
+            {
+              lit: "single"
+            }
+            {
+              var: "single_id"
+            }
+            {
+              lit: "confirm"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body`"
+          }
+        }
+        {
+          co: {
+            id: "POST /v1/payments/standing-order/{payment_id}/confirm"
+            source: "openapi3"
+            version: 2
+          }
+          g: {
+            header: [
+              {
+                ex: "8711bbef-b357-4c2d-97ca-0d9df4206e9a"
+                k: "header"
+                n: "x_client_id"
+                or: "x_client_id"
+                r: true
+                t: "`$STRING`"
+              }
+            ]
+            params: [
+              {
+                k: "param"
+                n: "standing_order_id"
+                or: "payment_id"
+                r: true
+                t: "`$STRING`"
+              }
+            ]
+          }
+          m: "POST"
+          o: "/v1/payments/standing-order/{payment_id}/confirm"
+          q: {
+            "$action": "confirm"
+            exist: [
+              "standing_order_id"
+              "x_client_id"
+            ]
+          }
+          r: {
+            param: {
+              payment_id: "standing_order_id"
+            }
+          }
+          s: [
+            {
+              lit: "v1"
+            }
+            {
+              lit: "payments"
+            }
+            {
+              lit: "standing-order"
+            }
+            {
+              var: "standing_order_id"
+            }
+            {
+              lit: "confirm"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body`"
+          }
+        }
+      ]
+    }
+    list: {
+      name: "list"
+      points: [
+        {
+          co: {
+            id: "GET /v1/payments/scheduled"
+            source: "openapi3"
+            version: 2
+          }
+          g: {
+            header: [
+              {
+                ex: "10.00"
+                k: "header"
+                n: "x_amount_from"
+                or: "x_amount_from"
+                r: false
+                t: "`$STRING`"
+              }
+              {
+                ex: "10000.00"
+                k: "header"
+                n: "x_amount_to"
+                or: "x_amount_to"
+                r: false
+                t: "`$STRING`"
+              }
+              {
+                ex: "8711bbef-b357-4c2d-97ca-0d9df4206e9a"
+                k: "header"
+                n: "x_client_id"
+                or: "x_client_id"
+                r: true
+                t: "`$STRING`"
+              }
+              {
+                ex: "2020-06-01T15:00:00Z"
+                k: "header"
+                n: "x_date_from"
+                or: "x_date_from"
+                r: false
+                t: "`$STRING`"
+              }
+              {
+                ex: "2020-06-01T15:00:00Z"
+                k: "header"
+                n: "x_date_to"
+                or: "x_date_to"
+                r: false
+                t: "`$STRING`"
+              }
+              {
+                ex: "1"
+                k: "header"
+                n: "x_page_number"
+                or: "x_page_number"
+                r: false
+                t: "`$STRING`"
+              }
+              {
+                ex: "84470aa9-71a2-4da2-8fa4-660adbf2c9b2"
+                k: "header"
+                n: "x_payment_id"
+                or: "x_payment_id"
+                r: false
+                t: "`$STRING`"
+              }
+              {
+                ex: "Lloyds,Nationwide"
+                k: "header"
+                n: "x_sender_provider"
+                or: "x_sender_provider"
+                r: false
+                t: "`$STRING`"
+              }
+              {
+                ex: [
+                  "CREATED"
+                  "SETTLED"
+                ]
+                k: "header"
+                n: "x_status_code"
+                or: "x_status_code"
+                r: false
+                t: "`$ARRAY`"
+              }
+            ]
+          }
+          m: "GET"
+          o: "/v1/payments/scheduled"
+          q: {
+            exist: [
+              "x_amount_from"
+              "x_amount_to"
+              "x_client_id"
+              "x_date_from"
+              "x_date_to"
+              "x_page_number"
+              "x_payment_id"
+              "x_sender_provider"
+              "x_status_code"
+            ]
+          }
+          s: [
+            {
+              lit: "v1"
+            }
+            {
+              lit: "payments"
+            }
+            {
+              lit: "scheduled"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body`"
+          }
+        }
+        {
+          co: {
+            id: "GET /v1/payments/single"
+            source: "openapi3"
+            version: 2
+          }
+          g: {
+            header: [
+              {
+                ex: "10.00"
+                k: "header"
+                n: "x_amount_from"
+                or: "x_amount_from"
+                r: false
+                t: "`$STRING`"
+              }
+              {
+                ex: "10000.00"
+                k: "header"
+                n: "x_amount_to"
+                or: "x_amount_to"
+                r: false
+                t: "`$STRING`"
+              }
+              {
+                ex: "8711bbef-b357-4c2d-97ca-0d9df4206e9a"
+                k: "header"
+                n: "x_client_id"
+                or: "x_client_id"
+                r: true
+                t: "`$STRING`"
+              }
+              {
+                ex: "2020-06-01T15:00:00Z"
+                k: "header"
+                n: "x_date_from"
+                or: "x_date_from"
+                r: false
+                t: "`$STRING`"
+              }
+              {
+                ex: "2020-06-01T15:00:00Z"
+                k: "header"
+                n: "x_date_to"
+                or: "x_date_to"
+                r: false
+                t: "`$STRING`"
+              }
+              {
+                ex: "1"
+                k: "header"
+                n: "x_page_number"
+                or: "x_page_number"
+                r: false
+                t: "`$STRING`"
+              }
+              {
+                ex: "84470aa9-71a2-4da2-8fa4-660adbf2c9b2"
+                k: "header"
+                n: "x_payment_id"
+                or: "x_payment_id"
+                r: false
+                t: "`$STRING`"
+              }
+              {
+                ex: "Lloyds,Nationwide"
+                k: "header"
+                n: "x_sender_provider"
+                or: "x_sender_provider"
+                r: false
+                t: "`$STRING`"
+              }
+              {
+                ex: [
+                  "CREATED"
+                  "SETTLED"
+                ]
+                k: "header"
+                n: "x_status_code"
+                or: "x_status_code"
+                r: false
+                t: "`$ARRAY`"
+              }
+            ]
+          }
+          m: "GET"
+          o: "/v1/payments/single"
+          q: {
+            exist: [
+              "x_amount_from"
+              "x_amount_to"
+              "x_client_id"
+              "x_date_from"
+              "x_date_to"
+              "x_page_number"
+              "x_payment_id"
+              "x_sender_provider"
+              "x_status_code"
+            ]
+          }
+          s: [
+            {
+              lit: "v1"
+            }
+            {
+              lit: "payments"
+            }
+            {
+              lit: "single"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body`"
+          }
+        }
+        {
+          co: {
+            id: "GET /v1/payments/standing-order"
+            source: "openapi3"
+            version: 2
+          }
+          g: {
+            header: [
+              {
+                ex: "10.00"
+                k: "header"
+                n: "x_amount_from"
+                or: "x_amount_from"
+                r: false
+                t: "`$STRING`"
+              }
+              {
+                ex: "10000.00"
+                k: "header"
+                n: "x_amount_to"
+                or: "x_amount_to"
+                r: false
+                t: "`$STRING`"
+              }
+              {
+                ex: "8711bbef-b357-4c2d-97ca-0d9df4206e9a"
+                k: "header"
+                n: "x_client_id"
+                or: "x_client_id"
+                r: true
+                t: "`$STRING`"
+              }
+              {
+                ex: "2020-06-01T15:00:00Z"
+                k: "header"
+                n: "x_date_from"
+                or: "x_date_from"
+                r: false
+                t: "`$STRING`"
+              }
+              {
+                ex: "2020-06-01T15:00:00Z"
+                k: "header"
+                n: "x_date_to"
+                or: "x_date_to"
+                r: false
+                t: "`$STRING`"
+              }
+              {
+                ex: "1"
+                k: "header"
+                n: "x_page_number"
+                or: "x_page_number"
+                r: false
+                t: "`$STRING`"
+              }
+              {
+                ex: "84470aa9-71a2-4da2-8fa4-660adbf2c9b2"
+                k: "header"
+                n: "x_payment_id"
+                or: "x_payment_id"
+                r: false
+                t: "`$STRING`"
+              }
+              {
+                ex: "Lloyds,Nationwide"
+                k: "header"
+                n: "x_sender_provider"
+                or: "x_sender_provider"
+                r: false
+                t: "`$STRING`"
+              }
+              {
+                ex: [
+                  "CREATED"
+                  "SETTLED"
+                ]
+                k: "header"
+                n: "x_status_code"
+                or: "x_status_code"
+                r: false
+                t: "`$ARRAY`"
+              }
+            ]
+          }
+          m: "GET"
+          o: "/v1/payments/standing-order"
+          q: {
+            exist: [
+              "x_amount_from"
+              "x_amount_to"
+              "x_client_id"
+              "x_date_from"
+              "x_date_to"
+              "x_page_number"
+              "x_payment_id"
+              "x_sender_provider"
+              "x_status_code"
+            ]
+          }
+          s: [
+            {
+              lit: "v1"
+            }
+            {
+              lit: "payments"
+            }
+            {
+              lit: "standing-order"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body`"
+          }
+        }
+      ]
+    }
+    load: {
+      name: "load"
+      points: [
+        {
+          co: {
+            id: "GET /v1/payments/scheduled/{payment_id}"
+            source: "openapi3"
+            version: 2
+          }
+          g: {
+            header: [
+              {
+                ex: "8711bbef-b357-4c2d-97ca-0d9df4206e9a"
+                k: "header"
+                n: "x_client_id"
+                or: "x_client_id"
+                r: true
+                t: "`$STRING`"
+              }
+            ]
+            params: [
+              {
+                k: "param"
+                n: "payment_id"
+                or: "payment_id"
+                r: true
+                t: "`$STRING`"
+              }
+            ]
+          }
+          m: "GET"
+          o: "/v1/payments/scheduled/{payment_id}"
+          q: {
+            exist: [
+              "payment_id"
+              "x_client_id"
+            ]
+          }
+          s: [
+            {
+              lit: "v1"
+            }
+            {
+              lit: "payments"
+            }
+            {
+              lit: "scheduled"
+            }
+            {
+              var: "payment_id"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body`"
+          }
+        }
+        {
+          co: {
+            id: "GET /v1/payments/single/{payment_id}"
+            source: "openapi3"
+            version: 2
+          }
+          g: {
+            header: [
+              {
+                ex: "8711bbef-b357-4c2d-97ca-0d9df4206e9a"
+                k: "header"
+                n: "x_client_id"
+                or: "x_client_id"
+                r: true
+                t: "`$STRING`"
+              }
+            ]
+            params: [
+              {
+                k: "param"
+                n: "payment_id"
+                or: "payment_id"
+                r: true
+                t: "`$STRING`"
+              }
+            ]
+          }
+          m: "GET"
+          o: "/v1/payments/single/{payment_id}"
+          q: {
+            exist: [
+              "payment_id"
+              "x_client_id"
+            ]
+          }
+          s: [
+            {
+              lit: "v1"
+            }
+            {
+              lit: "payments"
+            }
+            {
+              lit: "single"
+            }
+            {
+              var: "payment_id"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body.data`"
+          }
+        }
+        {
+          co: {
+            id: "GET /v1/payments/standing-order/{payment_id}"
+            source: "openapi3"
+            version: 2
+          }
+          g: {
+            header: [
+              {
+                ex: "8711bbef-b357-4c2d-97ca-0d9df4206e9a"
+                k: "header"
+                n: "x_client_id"
+                or: "x_client_id"
+                r: true
+                t: "`$STRING`"
+              }
+            ]
+            params: [
+              {
+                k: "param"
+                n: "payment_id"
+                or: "payment_id"
+                r: true
+                t: "`$STRING`"
+              }
+            ]
+          }
+          m: "GET"
+          o: "/v1/payments/standing-order/{payment_id}"
+          q: {
+            exist: [
+              "payment_id"
+              "x_client_id"
+            ]
+          }
+          s: [
+            {
+              lit: "v1"
+            }
+            {
+              lit: "payments"
+            }
+            {
+              lit: "standing-order"
+            }
+            {
+              var: "payment_id"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body.data`"
+          }
+        }
+      ]
+    }
+  }
+
+
+
+}

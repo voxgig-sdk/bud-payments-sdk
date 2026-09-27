@@ -1,0 +1,99 @@
+{
+  "existing": {
+    "initiate_payment_client_license": {
+      "INITIATE_PAYMENT_CLIENT_LICENSE00": {
+        "authorisation_url": "s8c",
+        "code": "s8d",
+        "payment_details": {},
+        "payment_id": "PAYMENT01",
+        "payment_type": "s90",
+        "provider": "s91",
+        "provider_redirect_url": "s92",
+        "provider_types": [],
+        "redirect_url": "s94",
+        "required_action": "s95",
+        "result": "s96",
+        "scheduled_payment_details": {},
+        "standing_order_details": {},
+        "state": "s99",
+        "id": "INITIATE_PAYMENT_CLIENT_LICENSE00"
+      },
+      "INITIATE_PAYMENT_CLIENT_LICENSE01": {
+        "authorisation_url": "s118",
+        "code": "s119",
+        "payment_details": {},
+        "payment_id": "PAYMENT01",
+        "payment_type": "s11c",
+        "provider": "s11d",
+        "provider_redirect_url": "s11e",
+        "provider_types": [],
+        "redirect_url": "s120",
+        "required_action": "s121",
+        "result": "s122",
+        "scheduled_payment_details": {},
+        "standing_order_details": {},
+        "state": "s125",
+        "id": "INITIATE_PAYMENT_CLIENT_LICENSE01"
+      },
+      "INITIATE_PAYMENT_CLIENT_LICENSE02": {
+        "authorisation_url": "s1a4",
+        "code": "s1a5",
+        "payment_details": {},
+        "payment_id": "PAYMENT01",
+        "payment_type": "s1a8",
+        "provider": "s1a9",
+        "provider_redirect_url": "s1aa",
+        "provider_types": [],
+        "redirect_url": "s1ac",
+        "required_action": "s1ad",
+        "result": "s1ae",
+        "scheduled_payment_details": {},
+        "standing_order_details": {},
+        "state": "s1b1",
+        "id": "INITIATE_PAYMENT_CLIENT_LICENSE02"
+      }
+    }
+  },
+  "new": {
+    "initiate_payment_client_license": {
+      "initiate_payment_client_license_ref01": {
+        "authorisation_url": "s230",
+        "code": "s231",
+        "payment_details": {},
+        "payment_id": "PAYMENT01",
+        "payment_type": "s234",
+        "provider": "s235",
+        "provider_redirect_url": "s236",
+        "provider_types": [],
+        "redirect_url": "s238",
+        "required_action": "s239",
+        "result": "s23a",
+        "scheduled_payment_details": {},
+        "standing_order_details": {},
+        "state": "s23d"
+      }
+    }
+  },
+  "requests": {
+    "POST /v1/payments/authorisation-codes": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    },
+    "POST /v1/payments/scheduled": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    },
+    "POST /v1/payments/single": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    },
+    "POST /v1/payments/standing-order": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    }
+  }
+}

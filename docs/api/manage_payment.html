@@ -1,0 +1,3277 @@
+<!doctype html>
+<html lang="en">
+<head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>ManagePayment | Payments API</title><link rel="stylesheet" href="../assets/style.css"></head>
+<body><a class="skip" href="#content">Skip to content</a>
+<header class="site-header"><a class="site-title" href="../index.html">Payments API<span>SDK documentation</span></a><div class="site-links"><a class="repo-link" href="https://github.com/voxgig-sdk/bud-payments-sdk">voxgig-sdk/bud-payments-sdk</a></div></header>
+<div class="site-notice" role="note"></div>
+<div class="shell"><nav class="site-nav" aria-label="Documentation"><div class="search"><label for="search">Search documentation</label><input id="search" type="search" data-base="../" placeholder="Find a guide or reference"><div id="results" aria-live="polite"></div></div><details><summary>Overview</summary><a href="../index.html">Payments API</a></details>
+<details open><summary>API</summary><a href="../api/index.html">API overview</a>
+<a href="../api/initiate_payment_bud_license.html">InitiatePaymentBudLicense</a>
+<a href="../api/initiate_payment_client_license.html">InitiatePaymentClientLicense</a>
+<a aria-current="page" href="../api/manage_payment.html">ManagePayment</a><div class="nav-sections"><a class="nav-section" href="#post-v1paymentsscheduledpayment_idconfirm">POST /v1/payments/scheduled/{payment_id}/confirm</a>
+<a class="nav-section" href="#post-v1paymentssinglepayment_idconfirm">POST /v1/payments/single/{payment_id}/confirm</a>
+<a class="nav-section" href="#post-v1paymentsstanding-orderpayment_idconfirm">POST /v1/payments/standing-order/{payment_id}/confirm</a>
+<a class="nav-section" href="#get-v1paymentsscheduled">GET /v1/payments/scheduled</a>
+<a class="nav-section" href="#get-v1paymentssingle">GET /v1/payments/single</a>
+<a class="nav-section" href="#get-v1paymentsstanding-order">GET /v1/payments/standing-order</a>
+<a class="nav-section" href="#get-v1paymentsscheduledpayment_id">GET /v1/payments/scheduled/{payment_id}</a>
+<a class="nav-section" href="#get-v1paymentssinglepayment_id">GET /v1/payments/single/{payment_id}</a>
+<a class="nav-section" href="#get-v1paymentsstanding-orderpayment_id">GET /v1/payments/standing-order/{payment_id}</a></div></details>
+<details><summary>Guides</summary><a href="../guides/authentication.html">Authentication</a>
+<a href="../guides/first-call.html">Make your first API call</a>
+<a href="../guides/errors.html">Handle errors</a>
+<a href="../guides/concepts.html">Entities, SDKs, and tools</a></details>
+<details><summary>SDKs</summary><a href="../sdks/go.html">Golang</a>
+<a href="../sdks/js.html">JavaScript</a>
+<a href="../sdks/lua.html">Lua</a>
+<a href="../sdks/php.html">PHP</a>
+<a href="../sdks/py.html">Python</a>
+<a href="../sdks/ts.html">TypeScript</a></details>
+<details><summary>Tools</summary><a href="../tools/go-cli.html">Go CLI</a>
+<a href="../tools/go-mcp.html">Go MCP server</a></details>
+<details><summary>Features</summary><a href="../features/debug.html">Debug capture</a>
+<a href="../features/idempotency.html">Idempotency</a>
+<a href="../features/metrics.html">Metrics</a>
+<a href="../features/paging.html">Paging</a>
+<a href="../features/ratelimit.html">Rate limiting</a>
+<a href="../features/retry.html">Retry</a>
+<a href="../features/test.html">Test transport</a>
+<a href="../features/timeout.html">Timeout</a></details></nav><main id="content"><div class="page-context"><span class="section-dot" aria-hidden="true"></span>API</div><h1 id="managepayment">ManagePayment</h1>
+<h2 id="operations">Operations</h2>
+<p>Every route this entity exposes. Each route links to its own reference on this page.</p>
+<table>
+<thead>
+<tr>
+<th>Method</th>
+<th>Route</th>
+<th>SDK operation</th>
+<th>Returns</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>POST</code></td>
+<td><a href="#post-v1paymentsscheduledpayment_idconfirm"><code>/v1/payments/scheduled/{payment_id}/confirm</code></a></td>
+<td><code>create</code></td>
+<td>Request to create scheduled payment succeeded</td>
+</tr>
+<tr>
+<td><code>POST</code></td>
+<td><a href="#post-v1paymentssinglepayment_idconfirm"><code>/v1/payments/single/{payment_id}/confirm</code></a></td>
+<td><code>create</code></td>
+<td>Payment order created successfully</td>
+</tr>
+<tr>
+<td><code>POST</code></td>
+<td><a href="#post-v1paymentsstanding-orderpayment_idconfirm"><code>/v1/payments/standing-order/{payment_id}/confirm</code></a></td>
+<td><code>create</code></td>
+<td>Standing order created successfully</td>
+</tr>
+<tr>
+<td><code>GET</code></td>
+<td><a href="#get-v1paymentsscheduled"><code>/v1/payments/scheduled</code></a></td>
+<td><code>list</code></td>
+<td>Successful request</td>
+</tr>
+<tr>
+<td><code>GET</code></td>
+<td><a href="#get-v1paymentssingle"><code>/v1/payments/single</code></a></td>
+<td><code>list</code></td>
+<td>Successful request</td>
+</tr>
+<tr>
+<td><code>GET</code></td>
+<td><a href="#get-v1paymentsstanding-order"><code>/v1/payments/standing-order</code></a></td>
+<td><code>list</code></td>
+<td>Successful request</td>
+</tr>
+<tr>
+<td><code>GET</code></td>
+<td><a href="#get-v1paymentsscheduledpayment_id"><code>/v1/payments/scheduled/{payment_id}</code></a></td>
+<td><code>load</code></td>
+<td>Successful request</td>
+</tr>
+<tr>
+<td><code>GET</code></td>
+<td><a href="#get-v1paymentssinglepayment_id"><code>/v1/payments/single/{payment_id}</code></a></td>
+<td><code>load</code></td>
+<td>Successful request</td>
+</tr>
+<tr>
+<td><code>GET</code></td>
+<td><a href="#get-v1paymentsstanding-orderpayment_id"><code>/v1/payments/standing-order/{payment_id}</code></a></td>
+<td><code>load</code></td>
+<td>Successful request</td>
+</tr>
+</tbody>
+</table>
+<h2 id="examples">Examples</h2>
+<p>One example per SDK, generated from the API model. The argument names are the parameters and fields of this entity, and the values are placeholders. The examples are not compiled or executed.</p>
+<h3 id="golang">Golang</h3>
+<p>Construct <code>client</code> as shown in the <a href="../sdks/go.html#set-up-the-client">Golang setup</a>, then call the operations:</p>
+<pre><code class="language-go">manage_payments, err := client.ManagePayment(nil).List(nil, nil)
+if err != nil {
+    panic(err)
+}
+fmt.Println(manage_payments)
+manage_payment, err := client.ManagePayment(nil).Load(map[string]any{&quot;payment_id&quot;: &quot;example&quot;}, nil)
+if err != nil {
+    panic(err)
+}
+fmt.Println(manage_payment)
+created, err := client.ManagePayment(nil).Create(map[string]any{&quot;scheduled_id&quot;: &quot;example&quot;, &quot;amount&quot;: map[string]any{}, &quot;client_id&quot;: &quot;example&quot;, &quot;created_at&quot;: &quot;example&quot;, &quot;data&quot;: map[string]any{}, &quot;errors&quot;: []any{}, &quot;first_payment_date&quot;: &quot;example&quot;, &quot;frequency&quot;: &quot;example&quot;, &quot;known_charges&quot;: map[string]any{}, &quot;method&quot;: &quot;example&quot;, &quot;operation_id&quot;: &quot;example&quot;, &quot;organisation_id&quot;: &quot;example&quot;, &quot;payment_id&quot;: &quot;example&quot;, &quot;recipient&quot;: map[string]any{}, &quot;recurring_amount&quot;: map[string]any{}, &quot;reference&quot;: &quot;example&quot;, &quot;requested_execution_date&quot;: &quot;example&quot;, &quot;required_action&quot;: &quot;example&quot;, &quot;sender&quot;: map[string]any{}, &quot;state&quot;: map[string]any{}, &quot;supplementary_status&quot;: map[string]any{}}, nil)
+if err != nil {
+    panic(err)
+}
+fmt.Println(created)
+</code></pre>
+<h3 id="javascript">JavaScript</h3>
+<p>Construct <code>client</code> as shown in the <a href="../sdks/js.html#set-up-the-client">JavaScript setup</a>, then call the operations:</p>
+<pre><code class="language-js">const manage_payments = await client.ManagePayment().list()
+const manage_payment = await client.ManagePayment().load({ payment_id: &quot;example&quot; })
+const created = await client.ManagePayment().create({ scheduled_id: &quot;example&quot;, amount: {}, client_id: &quot;example&quot;, created_at: &quot;example&quot;, data: {}, errors: [], first_payment_date: &quot;example&quot;, frequency: &quot;example&quot;, known_charges: {}, method: &quot;example&quot;, operation_id: &quot;example&quot;, organisation_id: &quot;example&quot;, payment_id: &quot;example&quot;, recipient: {}, recurring_amount: {}, reference: &quot;example&quot;, requested_execution_date: &quot;example&quot;, required_action: &quot;example&quot;, sender: {}, state: {}, supplementary_status: {} })
+</code></pre>
+<h3 id="lua">Lua</h3>
+<p>Construct <code>client</code> as shown in the <a href="../sdks/lua.html#set-up-the-client">Lua setup</a>, then call the operations:</p>
+<pre><code class="language-lua">local manage_payments, err = client:ManagePayment():list()
+local manage_payment, err = client:ManagePayment():load({ payment_id = &quot;example&quot; })
+local created, err = client:ManagePayment():create({ scheduled_id = &quot;example&quot;, amount = {}, client_id = &quot;example&quot;, created_at = &quot;example&quot;, data = {}, errors = {}, first_payment_date = &quot;example&quot;, frequency = &quot;example&quot;, known_charges = {}, method = &quot;example&quot;, operation_id = &quot;example&quot;, organisation_id = &quot;example&quot;, payment_id = &quot;example&quot;, recipient = {}, recurring_amount = {}, reference = &quot;example&quot;, requested_execution_date = &quot;example&quot;, required_action = &quot;example&quot;, sender = {}, state = {}, supplementary_status = {} })
+</code></pre>
+<h3 id="php">PHP</h3>
+<p>Construct <code>client</code> as shown in the <a href="../sdks/php.html#set-up-the-client">PHP setup</a>, then call the operations:</p>
+<pre><code class="language-php">$manage_payments = $client-&gt;ManagePayment()-&gt;list();
+$manage_payment = $client-&gt;ManagePayment()-&gt;load([&quot;payment_id&quot; =&gt; &quot;example&quot;]);
+$created = $client-&gt;ManagePayment()-&gt;create([&quot;scheduled_id&quot; =&gt; &quot;example&quot;, &quot;amount&quot; =&gt; [], &quot;client_id&quot; =&gt; &quot;example&quot;, &quot;created_at&quot; =&gt; &quot;example&quot;, &quot;data&quot; =&gt; [], &quot;errors&quot; =&gt; [], &quot;first_payment_date&quot; =&gt; &quot;example&quot;, &quot;frequency&quot; =&gt; &quot;example&quot;, &quot;known_charges&quot; =&gt; [], &quot;method&quot; =&gt; &quot;example&quot;, &quot;operation_id&quot; =&gt; &quot;example&quot;, &quot;organisation_id&quot; =&gt; &quot;example&quot;, &quot;payment_id&quot; =&gt; &quot;example&quot;, &quot;recipient&quot; =&gt; [], &quot;recurring_amount&quot; =&gt; [], &quot;reference&quot; =&gt; &quot;example&quot;, &quot;requested_execution_date&quot; =&gt; &quot;example&quot;, &quot;required_action&quot; =&gt; &quot;example&quot;, &quot;sender&quot; =&gt; [], &quot;state&quot; =&gt; [], &quot;supplementary_status&quot; =&gt; []]);
+</code></pre>
+<h3 id="python">Python</h3>
+<p>Construct <code>client</code> as shown in the <a href="../sdks/py.html#set-up-the-client">Python setup</a>, then call the operations:</p>
+<pre><code class="language-py">manage_payments = client.ManagePayment().list()
+manage_payment = client.ManagePayment().load({&quot;payment_id&quot;: &quot;example&quot;})
+created = client.ManagePayment().create({ &quot;scheduled_id&quot;: &quot;example&quot;, &quot;amount&quot;: {}, &quot;client_id&quot;: &quot;example&quot;, &quot;created_at&quot;: &quot;example&quot;, &quot;data&quot;: {}, &quot;errors&quot;: [], &quot;first_payment_date&quot;: &quot;example&quot;, &quot;frequency&quot;: &quot;example&quot;, &quot;known_charges&quot;: {}, &quot;method&quot;: &quot;example&quot;, &quot;operation_id&quot;: &quot;example&quot;, &quot;organisation_id&quot;: &quot;example&quot;, &quot;payment_id&quot;: &quot;example&quot;, &quot;recipient&quot;: {}, &quot;recurring_amount&quot;: {}, &quot;reference&quot;: &quot;example&quot;, &quot;requested_execution_date&quot;: &quot;example&quot;, &quot;required_action&quot;: &quot;example&quot;, &quot;sender&quot;: {}, &quot;state&quot;: {}, &quot;supplementary_status&quot;: {} })
+</code></pre>
+<h3 id="typescript">TypeScript</h3>
+<p>Construct <code>client</code> as shown in the <a href="../sdks/ts.html#set-up-the-client">TypeScript setup</a>, then call the operations:</p>
+<pre><code class="language-ts">const manage_payments = await client.ManagePayment().list()
+const manage_payment = await client.ManagePayment().load({ payment_id: &quot;example&quot; })
+const created = await client.ManagePayment().create({ scheduled_id: &quot;example&quot;, amount: {}, client_id: &quot;example&quot;, created_at: &quot;example&quot;, data: {}, errors: [], first_payment_date: &quot;example&quot;, frequency: &quot;example&quot;, known_charges: {}, method: &quot;example&quot;, operation_id: &quot;example&quot;, organisation_id: &quot;example&quot;, payment_id: &quot;example&quot;, recipient: {}, recurring_amount: {}, reference: &quot;example&quot;, requested_execution_date: &quot;example&quot;, required_action: &quot;example&quot;, sender: {}, state: {}, supplementary_status: {} })
+</code></pre>
+<h2 id="fields">Fields</h2>
+<table>
+<thead>
+<tr>
+<th>Field</th>
+<th>Type</th>
+<th>Required</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>amount</code></td>
+<td><code>object</code></td>
+<td>Yes</td>
+<td>The monetary amount.</td>
+</tr>
+<tr>
+<td><code>client_id</code></td>
+<td><code>string</code></td>
+<td>Yes</td>
+<td>Bud's Client/App Identifier</td>
+</tr>
+<tr>
+<td><code>created_at</code></td>
+<td><code>string</code></td>
+<td>Yes</td>
+<td>The created at timestamp for the payment</td>
+</tr>
+<tr>
+<td><code>data</code></td>
+<td><code>object</code></td>
+<td>Yes</td>
+<td>Data structure for the Scheduled Payment object</td>
+</tr>
+<tr>
+<td><code>errors</code></td>
+<td><code>array</code></td>
+<td>Yes</td>
+<td>A list of any errors that may be associated with the payment</td>
+</tr>
+<tr>
+<td><code>first_payment_date</code></td>
+<td><code>string</code></td>
+<td>Yes</td>
+<td>Date-time (ISO 8601) the first payment should be made.</td>
+</tr>
+<tr>
+<td><code>frequency</code></td>
+<td><code>string</code></td>
+<td>Yes</td>
+<td>The payment frequency for a Standing Order</td>
+</tr>
+<tr>
+<td><code>known_charges</code></td>
+<td><code>object</code></td>
+<td>Yes</td>
+<td>A list detailing information surrounding any known charges that may be associated with the payment</td>
+</tr>
+<tr>
+<td><code>last_payment_date</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>Date-time (ISO 8601) after which payments should stop.</td>
+</tr>
+<tr>
+<td><code>metadata</code></td>
+<td><code>object</code></td>
+<td>No</td>
+<td>Metadata</td>
+</tr>
+<tr>
+<td><code>method</code></td>
+<td><code>string</code></td>
+<td>Yes</td>
+<td>The payment method</td>
+</tr>
+<tr>
+<td><code>operation_id</code></td>
+<td><code>string</code></td>
+<td>Yes</td>
+<td>A unique identifier/reference associated with a given endpoint/operation</td>
+</tr>
+<tr>
+<td><code>organisation_id</code></td>
+<td><code>string</code></td>
+<td>Yes</td>
+<td>Bud's Organisation Identifier</td>
+</tr>
+<tr>
+<td><code>payment_id</code></td>
+<td><code>string</code></td>
+<td>Yes</td>
+<td>Payment Identifier</td>
+</tr>
+<tr>
+<td><code>recipient</code></td>
+<td><code>object</code></td>
+<td>Yes</td>
+<td>Details of the recipient of the payment</td>
+</tr>
+<tr>
+<td><code>recurring_amount</code></td>
+<td><code>object</code></td>
+<td>Yes</td>
+<td>The monetary amount.</td>
+</tr>
+<tr>
+<td><code>reference</code></td>
+<td><code>string</code></td>
+<td>Yes</td>
+<td>Reference to use for this payment</td>
+</tr>
+<tr>
+<td><code>requested_execution_date</code></td>
+<td><code>string</code></td>
+<td>Yes</td>
+<td>Date-time (ISO 8601) the Scheduled Payment should be made.</td>
+</tr>
+<tr>
+<td><code>required_action</code></td>
+<td><code>string</code></td>
+<td>Yes</td>
+<td>This field will indicate that there is an action required to be taken by the client in order to complete the payment.</td>
+</tr>
+<tr>
+<td><code>sender</code></td>
+<td><code>object</code></td>
+<td>Yes</td>
+<td>Details of the payment sender</td>
+</tr>
+<tr>
+<td><code>state</code></td>
+<td><code>object</code></td>
+<td>Yes</td>
+<td>Details of the payment state and history</td>
+</tr>
+<tr>
+<td><code>supplementary_status</code></td>
+<td><code>object</code></td>
+<td>Yes</td>
+<td>A list of supplementary states associated with the payment as described by the specific provider</td>
+</tr>
+</tbody>
+</table>
+<h2 id="create">create</h2>
+<h3 id="post-v1paymentsscheduledpayment_idconfirm" class="operation" data-method="post"><code>POST</code> /v1/payments/scheduled/{payment_id}/confirm</h3>
+<p>Operation ID: <code>v1_payments_scheduled_payment_id_confirm_post</code>.</p>
+<p>Authentication: oauth2 (<code>OAuth2</code>).</p>
+<h4 id="parameters">Parameters</h4>
+<p>| Parameter | In | Type | Required | Description |
+| --- | --- | --- | --- |
+| <code>payment_id</code> | <code>path</code> | <code>string</code> | Yes | Bud Payment Identifier |
+| <code>X-Client-Id</code> | <code>header</code> | <code>string</code> | Yes | The API Client Identifier (Service Application Identifier). |</p>
+<h4 id="responses">Responses</h4>
+<h5 id="201-request-to-create-scheduled-payment-succeeded" class="status" data-status="2xx">201: Request to create scheduled payment succeeded</h5>
+<p><code>application/json</code></p>
+<p>Example response:</p>
+<pre><code class="language-json">{
+  &quot;operation_id&quot;: &quot;v1_payments_scheduled_payment_id_confirm_post&quot;
+}
+</code></pre>
+<h5 id="400-not-allowed-to-confirm-payment-either-there-is-no-consent-not-authorised-or-the-payment-order-has-already-been-created" class="status" data-status="4xx">400: Not allowed to confirm payment. Either there is no consent, not authorised or the payment order has already been created</h5>
+<p><code>application/json</code></p>
+<table>
+<thead>
+<tr>
+<th>Property</th>
+<th>Type</th>
+<th>Required</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>code_id</code></td>
+<td><code>string</code></td>
+<td>Yes</td>
+<td>A descriptive enough string that is linked to the reason for the error.</td>
+</tr>
+<tr>
+<td><code>errors</code></td>
+<td><code>object or object</code></td>
+<td>Yes</td>
+<td></td>
+</tr>
+<tr>
+<td><code>message</code></td>
+<td><code>string</code></td>
+<td>Yes</td>
+<td></td>
+</tr>
+<tr>
+<td><code>operation_id</code></td>
+<td><code>string</code></td>
+<td>Yes</td>
+<td>A unique identifier/reference associated with a given endpoint/operation</td>
+</tr>
+</tbody>
+</table>
+<p>Example response:</p>
+<pre><code class="language-json">{
+  &quot;code_id&quot;: &quot;failed_validation&quot;,
+  &quot;errors&quot;: {
+    &quot;payment&quot;: &quot;Payment initiation failed&quot;
+  },
+  &quot;message&quot;: &quot;Failed validation&quot;,
+  &quot;operation_id&quot;: &quot;v1_payments_scheduled_payment_id_confirm_post&quot;
+}
+</code></pre>
+<h5 id="401-unauthorised-request" class="status" data-status="4xx">401: Unauthorised request</h5>
+<h5 id="404-resource-not-found" class="status" data-status="4xx">404: Resource not found</h5>
+<p><code>application/json</code></p>
+<table>
+<thead>
+<tr>
+<th>Property</th>
+<th>Type</th>
+<th>Required</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>code_id</code></td>
+<td><code>string</code></td>
+<td>Yes</td>
+<td>A descriptive enough string that is linked to the reason for the error.</td>
+</tr>
+<tr>
+<td><code>errors</code></td>
+<td><code>object or object</code></td>
+<td>Yes</td>
+<td></td>
+</tr>
+<tr>
+<td><code>message</code></td>
+<td><code>string</code></td>
+<td>Yes</td>
+<td></td>
+</tr>
+<tr>
+<td><code>operation_id</code></td>
+<td><code>string</code></td>
+<td>Yes</td>
+<td>A unique identifier/reference associated with a given endpoint/operation</td>
+</tr>
+</tbody>
+</table>
+<p>Example response:</p>
+<pre><code class="language-json">{
+  &quot;code_id&quot;: &quot;failed_validation&quot;,
+  &quot;errors&quot;: {
+    &quot;payment_id&quot;: &quot;Value not found&quot;
+  },
+  &quot;message&quot;: &quot;Failed validation&quot;,
+  &quot;operation_id&quot;: &quot;v1_payments_scheduled_payment_id_confirm_post&quot;
+}
+</code></pre>
+<h5 id="405-an-unexpected-http-method-was-used" class="status" data-status="4xx">405: An unexpected HTTP method was used</h5>
+<h5 id="5xx-an-unexpected-error-occurred-on-the-server-side">5XX: An unexpected error occurred on the server side</h5>
+<h3 id="post-v1paymentssinglepayment_idconfirm" class="operation" data-method="post"><code>POST</code> /v1/payments/single/{payment_id}/confirm</h3>
+<p>Operation ID: <code>v1_payments_single_confirm_post</code>.</p>
+<p>Authentication: oauth2 (<code>OAuth2</code>).</p>
+<h4 id="parameters-1">Parameters</h4>
+<p>| Parameter | In | Type | Required | Description |
+| --- | --- | --- | --- |
+| <code>payment_id</code> | <code>path</code> | <code>string</code> | Yes | Bud Payment Identifier |
+| <code>X-Client-Id</code> | <code>header</code> | <code>string</code> | Yes | The API Client Identifier (Service Application Identifier). |</p>
+<h4 id="responses-1">Responses</h4>
+<h5 id="201-payment-order-created-successfully" class="status" data-status="2xx">201: Payment order created successfully</h5>
+<p><code>application/json</code></p>
+<p>Example response:</p>
+<pre><code class="language-json">{
+  &quot;operation_id&quot;: &quot;v1_payments_single_confirm_post&quot;
+}
+</code></pre>
+<h5 id="400-not-allowed-to-confirm-payment-either-there-is-no-consent-not-authorised-or-the-payment-order-has-already-been-created-1" class="status" data-status="4xx">400: Not allowed to confirm payment. Either there is no consent, not authorised or the payment order has already been created</h5>
+<p><code>application/json</code></p>
+<table>
+<thead>
+<tr>
+<th>Property</th>
+<th>Type</th>
+<th>Required</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>code_id</code></td>
+<td><code>string</code></td>
+<td>Yes</td>
+<td>A descriptive enough string that is linked to the reason for the error.</td>
+</tr>
+<tr>
+<td><code>errors</code></td>
+<td><code>object or object</code></td>
+<td>Yes</td>
+<td></td>
+</tr>
+<tr>
+<td><code>message</code></td>
+<td><code>string</code></td>
+<td>Yes</td>
+<td></td>
+</tr>
+<tr>
+<td><code>operation_id</code></td>
+<td><code>string</code></td>
+<td>Yes</td>
+<td>A unique identifier/reference associated with a given endpoint/operation</td>
+</tr>
+</tbody>
+</table>
+<p>Example response:</p>
+<pre><code class="language-json">{
+  &quot;code_id&quot;: &quot;failed_validation&quot;,
+  &quot;errors&quot;: {
+    &quot;payment&quot;: [
+      &quot;Payment initiation failed&quot;
+    ]
+  },
+  &quot;message&quot;: &quot;Failed validation&quot;,
+  &quot;operation_id&quot;: &quot;v1_payments_single_confirm_post&quot;
+}
+</code></pre>
+<h5 id="401-unauthorised-request-1" class="status" data-status="4xx">401: Unauthorised request</h5>
+<h5 id="404-resource-not-found-1" class="status" data-status="4xx">404: Resource not found</h5>
+<p><code>application/json</code></p>
+<table>
+<thead>
+<tr>
+<th>Property</th>
+<th>Type</th>
+<th>Required</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>code_id</code></td>
+<td><code>string</code></td>
+<td>Yes</td>
+<td>A descriptive enough string that is linked to the reason for the error.</td>
+</tr>
+<tr>
+<td><code>errors</code></td>
+<td><code>object or object</code></td>
+<td>Yes</td>
+<td></td>
+</tr>
+<tr>
+<td><code>message</code></td>
+<td><code>string</code></td>
+<td>Yes</td>
+<td></td>
+</tr>
+<tr>
+<td><code>operation_id</code></td>
+<td><code>string</code></td>
+<td>Yes</td>
+<td>A unique identifier/reference associated with a given endpoint/operation</td>
+</tr>
+</tbody>
+</table>
+<p>Example response:</p>
+<pre><code class="language-json">{
+  &quot;code_id&quot;: &quot;failed_validation&quot;,
+  &quot;errors&quot;: {
+    &quot;payment_id&quot;: &quot;Value not found&quot;
+  },
+  &quot;message&quot;: &quot;Failed validation&quot;,
+  &quot;operation_id&quot;: &quot;v1_payments_single_confirm_post&quot;
+}
+</code></pre>
+<h5 id="405-an-unexpected-http-method-was-used-1" class="status" data-status="4xx">405: An unexpected HTTP method was used</h5>
+<h5 id="5xx-an-unexpected-error-occurred-on-the-server-side-1">5XX: An unexpected error occurred on the server side</h5>
+<h3 id="post-v1paymentsstanding-orderpayment_idconfirm" class="operation" data-method="post"><code>POST</code> /v1/payments/standing-order/{payment_id}/confirm</h3>
+<p>Operation ID: <code>v1_payments_standing_order_confirm_post</code>.</p>
+<p>Authentication: oauth2 (<code>OAuth2</code>).</p>
+<h4 id="parameters-2">Parameters</h4>
+<p>| Parameter | In | Type | Required | Description |
+| --- | --- | --- | --- |
+| <code>payment_id</code> | <code>path</code> | <code>string</code> | Yes | Bud Payment Identifier |
+| <code>X-Client-Id</code> | <code>header</code> | <code>string</code> | Yes | The API Client Identifier (Service Application Identifier). |</p>
+<h4 id="responses-2">Responses</h4>
+<h5 id="201-standing-order-created-successfully" class="status" data-status="2xx">201: Standing order created successfully</h5>
+<p><code>application/json</code></p>
+<p>Example response:</p>
+<pre><code class="language-json">{
+  &quot;operation_id&quot;: &quot;v1_payments_standing_order_confirm_post&quot;
+}
+</code></pre>
+<h5 id="400-not-allowed-to-confirm-payment-either-there-is-no-consent-not-authorised-or-the-payment-order-has-already-been-created-2" class="status" data-status="4xx">400: Not allowed to confirm payment. Either there is no consent, not authorised or the payment order has already been created</h5>
+<p><code>application/json</code></p>
+<table>
+<thead>
+<tr>
+<th>Property</th>
+<th>Type</th>
+<th>Required</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>code_id</code></td>
+<td><code>string</code></td>
+<td>Yes</td>
+<td>A descriptive enough string that is linked to the reason for the error.</td>
+</tr>
+<tr>
+<td><code>errors</code></td>
+<td><code>object or object</code></td>
+<td>Yes</td>
+<td></td>
+</tr>
+<tr>
+<td><code>message</code></td>
+<td><code>string</code></td>
+<td>Yes</td>
+<td></td>
+</tr>
+<tr>
+<td><code>operation_id</code></td>
+<td><code>string</code></td>
+<td>Yes</td>
+<td>A unique identifier/reference associated with a given endpoint/operation</td>
+</tr>
+</tbody>
+</table>
+<p>Example response:</p>
+<pre><code class="language-json">{
+  &quot;code_id&quot;: &quot;failed_validation&quot;,
+  &quot;errors&quot;: {
+    &quot;payment&quot;: &quot;Payment initiation failed&quot;
+  },
+  &quot;message&quot;: &quot;Failed validation&quot;,
+  &quot;operation_id&quot;: &quot;v1_payments_standing_order_confirm_post&quot;
+}
+</code></pre>
+<h5 id="401-unauthorised-request-2" class="status" data-status="4xx">401: Unauthorised request</h5>
+<h5 id="404-resource-not-found-2" class="status" data-status="4xx">404: Resource not found</h5>
+<p><code>application/json</code></p>
+<table>
+<thead>
+<tr>
+<th>Property</th>
+<th>Type</th>
+<th>Required</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>code_id</code></td>
+<td><code>string</code></td>
+<td>Yes</td>
+<td>A descriptive enough string that is linked to the reason for the error.</td>
+</tr>
+<tr>
+<td><code>errors</code></td>
+<td><code>object or object</code></td>
+<td>Yes</td>
+<td></td>
+</tr>
+<tr>
+<td><code>message</code></td>
+<td><code>string</code></td>
+<td>Yes</td>
+<td></td>
+</tr>
+<tr>
+<td><code>operation_id</code></td>
+<td><code>string</code></td>
+<td>Yes</td>
+<td>A unique identifier/reference associated with a given endpoint/operation</td>
+</tr>
+</tbody>
+</table>
+<p>Example response:</p>
+<pre><code class="language-json">{
+  &quot;code_id&quot;: &quot;failed_validation&quot;,
+  &quot;errors&quot;: {
+    &quot;payment_id&quot;: &quot;Value not found&quot;
+  },
+  &quot;message&quot;: &quot;Failed validation&quot;,
+  &quot;operation_id&quot;: &quot;v1_payments_standing_order_confirm_post&quot;
+}
+</code></pre>
+<h5 id="405-an-unexpected-http-method-was-used-2" class="status" data-status="4xx">405: An unexpected HTTP method was used</h5>
+<h5 id="5xx-an-unexpected-error-occurred-on-the-server-side-2">5XX: An unexpected error occurred on the server side</h5>
+<h2 id="list">list</h2>
+<h3 id="get-v1paymentsscheduled" class="operation" data-method="get"><code>GET</code> /v1/payments/scheduled</h3>
+<p>Operation ID: <code>v1_payments_scheduled_get</code>.</p>
+<p>Authentication: oauth2 (<code>OAuth2</code>).</p>
+<h4 id="parameters-3">Parameters</h4>
+<p>| Parameter | In | Type | Required | Description |
+| --- | --- | --- | --- |
+| <code>X-Client-Id</code> | <code>header</code> | <code>string</code> | Yes | The API Client Identifier (Service Application Identifier). |
+| <code>X-Payment-Id</code> | <code>header</code> | <code>string</code> | No | Payment ID filter |
+| <code>X-Page-Number</code> | <code>header</code> | <code>string</code> | No | Page number filter |
+| <code>X-Sender-Providers</code> | <code>header</code> | <code>string</code> | No | comma separated list of providers name filter |
+| <code>X-Status-Codes</code> | <code>header</code> | <code>array of enum: CREATED, AWAITING_AUTH, AUTHENTICATED, ACCEPTED, FUNDS_CONFIRMED, INITIATING, ...</code> | No | comma separated list of status codes filter |
+| <code>X-Date-From</code> | <code>header</code> | <code>string</code> | No | Date from filter |
+| <code>X-Date-To</code> | <code>header</code> | <code>string</code> | No | Date to filter |
+| <code>X-Amount-From</code> | <code>header</code> | <code>string</code> | No | Amount from filter |
+| <code>X-Amount-To</code> | <code>header</code> | <code>string</code> | No | Amount to filter |</p>
+<h4 id="responses-3">Responses</h4>
+<h5 id="200-successful-request" class="status" data-status="2xx">200: Successful request</h5>
+<p><code>application/json</code></p>
+<table>
+<thead>
+<tr>
+<th>Property</th>
+<th>Type</th>
+<th>Required</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>data</code></td>
+<td><code>array of object</code></td>
+<td>Yes</td>
+<td>Array of Scheduled Payment Status Objects</td>
+</tr>
+<tr>
+<td><code>data[].client_id</code></td>
+<td><code>string</code></td>
+<td>Yes</td>
+<td>Bud's Client/App Identifier</td>
+</tr>
+<tr>
+<td><code>data[].created_at</code></td>
+<td><code>string (date-time)</code></td>
+<td>Yes</td>
+<td>Date-time (ISO 8601) of when the Scheduled Payment was created</td>
+</tr>
+<tr>
+<td><code>data[].errors</code></td>
+<td><code>array of object</code></td>
+<td>Yes</td>
+<td>Details surrounding any errors when attempting to initiate a Scheduled Payment</td>
+</tr>
+<tr>
+<td><code>data[].errors[].code</code></td>
+<td><code>string</code></td>
+<td>Yes</td>
+<td>Error Code</td>
+</tr>
+<tr>
+<td><code>data[].errors[].description</code></td>
+<td><code>string</code></td>
+<td>Yes</td>
+<td>Text string used to give a description of the payment error</td>
+</tr>
+<tr>
+<td><code>data[].known_charges</code></td>
+<td><code>object</code></td>
+<td>Yes</td>
+<td>A list detailing information surrounding any known charges that may be associated with the payment</td>
+</tr>
+<tr>
+<td><code>data[].known_charges.recipient_charge</code></td>
+<td><code>object</code></td>
+<td>Yes</td>
+<td>The charge details applied to the recipient</td>
+</tr>
+<tr>
+<td><code>data[].known_charges.recipient_charge.charge</code></td>
+<td><code>string</code></td>
+<td>Yes</td>
+<td>A number of monetary units specified in an active currency where the unit of currency is explicit and compliant with ISO 4217.</td>
+</tr>
+<tr>
+<td><code>data[].known_charges.recipient_charge.currency</code></td>
+<td><code>string</code></td>
+<td>Yes</td>
+<td>A code allocated to a currency by a Maintenance Agency under an international identification scheme, as described in the latest edition of the international standard ISO 4217 &quot;Codes for the representation of currencies and funds&quot;</td>
+</tr>
+<tr>
+<td><code>data[].known_charges.recipient_charge.recipient_receives</code></td>
+<td><code>string</code></td>
+<td>Yes</td>
+<td>A number of monetary units specified in an active currency where the unit of currency is explicit and compliant with ISO 4217.</td>
+</tr>
+<tr>
+<td><code>data[].known_charges.sender_charge</code></td>
+<td><code>object</code></td>
+<td>Yes</td>
+<td>The charge details applied by the sender</td>
+</tr>
+<tr>
+<td><code>data[].known_charges.sender_charge.bank_sends</code></td>
+<td><code>string</code></td>
+<td>Yes</td>
+<td>A number of monetary units specified in an active currency where the unit of currency is explicit and compliant with ISO 4217.</td>
+</tr>
+<tr>
+<td><code>data[].known_charges.sender_charge.charge</code></td>
+<td><code>string</code></td>
+<td>Yes</td>
+<td>A number of monetary units specified in an active currency where the unit of currency is explicit and compliant with ISO 4217.</td>
+</tr>
+<tr>
+<td><code>data[].known_charges.sender_charge.currency</code></td>
+<td><code>string</code></td>
+<td>Yes</td>
+<td>A code allocated to a currency by a Maintenance Agency under an international identification scheme, as described in the latest edition of the international standard ISO 4217 &quot;Codes for the representation of currencies and funds&quot;</td>
+</tr>
+<tr>
+<td><code>data[].known_charges.sender_charge.total_cost</code></td>
+<td><code>string</code></td>
+<td>Yes</td>
+<td>A number of monetary units specified in an active currency where the unit of currency is explicit and compliant with ISO 4217.</td>
+</tr>
+<tr>
+<td><code>data[].organisation_id</code></td>
+<td><code>string</code></td>
+<td>Yes</td>
+<td>Bud's Organisation Identifier</td>
+</tr>
+<tr>
+<td><code>data[].payment_id</code></td>
+<td><code>string</code></td>
+<td>Yes</td>
+<td>Payment Identifier</td>
+</tr>
+<tr>
+<td><code>data[].recipient</code></td>
+<td><code>object</code></td>
+<td>Yes</td>
+<td>Details of the recipient of the payment</td>
+</tr>
+<tr>
+<td><code>data[].recipient.account_number</code></td>
+<td><code>string</code></td>
+<td>Yes</td>
+<td>Account identifier of the recipient</td>
+</tr>
+<tr>
+<td><code>data[].recipient.name</code></td>
+<td><code>string</code></td>
+<td>Yes</td>
+<td>Account holder name of the recipient</td>
+</tr>
+<tr>
+<td><code>data[].recipient.type</code></td>
+<td><code>enum: SortCodeAccountNumber, IBAN</code></td>
+<td>Yes</td>
+<td>The account type structure for the payment sender or receiver</td>
+</tr>
+<tr>
+<td><code>data[].recurring_amount</code></td>
+<td><code>object</code></td>
+<td>No</td>
+<td>The monetary amount.</td>
+</tr>
+<tr>
+<td><code>data[].recurring_amount.currency</code></td>
+<td><code>string</code></td>
+<td>Yes</td>
+<td>The three-letter <a href="https://www.iso.org/iso-4217-currency-codes.html">ISO currency code</a> of the monetary amount. Example: <code>GBP</code></td>
+</tr>
+<tr>
+<td><code>data[].recurring_amount.value</code></td>
+<td><code>string</code></td>
+<td>Yes</td>
+<td>The value of the monetary amount. The value is formatted with the number of decimal places for the respective currency. Example: <code>10.98</code></td>
+</tr>
+<tr>
+<td><code>data[].reference</code></td>
+<td><code>string</code></td>
+<td>Yes</td>
+<td>Reference to use for this payment</td>
+</tr>
+<tr>
+<td><code>data[].requested_execution_date</code></td>
+<td><code>string (date-time)</code></td>
+<td>Yes</td>
+<td>Date-time (ISO 8601) the Scheduled Payment should be made. Must be future date.</td>
+</tr>
+<tr>
+<td><code>data[].required_action</code></td>
+<td><code>enum: confirm_scheduled_payment</code></td>
+<td>No</td>
+<td>This field will indicate that there is an action required to be taken by the client in order to complete the payment. | Value | Description | |:-------|:-------------| | <code>confirm_scheduled_payment</code> | If present, this value indicates that client has yet to confirm the Scheduled Payment once the customer has successfully authorised the payment with the provider. This confirmation can be accomplished using the Confirm Scheduled Payment API Endpoint. Please note this step will only be relevant for clients using Bud as a Technical Service Provider (TSP) |</td>
+</tr>
+<tr>
+<td><code>data[].sender</code></td>
+<td><code>object</code></td>
+<td>Yes</td>
+<td>Details of the payment sender</td>
+</tr>
+<tr>
+<td><code>data[].sender.account_number</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>Account identifier of the sender</td>
+</tr>
+<tr>
+<td><code>data[].sender.name</code></td>
+<td><code>string</code></td>
+<td>Yes</td>
+<td>Account holder name of the sender</td>
+</tr>
+<tr>
+<td><code>data[].sender.provider</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>The name (identifier) of the payment provider</td>
+</tr>
+<tr>
+<td><code>data[].sender.type</code></td>
+<td><code>enum: SortCodeAccountNumber, IBAN</code></td>
+<td>No</td>
+<td>The account type structure for the payment sender or receiver</td>
+</tr>
+<tr>
+<td><code>data[].sender.user_id</code></td>
+<td><code>string</code></td>
+<td>Yes</td>
+<td>A string that can be used to uniquely identify a user within the Client's application</td>
+</tr>
+<tr>
+<td><code>data[].state</code></td>
+<td><code>object</code></td>
+<td>Yes</td>
+<td></td>
+</tr>
+<tr>
+<td><code>data[].state.history</code></td>
+<td><code>array of object</code></td>
+<td>Yes</td>
+<td></td>
+</tr>
+<tr>
+<td><code>data[].state.history[].code</code></td>
+<td><code>enum: CREATED, AWAITING_AUTH, AUTH_REJECTED, AUTH_COMPLETED, PENDING, FAILED, ...</code></td>
+<td>Yes</td>
+<td>The payment status code for a Scheduled Payment</td>
+</tr>
+<tr>
+<td><code>data[].state.history[].datetime</code></td>
+<td><code>string</code></td>
+<td>Yes</td>
+<td></td>
+</tr>
+<tr>
+<td><code>data[].state.history[].message</code></td>
+<td><code>enum: Scheduled Payment Created, Awaiting Customer Authentication, Authentication Failed, Authentication Completed, Payment Order Pending, Scheduled Payment Creation Failed, ...</code></td>
+<td>Yes</td>
+<td>The payment status message for a Scheduled Payment</td>
+</tr>
+<tr>
+<td><code>data[].state.status_code</code></td>
+<td><code>enum: CREATED, AWAITING_AUTH, AUTH_REJECTED, AUTH_COMPLETED, PENDING, FAILED, ...</code></td>
+<td>Yes</td>
+<td>The payment status code for a Scheduled Payment</td>
+</tr>
+<tr>
+<td><code>data[].state.status_message</code></td>
+<td><code>enum: Scheduled Payment Created, Awaiting Customer Authentication, Authentication Failed, Authentication Completed, Payment Order Pending, Scheduled Payment Creation Failed, ...</code></td>
+<td>Yes</td>
+<td>The payment status message for a Scheduled Payment</td>
+</tr>
+<tr>
+<td><code>metadata</code></td>
+<td><code>object</code></td>
+<td>Yes</td>
+<td>Metadata associated with response</td>
+</tr>
+<tr>
+<td><code>metadata.page</code></td>
+<td><code>integer</code></td>
+<td>Yes</td>
+<td>The current page number</td>
+</tr>
+<tr>
+<td><code>metadata.results</code></td>
+<td><code>integer</code></td>
+<td>Yes</td>
+<td>The number of payment results currently displayed on the page</td>
+</tr>
+<tr>
+<td><code>metadata.total_pages</code></td>
+<td><code>integer</code></td>
+<td>Yes</td>
+<td>The total number of pages for the request</td>
+</tr>
+<tr>
+<td><code>metadata.total_results</code></td>
+<td><code>integer</code></td>
+<td>Yes</td>
+<td>The total number of payment results for the request</td>
+</tr>
+<tr>
+<td><code>operation_id</code></td>
+<td><code>string</code></td>
+<td>Yes</td>
+<td>A unique identifier/reference associated with a given endpoint/operation</td>
+</tr>
+</tbody>
+</table>
+<p>Example response:</p>
+<pre><code class="language-json">{
+  &quot;data&quot;: [
+    {
+      &quot;amount&quot;: {
+        &quot;currency&quot;: &quot;GBP&quot;,
+        &quot;value&quot;: &quot;10.00&quot;
+      },
+      &quot;client_id&quot;: &quot;22f80199-1199-400e-9092-17208f6f39f0&quot;,
+      &quot;created_at&quot;: &quot;2020-02-02T12:29:33.428944815Z&quot;,
+      &quot;errors&quot;: [
+        {
+          &quot;code&quot;: &quot;FAILED&quot;,
+          &quot;description&quot;: &quot;The call to the provider to confirm funds returned an error&quot;
+        }
+      ],
+      &quot;known_charges&quot;: {
+        &quot;recipient_charge&quot;: {
+          &quot;charge&quot;: &quot;1.50&quot;,
+          &quot;currency&quot;: &quot;GBP&quot;,
+          &quot;recipient_receives&quot;: &quot;7.00&quot;
+        },
+        &quot;sender_charge&quot;: {
+          &quot;bank_sends&quot;: &quot;10.00&quot;,
+          &quot;charge&quot;: &quot;1.50&quot;,
+          &quot;currency&quot;: &quot;GBP&quot;,
+          &quot;total_cost&quot;: &quot;11.50&quot;
+        }
+      },
+      &quot;organisation_id&quot;: &quot;22f80199-1199-400e-9092-17208f6f39f0&quot;,
+      &quot;payment_id&quot;: &quot;89f80199-1199-400e-9092-17208f6f39f5&quot;,
+      &quot;recipient&quot;: {
+        &quot;account_number&quot;: &quot;01234501234567&quot;,
+        &quot;name&quot;: &quot;MR TEST RECIPIENT&quot;,
+        &quot;type&quot;: &quot;SortCodeAccountNumber&quot;
+      },
+      &quot;reference&quot;: &quot;Rent&quot;,
+      &quot;requested_execution_date&quot;: &quot;2020-02-02T12:29:33.428944815Z&quot;,
+      &quot;sender&quot;: {
+        &quot;name&quot;: &quot;MR RANDOM SENDER&quot;,
+        &quot;provider&quot;: &quot;Natwest&quot;,
+        &quot;user_id&quot;: &quot;client-defined-user-id&quot;
+      },
+      &quot;state&quot;: {
+        &quot;history&quot;: [
+          {
+            &quot;code&quot;: &quot;CREATED&quot;,
+            &quot;datetime&quot;: &quot;2020-02-02T12:29:33.428944815Z&quot;,
+            &quot;message&quot;: &quot;Scheduled Payment Created&quot;
+          },
+          {
+            &quot;code&quot;: &quot;AWAITING_AUTH&quot;,
+            &quot;datetime&quot;: &quot;2020-02-02T12:29:33.428944815Z&quot;,
+            &quot;message&quot;: &quot;Awaiting Customer Authentication&quot;
+          },
+          {
+            &quot;code&quot;: &quot;AUTH_COMPLETED&quot;,
+            &quot;datetime&quot;: &quot;2020-02-02T12:29:33.428944815Z&quot;,
+            &quot;message&quot;: &quot;Authentication Completed&quot;
+          },
+          {
+            &quot;code&quot;: &quot;PENDING&quot;,
+            &quot;datetime&quot;: &quot;2020-02-02T12:29:33.428944815Z&quot;,
+            &quot;message&quot;: &quot;Payment Order Pending&quot;
+          },
+          {
+            &quot;code&quot;: &quot;COMPLETED&quot;,
+            &quot;datetime&quot;: &quot;2020-02-02T12:29:33.428944815Z&quot;,
+            &quot;message&quot;: &quot;Scheduled Payment Creation Completed&quot;
+          }
+        ],
+        &quot;status_code&quot;: &quot;COMPLETED&quot;,
+        &quot;status_message&quot;: &quot;Scheduled Payment Creation Completed&quot;
+      }
+    }
+  ],
+  &quot;metadata&quot;: {
+    &quot;page&quot;: 1,
+    &quot;results&quot;: 10,
+    &quot;total_pages&quot;: 100000,
+    &quot;total_results&quot;: 1000000
+  },
+  &quot;operation_id&quot;: &quot;v1_payments_scheduled_get&quot;
+}
+</code></pre>
+<h5 id="400-the-request-contains-an-invalid-payload" class="status" data-status="4xx">400: The request contains an invalid payload</h5>
+<p><code>application/json</code></p>
+<table>
+<thead>
+<tr>
+<th>Property</th>
+<th>Type</th>
+<th>Required</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>code_id</code></td>
+<td><code>string</code></td>
+<td>Yes</td>
+<td>A descriptive enough string that is linked to the reason for the error.</td>
+</tr>
+<tr>
+<td><code>errors</code></td>
+<td><code>object or object</code></td>
+<td>Yes</td>
+<td></td>
+</tr>
+<tr>
+<td><code>message</code></td>
+<td><code>string</code></td>
+<td>Yes</td>
+<td></td>
+</tr>
+<tr>
+<td><code>operation_id</code></td>
+<td><code>string</code></td>
+<td>Yes</td>
+<td>A unique identifier/reference associated with a given endpoint/operation</td>
+</tr>
+</tbody>
+</table>
+<p>Example response:</p>
+<pre><code class="language-json">{
+  &quot;code_id&quot;: &quot;failed_validation&quot;,
+  &quot;errors&quot;: {
+    &quot;filter&quot;: &quot;X-Date-From is in the wrong format (expected 2006-01-02T15:04:05Z)&quot;
+  },
+  &quot;message&quot;: &quot;Failed validation&quot;,
+  &quot;operation_id&quot;: &quot;v1_payments_scheduled_get&quot;
+}
+</code></pre>
+<h5 id="401-unauthorised-request-3" class="status" data-status="4xx">401: Unauthorised request</h5>
+<h5 id="405-an-unexpected-http-method-was-used-3" class="status" data-status="4xx">405: An unexpected HTTP method was used</h5>
+<h5 id="5xx-an-unexpected-error-occurred-on-the-server-side-3">5XX: An unexpected error occurred on the server side</h5>
+<h3 id="get-v1paymentssingle" class="operation" data-method="get"><code>GET</code> /v1/payments/single</h3>
+<p>Operation ID: <code>v1_payment_get</code>.</p>
+<p>Authentication: oauth2 (<code>OAuth2</code>).</p>
+<h4 id="parameters-4">Parameters</h4>
+<p>| Parameter | In | Type | Required | Description |
+| --- | --- | --- | --- |
+| <code>X-Client-Id</code> | <code>header</code> | <code>string</code> | Yes | The API Client Identifier (Service Application Identifier). |
+| <code>X-Payment-Id</code> | <code>header</code> | <code>string</code> | No | Payment ID filter |
+| <code>X-Page-Number</code> | <code>header</code> | <code>string</code> | No | Page number filter |
+| <code>X-Sender-Providers</code> | <code>header</code> | <code>string</code> | No | comma separated list of providers name filter |
+| <code>X-Status-Codes</code> | <code>header</code> | <code>array of enum: CREATED, AWAITING_AUTH, AUTHENTICATED, ACCEPTED, FUNDS_CONFIRMED, INITIATING, ...</code> | No | comma separated list of status codes filter |
+| <code>X-Date-From</code> | <code>header</code> | <code>string</code> | No | Date from filter |
+| <code>X-Date-To</code> | <code>header</code> | <code>string</code> | No | Date to filter |
+| <code>X-Amount-From</code> | <code>header</code> | <code>string</code> | No | Amount from filter |
+| <code>X-Amount-To</code> | <code>header</code> | <code>string</code> | No | Amount to filter |</p>
+<h4 id="responses-4">Responses</h4>
+<h5 id="200-successful-request-1" class="status" data-status="2xx">200: Successful request</h5>
+<p><code>application/json</code></p>
+<table>
+<thead>
+<tr>
+<th>Property</th>
+<th>Type</th>
+<th>Required</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>data</code></td>
+<td><code>array of object</code></td>
+<td>Yes</td>
+<td>Array of Single Payment Status Objects</td>
+</tr>
+<tr>
+<td><code>data[].amount</code></td>
+<td><code>object</code></td>
+<td>Yes</td>
+<td>The monetary amount.</td>
+</tr>
+<tr>
+<td><code>data[].amount.currency</code></td>
+<td><code>string</code></td>
+<td>Yes</td>
+<td>The three-letter <a href="https://www.iso.org/iso-4217-currency-codes.html">ISO currency code</a> of the monetary amount. Example: <code>GBP</code></td>
+</tr>
+<tr>
+<td><code>data[].amount.value</code></td>
+<td><code>string</code></td>
+<td>Yes</td>
+<td>The value of the monetary amount. The value is formatted with the number of decimal places for the respective currency. Example: <code>10.98</code></td>
+</tr>
+<tr>
+<td><code>data[].client_id</code></td>
+<td><code>string</code></td>
+<td>Yes</td>
+<td>Bud's Client/App Identifier</td>
+</tr>
+<tr>
+<td><code>data[].created_at</code></td>
+<td><code>string</code></td>
+<td>Yes</td>
+<td>The created at timestamp for the payment</td>
+</tr>
+<tr>
+<td><code>data[].errors</code></td>
+<td><code>array of object</code></td>
+<td>Yes</td>
+<td>A list of any errors that may be associated with the payment</td>
+</tr>
+<tr>
+<td><code>data[].errors[].code</code></td>
+<td><code>string</code></td>
+<td>Yes</td>
+<td>Error Code</td>
+</tr>
+<tr>
+<td><code>data[].errors[].description</code></td>
+<td><code>string</code></td>
+<td>Yes</td>
+<td>Text string used to give a description of the payment error</td>
+</tr>
+<tr>
+<td><code>data[].known_charges</code></td>
+<td><code>object</code></td>
+<td>Yes</td>
+<td>A list detailing information surrounding any known charges that may be associated with the payment</td>
+</tr>
+<tr>
+<td><code>data[].known_charges.recipient_charge</code></td>
+<td><code>object</code></td>
+<td>Yes</td>
+<td>The charge details applied to the recipient</td>
+</tr>
+<tr>
+<td><code>data[].known_charges.recipient_charge.charge</code></td>
+<td><code>string</code></td>
+<td>Yes</td>
+<td>A number of monetary units specified in an active currency where the unit of currency is explicit and compliant with ISO 4217.</td>
+</tr>
+<tr>
+<td><code>data[].known_charges.recipient_charge.currency</code></td>
+<td><code>string</code></td>
+<td>Yes</td>
+<td>A code allocated to a currency by a Maintenance Agency under an international identification scheme, as described in the latest edition of the international standard ISO 4217 &quot;Codes for the representation of currencies and funds&quot;</td>
+</tr>
+<tr>
+<td><code>data[].known_charges.recipient_charge.recipient_receives</code></td>
+<td><code>string</code></td>
+<td>Yes</td>
+<td>A number of monetary units specified in an active currency where the unit of currency is explicit and compliant with ISO 4217.</td>
+</tr>
+<tr>
+<td><code>data[].known_charges.sender_charge</code></td>
+<td><code>object</code></td>
+<td>Yes</td>
+<td>The charge details applied by the sender</td>
+</tr>
+<tr>
+<td><code>data[].known_charges.sender_charge.bank_sends</code></td>
+<td><code>string</code></td>
+<td>Yes</td>
+<td>A number of monetary units specified in an active currency where the unit of currency is explicit and compliant with ISO 4217.</td>
+</tr>
+<tr>
+<td><code>data[].known_charges.sender_charge.charge</code></td>
+<td><code>string</code></td>
+<td>Yes</td>
+<td>A number of monetary units specified in an active currency where the unit of currency is explicit and compliant with ISO 4217.</td>
+</tr>
+<tr>
+<td><code>data[].known_charges.sender_charge.currency</code></td>
+<td><code>string</code></td>
+<td>Yes</td>
+<td>A code allocated to a currency by a Maintenance Agency under an international identification scheme, as described in the latest edition of the international standard ISO 4217 &quot;Codes for the representation of currencies and funds&quot;</td>
+</tr>
+<tr>
+<td><code>data[].known_charges.sender_charge.total_cost</code></td>
+<td><code>string</code></td>
+<td>Yes</td>
+<td>A number of monetary units specified in an active currency where the unit of currency is explicit and compliant with ISO 4217.</td>
+</tr>
+<tr>
+<td><code>data[].method</code></td>
+<td><code>enum: BACS, FPS, SEPA</code></td>
+<td>Yes</td>
+<td>The payment method</td>
+</tr>
+<tr>
+<td><code>data[].organisation_id</code></td>
+<td><code>string</code></td>
+<td>Yes</td>
+<td>Bud's Organisation Identifier</td>
+</tr>
+<tr>
+<td><code>data[].payment_id</code></td>
+<td><code>string</code></td>
+<td>Yes</td>
+<td>Payment Identifier</td>
+</tr>
+<tr>
+<td><code>data[].recipient</code></td>
+<td><code>object</code></td>
+<td>Yes</td>
+<td>Details of the recipient of the payment</td>
+</tr>
+<tr>
+<td><code>data[].recipient.account_number</code></td>
+<td><code>string</code></td>
+<td>Yes</td>
+<td>Account identifier of the recipient</td>
+</tr>
+<tr>
+<td><code>data[].recipient.name</code></td>
+<td><code>string</code></td>
+<td>Yes</td>
+<td>Account holder name of the recipient</td>
+</tr>
+<tr>
+<td><code>data[].recipient.type</code></td>
+<td><code>enum: SortCodeAccountNumber, IBAN</code></td>
+<td>Yes</td>
+<td>The account type structure for the payment sender or receiver</td>
+</tr>
+<tr>
+<td><code>data[].reference</code></td>
+<td><code>string</code></td>
+<td>Yes</td>
+<td>Reference to use for this payment</td>
+</tr>
+<tr>
+<td><code>data[].required_action</code></td>
+<td><code>enum: confirm_single_payment</code></td>
+<td>Yes</td>
+<td>This field will indicate that there is an action required to be taken by the client in order to complete the payment. | Value | Description | |:-------|:-------------| | <code>confirm_single_payment</code> | If present, this value indicates that client has yet to confirm the single payment once the customer has successfully authorised the payment with the provider. This confirmation can be accomplished using the Confirm Single Payment API Endpoint. Please note this step will only be relevant for clients using Bud as a Technical Service Provider (TSP) |</td>
+</tr>
+<tr>
+<td><code>data[].sender</code></td>
+<td><code>object</code></td>
+<td>Yes</td>
+<td>Details of the payment sender</td>
+</tr>
+<tr>
+<td><code>data[].sender.account_number</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>Account identifier of the sender</td>
+</tr>
+<tr>
+<td><code>data[].sender.name</code></td>
+<td><code>string</code></td>
+<td>Yes</td>
+<td>Account holder name of the sender</td>
+</tr>
+<tr>
+<td><code>data[].sender.provider</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>The name (identifier) of the payment provider</td>
+</tr>
+<tr>
+<td><code>data[].sender.type</code></td>
+<td><code>enum: SortCodeAccountNumber, IBAN</code></td>
+<td>No</td>
+<td>The account type structure for the payment sender or receiver</td>
+</tr>
+<tr>
+<td><code>data[].sender.user_id</code></td>
+<td><code>string</code></td>
+<td>Yes</td>
+<td>A string that can be used to uniquely identify a user within the Client's application</td>
+</tr>
+<tr>
+<td><code>data[].state</code></td>
+<td><code>object</code></td>
+<td>Yes</td>
+<td>Details of the payment state and history</td>
+</tr>
+<tr>
+<td><code>data[].state.history</code></td>
+<td><code>array of object</code></td>
+<td>Yes</td>
+<td></td>
+</tr>
+<tr>
+<td><code>data[].state.history[].code</code></td>
+<td><code>enum: CREATED, AWAITING_AUTH, AUTHENTICATED, AUTH_REJECTED, AUTH_COMPLETED, FUNDS_CONFIRMED, ...</code></td>
+<td>Yes</td>
+<td>The payment status code</td>
+</tr>
+<tr>
+<td><code>data[].state.history[].datetime</code></td>
+<td><code>string</code></td>
+<td>Yes</td>
+<td>A datetime string ISO 8601 defining the date and time at which the state change occurred</td>
+</tr>
+<tr>
+<td><code>data[].state.history[].message</code></td>
+<td><code>enum: Payment created, Awaiting Authentication, Authenticated; Confirming Funds, Funds Confirmed; Awaiting Payment Initiation, Insufficient Funds In Account; Payment Aborted, Initiating Payment, ...</code></td>
+<td>Yes</td>
+<td>The payment status message</td>
+</tr>
+<tr>
+<td><code>data[].state.status_code</code></td>
+<td><code>enum: CREATED, AWAITING_AUTH, AUTHENTICATED, AUTH_REJECTED, AUTH_COMPLETED, FUNDS_CONFIRMED, ...</code></td>
+<td>Yes</td>
+<td>The payment status code</td>
+</tr>
+<tr>
+<td><code>data[].state.status_message</code></td>
+<td><code>enum: Payment created, Awaiting Authentication, Authenticated; Confirming Funds, Funds Confirmed; Awaiting Payment Initiation, Insufficient Funds In Account; Payment Aborted, Initiating Payment, ...</code></td>
+<td>Yes</td>
+<td>The payment status message</td>
+</tr>
+<tr>
+<td><code>data[].supplementary_status</code></td>
+<td><code>object</code></td>
+<td>Yes</td>
+<td>A list of supplementary states associated with the payment as described by the specific provider</td>
+</tr>
+<tr>
+<td><code>data[].supplementary_status.confirmation_of_funds</code></td>
+<td><code>object</code></td>
+<td>Yes</td>
+<td>The payment supplementary as described by the provider</td>
+</tr>
+<tr>
+<td><code>data[].supplementary_status.confirmation_of_funds.history</code></td>
+<td><code>array of object</code></td>
+<td>Yes</td>
+<td>A list of any historical changes in the state</td>
+</tr>
+<tr>
+<td><code>data[].supplementary_status.confirmation_of_funds.history[].datetime</code></td>
+<td><code>string</code></td>
+<td>Yes</td>
+<td>A datetime string (ISO 8601) defining the date and time at which the state change occurred</td>
+</tr>
+<tr>
+<td><code>data[].supplementary_status.confirmation_of_funds.history[].status</code></td>
+<td><code>string</code></td>
+<td>Yes</td>
+<td>The status message</td>
+</tr>
+<tr>
+<td><code>data[].supplementary_status.confirmation_of_funds.status</code></td>
+<td><code>string</code></td>
+<td>Yes</td>
+<td>The status description as returned by the provide</td>
+</tr>
+<tr>
+<td><code>data[].supplementary_status.consent</code></td>
+<td><code>object</code></td>
+<td>Yes</td>
+<td>The payment supplementary as described by the provider</td>
+</tr>
+<tr>
+<td><code>data[].supplementary_status.consent.history</code></td>
+<td><code>array of object</code></td>
+<td>Yes</td>
+<td>A list of any historical changes in the state</td>
+</tr>
+<tr>
+<td><code>data[].supplementary_status.consent.history[].datetime</code></td>
+<td><code>string</code></td>
+<td>Yes</td>
+<td>A datetime string (ISO 8601) defining the date and time at which the state change occurred</td>
+</tr>
+<tr>
+<td><code>data[].supplementary_status.consent.history[].status</code></td>
+<td><code>string</code></td>
+<td>Yes</td>
+<td>The status message</td>
+</tr>
+<tr>
+<td><code>data[].supplementary_status.consent.status</code></td>
+<td><code>string</code></td>
+<td>Yes</td>
+<td>The status description as returned by the provide</td>
+</tr>
+<tr>
+<td><code>data[].supplementary_status.payment_order</code></td>
+<td><code>object</code></td>
+<td>Yes</td>
+<td>The payment supplementary as described by the provider</td>
+</tr>
+<tr>
+<td><code>data[].supplementary_status.payment_order.history</code></td>
+<td><code>array of object</code></td>
+<td>Yes</td>
+<td>A list of any historical changes in the state</td>
+</tr>
+<tr>
+<td><code>data[].supplementary_status.payment_order.history[].datetime</code></td>
+<td><code>string</code></td>
+<td>Yes</td>
+<td>A datetime string (ISO 8601) defining the date and time at which the state change occurred</td>
+</tr>
+<tr>
+<td><code>data[].supplementary_status.payment_order.history[].status</code></td>
+<td><code>string</code></td>
+<td>Yes</td>
+<td>The status message</td>
+</tr>
+<tr>
+<td><code>data[].supplementary_status.payment_order.status</code></td>
+<td><code>string</code></td>
+<td>Yes</td>
+<td>The status description as returned by the provide</td>
+</tr>
+<tr>
+<td><code>metadata</code></td>
+<td><code>object</code></td>
+<td>Yes</td>
+<td>Metadata for the response including pagination details</td>
+</tr>
+<tr>
+<td><code>metadata.page</code></td>
+<td><code>integer</code></td>
+<td>Yes</td>
+<td>The current page number</td>
+</tr>
+<tr>
+<td><code>metadata.results</code></td>
+<td><code>integer</code></td>
+<td>Yes</td>
+<td>The number of payment results currently displayed on the page</td>
+</tr>
+<tr>
+<td><code>metadata.total_pages</code></td>
+<td><code>integer</code></td>
+<td>Yes</td>
+<td>The total number of pages for the request</td>
+</tr>
+<tr>
+<td><code>metadata.total_results</code></td>
+<td><code>integer</code></td>
+<td>Yes</td>
+<td>The total number of payment results for the request</td>
+</tr>
+<tr>
+<td><code>operation_id</code></td>
+<td><code>string</code></td>
+<td>Yes</td>
+<td>A unique identifier/reference associated with a given endpoint/operation</td>
+</tr>
+</tbody>
+</table>
+<h5 id="401-unauthorised-request-4" class="status" data-status="4xx">401: Unauthorised request</h5>
+<h5 id="404-resource-not-found-3" class="status" data-status="4xx">404: Resource not found</h5>
+<p><code>application/json</code></p>
+<table>
+<thead>
+<tr>
+<th>Property</th>
+<th>Type</th>
+<th>Required</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>code_id</code></td>
+<td><code>string</code></td>
+<td>Yes</td>
+<td>A descriptive enough string that is linked to the reason for the error.</td>
+</tr>
+<tr>
+<td><code>errors</code></td>
+<td><code>object or object</code></td>
+<td>Yes</td>
+<td></td>
+</tr>
+<tr>
+<td><code>message</code></td>
+<td><code>string</code></td>
+<td>Yes</td>
+<td></td>
+</tr>
+<tr>
+<td><code>operation_id</code></td>
+<td><code>string</code></td>
+<td>Yes</td>
+<td>A unique identifier/reference associated with a given endpoint/operation</td>
+</tr>
+</tbody>
+</table>
+<p>Example response:</p>
+<pre><code class="language-json">{
+  &quot;code_id&quot;: &quot;failed_validation&quot;,
+  &quot;errors&quot;: {
+    &quot;payment_id&quot;: &quot;Value not found&quot;
+  },
+  &quot;message&quot;: &quot;Failed validation&quot;,
+  &quot;operation_id&quot;: &quot;v1_payments_payment_id_get&quot;
+}
+</code></pre>
+<h5 id="405-an-unexpected-http-method-was-used-4" class="status" data-status="4xx">405: An unexpected HTTP method was used</h5>
+<h5 id="5xx-an-unexpected-error-occurred-on-the-server-side-4">5XX: An unexpected error occurred on the server side</h5>
+<h3 id="get-v1paymentsstanding-order" class="operation" data-method="get"><code>GET</code> /v1/payments/standing-order</h3>
+<p>Operation ID: <code>v1_payments_standing_order_get</code>.</p>
+<p>Authentication: oauth2 (<code>OAuth2</code>).</p>
+<h4 id="parameters-5">Parameters</h4>
+<p>| Parameter | In | Type | Required | Description |
+| --- | --- | --- | --- |
+| <code>X-Client-Id</code> | <code>header</code> | <code>string</code> | Yes | The API Client Identifier (Service Application Identifier). |
+| <code>X-Payment-Id</code> | <code>header</code> | <code>string</code> | No | Payment ID filter |
+| <code>X-Page-Number</code> | <code>header</code> | <code>string</code> | No | Page number filter |
+| <code>X-Sender-Providers</code> | <code>header</code> | <code>string</code> | No | comma separated list of providers name filter |
+| <code>X-Status-Codes</code> | <code>header</code> | <code>array of enum: CREATED, AWAITING_AUTH, AUTHENTICATED, ACCEPTED, FUNDS_CONFIRMED, INITIATING, ...</code> | No | comma separated list of status codes filter |
+| <code>X-Date-From</code> | <code>header</code> | <code>string</code> | No | Date from filter |
+| <code>X-Date-To</code> | <code>header</code> | <code>string</code> | No | Date to filter |
+| <code>X-Amount-From</code> | <code>header</code> | <code>string</code> | No | Amount from filter |
+| <code>X-Amount-To</code> | <code>header</code> | <code>string</code> | No | Amount to filter |</p>
+<h4 id="responses-5">Responses</h4>
+<h5 id="200-successful-request-2" class="status" data-status="2xx">200: Successful request</h5>
+<p><code>application/json</code></p>
+<table>
+<thead>
+<tr>
+<th>Property</th>
+<th>Type</th>
+<th>Required</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>data</code></td>
+<td><code>array of object</code></td>
+<td>Yes</td>
+<td>Array of Standing Order Payment Status Objects</td>
+</tr>
+<tr>
+<td><code>data[].client_id</code></td>
+<td><code>string</code></td>
+<td>Yes</td>
+<td>Bud's Client/App Identifier</td>
+</tr>
+<tr>
+<td><code>data[].created_at</code></td>
+<td><code>string (date-time)</code></td>
+<td>Yes</td>
+<td>Date-time (ISO 8601) of when the Standing Order was created</td>
+</tr>
+<tr>
+<td><code>data[].errors</code></td>
+<td><code>array of object</code></td>
+<td>Yes</td>
+<td>Details surrounding any errors when attempting to initiate a Standing Order</td>
+</tr>
+<tr>
+<td><code>data[].errors[].code</code></td>
+<td><code>string</code></td>
+<td>Yes</td>
+<td>Error Code</td>
+</tr>
+<tr>
+<td><code>data[].errors[].description</code></td>
+<td><code>string</code></td>
+<td>Yes</td>
+<td>Text string used to give a description of the payment error</td>
+</tr>
+<tr>
+<td><code>data[].first_payment_date</code></td>
+<td><code>string (date-time)</code></td>
+<td>Yes</td>
+<td>Date-time (ISO 8601) the first payment should be made. Must be future date.</td>
+</tr>
+<tr>
+<td><code>data[].frequency</code></td>
+<td><code>enum: daily, weekly, fortnightly, monthly, quarterly, semiannually, ...</code></td>
+<td>Yes</td>
+<td>The payment frequency for a Standing Order</td>
+</tr>
+<tr>
+<td><code>data[].known_charges</code></td>
+<td><code>object</code></td>
+<td>Yes</td>
+<td>A list detailing information surrounding any known charges that may be associated with the payment</td>
+</tr>
+<tr>
+<td><code>data[].known_charges.recipient_charge</code></td>
+<td><code>object</code></td>
+<td>Yes</td>
+<td>The charge details applied to the recipient</td>
+</tr>
+<tr>
+<td><code>data[].known_charges.recipient_charge.charge</code></td>
+<td><code>string</code></td>
+<td>Yes</td>
+<td>A number of monetary units specified in an active currency where the unit of currency is explicit and compliant with ISO 4217.</td>
+</tr>
+<tr>
+<td><code>data[].known_charges.recipient_charge.currency</code></td>
+<td><code>string</code></td>
+<td>Yes</td>
+<td>A code allocated to a currency by a Maintenance Agency under an international identification scheme, as described in the latest edition of the international standard ISO 4217 &quot;Codes for the representation of currencies and funds&quot;</td>
+</tr>
+<tr>
+<td><code>data[].known_charges.recipient_charge.recipient_receives</code></td>
+<td><code>string</code></td>
+<td>Yes</td>
+<td>A number of monetary units specified in an active currency where the unit of currency is explicit and compliant with ISO 4217.</td>
+</tr>
+<tr>
+<td><code>data[].known_charges.sender_charge</code></td>
+<td><code>object</code></td>
+<td>Yes</td>
+<td>The charge details applied by the sender</td>
+</tr>
+<tr>
+<td><code>data[].known_charges.sender_charge.bank_sends</code></td>
+<td><code>string</code></td>
+<td>Yes</td>
+<td>A number of monetary units specified in an active currency where the unit of currency is explicit and compliant with ISO 4217.</td>
+</tr>
+<tr>
+<td><code>data[].known_charges.sender_charge.charge</code></td>
+<td><code>string</code></td>
+<td>Yes</td>
+<td>A number of monetary units specified in an active currency where the unit of currency is explicit and compliant with ISO 4217.</td>
+</tr>
+<tr>
+<td><code>data[].known_charges.sender_charge.currency</code></td>
+<td><code>string</code></td>
+<td>Yes</td>
+<td>A code allocated to a currency by a Maintenance Agency under an international identification scheme, as described in the latest edition of the international standard ISO 4217 &quot;Codes for the representation of currencies and funds&quot;</td>
+</tr>
+<tr>
+<td><code>data[].known_charges.sender_charge.total_cost</code></td>
+<td><code>string</code></td>
+<td>Yes</td>
+<td>A number of monetary units specified in an active currency where the unit of currency is explicit and compliant with ISO 4217.</td>
+</tr>
+<tr>
+<td><code>data[].last_payment_date</code></td>
+<td><code>string (date-time)</code></td>
+<td>No</td>
+<td>Date-time (ISO 8601) after which payments should stop. Must be after <code>first_payment_date</code>.</td>
+</tr>
+<tr>
+<td><code>data[].organisation_id</code></td>
+<td><code>string</code></td>
+<td>Yes</td>
+<td>Bud's Organisation Identifier</td>
+</tr>
+<tr>
+<td><code>data[].payment_id</code></td>
+<td><code>string</code></td>
+<td>Yes</td>
+<td>Payment Identifier</td>
+</tr>
+<tr>
+<td><code>data[].recipient</code></td>
+<td><code>object</code></td>
+<td>Yes</td>
+<td>Details of the recipient of the payment</td>
+</tr>
+<tr>
+<td><code>data[].recipient.account_number</code></td>
+<td><code>string</code></td>
+<td>Yes</td>
+<td>Account identifier of the recipient</td>
+</tr>
+<tr>
+<td><code>data[].recipient.name</code></td>
+<td><code>string</code></td>
+<td>Yes</td>
+<td>Account holder name of the recipient</td>
+</tr>
+<tr>
+<td><code>data[].recipient.type</code></td>
+<td><code>enum: SortCodeAccountNumber, IBAN</code></td>
+<td>Yes</td>
+<td>The account type structure for the payment sender or receiver</td>
+</tr>
+<tr>
+<td><code>data[].recurring_amount</code></td>
+<td><code>object</code></td>
+<td>Yes</td>
+<td>The monetary amount.</td>
+</tr>
+<tr>
+<td><code>data[].recurring_amount.currency</code></td>
+<td><code>string</code></td>
+<td>Yes</td>
+<td>The three-letter <a href="https://www.iso.org/iso-4217-currency-codes.html">ISO currency code</a> of the monetary amount. Example: <code>GBP</code></td>
+</tr>
+<tr>
+<td><code>data[].recurring_amount.value</code></td>
+<td><code>string</code></td>
+<td>Yes</td>
+<td>The value of the monetary amount. The value is formatted with the number of decimal places for the respective currency. Example: <code>10.98</code></td>
+</tr>
+<tr>
+<td><code>data[].reference</code></td>
+<td><code>string</code></td>
+<td>Yes</td>
+<td>Reference to use for this payment</td>
+</tr>
+<tr>
+<td><code>data[].required_action</code></td>
+<td><code>enum: confirm_standing_order</code></td>
+<td>Yes</td>
+<td>This field will indicate that there is an action required to be taken by the client in order to complete the payment. | Value | Description | |:-------|:-------------| | <code>confirm_standing_order</code> | If present, this value indicates that client has yet to confirm the standing order once the customer has successfully authorised the payment with the provider. This confirmation can be accomplished using the Confirm Standing Order API Endpoint. Please note this step will only be relevant for clients using Bud as a Technical Service Provider (TSP) |</td>
+</tr>
+<tr>
+<td><code>data[].sender</code></td>
+<td><code>object</code></td>
+<td>Yes</td>
+<td>Details of the payment sender</td>
+</tr>
+<tr>
+<td><code>data[].sender.account_number</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>Account identifier of the sender</td>
+</tr>
+<tr>
+<td><code>data[].sender.name</code></td>
+<td><code>string</code></td>
+<td>Yes</td>
+<td>Account holder name of the sender</td>
+</tr>
+<tr>
+<td><code>data[].sender.provider</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>The name (identifier) of the payment provider</td>
+</tr>
+<tr>
+<td><code>data[].sender.type</code></td>
+<td><code>enum: SortCodeAccountNumber, IBAN</code></td>
+<td>No</td>
+<td>The account type structure for the payment sender or receiver</td>
+</tr>
+<tr>
+<td><code>data[].sender.user_id</code></td>
+<td><code>string</code></td>
+<td>Yes</td>
+<td>A string that can be used to uniquely identify a user within the Client's application</td>
+</tr>
+<tr>
+<td><code>data[].state</code></td>
+<td><code>object</code></td>
+<td>Yes</td>
+<td></td>
+</tr>
+<tr>
+<td><code>data[].state.history</code></td>
+<td><code>array of object</code></td>
+<td>Yes</td>
+<td></td>
+</tr>
+<tr>
+<td><code>data[].state.history[].code</code></td>
+<td><code>enum: CREATED, AWAITING_AUTH, AUTH_REJECTED, AUTH_COMPLETED, PENDING, FAILED, ...</code></td>
+<td>Yes</td>
+<td>The payment status code for a Standing Order</td>
+</tr>
+<tr>
+<td><code>data[].state.history[].datetime</code></td>
+<td><code>string</code></td>
+<td>Yes</td>
+<td></td>
+</tr>
+<tr>
+<td><code>data[].state.history[].message</code></td>
+<td><code>enum: Standing Order Created, Awaiting Customer Authentication, Authentication Failed, Authentication Completed, Payment Order Pending, Standing Order Creation Failed, ...</code></td>
+<td>Yes</td>
+<td>The payment status message for a Standing Order</td>
+</tr>
+<tr>
+<td><code>data[].state.status_code</code></td>
+<td><code>enum: CREATED, AWAITING_AUTH, AUTH_REJECTED, AUTH_COMPLETED, PENDING, FAILED, ...</code></td>
+<td>Yes</td>
+<td>The payment status code for a Standing Order</td>
+</tr>
+<tr>
+<td><code>data[].state.status_message</code></td>
+<td><code>enum: Standing Order Created, Awaiting Customer Authentication, Authentication Failed, Authentication Completed, Payment Order Pending, Standing Order Creation Failed, ...</code></td>
+<td>Yes</td>
+<td>The payment status message for a Standing Order</td>
+</tr>
+<tr>
+<td><code>metadata</code></td>
+<td><code>object</code></td>
+<td>Yes</td>
+<td>Metadata associated with response</td>
+</tr>
+<tr>
+<td><code>metadata.page</code></td>
+<td><code>integer</code></td>
+<td>Yes</td>
+<td>The current page number</td>
+</tr>
+<tr>
+<td><code>metadata.results</code></td>
+<td><code>integer</code></td>
+<td>Yes</td>
+<td>The number of payment results currently displayed on the page</td>
+</tr>
+<tr>
+<td><code>metadata.total_pages</code></td>
+<td><code>integer</code></td>
+<td>Yes</td>
+<td>The total number of pages for the request</td>
+</tr>
+<tr>
+<td><code>metadata.total_results</code></td>
+<td><code>integer</code></td>
+<td>Yes</td>
+<td>The total number of payment results for the request</td>
+</tr>
+<tr>
+<td><code>operation_id</code></td>
+<td><code>string</code></td>
+<td>Yes</td>
+<td>A unique identifier/reference associated with a given endpoint/operation</td>
+</tr>
+</tbody>
+</table>
+<p>Example response:</p>
+<pre><code class="language-json">{
+  &quot;data&quot;: [
+    {
+      &quot;client_id&quot;: &quot;22f80199-1199-400e-9092-17208f6f39f0&quot;,
+      &quot;created_at&quot;: &quot;2020-02-02T12:29:33.428944815Z&quot;,
+      &quot;errors&quot;: [
+        {
+          &quot;code&quot;: &quot;FAILED&quot;,
+          &quot;description&quot;: &quot;The call to the provider to confirm funds returned an error&quot;
+        }
+      ],
+      &quot;first_payment_date&quot;: &quot;2020-02-02T12:29:33.428944815Z&quot;,
+      &quot;frequency&quot;: &quot;monthly&quot;,
+      &quot;known_charges&quot;: {
+        &quot;recipient_charge&quot;: {
+          &quot;charge&quot;: &quot;1.50&quot;,
+          &quot;currency&quot;: &quot;GBP&quot;,
+          &quot;recipient_receives&quot;: &quot;7.00&quot;
+        },
+        &quot;sender_charge&quot;: {
+          &quot;bank_sends&quot;: &quot;10.00&quot;,
+          &quot;charge&quot;: &quot;1.50&quot;,
+          &quot;currency&quot;: &quot;GBP&quot;,
+          &quot;total_cost&quot;: &quot;11.50&quot;
+        }
+      },
+      &quot;last_payment_date&quot;: &quot;2021-02-02T12:29:33.428944815Z&quot;,
+      &quot;organisation_id&quot;: &quot;22f80199-1199-400e-9092-17208f6f39f0&quot;,
+      &quot;payment_id&quot;: &quot;89f80199-1199-400e-9092-17208f6f39f5&quot;,
+      &quot;recipient&quot;: {
+        &quot;account_number&quot;: &quot;01234501234567&quot;,
+        &quot;name&quot;: &quot;MR TEST RECIPIENT&quot;,
+        &quot;type&quot;: &quot;SortCodeAccountNumber&quot;
+      },
+      &quot;recurring_amount&quot;: {
+        &quot;currency&quot;: &quot;GBP&quot;,
+        &quot;value&quot;: &quot;10.00&quot;
+      },
+      &quot;reference&quot;: &quot;Rent&quot;,
+      &quot;required_action&quot;: &quot;confirm_standing_order&quot;,
+      &quot;sender&quot;: {
+        &quot;name&quot;: &quot;MR RANDOM SENDER&quot;,
+        &quot;provider&quot;: &quot;Natwest&quot;,
+        &quot;user_id&quot;: &quot;client-defined-user-id&quot;
+      },
+      &quot;state&quot;: {
+        &quot;history&quot;: [
+          {
+            &quot;code&quot;: &quot;CREATED&quot;,
+            &quot;datetime&quot;: &quot;2020-02-02T12:29:33.428944815Z&quot;,
+            &quot;message&quot;: &quot;Standing Order Created&quot;
+          },
+          {
+            &quot;code&quot;: &quot;AWAITING_AUTH&quot;,
+            &quot;datetime&quot;: &quot;2020-02-02T12:29:33.428944815Z&quot;,
+            &quot;message&quot;: &quot;Awaiting Customer Authentication&quot;
+          },
+          {
+            &quot;code&quot;: &quot;AUTH_COMPLETED&quot;,
+            &quot;datetime&quot;: &quot;2020-02-02T12:29:33.428944815Z&quot;,
+            &quot;message&quot;: &quot;Authentication Completed&quot;
+          },
+          {
+            &quot;code&quot;: &quot;PENDING&quot;,
+            &quot;datetime&quot;: &quot;2020-02-02T12:29:33.428944815Z&quot;,
+            &quot;message&quot;: &quot;Payment Order Pending&quot;
+          },
+          {
+            &quot;code&quot;: &quot;COMPLETED&quot;,
+            &quot;datetime&quot;: &quot;2020-02-02T12:29:33.428944815Z&quot;,
+            &quot;message&quot;: &quot;Standing Order Creation Completed&quot;
+          }
+        ],
+        &quot;status_code&quot;: &quot;COMPLETED&quot;,
+        &quot;status_message&quot;: &quot;Standing Order Creation Completed&quot;
+      }
+    }
+  ],
+  &quot;metadata&quot;: {
+    &quot;page&quot;: 1,
+    &quot;results&quot;: 10,
+    &quot;total_pages&quot;: 100000,
+    &quot;total_results&quot;: 1000000
+  },
+  &quot;operation_id&quot;: &quot;v1_payments_standing_order_get&quot;
+}
+</code></pre>
+<h5 id="400-the-request-contains-an-invalid-payload-1" class="status" data-status="4xx">400: The request contains an invalid payload</h5>
+<p><code>application/json</code></p>
+<table>
+<thead>
+<tr>
+<th>Property</th>
+<th>Type</th>
+<th>Required</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>code_id</code></td>
+<td><code>string</code></td>
+<td>Yes</td>
+<td>A descriptive enough string that is linked to the reason for the error.</td>
+</tr>
+<tr>
+<td><code>errors</code></td>
+<td><code>object or object</code></td>
+<td>Yes</td>
+<td></td>
+</tr>
+<tr>
+<td><code>message</code></td>
+<td><code>string</code></td>
+<td>Yes</td>
+<td></td>
+</tr>
+<tr>
+<td><code>operation_id</code></td>
+<td><code>string</code></td>
+<td>Yes</td>
+<td>A unique identifier/reference associated with a given endpoint/operation</td>
+</tr>
+</tbody>
+</table>
+<p>Example response:</p>
+<pre><code class="language-json">{
+  &quot;code_id&quot;: &quot;failed_validation&quot;,
+  &quot;errors&quot;: {
+    &quot;filter&quot;: &quot;X-Date-From is in the wrong format (expected 2006-01-02T15:04:05Z)&quot;
+  },
+  &quot;message&quot;: &quot;Failed validation&quot;,
+  &quot;operation_id&quot;: &quot;v1_payments_standing_order_get&quot;
+}
+</code></pre>
+<h5 id="401-unauthorised-request-5" class="status" data-status="4xx">401: Unauthorised request</h5>
+<h5 id="405-an-unexpected-http-method-was-used-5" class="status" data-status="4xx">405: An unexpected HTTP method was used</h5>
+<h5 id="5xx-an-unexpected-error-occurred-on-the-server-side-5">5XX: An unexpected error occurred on the server side</h5>
+<h2 id="load">load</h2>
+<h3 id="get-v1paymentsscheduledpayment_id" class="operation" data-method="get"><code>GET</code> /v1/payments/scheduled/{payment_id}</h3>
+<p>Operation ID: <code>v1_payments_scheduled_payment_id_get</code>.</p>
+<p>Authentication: oauth2 (<code>OAuth2</code>).</p>
+<h4 id="parameters-6">Parameters</h4>
+<p>| Parameter | In | Type | Required | Description |
+| --- | --- | --- | --- |
+| <code>payment_id</code> | <code>path</code> | <code>string</code> | Yes | Bud Payment Identifier |
+| <code>X-Client-Id</code> | <code>header</code> | <code>string</code> | Yes | The API Client Identifier (Service Application Identifier). |</p>
+<h4 id="responses-6">Responses</h4>
+<h5 id="200-successful-request-3" class="status" data-status="2xx">200: Successful request</h5>
+<p><code>application/json</code></p>
+<table>
+<thead>
+<tr>
+<th>Property</th>
+<th>Type</th>
+<th>Required</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>data</code></td>
+<td><code>object</code></td>
+<td>Yes</td>
+<td>Data structure for the Scheduled Payment object</td>
+</tr>
+<tr>
+<td><code>data.client_id</code></td>
+<td><code>string</code></td>
+<td>Yes</td>
+<td>Bud's Client/App Identifier</td>
+</tr>
+<tr>
+<td><code>data.created_at</code></td>
+<td><code>string (date-time)</code></td>
+<td>Yes</td>
+<td>Date-time (ISO 8601) of when the Scheduled Payment was created</td>
+</tr>
+<tr>
+<td><code>data.errors</code></td>
+<td><code>array of object</code></td>
+<td>Yes</td>
+<td>Details surrounding any errors when attempting to initiate a Scheduled Payment</td>
+</tr>
+<tr>
+<td><code>data.errors[].code</code></td>
+<td><code>string</code></td>
+<td>Yes</td>
+<td>Error Code</td>
+</tr>
+<tr>
+<td><code>data.errors[].description</code></td>
+<td><code>string</code></td>
+<td>Yes</td>
+<td>Text string used to give a description of the payment error</td>
+</tr>
+<tr>
+<td><code>data.known_charges</code></td>
+<td><code>object</code></td>
+<td>Yes</td>
+<td>A list detailing information surrounding any known charges that may be associated with the payment</td>
+</tr>
+<tr>
+<td><code>data.known_charges.recipient_charge</code></td>
+<td><code>object</code></td>
+<td>Yes</td>
+<td>The charge details applied to the recipient</td>
+</tr>
+<tr>
+<td><code>data.known_charges.recipient_charge.charge</code></td>
+<td><code>string</code></td>
+<td>Yes</td>
+<td>A number of monetary units specified in an active currency where the unit of currency is explicit and compliant with ISO 4217.</td>
+</tr>
+<tr>
+<td><code>data.known_charges.recipient_charge.currency</code></td>
+<td><code>string</code></td>
+<td>Yes</td>
+<td>A code allocated to a currency by a Maintenance Agency under an international identification scheme, as described in the latest edition of the international standard ISO 4217 &quot;Codes for the representation of currencies and funds&quot;</td>
+</tr>
+<tr>
+<td><code>data.known_charges.recipient_charge.recipient_receives</code></td>
+<td><code>string</code></td>
+<td>Yes</td>
+<td>A number of monetary units specified in an active currency where the unit of currency is explicit and compliant with ISO 4217.</td>
+</tr>
+<tr>
+<td><code>data.known_charges.sender_charge</code></td>
+<td><code>object</code></td>
+<td>Yes</td>
+<td>The charge details applied by the sender</td>
+</tr>
+<tr>
+<td><code>data.known_charges.sender_charge.bank_sends</code></td>
+<td><code>string</code></td>
+<td>Yes</td>
+<td>A number of monetary units specified in an active currency where the unit of currency is explicit and compliant with ISO 4217.</td>
+</tr>
+<tr>
+<td><code>data.known_charges.sender_charge.charge</code></td>
+<td><code>string</code></td>
+<td>Yes</td>
+<td>A number of monetary units specified in an active currency where the unit of currency is explicit and compliant with ISO 4217.</td>
+</tr>
+<tr>
+<td><code>data.known_charges.sender_charge.currency</code></td>
+<td><code>string</code></td>
+<td>Yes</td>
+<td>A code allocated to a currency by a Maintenance Agency under an international identification scheme, as described in the latest edition of the international standard ISO 4217 &quot;Codes for the representation of currencies and funds&quot;</td>
+</tr>
+<tr>
+<td><code>data.known_charges.sender_charge.total_cost</code></td>
+<td><code>string</code></td>
+<td>Yes</td>
+<td>A number of monetary units specified in an active currency where the unit of currency is explicit and compliant with ISO 4217.</td>
+</tr>
+<tr>
+<td><code>data.organisation_id</code></td>
+<td><code>string</code></td>
+<td>Yes</td>
+<td>Bud's Organisation Identifier</td>
+</tr>
+<tr>
+<td><code>data.payment_id</code></td>
+<td><code>string</code></td>
+<td>Yes</td>
+<td>Payment Identifier</td>
+</tr>
+<tr>
+<td><code>data.recipient</code></td>
+<td><code>object</code></td>
+<td>Yes</td>
+<td>Details of the recipient of the payment</td>
+</tr>
+<tr>
+<td><code>data.recipient.account_number</code></td>
+<td><code>string</code></td>
+<td>Yes</td>
+<td>Account identifier of the recipient</td>
+</tr>
+<tr>
+<td><code>data.recipient.name</code></td>
+<td><code>string</code></td>
+<td>Yes</td>
+<td>Account holder name of the recipient</td>
+</tr>
+<tr>
+<td><code>data.recipient.type</code></td>
+<td><code>enum: SortCodeAccountNumber, IBAN</code></td>
+<td>Yes</td>
+<td>The account type structure for the payment sender or receiver</td>
+</tr>
+<tr>
+<td><code>data.recurring_amount</code></td>
+<td><code>object</code></td>
+<td>No</td>
+<td>The monetary amount.</td>
+</tr>
+<tr>
+<td><code>data.recurring_amount.currency</code></td>
+<td><code>string</code></td>
+<td>Yes</td>
+<td>The three-letter <a href="https://www.iso.org/iso-4217-currency-codes.html">ISO currency code</a> of the monetary amount. Example: <code>GBP</code></td>
+</tr>
+<tr>
+<td><code>data.recurring_amount.value</code></td>
+<td><code>string</code></td>
+<td>Yes</td>
+<td>The value of the monetary amount. The value is formatted with the number of decimal places for the respective currency. Example: <code>10.98</code></td>
+</tr>
+<tr>
+<td><code>data.reference</code></td>
+<td><code>string</code></td>
+<td>Yes</td>
+<td>Reference to use for this payment</td>
+</tr>
+<tr>
+<td><code>data.requested_execution_date</code></td>
+<td><code>string (date-time)</code></td>
+<td>Yes</td>
+<td>Date-time (ISO 8601) the Scheduled Payment should be made. Must be future date.</td>
+</tr>
+<tr>
+<td><code>data.required_action</code></td>
+<td><code>enum: confirm_scheduled_payment</code></td>
+<td>No</td>
+<td>This field will indicate that there is an action required to be taken by the client in order to complete the payment. | Value | Description | |:-------|:-------------| | <code>confirm_scheduled_payment</code> | If present, this value indicates that client has yet to confirm the Scheduled Payment once the customer has successfully authorised the payment with the provider. This confirmation can be accomplished using the Confirm Scheduled Payment API Endpoint. Please note this step will only be relevant for clients using Bud as a Technical Service Provider (TSP) |</td>
+</tr>
+<tr>
+<td><code>data.sender</code></td>
+<td><code>object</code></td>
+<td>Yes</td>
+<td>Details of the payment sender</td>
+</tr>
+<tr>
+<td><code>data.sender.account_number</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>Account identifier of the sender</td>
+</tr>
+<tr>
+<td><code>data.sender.name</code></td>
+<td><code>string</code></td>
+<td>Yes</td>
+<td>Account holder name of the sender</td>
+</tr>
+<tr>
+<td><code>data.sender.provider</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>The name (identifier) of the payment provider</td>
+</tr>
+<tr>
+<td><code>data.sender.type</code></td>
+<td><code>enum: SortCodeAccountNumber, IBAN</code></td>
+<td>No</td>
+<td>The account type structure for the payment sender or receiver</td>
+</tr>
+<tr>
+<td><code>data.sender.user_id</code></td>
+<td><code>string</code></td>
+<td>Yes</td>
+<td>A string that can be used to uniquely identify a user within the Client's application</td>
+</tr>
+<tr>
+<td><code>data.state</code></td>
+<td><code>object</code></td>
+<td>Yes</td>
+<td></td>
+</tr>
+<tr>
+<td><code>data.state.history</code></td>
+<td><code>array of object</code></td>
+<td>Yes</td>
+<td></td>
+</tr>
+<tr>
+<td><code>data.state.history[].code</code></td>
+<td><code>enum: CREATED, AWAITING_AUTH, AUTH_REJECTED, AUTH_COMPLETED, PENDING, FAILED, ...</code></td>
+<td>Yes</td>
+<td>The payment status code for a Scheduled Payment</td>
+</tr>
+<tr>
+<td><code>data.state.history[].datetime</code></td>
+<td><code>string</code></td>
+<td>Yes</td>
+<td></td>
+</tr>
+<tr>
+<td><code>data.state.history[].message</code></td>
+<td><code>enum: Scheduled Payment Created, Awaiting Customer Authentication, Authentication Failed, Authentication Completed, Payment Order Pending, Scheduled Payment Creation Failed, ...</code></td>
+<td>Yes</td>
+<td>The payment status message for a Scheduled Payment</td>
+</tr>
+<tr>
+<td><code>data.state.status_code</code></td>
+<td><code>enum: CREATED, AWAITING_AUTH, AUTH_REJECTED, AUTH_COMPLETED, PENDING, FAILED, ...</code></td>
+<td>Yes</td>
+<td>The payment status code for a Scheduled Payment</td>
+</tr>
+<tr>
+<td><code>data.state.status_message</code></td>
+<td><code>enum: Scheduled Payment Created, Awaiting Customer Authentication, Authentication Failed, Authentication Completed, Payment Order Pending, Scheduled Payment Creation Failed, ...</code></td>
+<td>Yes</td>
+<td>The payment status message for a Scheduled Payment</td>
+</tr>
+<tr>
+<td><code>metadata</code></td>
+<td><code>object</code></td>
+<td>No</td>
+<td></td>
+</tr>
+<tr>
+<td><code>operation_id</code></td>
+<td><code>string</code></td>
+<td>Yes</td>
+<td>A unique identifier/reference associated with a given endpoint/operation</td>
+</tr>
+</tbody>
+</table>
+<p>Example response:</p>
+<pre><code class="language-json">{
+  &quot;data&quot;: {
+    &quot;amount&quot;: {
+      &quot;currency&quot;: &quot;GBP&quot;,
+      &quot;value&quot;: &quot;10.00&quot;
+    },
+    &quot;client_id&quot;: &quot;22f80199-1199-400e-9092-17208f6f39f0&quot;,
+    &quot;created_at&quot;: &quot;2020-02-02T12:29:33.428944815Z&quot;,
+    &quot;errors&quot;: [
+      {
+        &quot;code&quot;: &quot;FAILED&quot;,
+        &quot;description&quot;: &quot;The call to the provider to confirm funds returned an error&quot;
+      }
+    ],
+    &quot;known_charges&quot;: {
+      &quot;recipient_charge&quot;: {
+        &quot;charge&quot;: &quot;1.50&quot;,
+        &quot;currency&quot;: &quot;GBP&quot;,
+        &quot;recipient_receives&quot;: &quot;7.00&quot;
+      },
+      &quot;sender_charge&quot;: {
+        &quot;bank_sends&quot;: &quot;10.00&quot;,
+        &quot;charge&quot;: &quot;1.50&quot;,
+        &quot;currency&quot;: &quot;GBP&quot;,
+        &quot;total_cost&quot;: &quot;11.50&quot;
+      }
+    },
+    &quot;method&quot;: &quot;FPS&quot;,
+    &quot;organisation_id&quot;: &quot;22f80199-1199-400e-9092-17208f6f39f0&quot;,
+    &quot;payment_id&quot;: &quot;89f80199-1199-400e-9092-17208f6f39f5&quot;,
+    &quot;recipient&quot;: {
+      &quot;account_number&quot;: &quot;01234501234567&quot;,
+      &quot;name&quot;: &quot;MR TEST RECIPIENT&quot;,
+      &quot;type&quot;: &quot;SortCodeAccountNumber&quot;
+    },
+    &quot;reference&quot;: &quot;Rent&quot;,
+    &quot;requested_execution_date&quot;: &quot;2020-02-02T12:29:33.428944815Z&quot;,
+    &quot;required_action&quot;: &quot;confirm_scheduled_payment&quot;,
+    &quot;sender&quot;: {
+      &quot;name&quot;: &quot;MR TEST SENDER&quot;,
+      &quot;provider&quot;: &quot;Natwest&quot;,
+      &quot;user_id&quot;: &quot;client-defined-user-id&quot;
+    },
+    &quot;state&quot;: {
+      &quot;history&quot;: [
+        {
+          &quot;code&quot;: &quot;CREATED&quot;,
+          &quot;datetime&quot;: &quot;2020-02-02T12:29:33.428944815Z&quot;,
+          &quot;message&quot;: &quot;Scheduled Payment Created&quot;
+        },
+        {
+          &quot;code&quot;: &quot;AWAITING_AUTH&quot;,
+          &quot;datetime&quot;: &quot;2020-02-02T12:29:33.428944815Z&quot;,
+          &quot;message&quot;: &quot;Awaiting Customer Authentication&quot;
+        },
+        {
+          &quot;code&quot;: &quot;AUTH_COMPLETED&quot;,
+          &quot;datetime&quot;: &quot;2020-02-02T12:29:33.428944815Z&quot;,
+          &quot;message&quot;: &quot;Authentication Completed&quot;
+        },
+        {
+          &quot;code&quot;: &quot;PENDING&quot;,
+          &quot;datetime&quot;: &quot;2020-02-02T12:29:33.428944815Z&quot;,
+          &quot;message&quot;: &quot;Payment Order Pending&quot;
+        },
+        {
+          &quot;code&quot;: &quot;COMPLETED&quot;,
+          &quot;datetime&quot;: &quot;2020-02-02T12:29:33.428944815Z&quot;,
+          &quot;message&quot;: &quot;Scheduled Payment Creation Completed&quot;
+        }
+      ],
+      &quot;status_code&quot;: &quot;COMPLETED&quot;,
+      &quot;status_message&quot;: &quot;Scheduled Payment Creation Completed&quot;
+    }
+  },
+  &quot;operation_id&quot;: &quot;v1_payments_scheduled_payment_id_get&quot;
+}
+</code></pre>
+<h5 id="401-unauthorised-request-6" class="status" data-status="4xx">401: Unauthorised request</h5>
+<h5 id="404-resource-not-found-4" class="status" data-status="4xx">404: Resource not found</h5>
+<p><code>application/json</code></p>
+<table>
+<thead>
+<tr>
+<th>Property</th>
+<th>Type</th>
+<th>Required</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>code_id</code></td>
+<td><code>string</code></td>
+<td>Yes</td>
+<td>A descriptive enough string that is linked to the reason for the error.</td>
+</tr>
+<tr>
+<td><code>errors</code></td>
+<td><code>object or object</code></td>
+<td>Yes</td>
+<td></td>
+</tr>
+<tr>
+<td><code>message</code></td>
+<td><code>string</code></td>
+<td>Yes</td>
+<td></td>
+</tr>
+<tr>
+<td><code>operation_id</code></td>
+<td><code>string</code></td>
+<td>Yes</td>
+<td>A unique identifier/reference associated with a given endpoint/operation</td>
+</tr>
+</tbody>
+</table>
+<p>Example response:</p>
+<pre><code class="language-json">{
+  &quot;code_id&quot;: &quot;failed_validation&quot;,
+  &quot;errors&quot;: {
+    &quot;payment_id&quot;: &quot;Value not found&quot;
+  },
+  &quot;message&quot;: &quot;Failed validation&quot;,
+  &quot;operation_id&quot;: &quot;v1_payments_scheduled_payment_id_get&quot;
+}
+</code></pre>
+<h5 id="405-an-unexpected-http-method-was-used-6" class="status" data-status="4xx">405: An unexpected HTTP method was used</h5>
+<h5 id="5xx-an-unexpected-error-occurred-on-the-server-side-6">5XX: An unexpected error occurred on the server side</h5>
+<h3 id="get-v1paymentssinglepayment_id" class="operation" data-method="get"><code>GET</code> /v1/payments/single/{payment_id}</h3>
+<p>Operation ID: <code>v1_payments_single_payment_id_get</code>.</p>
+<p>Authentication: oauth2 (<code>OAuth2</code>).</p>
+<h4 id="parameters-7">Parameters</h4>
+<p>| Parameter | In | Type | Required | Description |
+| --- | --- | --- | --- |
+| <code>payment_id</code> | <code>path</code> | <code>string</code> | Yes | Bud Payment Identifier |
+| <code>X-Client-Id</code> | <code>header</code> | <code>string</code> | Yes | The API Client Identifier (Service Application Identifier). |</p>
+<h4 id="responses-7">Responses</h4>
+<h5 id="200-successful-request-4" class="status" data-status="2xx">200: Successful request</h5>
+<p><code>application/json</code></p>
+<table>
+<thead>
+<tr>
+<th>Property</th>
+<th>Type</th>
+<th>Required</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>data</code></td>
+<td><code>object</code></td>
+<td>Yes</td>
+<td>Detailed information for a given payment and it's status</td>
+</tr>
+<tr>
+<td><code>data.amount</code></td>
+<td><code>object</code></td>
+<td>Yes</td>
+<td>The monetary amount.</td>
+</tr>
+<tr>
+<td><code>data.amount.currency</code></td>
+<td><code>string</code></td>
+<td>Yes</td>
+<td>The three-letter <a href="https://www.iso.org/iso-4217-currency-codes.html">ISO currency code</a> of the monetary amount. Example: <code>GBP</code></td>
+</tr>
+<tr>
+<td><code>data.amount.value</code></td>
+<td><code>string</code></td>
+<td>Yes</td>
+<td>The value of the monetary amount. The value is formatted with the number of decimal places for the respective currency. Example: <code>10.98</code></td>
+</tr>
+<tr>
+<td><code>data.client_id</code></td>
+<td><code>string</code></td>
+<td>Yes</td>
+<td>Bud's Client/App Identifier</td>
+</tr>
+<tr>
+<td><code>data.created_at</code></td>
+<td><code>string</code></td>
+<td>Yes</td>
+<td>The created at timestamp for the payment</td>
+</tr>
+<tr>
+<td><code>data.errors</code></td>
+<td><code>array of object</code></td>
+<td>Yes</td>
+<td>A list of any errors that may be associated with the payment</td>
+</tr>
+<tr>
+<td><code>data.errors[].code</code></td>
+<td><code>string</code></td>
+<td>Yes</td>
+<td>Error Code</td>
+</tr>
+<tr>
+<td><code>data.errors[].description</code></td>
+<td><code>string</code></td>
+<td>Yes</td>
+<td>Text string used to give a description of the payment error</td>
+</tr>
+<tr>
+<td><code>data.known_charges</code></td>
+<td><code>object</code></td>
+<td>Yes</td>
+<td>A list detailing information surrounding any known charges that may be associated with the payment</td>
+</tr>
+<tr>
+<td><code>data.known_charges.recipient_charge</code></td>
+<td><code>object</code></td>
+<td>Yes</td>
+<td>The charge details applied to the recipient</td>
+</tr>
+<tr>
+<td><code>data.known_charges.recipient_charge.charge</code></td>
+<td><code>string</code></td>
+<td>Yes</td>
+<td>A number of monetary units specified in an active currency where the unit of currency is explicit and compliant with ISO 4217.</td>
+</tr>
+<tr>
+<td><code>data.known_charges.recipient_charge.currency</code></td>
+<td><code>string</code></td>
+<td>Yes</td>
+<td>A code allocated to a currency by a Maintenance Agency under an international identification scheme, as described in the latest edition of the international standard ISO 4217 &quot;Codes for the representation of currencies and funds&quot;</td>
+</tr>
+<tr>
+<td><code>data.known_charges.recipient_charge.recipient_receives</code></td>
+<td><code>string</code></td>
+<td>Yes</td>
+<td>A number of monetary units specified in an active currency where the unit of currency is explicit and compliant with ISO 4217.</td>
+</tr>
+<tr>
+<td><code>data.known_charges.sender_charge</code></td>
+<td><code>object</code></td>
+<td>Yes</td>
+<td>The charge details applied by the sender</td>
+</tr>
+<tr>
+<td><code>data.known_charges.sender_charge.bank_sends</code></td>
+<td><code>string</code></td>
+<td>Yes</td>
+<td>A number of monetary units specified in an active currency where the unit of currency is explicit and compliant with ISO 4217.</td>
+</tr>
+<tr>
+<td><code>data.known_charges.sender_charge.charge</code></td>
+<td><code>string</code></td>
+<td>Yes</td>
+<td>A number of monetary units specified in an active currency where the unit of currency is explicit and compliant with ISO 4217.</td>
+</tr>
+<tr>
+<td><code>data.known_charges.sender_charge.currency</code></td>
+<td><code>string</code></td>
+<td>Yes</td>
+<td>A code allocated to a currency by a Maintenance Agency under an international identification scheme, as described in the latest edition of the international standard ISO 4217 &quot;Codes for the representation of currencies and funds&quot;</td>
+</tr>
+<tr>
+<td><code>data.known_charges.sender_charge.total_cost</code></td>
+<td><code>string</code></td>
+<td>Yes</td>
+<td>A number of monetary units specified in an active currency where the unit of currency is explicit and compliant with ISO 4217.</td>
+</tr>
+<tr>
+<td><code>data.method</code></td>
+<td><code>enum: BACS, FPS, SEPA</code></td>
+<td>Yes</td>
+<td>The payment method</td>
+</tr>
+<tr>
+<td><code>data.organisation_id</code></td>
+<td><code>string</code></td>
+<td>Yes</td>
+<td>Bud's Organisation Identifier</td>
+</tr>
+<tr>
+<td><code>data.payment_id</code></td>
+<td><code>string</code></td>
+<td>Yes</td>
+<td>Payment Identifier</td>
+</tr>
+<tr>
+<td><code>data.recipient</code></td>
+<td><code>object</code></td>
+<td>Yes</td>
+<td>Details of the recipient of the payment</td>
+</tr>
+<tr>
+<td><code>data.recipient.account_number</code></td>
+<td><code>string</code></td>
+<td>Yes</td>
+<td>Account identifier of the recipient</td>
+</tr>
+<tr>
+<td><code>data.recipient.name</code></td>
+<td><code>string</code></td>
+<td>Yes</td>
+<td>Account holder name of the recipient</td>
+</tr>
+<tr>
+<td><code>data.recipient.type</code></td>
+<td><code>enum: SortCodeAccountNumber, IBAN</code></td>
+<td>Yes</td>
+<td>The account type structure for the payment sender or receiver</td>
+</tr>
+<tr>
+<td><code>data.reference</code></td>
+<td><code>string</code></td>
+<td>Yes</td>
+<td>Reference to use for this payment</td>
+</tr>
+<tr>
+<td><code>data.required_action</code></td>
+<td><code>enum: confirm_single_payment</code></td>
+<td>Yes</td>
+<td>This field will indicate that there is an action required to be taken by the client in order to complete the payment. | Value | Description | |:-------|:-------------| | <code>confirm_single_payment</code> | If present, this value indicates that client has yet to confirm the single payment once the customer has successfully authorised the payment with the provider. This confirmation can be accomplished using the Confirm Single Payment API Endpoint. Please note this step will only be relevant for clients using Bud as a Technical Service Provider (TSP) |</td>
+</tr>
+<tr>
+<td><code>data.sender</code></td>
+<td><code>object</code></td>
+<td>Yes</td>
+<td>Details of the payment sender</td>
+</tr>
+<tr>
+<td><code>data.sender.account_number</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>Account identifier of the sender</td>
+</tr>
+<tr>
+<td><code>data.sender.name</code></td>
+<td><code>string</code></td>
+<td>Yes</td>
+<td>Account holder name of the sender</td>
+</tr>
+<tr>
+<td><code>data.sender.provider</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>The name (identifier) of the payment provider</td>
+</tr>
+<tr>
+<td><code>data.sender.type</code></td>
+<td><code>enum: SortCodeAccountNumber, IBAN</code></td>
+<td>No</td>
+<td>The account type structure for the payment sender or receiver</td>
+</tr>
+<tr>
+<td><code>data.sender.user_id</code></td>
+<td><code>string</code></td>
+<td>Yes</td>
+<td>A string that can be used to uniquely identify a user within the Client's application</td>
+</tr>
+<tr>
+<td><code>data.state</code></td>
+<td><code>object</code></td>
+<td>Yes</td>
+<td>Details of the payment state and history</td>
+</tr>
+<tr>
+<td><code>data.state.history</code></td>
+<td><code>array of object</code></td>
+<td>Yes</td>
+<td></td>
+</tr>
+<tr>
+<td><code>data.state.history[].code</code></td>
+<td><code>enum: CREATED, AWAITING_AUTH, AUTHENTICATED, AUTH_REJECTED, AUTH_COMPLETED, FUNDS_CONFIRMED, ...</code></td>
+<td>Yes</td>
+<td>The payment status code</td>
+</tr>
+<tr>
+<td><code>data.state.history[].datetime</code></td>
+<td><code>string</code></td>
+<td>Yes</td>
+<td>A datetime string ISO 8601 defining the date and time at which the state change occurred</td>
+</tr>
+<tr>
+<td><code>data.state.history[].message</code></td>
+<td><code>enum: Payment created, Awaiting Authentication, Authenticated; Confirming Funds, Funds Confirmed; Awaiting Payment Initiation, Insufficient Funds In Account; Payment Aborted, Initiating Payment, ...</code></td>
+<td>Yes</td>
+<td>The payment status message</td>
+</tr>
+<tr>
+<td><code>data.state.status_code</code></td>
+<td><code>enum: CREATED, AWAITING_AUTH, AUTHENTICATED, AUTH_REJECTED, AUTH_COMPLETED, FUNDS_CONFIRMED, ...</code></td>
+<td>Yes</td>
+<td>The payment status code</td>
+</tr>
+<tr>
+<td><code>data.state.status_message</code></td>
+<td><code>enum: Payment created, Awaiting Authentication, Authenticated; Confirming Funds, Funds Confirmed; Awaiting Payment Initiation, Insufficient Funds In Account; Payment Aborted, Initiating Payment, ...</code></td>
+<td>Yes</td>
+<td>The payment status message</td>
+</tr>
+<tr>
+<td><code>data.supplementary_status</code></td>
+<td><code>object</code></td>
+<td>Yes</td>
+<td>A list of supplementary states associated with the payment as described by the specific provider</td>
+</tr>
+<tr>
+<td><code>data.supplementary_status.confirmation_of_funds</code></td>
+<td><code>object</code></td>
+<td>Yes</td>
+<td>The payment supplementary as described by the provider</td>
+</tr>
+<tr>
+<td><code>data.supplementary_status.confirmation_of_funds.history</code></td>
+<td><code>array of object</code></td>
+<td>Yes</td>
+<td>A list of any historical changes in the state</td>
+</tr>
+<tr>
+<td><code>data.supplementary_status.confirmation_of_funds.history[].datetime</code></td>
+<td><code>string</code></td>
+<td>Yes</td>
+<td>A datetime string (ISO 8601) defining the date and time at which the state change occurred</td>
+</tr>
+<tr>
+<td><code>data.supplementary_status.confirmation_of_funds.history[].status</code></td>
+<td><code>string</code></td>
+<td>Yes</td>
+<td>The status message</td>
+</tr>
+<tr>
+<td><code>data.supplementary_status.confirmation_of_funds.status</code></td>
+<td><code>string</code></td>
+<td>Yes</td>
+<td>The status description as returned by the provide</td>
+</tr>
+<tr>
+<td><code>data.supplementary_status.consent</code></td>
+<td><code>object</code></td>
+<td>Yes</td>
+<td>The payment supplementary as described by the provider</td>
+</tr>
+<tr>
+<td><code>data.supplementary_status.consent.history</code></td>
+<td><code>array of object</code></td>
+<td>Yes</td>
+<td>A list of any historical changes in the state</td>
+</tr>
+<tr>
+<td><code>data.supplementary_status.consent.history[].datetime</code></td>
+<td><code>string</code></td>
+<td>Yes</td>
+<td>A datetime string (ISO 8601) defining the date and time at which the state change occurred</td>
+</tr>
+<tr>
+<td><code>data.supplementary_status.consent.history[].status</code></td>
+<td><code>string</code></td>
+<td>Yes</td>
+<td>The status message</td>
+</tr>
+<tr>
+<td><code>data.supplementary_status.consent.status</code></td>
+<td><code>string</code></td>
+<td>Yes</td>
+<td>The status description as returned by the provide</td>
+</tr>
+<tr>
+<td><code>data.supplementary_status.payment_order</code></td>
+<td><code>object</code></td>
+<td>Yes</td>
+<td>The payment supplementary as described by the provider</td>
+</tr>
+<tr>
+<td><code>data.supplementary_status.payment_order.history</code></td>
+<td><code>array of object</code></td>
+<td>Yes</td>
+<td>A list of any historical changes in the state</td>
+</tr>
+<tr>
+<td><code>data.supplementary_status.payment_order.history[].datetime</code></td>
+<td><code>string</code></td>
+<td>Yes</td>
+<td>A datetime string (ISO 8601) defining the date and time at which the state change occurred</td>
+</tr>
+<tr>
+<td><code>data.supplementary_status.payment_order.history[].status</code></td>
+<td><code>string</code></td>
+<td>Yes</td>
+<td>The status message</td>
+</tr>
+<tr>
+<td><code>data.supplementary_status.payment_order.status</code></td>
+<td><code>string</code></td>
+<td>Yes</td>
+<td>The status description as returned by the provide</td>
+</tr>
+<tr>
+<td><code>operation_id</code></td>
+<td><code>string</code></td>
+<td>Yes</td>
+<td>A unique identifier/reference associated with a given endpoint/operation</td>
+</tr>
+</tbody>
+</table>
+<h5 id="401-unauthorised-request-7" class="status" data-status="4xx">401: Unauthorised request</h5>
+<h5 id="404-resource-not-found-5" class="status" data-status="4xx">404: Resource not found</h5>
+<p><code>application/json</code></p>
+<table>
+<thead>
+<tr>
+<th>Property</th>
+<th>Type</th>
+<th>Required</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>code_id</code></td>
+<td><code>string</code></td>
+<td>Yes</td>
+<td>A descriptive enough string that is linked to the reason for the error.</td>
+</tr>
+<tr>
+<td><code>errors</code></td>
+<td><code>object or object</code></td>
+<td>Yes</td>
+<td></td>
+</tr>
+<tr>
+<td><code>message</code></td>
+<td><code>string</code></td>
+<td>Yes</td>
+<td></td>
+</tr>
+<tr>
+<td><code>operation_id</code></td>
+<td><code>string</code></td>
+<td>Yes</td>
+<td>A unique identifier/reference associated with a given endpoint/operation</td>
+</tr>
+</tbody>
+</table>
+<p>Example response:</p>
+<pre><code class="language-json">{
+  &quot;code_id&quot;: &quot;failed_validation&quot;,
+  &quot;errors&quot;: {
+    &quot;payment_id&quot;: &quot;Value not found&quot;
+  },
+  &quot;message&quot;: &quot;Failed validation&quot;,
+  &quot;operation_id&quot;: &quot;v1_payments_single_payment_id_get&quot;
+}
+</code></pre>
+<h5 id="405-an-unexpected-http-method-was-used-7" class="status" data-status="4xx">405: An unexpected HTTP method was used</h5>
+<h5 id="5xx-an-unexpected-error-occurred-on-the-server-side-7">5XX: An unexpected error occurred on the server side</h5>
+<h3 id="get-v1paymentsstanding-orderpayment_id" class="operation" data-method="get"><code>GET</code> /v1/payments/standing-order/{payment_id}</h3>
+<p>Operation ID: <code>v1_payments_standing_order_payment_id_get</code>.</p>
+<p>Authentication: oauth2 (<code>OAuth2</code>).</p>
+<h4 id="parameters-8">Parameters</h4>
+<p>| Parameter | In | Type | Required | Description |
+| --- | --- | --- | --- |
+| <code>payment_id</code> | <code>path</code> | <code>string</code> | Yes | Bud Payment Identifier |
+| <code>X-Client-Id</code> | <code>header</code> | <code>string</code> | Yes | The API Client Identifier (Service Application Identifier). |</p>
+<h4 id="responses-8">Responses</h4>
+<h5 id="200-successful-request-5" class="status" data-status="2xx">200: Successful request</h5>
+<p><code>application/json</code></p>
+<table>
+<thead>
+<tr>
+<th>Property</th>
+<th>Type</th>
+<th>Required</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>data</code></td>
+<td><code>object</code></td>
+<td>Yes</td>
+<td>Data structure for the Standing Order object</td>
+</tr>
+<tr>
+<td><code>data.client_id</code></td>
+<td><code>string</code></td>
+<td>Yes</td>
+<td>Bud's Client/App Identifier</td>
+</tr>
+<tr>
+<td><code>data.created_at</code></td>
+<td><code>string (date-time)</code></td>
+<td>Yes</td>
+<td>Date-time (ISO 8601) of when the Standing Order was created</td>
+</tr>
+<tr>
+<td><code>data.errors</code></td>
+<td><code>array of object</code></td>
+<td>Yes</td>
+<td>Details surrounding any errors when attempting to initiate a Standing Order</td>
+</tr>
+<tr>
+<td><code>data.errors[].code</code></td>
+<td><code>string</code></td>
+<td>Yes</td>
+<td>Error Code</td>
+</tr>
+<tr>
+<td><code>data.errors[].description</code></td>
+<td><code>string</code></td>
+<td>Yes</td>
+<td>Text string used to give a description of the payment error</td>
+</tr>
+<tr>
+<td><code>data.first_payment_date</code></td>
+<td><code>string (date-time)</code></td>
+<td>Yes</td>
+<td>Date-time (ISO 8601) the first payment should be made. Must be future date.</td>
+</tr>
+<tr>
+<td><code>data.frequency</code></td>
+<td><code>enum: daily, weekly, fortnightly, monthly, quarterly, semiannually, ...</code></td>
+<td>Yes</td>
+<td>The payment frequency for a Standing Order</td>
+</tr>
+<tr>
+<td><code>data.known_charges</code></td>
+<td><code>object</code></td>
+<td>Yes</td>
+<td>A list detailing information surrounding any known charges that may be associated with the payment</td>
+</tr>
+<tr>
+<td><code>data.known_charges.recipient_charge</code></td>
+<td><code>object</code></td>
+<td>Yes</td>
+<td>The charge details applied to the recipient</td>
+</tr>
+<tr>
+<td><code>data.known_charges.recipient_charge.charge</code></td>
+<td><code>string</code></td>
+<td>Yes</td>
+<td>A number of monetary units specified in an active currency where the unit of currency is explicit and compliant with ISO 4217.</td>
+</tr>
+<tr>
+<td><code>data.known_charges.recipient_charge.currency</code></td>
+<td><code>string</code></td>
+<td>Yes</td>
+<td>A code allocated to a currency by a Maintenance Agency under an international identification scheme, as described in the latest edition of the international standard ISO 4217 &quot;Codes for the representation of currencies and funds&quot;</td>
+</tr>
+<tr>
+<td><code>data.known_charges.recipient_charge.recipient_receives</code></td>
+<td><code>string</code></td>
+<td>Yes</td>
+<td>A number of monetary units specified in an active currency where the unit of currency is explicit and compliant with ISO 4217.</td>
+</tr>
+<tr>
+<td><code>data.known_charges.sender_charge</code></td>
+<td><code>object</code></td>
+<td>Yes</td>
+<td>The charge details applied by the sender</td>
+</tr>
+<tr>
+<td><code>data.known_charges.sender_charge.bank_sends</code></td>
+<td><code>string</code></td>
+<td>Yes</td>
+<td>A number of monetary units specified in an active currency where the unit of currency is explicit and compliant with ISO 4217.</td>
+</tr>
+<tr>
+<td><code>data.known_charges.sender_charge.charge</code></td>
+<td><code>string</code></td>
+<td>Yes</td>
+<td>A number of monetary units specified in an active currency where the unit of currency is explicit and compliant with ISO 4217.</td>
+</tr>
+<tr>
+<td><code>data.known_charges.sender_charge.currency</code></td>
+<td><code>string</code></td>
+<td>Yes</td>
+<td>A code allocated to a currency by a Maintenance Agency under an international identification scheme, as described in the latest edition of the international standard ISO 4217 &quot;Codes for the representation of currencies and funds&quot;</td>
+</tr>
+<tr>
+<td><code>data.known_charges.sender_charge.total_cost</code></td>
+<td><code>string</code></td>
+<td>Yes</td>
+<td>A number of monetary units specified in an active currency where the unit of currency is explicit and compliant with ISO 4217.</td>
+</tr>
+<tr>
+<td><code>data.last_payment_date</code></td>
+<td><code>string (date-time)</code></td>
+<td>No</td>
+<td>Date-time (ISO 8601) after which payments should stop. Must be after <code>first_payment_date</code>.</td>
+</tr>
+<tr>
+<td><code>data.organisation_id</code></td>
+<td><code>string</code></td>
+<td>Yes</td>
+<td>Bud's Organisation Identifier</td>
+</tr>
+<tr>
+<td><code>data.payment_id</code></td>
+<td><code>string</code></td>
+<td>Yes</td>
+<td>Payment Identifier</td>
+</tr>
+<tr>
+<td><code>data.recipient</code></td>
+<td><code>object</code></td>
+<td>Yes</td>
+<td>Details of the recipient of the payment</td>
+</tr>
+<tr>
+<td><code>data.recipient.account_number</code></td>
+<td><code>string</code></td>
+<td>Yes</td>
+<td>Account identifier of the recipient</td>
+</tr>
+<tr>
+<td><code>data.recipient.name</code></td>
+<td><code>string</code></td>
+<td>Yes</td>
+<td>Account holder name of the recipient</td>
+</tr>
+<tr>
+<td><code>data.recipient.type</code></td>
+<td><code>enum: SortCodeAccountNumber, IBAN</code></td>
+<td>Yes</td>
+<td>The account type structure for the payment sender or receiver</td>
+</tr>
+<tr>
+<td><code>data.recurring_amount</code></td>
+<td><code>object</code></td>
+<td>Yes</td>
+<td>The monetary amount.</td>
+</tr>
+<tr>
+<td><code>data.recurring_amount.currency</code></td>
+<td><code>string</code></td>
+<td>Yes</td>
+<td>The three-letter <a href="https://www.iso.org/iso-4217-currency-codes.html">ISO currency code</a> of the monetary amount. Example: <code>GBP</code></td>
+</tr>
+<tr>
+<td><code>data.recurring_amount.value</code></td>
+<td><code>string</code></td>
+<td>Yes</td>
+<td>The value of the monetary amount. The value is formatted with the number of decimal places for the respective currency. Example: <code>10.98</code></td>
+</tr>
+<tr>
+<td><code>data.reference</code></td>
+<td><code>string</code></td>
+<td>Yes</td>
+<td>Reference to use for this payment</td>
+</tr>
+<tr>
+<td><code>data.required_action</code></td>
+<td><code>enum: confirm_standing_order</code></td>
+<td>Yes</td>
+<td>This field will indicate that there is an action required to be taken by the client in order to complete the payment. | Value | Description | |:-------|:-------------| | <code>confirm_standing_order</code> | If present, this value indicates that client has yet to confirm the standing order once the customer has successfully authorised the payment with the provider. This confirmation can be accomplished using the Confirm Standing Order API Endpoint. Please note this step will only be relevant for clients using Bud as a Technical Service Provider (TSP) |</td>
+</tr>
+<tr>
+<td><code>data.sender</code></td>
+<td><code>object</code></td>
+<td>Yes</td>
+<td>Details of the payment sender</td>
+</tr>
+<tr>
+<td><code>data.sender.account_number</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>Account identifier of the sender</td>
+</tr>
+<tr>
+<td><code>data.sender.name</code></td>
+<td><code>string</code></td>
+<td>Yes</td>
+<td>Account holder name of the sender</td>
+</tr>
+<tr>
+<td><code>data.sender.provider</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>The name (identifier) of the payment provider</td>
+</tr>
+<tr>
+<td><code>data.sender.type</code></td>
+<td><code>enum: SortCodeAccountNumber, IBAN</code></td>
+<td>No</td>
+<td>The account type structure for the payment sender or receiver</td>
+</tr>
+<tr>
+<td><code>data.sender.user_id</code></td>
+<td><code>string</code></td>
+<td>Yes</td>
+<td>A string that can be used to uniquely identify a user within the Client's application</td>
+</tr>
+<tr>
+<td><code>data.state</code></td>
+<td><code>object</code></td>
+<td>Yes</td>
+<td></td>
+</tr>
+<tr>
+<td><code>data.state.history</code></td>
+<td><code>array of object</code></td>
+<td>Yes</td>
+<td></td>
+</tr>
+<tr>
+<td><code>data.state.history[].code</code></td>
+<td><code>enum: CREATED, AWAITING_AUTH, AUTH_REJECTED, AUTH_COMPLETED, PENDING, FAILED, ...</code></td>
+<td>Yes</td>
+<td>The payment status code for a Standing Order</td>
+</tr>
+<tr>
+<td><code>data.state.history[].datetime</code></td>
+<td><code>string</code></td>
+<td>Yes</td>
+<td></td>
+</tr>
+<tr>
+<td><code>data.state.history[].message</code></td>
+<td><code>enum: Standing Order Created, Awaiting Customer Authentication, Authentication Failed, Authentication Completed, Payment Order Pending, Standing Order Creation Failed, ...</code></td>
+<td>Yes</td>
+<td>The payment status message for a Standing Order</td>
+</tr>
+<tr>
+<td><code>data.state.status_code</code></td>
+<td><code>enum: CREATED, AWAITING_AUTH, AUTH_REJECTED, AUTH_COMPLETED, PENDING, FAILED, ...</code></td>
+<td>Yes</td>
+<td>The payment status code for a Standing Order</td>
+</tr>
+<tr>
+<td><code>data.state.status_message</code></td>
+<td><code>enum: Standing Order Created, Awaiting Customer Authentication, Authentication Failed, Authentication Completed, Payment Order Pending, Standing Order Creation Failed, ...</code></td>
+<td>Yes</td>
+<td>The payment status message for a Standing Order</td>
+</tr>
+<tr>
+<td><code>operation_id</code></td>
+<td><code>string</code></td>
+<td>Yes</td>
+<td>A unique identifier/reference associated with a given endpoint/operation</td>
+</tr>
+</tbody>
+</table>
+<p>Example response:</p>
+<pre><code class="language-json">{
+  &quot;data&quot;: {
+    &quot;client_id&quot;: &quot;22f80199-1199-400e-9092-17208f6f39f0&quot;,
+    &quot;created_at&quot;: &quot;2020-02-02T12:29:33.428944815Z&quot;,
+    &quot;errors&quot;: [
+      {
+        &quot;code&quot;: &quot;FAILED&quot;,
+        &quot;description&quot;: &quot;The call to the provider to confirm funds returned an error&quot;
+      }
+    ],
+    &quot;first_payment_date&quot;: &quot;2020-02-02T12:29:33.428944815Z&quot;,
+    &quot;frequency&quot;: &quot;monthly&quot;,
+    &quot;known_charges&quot;: {
+      &quot;recipient_charge&quot;: {
+        &quot;charge&quot;: &quot;1.50&quot;,
+        &quot;currency&quot;: &quot;GBP&quot;,
+        &quot;recipient_receives&quot;: &quot;7.00&quot;
+      },
+      &quot;sender_charge&quot;: {
+        &quot;bank_sends&quot;: &quot;10.00&quot;,
+        &quot;charge&quot;: &quot;1.50&quot;,
+        &quot;currency&quot;: &quot;GBP&quot;,
+        &quot;total_cost&quot;: &quot;11.50&quot;
+      }
+    },
+    &quot;last_payment_date&quot;: &quot;2021-02-02T12:29:33.428944815Z&quot;,
+    &quot;method&quot;: &quot;FPS&quot;,
+    &quot;organisation_id&quot;: &quot;22f80199-1199-400e-9092-17208f6f39f0&quot;,
+    &quot;payment_id&quot;: &quot;89f80199-1199-400e-9092-17208f6f39f5&quot;,
+    &quot;recipient&quot;: {
+      &quot;account_number&quot;: &quot;01234501234567&quot;,
+      &quot;name&quot;: &quot;MR TEST RECIPIENT&quot;,
+      &quot;type&quot;: &quot;SortCodeAccountNumber&quot;
+    },
+    &quot;recurring_amount&quot;: {
+      &quot;currency&quot;: &quot;GBP&quot;,
+      &quot;value&quot;: &quot;10.00&quot;
+    },
+    &quot;reference&quot;: &quot;Rent&quot;,
+    &quot;required_action&quot;: &quot;confirm_standing_order&quot;,
+    &quot;sender&quot;: {
+      &quot;name&quot;: &quot;MR TEST SENDER&quot;,
+      &quot;provider&quot;: &quot;Natwest&quot;,
+      &quot;user_id&quot;: &quot;client-defined-user-id&quot;
+    },
+    &quot;state&quot;: {
+      &quot;history&quot;: [
+        {
+          &quot;code&quot;: &quot;CREATED&quot;,
+          &quot;datetime&quot;: &quot;2020-02-02T12:29:33.428944815Z&quot;,
+          &quot;message&quot;: &quot;Standing Order Created&quot;
+        },
+        {
+          &quot;code&quot;: &quot;AWAITING_AUTH&quot;,
+          &quot;datetime&quot;: &quot;2020-02-02T12:29:33.428944815Z&quot;,
+          &quot;message&quot;: &quot;Awaiting Customer Authentication&quot;
+        },
+        {
+          &quot;code&quot;: &quot;AUTH_COMPLETED&quot;,
+          &quot;datetime&quot;: &quot;2020-02-02T12:29:33.428944815Z&quot;,
+          &quot;message&quot;: &quot;Authentication Completed&quot;
+        },
+        {
+          &quot;code&quot;: &quot;PENDING&quot;,
+          &quot;datetime&quot;: &quot;2020-02-02T12:29:33.428944815Z&quot;,
+          &quot;message&quot;: &quot;Payment Order Pending&quot;
+        },
+        {
+          &quot;code&quot;: &quot;COMPLETED&quot;,
+          &quot;datetime&quot;: &quot;2020-02-02T12:29:33.428944815Z&quot;,
+          &quot;message&quot;: &quot;Standing Order Creation Completed&quot;
+        }
+      ],
+      &quot;status_code&quot;: &quot;COMPLETED&quot;,
+      &quot;status_message&quot;: &quot;Standing Order Creation Completed&quot;
+    }
+  },
+  &quot;metadata&quot;: {},
+  &quot;operation_id&quot;: &quot;v1_payments_standing_order_payment_id_get&quot;
+}
+</code></pre>
+<h5 id="401-unauthorised-request-8" class="status" data-status="4xx">401: Unauthorised request</h5>
+<h5 id="404-resource-not-found-6" class="status" data-status="4xx">404: Resource not found</h5>
+<p><code>application/json</code></p>
+<table>
+<thead>
+<tr>
+<th>Property</th>
+<th>Type</th>
+<th>Required</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>code_id</code></td>
+<td><code>string</code></td>
+<td>Yes</td>
+<td>A descriptive enough string that is linked to the reason for the error.</td>
+</tr>
+<tr>
+<td><code>errors</code></td>
+<td><code>object or object</code></td>
+<td>Yes</td>
+<td></td>
+</tr>
+<tr>
+<td><code>message</code></td>
+<td><code>string</code></td>
+<td>Yes</td>
+<td></td>
+</tr>
+<tr>
+<td><code>operation_id</code></td>
+<td><code>string</code></td>
+<td>Yes</td>
+<td>A unique identifier/reference associated with a given endpoint/operation</td>
+</tr>
+</tbody>
+</table>
+<p>Example response:</p>
+<pre><code class="language-json">{
+  &quot;code_id&quot;: &quot;failed_validation&quot;,
+  &quot;errors&quot;: {
+    &quot;payment_id&quot;: &quot;Value not found&quot;
+  },
+  &quot;message&quot;: &quot;Failed validation&quot;,
+  &quot;operation_id&quot;: &quot;v1_standing_order_get&quot;
+}
+</code></pre>
+<h5 id="405-an-unexpected-http-method-was-used-8" class="status" data-status="4xx">405: An unexpected HTTP method was used</h5>
+<h5 id="5xx-an-unexpected-error-occurred-on-the-server-side-8">5XX: An unexpected error occurred on the server side</h5>
+</main></div>
+<script src="../assets/search.js" defer></script></body></html>

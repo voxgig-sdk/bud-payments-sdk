@@ -1,0 +1,1179 @@
+<!doctype html>
+<html lang="en">
+<head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>InitiatePaymentClientLicense | Payments API</title><link rel="stylesheet" href="../assets/style.css"></head>
+<body><a class="skip" href="#content">Skip to content</a>
+<header class="site-header"><a class="site-title" href="../index.html">Payments API<span>SDK documentation</span></a><div class="site-links"><a class="repo-link" href="https://github.com/voxgig-sdk/bud-payments-sdk">voxgig-sdk/bud-payments-sdk</a></div></header>
+<div class="site-notice" role="note"></div>
+<div class="shell"><nav class="site-nav" aria-label="Documentation"><div class="search"><label for="search">Search documentation</label><input id="search" type="search" data-base="../" placeholder="Find a guide or reference"><div id="results" aria-live="polite"></div></div><details><summary>Overview</summary><a href="../index.html">Payments API</a></details>
+<details open><summary>API</summary><a href="../api/index.html">API overview</a>
+<a href="../api/initiate_payment_bud_license.html">InitiatePaymentBudLicense</a>
+<a aria-current="page" href="../api/initiate_payment_client_license.html">InitiatePaymentClientLicense</a><div class="nav-sections"><a class="nav-section" href="#post-v1paymentsauthorisation-codes">POST /v1/payments/authorisation-codes</a>
+<a class="nav-section" href="#post-v1paymentsscheduled">POST /v1/payments/scheduled</a>
+<a class="nav-section" href="#post-v1paymentssingle">POST /v1/payments/single</a>
+<a class="nav-section" href="#post-v1paymentsstanding-order">POST /v1/payments/standing-order</a></div>
+<a href="../api/manage_payment.html">ManagePayment</a></details>
+<details><summary>Guides</summary><a href="../guides/authentication.html">Authentication</a>
+<a href="../guides/first-call.html">Make your first API call</a>
+<a href="../guides/errors.html">Handle errors</a>
+<a href="../guides/concepts.html">Entities, SDKs, and tools</a></details>
+<details><summary>SDKs</summary><a href="../sdks/go.html">Golang</a>
+<a href="../sdks/js.html">JavaScript</a>
+<a href="../sdks/lua.html">Lua</a>
+<a href="../sdks/php.html">PHP</a>
+<a href="../sdks/py.html">Python</a>
+<a href="../sdks/ts.html">TypeScript</a></details>
+<details><summary>Tools</summary><a href="../tools/go-cli.html">Go CLI</a>
+<a href="../tools/go-mcp.html">Go MCP server</a></details>
+<details><summary>Features</summary><a href="../features/debug.html">Debug capture</a>
+<a href="../features/idempotency.html">Idempotency</a>
+<a href="../features/metrics.html">Metrics</a>
+<a href="../features/paging.html">Paging</a>
+<a href="../features/ratelimit.html">Rate limiting</a>
+<a href="../features/retry.html">Retry</a>
+<a href="../features/test.html">Test transport</a>
+<a href="../features/timeout.html">Timeout</a></details></nav><main id="content"><div class="page-context"><span class="section-dot" aria-hidden="true"></span>API</div><h1 id="initiatepaymentclientlicense">InitiatePaymentClientLicense</h1>
+<h2 id="operations">Operations</h2>
+<p>Every route this entity exposes. Each route links to its own reference on this page.</p>
+<table>
+<thead>
+<tr>
+<th>Method</th>
+<th>Route</th>
+<th>SDK operation</th>
+<th>Returns</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>POST</code></td>
+<td><a href="#post-v1paymentsauthorisation-codes"><code>/v1/payments/authorisation-codes</code></a></td>
+<td><code>create</code></td>
+<td>Successful request</td>
+</tr>
+<tr>
+<td><code>POST</code></td>
+<td><a href="#post-v1paymentsscheduled"><code>/v1/payments/scheduled</code></a></td>
+<td><code>create</code></td>
+<td>Successful request</td>
+</tr>
+<tr>
+<td><code>POST</code></td>
+<td><a href="#post-v1paymentssingle"><code>/v1/payments/single</code></a></td>
+<td><code>create</code></td>
+<td>Successful request</td>
+</tr>
+<tr>
+<td><code>POST</code></td>
+<td><a href="#post-v1paymentsstanding-order"><code>/v1/payments/standing-order</code></a></td>
+<td><code>create</code></td>
+<td>Successful request</td>
+</tr>
+</tbody>
+</table>
+<h2 id="examples">Examples</h2>
+<p>One example per SDK, generated from the API model. The argument names are the parameters and fields of this entity, and the values are placeholders. The examples are not compiled or executed.</p>
+<h3 id="golang">Golang</h3>
+<p>Construct <code>client</code> as shown in the <a href="../sdks/go.html#set-up-the-client">Golang setup</a>, then call the operations:</p>
+<pre><code class="language-go">created, err := client.InitiatePaymentClientLicense(nil).Create(map[string]any{&quot;authorisation_url&quot;: &quot;example&quot;, &quot;payment_details&quot;: map[string]any{}, &quot;provider&quot;: &quot;example&quot;, &quot;scheduled_payment_details&quot;: map[string]any{}, &quot;standing_order_details&quot;: map[string]any{}, &quot;state&quot;: &quot;example&quot;}, nil)
+if err != nil {
+    panic(err)
+}
+fmt.Println(created)
+</code></pre>
+<h3 id="javascript">JavaScript</h3>
+<p>Construct <code>client</code> as shown in the <a href="../sdks/js.html#set-up-the-client">JavaScript setup</a>, then call the operations:</p>
+<pre><code class="language-js">const created = await client.InitiatePaymentClientLicense().create({ authorisation_url: &quot;example&quot;, payment_details: {}, provider: &quot;example&quot;, scheduled_payment_details: {}, standing_order_details: {}, state: &quot;example&quot; })
+</code></pre>
+<h3 id="lua">Lua</h3>
+<p>Construct <code>client</code> as shown in the <a href="../sdks/lua.html#set-up-the-client">Lua setup</a>, then call the operations:</p>
+<pre><code class="language-lua">local created, err = client:InitiatePaymentClientLicense():create({ authorisation_url = &quot;example&quot;, payment_details = {}, provider = &quot;example&quot;, scheduled_payment_details = {}, standing_order_details = {}, state = &quot;example&quot; })
+</code></pre>
+<h3 id="php">PHP</h3>
+<p>Construct <code>client</code> as shown in the <a href="../sdks/php.html#set-up-the-client">PHP setup</a>, then call the operations:</p>
+<pre><code class="language-php">$created = $client-&gt;InitiatePaymentClientLicense()-&gt;create([&quot;authorisation_url&quot; =&gt; &quot;example&quot;, &quot;payment_details&quot; =&gt; [], &quot;provider&quot; =&gt; &quot;example&quot;, &quot;scheduled_payment_details&quot; =&gt; [], &quot;standing_order_details&quot; =&gt; [], &quot;state&quot; =&gt; &quot;example&quot;]);
+</code></pre>
+<h3 id="python">Python</h3>
+<p>Construct <code>client</code> as shown in the <a href="../sdks/py.html#set-up-the-client">Python setup</a>, then call the operations:</p>
+<pre><code class="language-py">created = client.InitiatePaymentClientLicense().create({ &quot;authorisation_url&quot;: &quot;example&quot;, &quot;payment_details&quot;: {}, &quot;provider&quot;: &quot;example&quot;, &quot;scheduled_payment_details&quot;: {}, &quot;standing_order_details&quot;: {}, &quot;state&quot;: &quot;example&quot; })
+</code></pre>
+<h3 id="typescript">TypeScript</h3>
+<p>Construct <code>client</code> as shown in the <a href="../sdks/ts.html#set-up-the-client">TypeScript setup</a>, then call the operations:</p>
+<pre><code class="language-ts">const created = await client.InitiatePaymentClientLicense().create({ authorisation_url: &quot;example&quot;, payment_details: {}, provider: &quot;example&quot;, scheduled_payment_details: {}, standing_order_details: {}, state: &quot;example&quot; })
+</code></pre>
+<h2 id="fields">Fields</h2>
+<table>
+<thead>
+<tr>
+<th>Field</th>
+<th>Type</th>
+<th>Required</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>authorisation_url</code></td>
+<td><code>string</code></td>
+<td>Yes</td>
+<td>The authorisation URL for a relevant payment provider.</td>
+</tr>
+<tr>
+<td><code>code</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>Code parameter returned in redirect parameters</td>
+</tr>
+<tr>
+<td><code>payment_details</code></td>
+<td><code>object</code></td>
+<td>Yes</td>
+<td>Payment details required to make a Single Payment</td>
+</tr>
+<tr>
+<td><code>payment_id</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>Payment Identifier</td>
+</tr>
+<tr>
+<td><code>payment_type</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>The type of payment iniated through Bud's Payments Service</td>
+</tr>
+<tr>
+<td><code>provider</code></td>
+<td><code>string</code></td>
+<td>Yes</td>
+<td>The name (identifier) of the payment provider</td>
+</tr>
+<tr>
+<td><code>provider_redirect_url</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>This is the url that your Customer will be redirected to once they have authorised with the relevant provider.</td>
+</tr>
+<tr>
+<td><code>provider_types</code></td>
+<td><code>array</code></td>
+<td>No</td>
+<td>One or more provider types that can be used to filter the list of providers that are shown to the customer during the connection flow.</td>
+</tr>
+<tr>
+<td><code>redirect_url</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>This is the url that your Customer will be redirected to when using the Bud user interface.</td>
+</tr>
+<tr>
+<td><code>required_action</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>If present, this fild will indicate the next required action (if any) to be taken by the client in order to complete the payment flow | Value | Description | |:-------|:-------------| | <code>confirm_scheduled_payment</code> | Indicates that the client…</td>
+</tr>
+<tr>
+<td><code>result</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>Result</td>
+</tr>
+<tr>
+<td><code>scheduled_payment_details</code></td>
+<td><code>object</code></td>
+<td>Yes</td>
+<td>Details of the scheduled payment</td>
+</tr>
+<tr>
+<td><code>standing_order_details</code></td>
+<td><code>object</code></td>
+<td>Yes</td>
+<td>Details of the standing order</td>
+</tr>
+<tr>
+<td><code>state</code></td>
+<td><code>string</code></td>
+<td>Yes</td>
+<td>The task ID</td>
+</tr>
+</tbody>
+</table>
+<h2 id="create">create</h2>
+<h3 id="post-v1paymentsauthorisation-codes" class="operation" data-method="post"><code>POST</code> /v1/payments/authorisation-codes</h3>
+<p>Operation ID: <code>v1_payments_authorisation_codes_post</code>.</p>
+<p>Authentication: oauth2 (<code>OAuth2</code>).</p>
+<h4 id="parameters">Parameters</h4>
+<p>| Parameter | In | Type | Required | Description |
+| --- | --- | --- | --- |
+| <code>X-Client-Id</code> | <code>header</code> | <code>string</code> | Yes | The API Client Identifier (Service Application Identifier). |</p>
+<h4 id="request-body">Request body</h4>
+<p><code>application/json</code></p>
+<table>
+<thead>
+<tr>
+<th>Property</th>
+<th>Type</th>
+<th>Required</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>code</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>Code parameter returned in redirect parameters</td>
+</tr>
+<tr>
+<td><code>state</code></td>
+<td><code>string</code></td>
+<td>Yes</td>
+<td>The task ID</td>
+</tr>
+</tbody>
+</table>
+<h4 id="responses">Responses</h4>
+<h5 id="200-successful-request" class="status" data-status="2xx">200: Successful request</h5>
+<p><code>application/json</code></p>
+<table>
+<thead>
+<tr>
+<th>Property</th>
+<th>Type</th>
+<th>Required</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>data</code></td>
+<td><code>object</code></td>
+<td>Yes</td>
+<td>Details regarding the response object for the authorisation codes response.</td>
+</tr>
+<tr>
+<td><code>data.payment_id</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>Payment Identifier</td>
+</tr>
+<tr>
+<td><code>data.payment_type</code></td>
+<td><code>enum: single, scheduled, standing-order</code></td>
+<td>No</td>
+<td>The type of payment iniated through Bud's Payments Service</td>
+</tr>
+<tr>
+<td><code>data.result</code></td>
+<td><code>enum: success, auth_invalid, auth_expired, provider_failure, internal_error</code></td>
+<td>No</td>
+<td></td>
+</tr>
+<tr>
+<td><code>operation_id</code></td>
+<td><code>string</code></td>
+<td>Yes</td>
+<td>A unique identifier/reference associated with a given endpoint/operation</td>
+</tr>
+</tbody>
+</table>
+<p>Example response:</p>
+<pre><code class="language-json">{
+  &quot;data&quot;: {
+    &quot;payment_id&quot;: &quot;5edb14fe-ab4b-4357-ae15-98765c599fb5&quot;,
+    &quot;payment_type&quot;: &quot;single&quot;,
+    &quot;result&quot;: &quot;success&quot;
+  },
+  &quot;operation_id&quot;: &quot;v1_payments_authorisation_codes_post&quot;
+}
+</code></pre>
+<h5 id="400-request-contained-invalidmissing-data" class="status" data-status="4xx">400: Request contained invalid/missing data</h5>
+<p><code>application/json</code></p>
+<table>
+<thead>
+<tr>
+<th>Property</th>
+<th>Type</th>
+<th>Required</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>code_id</code></td>
+<td><code>enum: failed_validation, internal_error, not_found, provider_in_maintenance_mode</code></td>
+<td>Yes</td>
+<td></td>
+</tr>
+<tr>
+<td><code>errors</code></td>
+<td><code>object</code></td>
+<td>Yes</td>
+<td></td>
+</tr>
+<tr>
+<td><code>message</code></td>
+<td><code>enum: Failed validation, Internal server error has occurred, Resource not found, [ProviderName] is currently in a maintenance mode, please try again later.</code></td>
+<td>Yes</td>
+<td></td>
+</tr>
+<tr>
+<td><code>operation_id</code></td>
+<td><code>enum: v1_payments_providers_get, v1_payments_single_get, v1_payments_single_post, v1_payments_single_payment_id_auth_token_post, v1_payments_single_payment_id_get, v1_payments_single_confirm_post, ...</code></td>
+<td>Yes</td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<p>Example response:</p>
+<pre><code class="language-json">{
+  &quot;code_id&quot;: &quot;failed_validation&quot;,
+  &quot;errors&quot;: {
+    &quot;payment&quot;: [
+      &quot;unable to find payment for [Payment ID]&quot;
+    ]
+  },
+  &quot;message&quot;: &quot;Failed validation&quot;,
+  &quot;operation_id&quot;: &quot;v1_payments_authorisation_codes_post&quot;
+}
+</code></pre>
+<h5 id="500-an-internal-server-error-has-occurred" class="status" data-status="5xx">500: An internal server error has occurred</h5>
+<p><code>application/json</code></p>
+<table>
+<thead>
+<tr>
+<th>Property</th>
+<th>Type</th>
+<th>Required</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>code_id</code></td>
+<td><code>enum: failed_validation, internal_error, not_found, provider_in_maintenance_mode</code></td>
+<td>Yes</td>
+<td></td>
+</tr>
+<tr>
+<td><code>errors</code></td>
+<td><code>object</code></td>
+<td>Yes</td>
+<td></td>
+</tr>
+<tr>
+<td><code>message</code></td>
+<td><code>enum: Failed validation, Internal server error has occurred, Resource not found, [ProviderName] is currently in a maintenance mode, please try again later.</code></td>
+<td>Yes</td>
+<td></td>
+</tr>
+<tr>
+<td><code>operation_id</code></td>
+<td><code>enum: v1_payments_providers_get, v1_payments_single_get, v1_payments_single_post, v1_payments_single_payment_id_auth_token_post, v1_payments_single_payment_id_get, v1_payments_single_confirm_post, ...</code></td>
+<td>Yes</td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<p>Example response:</p>
+<pre><code class="language-json">{
+  &quot;code_id&quot;: &quot;internal_error&quot;,
+  &quot;errors&quot;: {
+    &quot;db&quot;: &quot;could not fetch payment resource&quot;
+  },
+  &quot;message&quot;: &quot;Internal server error has occurred&quot;,
+  &quot;operation_id&quot;: &quot;v1_payments_authorisation_codes_post&quot;
+}
+</code></pre>
+<h3 id="post-v1paymentsscheduled" class="operation" data-method="post"><code>POST</code> /v1/payments/scheduled</h3>
+<p>Operation ID: <code>v1_payments_scheduled_post</code>.</p>
+<p>Authentication: oauth2 (<code>OAuth2</code>).</p>
+<h4 id="parameters-1">Parameters</h4>
+<p>| Parameter | In | Type | Required | Description |
+| --- | --- | --- | --- |
+| <code>X-Client-Id</code> | <code>header</code> | <code>string</code> | Yes | The API Client Identifier (Service Application Identifier). |</p>
+<h4 id="request-body-1">Request body</h4>
+<p><code>application/json</code></p>
+<table>
+<thead>
+<tr>
+<th>Property</th>
+<th>Type</th>
+<th>Required</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>provider</code></td>
+<td><code>string</code></td>
+<td>Yes</td>
+<td>The name (identifier) of the payment provider</td>
+</tr>
+<tr>
+<td><code>provider_redirect_url</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>This is the url that your Customer will be redirected to once they have authorised with the relevant provider. This should only be used when using your own license and wish to use the Submit Authorisation Codes endpoint. If you wish to use Bud's call back then the <code>redirect_url</code> must be provided.</td>
+</tr>
+<tr>
+<td><code>provider_types</code></td>
+<td><code>array of enum: business, retail, sandbox</code></td>
+<td>No</td>
+<td>One or more provider types that can be used to filter the list of providers that are shown to the customer during the connection flow. If no filter is applied, all types of provider are returned. Note that on Bud's sandbox environment, only sandbox providers will be returned.</td>
+</tr>
+<tr>
+<td><code>redirect_url</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>This is the url that your Customer will be redirected to when using the Bud user interface. If you wish to use your own license and callback infrastructure this parameter will have no effect and the <code>provider_redirect_url</code> parameter should be used instead.</td>
+</tr>
+<tr>
+<td><code>scheduled_payment_details</code></td>
+<td><code>object</code></td>
+<td>Yes</td>
+<td>Details of the scheduled payment</td>
+</tr>
+<tr>
+<td><code>scheduled_payment_details.amount</code></td>
+<td><code>object</code></td>
+<td>Yes</td>
+<td>The monetary amount.</td>
+</tr>
+<tr>
+<td><code>scheduled_payment_details.amount.currency</code></td>
+<td><code>string</code></td>
+<td>Yes</td>
+<td>The three-letter <a href="https://www.iso.org/iso-4217-currency-codes.html">ISO currency code</a> of the monetary amount. Example: <code>GBP</code></td>
+</tr>
+<tr>
+<td><code>scheduled_payment_details.amount.value</code></td>
+<td><code>string</code></td>
+<td>Yes</td>
+<td>The value of the monetary amount. The value is formatted with the number of decimal places for the respective currency. Example: <code>10.98</code></td>
+</tr>
+<tr>
+<td><code>scheduled_payment_details.recipient</code></td>
+<td><code>object</code></td>
+<td>Yes</td>
+<td>Details of the recipient of the payment</td>
+</tr>
+<tr>
+<td><code>scheduled_payment_details.recipient.account_number</code></td>
+<td><code>string</code></td>
+<td>Yes</td>
+<td>Account identifier of the recipient</td>
+</tr>
+<tr>
+<td><code>scheduled_payment_details.recipient.name</code></td>
+<td><code>string</code></td>
+<td>Yes</td>
+<td>Account holder name of the recipient</td>
+</tr>
+<tr>
+<td><code>scheduled_payment_details.recipient.type</code></td>
+<td><code>enum: SortCodeAccountNumber, IBAN</code></td>
+<td>Yes</td>
+<td>The account type structure for the payment sender or receiver</td>
+</tr>
+<tr>
+<td><code>scheduled_payment_details.reference</code></td>
+<td><code>string</code></td>
+<td>Yes</td>
+<td>Reference to use for the payment made through this scheduled instruction</td>
+</tr>
+<tr>
+<td><code>scheduled_payment_details.requested_execution_date</code></td>
+<td><code>string (date-time)</code></td>
+<td>Yes</td>
+<td>Date-time (ISO 8601) the payment should be made. Must be at least one day in the future.</td>
+</tr>
+<tr>
+<td><code>scheduled_payment_details.sender</code></td>
+<td><code>object</code></td>
+<td>Yes</td>
+<td>Details of the payment sender</td>
+</tr>
+<tr>
+<td><code>scheduled_payment_details.sender.account_number</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>Account identifier of the sender</td>
+</tr>
+<tr>
+<td><code>scheduled_payment_details.sender.name</code></td>
+<td><code>string</code></td>
+<td>Yes</td>
+<td>Account holder name of the sender</td>
+</tr>
+<tr>
+<td><code>scheduled_payment_details.sender.provider</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>The name (identifier) of the payment provider</td>
+</tr>
+<tr>
+<td><code>scheduled_payment_details.sender.type</code></td>
+<td><code>enum: SortCodeAccountNumber, IBAN</code></td>
+<td>No</td>
+<td>The account type structure for the payment sender or receiver</td>
+</tr>
+<tr>
+<td><code>scheduled_payment_details.sender.user_id</code></td>
+<td><code>string</code></td>
+<td>Yes</td>
+<td>A string that can be used to uniquely identify a user within the Client's application</td>
+</tr>
+</tbody>
+</table>
+<p>Example request body:</p>
+<pre><code class="language-json">{
+  &quot;provider&quot;: &quot;lloyds&quot;,
+  &quot;redirect_url&quot;: &quot;https://your-app.com/connected?my-parameter=xyz&quot;,
+  &quot;scheduled_payment_details&quot;: {
+    &quot;amount&quot;: {
+      &quot;currency&quot;: &quot;GBP&quot;,
+      &quot;value&quot;: &quot;2.50&quot;
+    },
+    &quot;recipient&quot;: {
+      &quot;account_number&quot;: &quot;01234501234567&quot;,
+      &quot;name&quot;: &quot;MR TEST RECIPIENT&quot;,
+      &quot;type&quot;: &quot;SortCodeAccountNumber&quot;
+    },
+    &quot;reference&quot;: &quot;PAYMENT REFERENCE&quot;,
+    &quot;requested_execution_date&quot;: &quot;2020-02-02T12:29:33.428944815Z&quot;,
+    &quot;sender&quot;: {
+      &quot;name&quot;: &quot;MR TEST SENDER&quot;,
+      &quot;user_id&quot;: &quot;client-defined-user-id&quot;
+    }
+  }
+}
+</code></pre>
+<h4 id="responses-1">Responses</h4>
+<h5 id="200-successful-request-1" class="status" data-status="2xx">200: Successful request</h5>
+<p><code>application/json</code></p>
+<table>
+<thead>
+<tr>
+<th>Property</th>
+<th>Type</th>
+<th>Required</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>data</code></td>
+<td><code>object</code></td>
+<td>Yes</td>
+<td>Scheduled Payment Response Object</td>
+</tr>
+<tr>
+<td><code>data.authorisation_url</code></td>
+<td><code>string</code></td>
+<td>Yes</td>
+<td>The authorisation URL for a relevant payment provider. Redirect your Customer to this url to allow them to authorise the scheduled instruction</td>
+</tr>
+<tr>
+<td><code>data.payment_id</code></td>
+<td><code>string</code></td>
+<td>Yes</td>
+<td>Payment Identifier</td>
+</tr>
+<tr>
+<td><code>data.required_action</code></td>
+<td><code>enum: confirm_scheduled_payment</code></td>
+<td>No</td>
+<td>If present, this fild will indicate the next required action (if any) to be taken by the client in order to complete the payment flow | Value | Description | |:-------|:-------------| | <code>confirm_scheduled_payment</code> | Indicates that the client must confirm the scheduled payment using the Confirm Scheduled Payment endpoint in order to complete the payment flow. |</td>
+</tr>
+<tr>
+<td><code>operation_id</code></td>
+<td><code>string</code></td>
+<td>Yes</td>
+<td>A unique identifier/reference associated with a given endpoint/operation</td>
+</tr>
+</tbody>
+</table>
+<p>Example response:</p>
+<pre><code class="language-json">{
+  &quot;data&quot;: {
+    &quot;authorisation_url&quot;: &quot;https://www.thisisbud.com/provider/specific/redirect/url&quot;,
+    &quot;payment_id&quot;: &quot;56caec01-85cc-4fc6-8080-cc0f7ed03a7e&quot;,
+    &quot;required_action&quot;: &quot;confirm_scheduled_payment&quot;
+  },
+  &quot;operation_id&quot;: &quot;v1_payments_scheduled_post&quot;
+}
+</code></pre>
+<h5 id="400-the-request-contains-an-invalid-payload" class="status" data-status="4xx">400: The request contains an invalid payload</h5>
+<p><code>application/json</code></p>
+<table>
+<thead>
+<tr>
+<th>Property</th>
+<th>Type</th>
+<th>Required</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>code_id</code></td>
+<td><code>string</code></td>
+<td>Yes</td>
+<td>A descriptive enough string that is linked to the reason for the error.</td>
+</tr>
+<tr>
+<td><code>errors</code></td>
+<td><code>object or object</code></td>
+<td>Yes</td>
+<td></td>
+</tr>
+<tr>
+<td><code>message</code></td>
+<td><code>string</code></td>
+<td>Yes</td>
+<td></td>
+</tr>
+<tr>
+<td><code>operation_id</code></td>
+<td><code>string</code></td>
+<td>Yes</td>
+<td>A unique identifier/reference associated with a given endpoint/operation</td>
+</tr>
+</tbody>
+</table>
+<p>Example response:</p>
+<pre><code class="language-json">{
+  &quot;code_id&quot;: &quot;failed_validation&quot;,
+  &quot;errors&quot;: {
+    &quot;recipient.sort_code&quot;: &quot;Sort code must match `^\\d{6}$`&quot;,
+    &quot;standing_order_details.recipient.name&quot;: &quot;Name must not be empty&quot;
+  },
+  &quot;message&quot;: &quot;Failed validation&quot;,
+  &quot;operation_id&quot;: &quot;v1_payments_scheduled_post&quot;
+}
+</code></pre>
+<h5 id="401-unauthorised-request" class="status" data-status="4xx">401: Unauthorised request</h5>
+<h5 id="405-an-unexpected-http-method-was-used" class="status" data-status="4xx">405: An unexpected HTTP method was used</h5>
+<h5 id="5xx-an-unexpected-error-occurred-on-the-server-side">5XX: An unexpected error occurred on the server side</h5>
+<h3 id="post-v1paymentssingle" class="operation" data-method="post"><code>POST</code> /v1/payments/single</h3>
+<p>Operation ID: <code>v1_payments_single_post</code>.</p>
+<p>Authentication: oauth2 (<code>OAuth2</code>).</p>
+<h4 id="parameters-2">Parameters</h4>
+<p>| Parameter | In | Type | Required | Description |
+| --- | --- | --- | --- |
+| <code>X-Client-Id</code> | <code>header</code> | <code>string</code> | Yes | The API Client Identifier (Service Application Identifier). |</p>
+<h4 id="request-body-2">Request body</h4>
+<p><code>application/json</code></p>
+<table>
+<thead>
+<tr>
+<th>Property</th>
+<th>Type</th>
+<th>Required</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>payment_details</code></td>
+<td><code>object</code></td>
+<td>Yes</td>
+<td>Payment details required to make a Single Payment</td>
+</tr>
+<tr>
+<td><code>payment_details.amount</code></td>
+<td><code>object</code></td>
+<td>Yes</td>
+<td>The monetary amount.</td>
+</tr>
+<tr>
+<td><code>payment_details.amount.currency</code></td>
+<td><code>string</code></td>
+<td>Yes</td>
+<td>The three-letter <a href="https://www.iso.org/iso-4217-currency-codes.html">ISO currency code</a> of the monetary amount. Example: <code>GBP</code></td>
+</tr>
+<tr>
+<td><code>payment_details.amount.value</code></td>
+<td><code>string</code></td>
+<td>Yes</td>
+<td>The value of the monetary amount. The value is formatted with the number of decimal places for the respective currency. Example: <code>10.98</code></td>
+</tr>
+<tr>
+<td><code>payment_details.recipient</code></td>
+<td><code>object</code></td>
+<td>Yes</td>
+<td>Details of the recipient of the payment</td>
+</tr>
+<tr>
+<td><code>payment_details.recipient.account_number</code></td>
+<td><code>string</code></td>
+<td>Yes</td>
+<td>Account identifier of the recipient</td>
+</tr>
+<tr>
+<td><code>payment_details.recipient.name</code></td>
+<td><code>string</code></td>
+<td>Yes</td>
+<td>Account holder name of the recipient</td>
+</tr>
+<tr>
+<td><code>payment_details.recipient.type</code></td>
+<td><code>enum: SortCodeAccountNumber, IBAN</code></td>
+<td>Yes</td>
+<td>The account type structure for the payment sender or receiver</td>
+</tr>
+<tr>
+<td><code>payment_details.reference</code></td>
+<td><code>string</code></td>
+<td>Yes</td>
+<td>The payment reference</td>
+</tr>
+<tr>
+<td><code>payment_details.sender</code></td>
+<td><code>object</code></td>
+<td>Yes</td>
+<td>Details of the payment sender</td>
+</tr>
+<tr>
+<td><code>payment_details.sender.account_number</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>Account identifier of the sender</td>
+</tr>
+<tr>
+<td><code>payment_details.sender.name</code></td>
+<td><code>string</code></td>
+<td>Yes</td>
+<td>Account holder name of the sender</td>
+</tr>
+<tr>
+<td><code>payment_details.sender.provider</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>The name (identifier) of the payment provider</td>
+</tr>
+<tr>
+<td><code>payment_details.sender.type</code></td>
+<td><code>enum: SortCodeAccountNumber, IBAN</code></td>
+<td>No</td>
+<td>The account type structure for the payment sender or receiver</td>
+</tr>
+<tr>
+<td><code>payment_details.sender.user_id</code></td>
+<td><code>string</code></td>
+<td>Yes</td>
+<td>A string that can be used to uniquely identify a user within the Client's application</td>
+</tr>
+<tr>
+<td><code>provider</code></td>
+<td><code>string</code></td>
+<td>Yes</td>
+<td>The name (identifier) of the payment provider</td>
+</tr>
+<tr>
+<td><code>provider_redirect_url</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>This is the url that your Customer will be redirected to once they have authorised with the relevant provider. This should only be used when using your own license and wish to use the Submit Authorisation Codes endpoint. If you wish to use Bud's call back then the <code>redirect_url</code> must be provided.</td>
+</tr>
+<tr>
+<td><code>redirect_url</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>This is the url that your Customer will be redirected to when using the Bud user interface. If you wish to use your own license and callback infrastructure this parameter will have no effect and the <code>provider_redirect_url</code> parameter should be used instead.</td>
+</tr>
+</tbody>
+</table>
+<h4 id="responses-2">Responses</h4>
+<h5 id="200-successful-request-2" class="status" data-status="2xx">200: Successful request</h5>
+<p><code>application/json</code></p>
+<table>
+<thead>
+<tr>
+<th>Property</th>
+<th>Type</th>
+<th>Required</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>data</code></td>
+<td><code>object</code></td>
+<td>Yes</td>
+<td>Single Payment Response</td>
+</tr>
+<tr>
+<td><code>data.authorisation_url</code></td>
+<td><code>string</code></td>
+<td>Yes</td>
+<td>The authorisation URL for a relevant payment provider. Redirect your Customer to this url to allow them to authorise their payment</td>
+</tr>
+<tr>
+<td><code>data.payment_id</code></td>
+<td><code>string</code></td>
+<td>Yes</td>
+<td>Unique identifier for the single payment resource</td>
+</tr>
+<tr>
+<td><code>data.required_action</code></td>
+<td><code>enum: confirm_single_payment</code></td>
+<td>No</td>
+<td>If present, this fild will indicate the next required action (if any) to be taken by the client in order to complete the payment flow | Value | Description | |:-------|:-------------| | <code>confirm_single_payment</code> | Indicates that the client must confirm the single payment using the Confirm Single Payment endpoint in order to complete the payment flow. |</td>
+</tr>
+<tr>
+<td><code>operation_id</code></td>
+<td><code>string</code></td>
+<td>Yes</td>
+<td>A unique identifier/reference associated with a given endpoint/operation</td>
+</tr>
+</tbody>
+</table>
+<p>Example response:</p>
+<pre><code class="language-json">{
+  &quot;data&quot;: {
+    &quot;authorisation_url&quot;: &quot;https://www.thisisbud.com/provider/specific/redirect/url&quot;,
+    &quot;payment_id&quot;: &quot;56caec01-85cc-4fc6-8080-cc0f7ed03a7e&quot;,
+    &quot;required_action&quot;: &quot;confirm_single_payment&quot;
+  },
+  &quot;operation_id&quot;: &quot;v1_payments_single_post&quot;
+}
+</code></pre>
+<h5 id="400-the-request-contains-an-invalid-payload-1" class="status" data-status="4xx">400: The request contains an invalid payload</h5>
+<p><code>application/json</code></p>
+<table>
+<thead>
+<tr>
+<th>Property</th>
+<th>Type</th>
+<th>Required</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>code_id</code></td>
+<td><code>string</code></td>
+<td>Yes</td>
+<td>A descriptive enough string that is linked to the reason for the error.</td>
+</tr>
+<tr>
+<td><code>errors</code></td>
+<td><code>object or object</code></td>
+<td>Yes</td>
+<td></td>
+</tr>
+<tr>
+<td><code>message</code></td>
+<td><code>string</code></td>
+<td>Yes</td>
+<td></td>
+</tr>
+<tr>
+<td><code>operation_id</code></td>
+<td><code>string</code></td>
+<td>Yes</td>
+<td>A unique identifier/reference associated with a given endpoint/operation</td>
+</tr>
+</tbody>
+</table>
+<p>Example response:</p>
+<pre><code class="language-json">{
+  &quot;code_id&quot;: &quot;failed_validation&quot;,
+  &quot;errors&quot;: {
+    &quot;recipient.sort_code&quot;: &quot;Sort code must match `^\\d{6}$`&quot;
+  },
+  &quot;message&quot;: &quot;Failed validation&quot;,
+  &quot;operation_id&quot;: &quot;v1_payments_single_post&quot;
+}
+</code></pre>
+<h5 id="401-unauthorised-request-1" class="status" data-status="4xx">401: Unauthorised request</h5>
+<h5 id="405-an-unexpected-http-method-was-used-1" class="status" data-status="4xx">405: An unexpected HTTP method was used</h5>
+<h5 id="5xx-an-unexpected-error-occurred-on-the-server-side-1">5XX: An unexpected error occurred on the server side</h5>
+<h3 id="post-v1paymentsstanding-order" class="operation" data-method="post"><code>POST</code> /v1/payments/standing-order</h3>
+<p>Operation ID: <code>v1_payments_standing_order_post</code>.</p>
+<p>Authentication: oauth2 (<code>OAuth2</code>).</p>
+<h4 id="parameters-3">Parameters</h4>
+<p>| Parameter | In | Type | Required | Description |
+| --- | --- | --- | --- |
+| <code>X-Client-Id</code> | <code>header</code> | <code>string</code> | Yes | The API Client Identifier (Service Application Identifier). |</p>
+<h4 id="request-body-3">Request body</h4>
+<p><code>application/json</code></p>
+<table>
+<thead>
+<tr>
+<th>Property</th>
+<th>Type</th>
+<th>Required</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>provider</code></td>
+<td><code>string</code></td>
+<td>Yes</td>
+<td>The name (identifier) of the payment provider</td>
+</tr>
+<tr>
+<td><code>provider_redirect_url</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>This is the url that your Customer will be redirected to once they have authorised with the relevant provider. This should only be used when using your own license and wish to use the Submit Authorisation Codes endpoint. If you wish to use Bud's call back then the <code>redirect_url</code> must be provided.</td>
+</tr>
+<tr>
+<td><code>provider_types</code></td>
+<td><code>array of enum: business, retail, sandbox</code></td>
+<td>No</td>
+<td>One or more provider types that can be used to filter the list of providers that are shown to the customer during the connection flow. If no filter is applied, all types of provider are returned. Note that on Bud's sandbox environment, only sandbox providers will be returned.</td>
+</tr>
+<tr>
+<td><code>redirect_url</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>This is the url that your Customer will be redirected to when using the Bud user interface. If you wish to use your own license and callback infrastructure this parameter will have no effect and the <code>provider_redirect_url</code> parameter should be used instead.</td>
+</tr>
+<tr>
+<td><code>standing_order_details</code></td>
+<td><code>object</code></td>
+<td>Yes</td>
+<td>Details of the standing order</td>
+</tr>
+<tr>
+<td><code>standing_order_details.first_payment_date</code></td>
+<td><code>string (date-time)</code></td>
+<td>Yes</td>
+<td>Date-time (ISO 8601) the first payment should be made. Must be a minimum of 3 business days in the future and must be on a business day.</td>
+</tr>
+<tr>
+<td><code>standing_order_details.frequency</code></td>
+<td><code>enum: daily, weekly, fortnightly, monthly, quarterly, semiannually, ...</code></td>
+<td>Yes</td>
+<td>The payment frequency for a Standing Order</td>
+</tr>
+<tr>
+<td><code>standing_order_details.last_payment_date</code></td>
+<td><code>string (date-time)</code></td>
+<td>No</td>
+<td>Date-time (ISO 8601) after which payments should stop. Must be after <code>first_payment_date</code>.</td>
+</tr>
+<tr>
+<td><code>standing_order_details.recipient</code></td>
+<td><code>object</code></td>
+<td>Yes</td>
+<td>Details of the recipient of the payment</td>
+</tr>
+<tr>
+<td><code>standing_order_details.recipient.account_number</code></td>
+<td><code>string</code></td>
+<td>Yes</td>
+<td>Account identifier of the recipient</td>
+</tr>
+<tr>
+<td><code>standing_order_details.recipient.name</code></td>
+<td><code>string</code></td>
+<td>Yes</td>
+<td>Account holder name of the recipient</td>
+</tr>
+<tr>
+<td><code>standing_order_details.recipient.type</code></td>
+<td><code>enum: SortCodeAccountNumber, IBAN</code></td>
+<td>Yes</td>
+<td>The account type structure for the payment sender or receiver</td>
+</tr>
+<tr>
+<td><code>standing_order_details.recurring_amount</code></td>
+<td><code>object</code></td>
+<td>Yes</td>
+<td>The monetary amount.</td>
+</tr>
+<tr>
+<td><code>standing_order_details.recurring_amount.currency</code></td>
+<td><code>string</code></td>
+<td>Yes</td>
+<td>The three-letter <a href="https://www.iso.org/iso-4217-currency-codes.html">ISO currency code</a> of the monetary amount. Example: <code>GBP</code></td>
+</tr>
+<tr>
+<td><code>standing_order_details.recurring_amount.value</code></td>
+<td><code>string</code></td>
+<td>Yes</td>
+<td>The value of the monetary amount. The value is formatted with the number of decimal places for the respective currency. Example: <code>10.98</code></td>
+</tr>
+<tr>
+<td><code>standing_order_details.reference</code></td>
+<td><code>string</code></td>
+<td>Yes</td>
+<td>Reference to use for payments made through this Standing Order</td>
+</tr>
+<tr>
+<td><code>standing_order_details.sender</code></td>
+<td><code>object</code></td>
+<td>Yes</td>
+<td>Details of the payment sender</td>
+</tr>
+<tr>
+<td><code>standing_order_details.sender.account_number</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>Account identifier of the sender</td>
+</tr>
+<tr>
+<td><code>standing_order_details.sender.name</code></td>
+<td><code>string</code></td>
+<td>Yes</td>
+<td>Account holder name of the sender</td>
+</tr>
+<tr>
+<td><code>standing_order_details.sender.provider</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>The name (identifier) of the payment provider</td>
+</tr>
+<tr>
+<td><code>standing_order_details.sender.type</code></td>
+<td><code>enum: SortCodeAccountNumber, IBAN</code></td>
+<td>No</td>
+<td>The account type structure for the payment sender or receiver</td>
+</tr>
+<tr>
+<td><code>standing_order_details.sender.user_id</code></td>
+<td><code>string</code></td>
+<td>Yes</td>
+<td>A string that can be used to uniquely identify a user within the Client's application</td>
+</tr>
+</tbody>
+</table>
+<p>Example request body:</p>
+<pre><code class="language-json">{
+  &quot;provider&quot;: &quot;lloyds&quot;,
+  &quot;redirect_url&quot;: &quot;https://your-app.com/connected?my-parameter=xyz&quot;,
+  &quot;standing_order_details&quot;: {
+    &quot;first_payment_date&quot;: &quot;2020-02-02T12:29:33.428944815Z&quot;,
+    &quot;frequency&quot;: &quot;monthly&quot;,
+    &quot;last_payment_date&quot;: &quot;2021-02-02T12:29:33.428944815Z&quot;,
+    &quot;recipient&quot;: {
+      &quot;account_number&quot;: &quot;01234501234567&quot;,
+      &quot;name&quot;: &quot;MR TEST RECIPIENT&quot;,
+      &quot;type&quot;: &quot;SortCodeAccountNumber&quot;
+    },
+    &quot;recurring_amount&quot;: {
+      &quot;currency&quot;: &quot;GBP&quot;,
+      &quot;value&quot;: &quot;2.50&quot;
+    },
+    &quot;reference&quot;: &quot;PAYMENT REFERENCE&quot;,
+    &quot;sender&quot;: {
+      &quot;name&quot;: &quot;MR TEST SENDER&quot;,
+      &quot;user_id&quot;: &quot;client-defined-user-id&quot;
+    }
+  }
+}
+</code></pre>
+<h4 id="responses-3">Responses</h4>
+<h5 id="200-successful-request-3" class="status" data-status="2xx">200: Successful request</h5>
+<p><code>application/json</code></p>
+<table>
+<thead>
+<tr>
+<th>Property</th>
+<th>Type</th>
+<th>Required</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>data</code></td>
+<td><code>object</code></td>
+<td>Yes</td>
+<td>Standing Order Response Object</td>
+</tr>
+<tr>
+<td><code>data.authorisation_url</code></td>
+<td><code>string</code></td>
+<td>Yes</td>
+<td>The authorisation URL for a relevant payment provider. Redirect your Customer to this url to allow them to authorise the Standing Order</td>
+</tr>
+<tr>
+<td><code>data.payment_id</code></td>
+<td><code>string</code></td>
+<td>Yes</td>
+<td>Payment Identifier</td>
+</tr>
+<tr>
+<td><code>data.required_action</code></td>
+<td><code>enum: confirm_standing_order</code></td>
+<td>No</td>
+<td>If present, this fild will indicate the next required action (if any) to be taken by the client in order to complete the payment flow | Value | Description | |:-------|:-------------| | <code>confirm_standing_order</code> | Indicates that the client must confirm the standing order using the Confirm Standing Order endpoint in order to complete the payment flow. |</td>
+</tr>
+<tr>
+<td><code>operation_id</code></td>
+<td><code>string</code></td>
+<td>Yes</td>
+<td>A unique identifier/reference associated with a given endpoint/operation</td>
+</tr>
+</tbody>
+</table>
+<p>Example response:</p>
+<pre><code class="language-json">{
+  &quot;data&quot;: {
+    &quot;authorisation_url&quot;: &quot;https://www.thisisbud.com/provider/specific/redirect/url&quot;,
+    &quot;payment_id&quot;: &quot;56caec01-85cc-4fc6-8080-cc0f7ed03a7e&quot;,
+    &quot;required_action&quot;: &quot;confirm_standing_order&quot;
+  },
+  &quot;operation_id&quot;: &quot;v1_payments_standing_order_post&quot;
+}
+</code></pre>
+<h5 id="400-the-request-contains-an-invalid-payload-2" class="status" data-status="4xx">400: The request contains an invalid payload</h5>
+<p><code>application/json</code></p>
+<table>
+<thead>
+<tr>
+<th>Property</th>
+<th>Type</th>
+<th>Required</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>code_id</code></td>
+<td><code>string</code></td>
+<td>Yes</td>
+<td>A descriptive enough string that is linked to the reason for the error.</td>
+</tr>
+<tr>
+<td><code>errors</code></td>
+<td><code>object or object</code></td>
+<td>Yes</td>
+<td></td>
+</tr>
+<tr>
+<td><code>message</code></td>
+<td><code>string</code></td>
+<td>Yes</td>
+<td></td>
+</tr>
+<tr>
+<td><code>operation_id</code></td>
+<td><code>string</code></td>
+<td>Yes</td>
+<td>A unique identifier/reference associated with a given endpoint/operation</td>
+</tr>
+</tbody>
+</table>
+<p>Example response:</p>
+<pre><code class="language-json">{
+  &quot;code_id&quot;: &quot;failed_validation&quot;,
+  &quot;errors&quot;: {
+    &quot;recipient.sort_code&quot;: &quot;Sort code must match `^\\d{6}$`&quot;,
+    &quot;standing_order_details.recipient.name&quot;: &quot;Name must not be empty&quot;
+  },
+  &quot;message&quot;: &quot;Failed validation&quot;,
+  &quot;operation_id&quot;: &quot;v1_payments_standing_order_post&quot;
+}
+</code></pre>
+<h5 id="401-unauthorised-request-2" class="status" data-status="4xx">401: Unauthorised request</h5>
+<h5 id="405-an-unexpected-http-method-was-used-2" class="status" data-status="4xx">405: An unexpected HTTP method was used</h5>
+<h5 id="5xx-an-unexpected-error-occurred-on-the-server-side-2">5XX: An unexpected error occurred on the server side</h5>
+</main></div>
+<script src="../assets/search.js" defer></script></body></html>

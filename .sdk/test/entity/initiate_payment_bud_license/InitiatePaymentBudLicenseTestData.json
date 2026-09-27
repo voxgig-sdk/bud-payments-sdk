@@ -1,0 +1,111 @@
+{
+  "existing": {
+    "initiate_payment_bud_license": {
+      "INITIATE_PAYMENT_BUD_LICENSE00": {
+        "bud_pay_url": "saa",
+        "country_code": "sab",
+        "display_name": "sac",
+        "icon": "sad",
+        "implementation_type": "sae",
+        "maintenance_status": "saf",
+        "maintenance_window": "sb0",
+        "payment_details": {},
+        "payment_id": "PAYMENT01",
+        "provider": "sb3",
+        "provider_types": [],
+        "redirect_url": "sb5",
+        "required_actions": "sb6",
+        "scheduled_payment_details": {},
+        "services": [],
+        "standing_order_details": {},
+        "supported_currencies": [],
+        "id": "INITIATE_PAYMENT_BUD_LICENSE00"
+      },
+      "INITIATE_PAYMENT_BUD_LICENSE01": {
+        "bud_pay_url": "s154",
+        "country_code": "s155",
+        "display_name": "s156",
+        "icon": "s157",
+        "implementation_type": "s158",
+        "maintenance_status": "s159",
+        "maintenance_window": "s15a",
+        "payment_details": {},
+        "payment_id": "PAYMENT01",
+        "provider": "s15d",
+        "provider_types": [],
+        "redirect_url": "s15f",
+        "required_actions": "s160",
+        "scheduled_payment_details": {},
+        "services": [],
+        "standing_order_details": {},
+        "supported_currencies": [],
+        "id": "INITIATE_PAYMENT_BUD_LICENSE01"
+      },
+      "INITIATE_PAYMENT_BUD_LICENSE02": {
+        "bud_pay_url": "s1fe",
+        "country_code": "s1ff",
+        "display_name": "s200",
+        "icon": "s201",
+        "implementation_type": "s202",
+        "maintenance_status": "s203",
+        "maintenance_window": "s204",
+        "payment_details": {},
+        "payment_id": "PAYMENT01",
+        "provider": "s207",
+        "provider_types": [],
+        "redirect_url": "s209",
+        "required_actions": "s20a",
+        "scheduled_payment_details": {},
+        "services": [],
+        "standing_order_details": {},
+        "supported_currencies": [],
+        "id": "INITIATE_PAYMENT_BUD_LICENSE02"
+      }
+    }
+  },
+  "new": {
+    "initiate_payment_bud_license": {
+      "initiate_payment_bud_license_ref01": {
+        "bud_pay_url": "s2a8",
+        "country_code": "s2a9",
+        "display_name": "s2aa",
+        "icon": "s2ab",
+        "implementation_type": "s2ac",
+        "maintenance_status": "s2ad",
+        "maintenance_window": "s2ae",
+        "payment_details": {},
+        "payment_id": "PAYMENT01",
+        "provider": "s2b1",
+        "provider_types": [],
+        "redirect_url": "s2b3",
+        "required_actions": "s2b4",
+        "scheduled_payment_details": {},
+        "services": [],
+        "standing_order_details": {},
+        "supported_currencies": []
+      }
+    }
+  },
+  "requests": {
+    "POST /v1/payments/scheduled/bud-pay-url": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    },
+    "POST /v1/payments/single/bud-pay-url": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    },
+    "POST /v1/payments/standing-order/bud-pay-url": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    },
+    "GET /v1/payments/providers": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    }
+  }
+}

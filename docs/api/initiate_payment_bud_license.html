@@ -1,0 +1,1124 @@
+<!doctype html>
+<html lang="en">
+<head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>InitiatePaymentBudLicense | Payments API</title><link rel="stylesheet" href="../assets/style.css"></head>
+<body><a class="skip" href="#content">Skip to content</a>
+<header class="site-header"><a class="site-title" href="../index.html">Payments API<span>SDK documentation</span></a><div class="site-links"><a class="repo-link" href="https://github.com/voxgig-sdk/bud-payments-sdk">voxgig-sdk/bud-payments-sdk</a></div></header>
+<div class="site-notice" role="note"></div>
+<div class="shell"><nav class="site-nav" aria-label="Documentation"><div class="search"><label for="search">Search documentation</label><input id="search" type="search" data-base="../" placeholder="Find a guide or reference"><div id="results" aria-live="polite"></div></div><details><summary>Overview</summary><a href="../index.html">Payments API</a></details>
+<details open><summary>API</summary><a href="../api/index.html">API overview</a>
+<a aria-current="page" href="../api/initiate_payment_bud_license.html">InitiatePaymentBudLicense</a><div class="nav-sections"><a class="nav-section" href="#post-v1paymentsscheduledbud-pay-url">POST /v1/payments/scheduled/bud-pay-url</a>
+<a class="nav-section" href="#post-v1paymentssinglebud-pay-url">POST /v1/payments/single/bud-pay-url</a>
+<a class="nav-section" href="#post-v1paymentsstanding-orderbud-pay-url">POST /v1/payments/standing-order/bud-pay-url</a>
+<a class="nav-section" href="#get-v1paymentsproviders">GET /v1/payments/providers</a></div>
+<a href="../api/initiate_payment_client_license.html">InitiatePaymentClientLicense</a>
+<a href="../api/manage_payment.html">ManagePayment</a></details>
+<details><summary>Guides</summary><a href="../guides/authentication.html">Authentication</a>
+<a href="../guides/first-call.html">Make your first API call</a>
+<a href="../guides/errors.html">Handle errors</a>
+<a href="../guides/concepts.html">Entities, SDKs, and tools</a></details>
+<details><summary>SDKs</summary><a href="../sdks/go.html">Golang</a>
+<a href="../sdks/js.html">JavaScript</a>
+<a href="../sdks/lua.html">Lua</a>
+<a href="../sdks/php.html">PHP</a>
+<a href="../sdks/py.html">Python</a>
+<a href="../sdks/ts.html">TypeScript</a></details>
+<details><summary>Tools</summary><a href="../tools/go-cli.html">Go CLI</a>
+<a href="../tools/go-mcp.html">Go MCP server</a></details>
+<details><summary>Features</summary><a href="../features/debug.html">Debug capture</a>
+<a href="../features/idempotency.html">Idempotency</a>
+<a href="../features/metrics.html">Metrics</a>
+<a href="../features/paging.html">Paging</a>
+<a href="../features/ratelimit.html">Rate limiting</a>
+<a href="../features/retry.html">Retry</a>
+<a href="../features/test.html">Test transport</a>
+<a href="../features/timeout.html">Timeout</a></details></nav><main id="content"><div class="page-context"><span class="section-dot" aria-hidden="true"></span>API</div><h1 id="initiatepaymentbudlicense">InitiatePaymentBudLicense</h1>
+<h2 id="operations">Operations</h2>
+<p>Every route this entity exposes. Each route links to its own reference on this page.</p>
+<table>
+<thead>
+<tr>
+<th>Method</th>
+<th>Route</th>
+<th>SDK operation</th>
+<th>Returns</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>POST</code></td>
+<td><a href="#post-v1paymentsscheduledbud-pay-url"><code>/v1/payments/scheduled/bud-pay-url</code></a></td>
+<td><code>create</code></td>
+<td>Successful request</td>
+</tr>
+<tr>
+<td><code>POST</code></td>
+<td><a href="#post-v1paymentssinglebud-pay-url"><code>/v1/payments/single/bud-pay-url</code></a></td>
+<td><code>create</code></td>
+<td>Successful request</td>
+</tr>
+<tr>
+<td><code>POST</code></td>
+<td><a href="#post-v1paymentsstanding-orderbud-pay-url"><code>/v1/payments/standing-order/bud-pay-url</code></a></td>
+<td><code>create</code></td>
+<td>Successful request</td>
+</tr>
+<tr>
+<td><code>GET</code></td>
+<td><a href="#get-v1paymentsproviders"><code>/v1/payments/providers</code></a></td>
+<td><code>list</code></td>
+<td>Successful request</td>
+</tr>
+</tbody>
+</table>
+<h2 id="examples">Examples</h2>
+<p>One example per SDK, generated from the API model. The argument names are the parameters and fields of this entity, and the values are placeholders. The examples are not compiled or executed.</p>
+<h3 id="golang">Golang</h3>
+<p>Construct <code>client</code> as shown in the <a href="../sdks/go.html#set-up-the-client">Golang setup</a>, then call the operations:</p>
+<pre><code class="language-go">initiate_payment_bud_licenses, err := client.InitiatePaymentBudLicense(nil).List(nil, nil)
+if err != nil {
+    panic(err)
+}
+fmt.Println(initiate_payment_bud_licenses)
+created, err := client.InitiatePaymentBudLicense(nil).Create(map[string]any{&quot;bud_pay_url&quot;: &quot;example&quot;, &quot;country_code&quot;: &quot;example&quot;, &quot;display_name&quot;: &quot;example&quot;, &quot;icon&quot;: &quot;example&quot;, &quot;implementation_type&quot;: &quot;example&quot;, &quot;maintenance_status&quot;: &quot;example&quot;, &quot;maintenance_window&quot;: &quot;example&quot;, &quot;payment_details&quot;: map[string]any{}, &quot;payment_id&quot;: &quot;example&quot;, &quot;provider&quot;: &quot;example&quot;, &quot;redirect_url&quot;: &quot;example&quot;, &quot;required_actions&quot;: &quot;example&quot;, &quot;scheduled_payment_details&quot;: map[string]any{}, &quot;services&quot;: []any{}, &quot;standing_order_details&quot;: map[string]any{}, &quot;supported_currencies&quot;: []any{}}, nil)
+if err != nil {
+    panic(err)
+}
+fmt.Println(created)
+</code></pre>
+<h3 id="javascript">JavaScript</h3>
+<p>Construct <code>client</code> as shown in the <a href="../sdks/js.html#set-up-the-client">JavaScript setup</a>, then call the operations:</p>
+<pre><code class="language-js">const initiate_payment_bud_licenses = await client.InitiatePaymentBudLicense().list()
+const created = await client.InitiatePaymentBudLicense().create({ bud_pay_url: &quot;example&quot;, country_code: &quot;example&quot;, display_name: &quot;example&quot;, icon: &quot;example&quot;, implementation_type: &quot;example&quot;, maintenance_status: &quot;example&quot;, maintenance_window: &quot;example&quot;, payment_details: {}, payment_id: &quot;example&quot;, provider: &quot;example&quot;, redirect_url: &quot;example&quot;, required_actions: &quot;example&quot;, scheduled_payment_details: {}, services: [], standing_order_details: {}, supported_currencies: [] })
+</code></pre>
+<h3 id="lua">Lua</h3>
+<p>Construct <code>client</code> as shown in the <a href="../sdks/lua.html#set-up-the-client">Lua setup</a>, then call the operations:</p>
+<pre><code class="language-lua">local initiate_payment_bud_licenses, err = client:InitiatePaymentBudLicense():list()
+local created, err = client:InitiatePaymentBudLicense():create({ bud_pay_url = &quot;example&quot;, country_code = &quot;example&quot;, display_name = &quot;example&quot;, icon = &quot;example&quot;, implementation_type = &quot;example&quot;, maintenance_status = &quot;example&quot;, maintenance_window = &quot;example&quot;, payment_details = {}, payment_id = &quot;example&quot;, provider = &quot;example&quot;, redirect_url = &quot;example&quot;, required_actions = &quot;example&quot;, scheduled_payment_details = {}, services = {}, standing_order_details = {}, supported_currencies = {} })
+</code></pre>
+<h3 id="php">PHP</h3>
+<p>Construct <code>client</code> as shown in the <a href="../sdks/php.html#set-up-the-client">PHP setup</a>, then call the operations:</p>
+<pre><code class="language-php">$initiate_payment_bud_licenses = $client-&gt;InitiatePaymentBudLicense()-&gt;list();
+$created = $client-&gt;InitiatePaymentBudLicense()-&gt;create([&quot;bud_pay_url&quot; =&gt; &quot;example&quot;, &quot;country_code&quot; =&gt; &quot;example&quot;, &quot;display_name&quot; =&gt; &quot;example&quot;, &quot;icon&quot; =&gt; &quot;example&quot;, &quot;implementation_type&quot; =&gt; &quot;example&quot;, &quot;maintenance_status&quot; =&gt; &quot;example&quot;, &quot;maintenance_window&quot; =&gt; &quot;example&quot;, &quot;payment_details&quot; =&gt; [], &quot;payment_id&quot; =&gt; &quot;example&quot;, &quot;provider&quot; =&gt; &quot;example&quot;, &quot;redirect_url&quot; =&gt; &quot;example&quot;, &quot;required_actions&quot; =&gt; &quot;example&quot;, &quot;scheduled_payment_details&quot; =&gt; [], &quot;services&quot; =&gt; [], &quot;standing_order_details&quot; =&gt; [], &quot;supported_currencies&quot; =&gt; []]);
+</code></pre>
+<h3 id="python">Python</h3>
+<p>Construct <code>client</code> as shown in the <a href="../sdks/py.html#set-up-the-client">Python setup</a>, then call the operations:</p>
+<pre><code class="language-py">initiate_payment_bud_licenses = client.InitiatePaymentBudLicense().list()
+created = client.InitiatePaymentBudLicense().create({ &quot;bud_pay_url&quot;: &quot;example&quot;, &quot;country_code&quot;: &quot;example&quot;, &quot;display_name&quot;: &quot;example&quot;, &quot;icon&quot;: &quot;example&quot;, &quot;implementation_type&quot;: &quot;example&quot;, &quot;maintenance_status&quot;: &quot;example&quot;, &quot;maintenance_window&quot;: &quot;example&quot;, &quot;payment_details&quot;: {}, &quot;payment_id&quot;: &quot;example&quot;, &quot;provider&quot;: &quot;example&quot;, &quot;redirect_url&quot;: &quot;example&quot;, &quot;required_actions&quot;: &quot;example&quot;, &quot;scheduled_payment_details&quot;: {}, &quot;services&quot;: [], &quot;standing_order_details&quot;: {}, &quot;supported_currencies&quot;: [] })
+</code></pre>
+<h3 id="typescript">TypeScript</h3>
+<p>Construct <code>client</code> as shown in the <a href="../sdks/ts.html#set-up-the-client">TypeScript setup</a>, then call the operations:</p>
+<pre><code class="language-ts">const initiate_payment_bud_licenses = await client.InitiatePaymentBudLicense().list()
+const created = await client.InitiatePaymentBudLicense().create({ bud_pay_url: &quot;example&quot;, country_code: &quot;example&quot;, display_name: &quot;example&quot;, icon: &quot;example&quot;, implementation_type: &quot;example&quot;, maintenance_status: &quot;example&quot;, maintenance_window: &quot;example&quot;, payment_details: {}, payment_id: &quot;example&quot;, provider: &quot;example&quot;, redirect_url: &quot;example&quot;, required_actions: &quot;example&quot;, scheduled_payment_details: {}, services: [], standing_order_details: {}, supported_currencies: [] })
+</code></pre>
+<h2 id="fields">Fields</h2>
+<table>
+<thead>
+<tr>
+<th>Field</th>
+<th>Type</th>
+<th>Required</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>bud_pay_url</code></td>
+<td><code>string</code></td>
+<td>Yes</td>
+<td>A Bud Pay URL, allowing Customers to complete (authenticate) a relevant payment resource with the relevant payment service provider.</td>
+</tr>
+<tr>
+<td><code>country_code</code></td>
+<td><code>string</code></td>
+<td>Yes</td>
+<td>Provider country code following the ISO 3166 alpha-3 code format</td>
+</tr>
+<tr>
+<td><code>display_name</code></td>
+<td><code>string</code></td>
+<td>Yes</td>
+<td>The name of the payment provider to be used for display purposes (for example</td>
+</tr>
+<tr>
+<td><code>icon</code></td>
+<td><code>string</code></td>
+<td>Yes</td>
+<td>A URL for the icon of the corresponding provider</td>
+</tr>
+<tr>
+<td><code>implementation_type</code></td>
+<td><code>string</code></td>
+<td>Yes</td>
+<td>The implementation standard adopted by the provider</td>
+</tr>
+<tr>
+<td><code>maintenance_status</code></td>
+<td><code>string</code></td>
+<td>Yes</td>
+<td>The status of the maintenance window associated with the provider</td>
+</tr>
+<tr>
+<td><code>maintenance_window</code></td>
+<td><code>any</code></td>
+<td>Yes</td>
+<td>Maintenance Window</td>
+</tr>
+<tr>
+<td><code>payment_details</code></td>
+<td><code>object</code></td>
+<td>Yes</td>
+<td>Payment details required to make a Single Payment</td>
+</tr>
+<tr>
+<td><code>payment_id</code></td>
+<td><code>string</code></td>
+<td>Yes</td>
+<td>Unique identifier for the payment</td>
+</tr>
+<tr>
+<td><code>provider</code></td>
+<td><code>string</code></td>
+<td>Yes</td>
+<td>The name (identifier) of the payment provider</td>
+</tr>
+<tr>
+<td><code>provider_types</code></td>
+<td><code>array</code></td>
+<td>No</td>
+<td>One or more provider types that can be used to filter the list of providers that are shown to the customer during the connection flow.</td>
+</tr>
+<tr>
+<td><code>redirect_url</code></td>
+<td><code>string</code></td>
+<td>Yes</td>
+<td>URL where the user will be redirected to once they have completed the TPP Connection flow.</td>
+</tr>
+<tr>
+<td><code>required_actions</code></td>
+<td><code>any</code></td>
+<td>Yes</td>
+<td>An array of enum fields to indicate if any additional actions are required in order to complete a given payment flow for the given provider.</td>
+</tr>
+<tr>
+<td><code>scheduled_payment_details</code></td>
+<td><code>object</code></td>
+<td>Yes</td>
+<td>Details of the scheduled payment</td>
+</tr>
+<tr>
+<td><code>services</code></td>
+<td><code>array</code></td>
+<td>Yes</td>
+<td>A payment service supported by a payment provider</td>
+</tr>
+<tr>
+<td><code>standing_order_details</code></td>
+<td><code>object</code></td>
+<td>Yes</td>
+<td>Details of the standing order</td>
+</tr>
+<tr>
+<td><code>supported_currencies</code></td>
+<td><code>array</code></td>
+<td>Yes</td>
+<td>The currencies supported by the payment provider</td>
+</tr>
+</tbody>
+</table>
+<h2 id="create">create</h2>
+<h3 id="post-v1paymentsscheduledbud-pay-url" class="operation" data-method="post"><code>POST</code> /v1/payments/scheduled/bud-pay-url</h3>
+<p>Operation ID: <code>v1_payments_scheduled_bud_pay_url_post</code>.</p>
+<p>Authentication: oauth2 (<code>OAuth2</code>).</p>
+<h4 id="parameters">Parameters</h4>
+<p>| Parameter | In | Type | Required | Description |
+| --- | --- | --- | --- |
+| <code>X-Client-Id</code> | <code>header</code> | <code>string</code> | Yes | The API Client Identifier (Service Application Identifier). |</p>
+<h4 id="request-body">Request body</h4>
+<p><code>application/json</code></p>
+<table>
+<thead>
+<tr>
+<th>Property</th>
+<th>Type</th>
+<th>Required</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>provider</code></td>
+<td><code>string</code></td>
+<td>Yes</td>
+<td>The name (identifier) of the payment provider</td>
+</tr>
+<tr>
+<td><code>provider_types</code></td>
+<td><code>array of enum: business, retail, sandbox</code></td>
+<td>No</td>
+<td>One or more provider types that can be used to filter the list of providers that are shown to the customer during the connection flow. If no filter is applied, all types of provider are returned. Note that on Bud's sandbox environment, only sandbox providers will be returned.</td>
+</tr>
+<tr>
+<td><code>redirect_url</code></td>
+<td><code>string</code></td>
+<td>Yes</td>
+<td>URL where the user will be redirected to once they have completed the TPP Connection flow. This can be a web based URL or a mobile application internal URL.</td>
+</tr>
+<tr>
+<td><code>scheduled_payment_details</code></td>
+<td><code>object</code></td>
+<td>Yes</td>
+<td>Details of the scheduled payment</td>
+</tr>
+<tr>
+<td><code>scheduled_payment_details.amount</code></td>
+<td><code>object</code></td>
+<td>Yes</td>
+<td>The monetary amount.</td>
+</tr>
+<tr>
+<td><code>scheduled_payment_details.amount.currency</code></td>
+<td><code>string</code></td>
+<td>Yes</td>
+<td>The three-letter <a href="https://www.iso.org/iso-4217-currency-codes.html">ISO currency code</a> of the monetary amount. Example: <code>GBP</code></td>
+</tr>
+<tr>
+<td><code>scheduled_payment_details.amount.value</code></td>
+<td><code>string</code></td>
+<td>Yes</td>
+<td>The value of the monetary amount. The value is formatted with the number of decimal places for the respective currency. Example: <code>10.98</code></td>
+</tr>
+<tr>
+<td><code>scheduled_payment_details.recipient</code></td>
+<td><code>object</code></td>
+<td>Yes</td>
+<td>Details of the recipient of the payment</td>
+</tr>
+<tr>
+<td><code>scheduled_payment_details.recipient.account_number</code></td>
+<td><code>string</code></td>
+<td>Yes</td>
+<td>Account identifier of the recipient</td>
+</tr>
+<tr>
+<td><code>scheduled_payment_details.recipient.name</code></td>
+<td><code>string</code></td>
+<td>Yes</td>
+<td>Account holder name of the recipient</td>
+</tr>
+<tr>
+<td><code>scheduled_payment_details.recipient.type</code></td>
+<td><code>enum: SortCodeAccountNumber, IBAN</code></td>
+<td>Yes</td>
+<td>The account type structure for the payment sender or receiver</td>
+</tr>
+<tr>
+<td><code>scheduled_payment_details.reference</code></td>
+<td><code>string</code></td>
+<td>Yes</td>
+<td>Reference to use for the payment made through this scheduled instruction</td>
+</tr>
+<tr>
+<td><code>scheduled_payment_details.requested_execution_date</code></td>
+<td><code>string (date-time)</code></td>
+<td>Yes</td>
+<td>Date-time (ISO 8601) the payment should be made. Must be at least one day in the future.</td>
+</tr>
+<tr>
+<td><code>scheduled_payment_details.sender</code></td>
+<td><code>object</code></td>
+<td>Yes</td>
+<td>Details of the payment sender</td>
+</tr>
+<tr>
+<td><code>scheduled_payment_details.sender.account_number</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>Account identifier of the sender</td>
+</tr>
+<tr>
+<td><code>scheduled_payment_details.sender.name</code></td>
+<td><code>string</code></td>
+<td>Yes</td>
+<td>Account holder name of the sender</td>
+</tr>
+<tr>
+<td><code>scheduled_payment_details.sender.provider</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>The name (identifier) of the payment provider</td>
+</tr>
+<tr>
+<td><code>scheduled_payment_details.sender.type</code></td>
+<td><code>enum: SortCodeAccountNumber, IBAN</code></td>
+<td>No</td>
+<td>The account type structure for the payment sender or receiver</td>
+</tr>
+<tr>
+<td><code>scheduled_payment_details.sender.user_id</code></td>
+<td><code>string</code></td>
+<td>Yes</td>
+<td>A string that can be used to uniquely identify a user within the Client's application</td>
+</tr>
+</tbody>
+</table>
+<p>Example request body:</p>
+<pre><code class="language-json">{
+  &quot;provider&quot;: &quot;natwest&quot;,
+  &quot;provider_types&quot;: [
+    &quot;retail&quot;
+  ],
+  &quot;redirect_url&quot;: &quot;https://client-redirect-url/example&quot;,
+  &quot;scheduled_payment_details&quot;: {
+    &quot;amount&quot;: {
+      &quot;currency&quot;: &quot;GBP&quot;,
+      &quot;value&quot;: &quot;2.50&quot;
+    },
+    &quot;recipient&quot;: {
+      &quot;account_number&quot;: &quot;01234501234567&quot;,
+      &quot;name&quot;: &quot;MR TEST RECIPIENT&quot;,
+      &quot;type&quot;: &quot;SortCodeAccountNumber&quot;
+    },
+    &quot;reference&quot;: &quot;PAYMENT REFERENCE&quot;,
+    &quot;requested_execution_date&quot;: &quot;2023-01-20T15:00:00Z&quot;,
+    &quot;sender&quot;: {
+      &quot;name&quot;: &quot;MR TEST SENDER&quot;,
+      &quot;user_id&quot;: &quot;client-defined-user-id&quot;
+    }
+  }
+}
+</code></pre>
+<h4 id="responses">Responses</h4>
+<h5 id="200-successful-request" class="status" data-status="2xx">200: Successful request</h5>
+<p><code>application/json</code></p>
+<table>
+<thead>
+<tr>
+<th>Property</th>
+<th>Type</th>
+<th>Required</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>data</code></td>
+<td><code>object</code></td>
+<td>Yes</td>
+<td>Bud Pay URL Object</td>
+</tr>
+<tr>
+<td><code>data.bud_pay_url</code></td>
+<td><code>string</code></td>
+<td>Yes</td>
+<td>A Bud Pay URL, allowing Customers to complete (authenticate) a relevant payment resource with the relevant payment service provider.</td>
+</tr>
+<tr>
+<td><code>data.payment_id</code></td>
+<td><code>string</code></td>
+<td>Yes</td>
+<td>Unique identifier for the payment</td>
+</tr>
+<tr>
+<td><code>operation_id</code></td>
+<td><code>string</code></td>
+<td>Yes</td>
+<td>A unique identifier/reference associated with a given endpoint/operation</td>
+</tr>
+</tbody>
+</table>
+<p>Example response:</p>
+<pre><code class="language-json">{
+  &quot;data&quot;: {
+    &quot;bud_pay_url&quot;: &quot;https://www.thisisbud.com/v1/payment/bud-pay&quot;,
+    &quot;payment_id&quot;: &quot;56caec01-85cc-4fc6-8080-cc0f7ed03a7e&quot;
+  },
+  &quot;operation_id&quot;: &quot;v1_payments_scheduled_bud_pay_url_post&quot;
+}
+</code></pre>
+<h5 id="400-the-request-contains-an-invalid-payload" class="status" data-status="4xx">400: The request contains an invalid payload</h5>
+<p><code>application/json</code></p>
+<table>
+<thead>
+<tr>
+<th>Property</th>
+<th>Type</th>
+<th>Required</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>code_id</code></td>
+<td><code>string</code></td>
+<td>Yes</td>
+<td>A descriptive enough string that is linked to the reason for the error.</td>
+</tr>
+<tr>
+<td><code>errors</code></td>
+<td><code>object or object</code></td>
+<td>Yes</td>
+<td></td>
+</tr>
+<tr>
+<td><code>message</code></td>
+<td><code>string</code></td>
+<td>Yes</td>
+<td></td>
+</tr>
+<tr>
+<td><code>operation_id</code></td>
+<td><code>string</code></td>
+<td>Yes</td>
+<td>A unique identifier/reference associated with a given endpoint/operation</td>
+</tr>
+</tbody>
+</table>
+<p>Example response:</p>
+<pre><code class="language-json">{
+  &quot;code_id&quot;: &quot;failed_validation&quot;,
+  &quot;errors&quot;: {
+    &quot;redirect_url&quot;: &quot;This value should not be blank&quot;
+  },
+  &quot;message&quot;: &quot;Failed validation&quot;,
+  &quot;operation_id&quot;: &quot;v1_payments_scheduled_bud_pay_url_post&quot;
+}
+</code></pre>
+<h5 id="401-unauthorised-request" class="status" data-status="4xx">401: Unauthorised request</h5>
+<h5 id="405-an-unexpected-http-method-was-used" class="status" data-status="4xx">405: An unexpected HTTP method was used</h5>
+<h5 id="5xx-an-unexpected-error-occurred-on-the-server-side">5XX: An unexpected error occurred on the server side</h5>
+<h3 id="post-v1paymentssinglebud-pay-url" class="operation" data-method="post"><code>POST</code> /v1/payments/single/bud-pay-url</h3>
+<p>Operation ID: <code>v1_payments_single_bud_pay_url_post</code>.</p>
+<p>Authentication: oauth2 (<code>OAuth2</code>).</p>
+<h4 id="parameters-1">Parameters</h4>
+<p>| Parameter | In | Type | Required | Description |
+| --- | --- | --- | --- |
+| <code>X-Client-Id</code> | <code>header</code> | <code>string</code> | Yes | The API Client Identifier (Service Application Identifier). |</p>
+<h4 id="request-body-1">Request body</h4>
+<p><code>application/json</code></p>
+<table>
+<thead>
+<tr>
+<th>Property</th>
+<th>Type</th>
+<th>Required</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>payment_details</code></td>
+<td><code>object</code></td>
+<td>Yes</td>
+<td>Payment details required to make a Single Payment</td>
+</tr>
+<tr>
+<td><code>payment_details.amount</code></td>
+<td><code>object</code></td>
+<td>Yes</td>
+<td>The monetary amount.</td>
+</tr>
+<tr>
+<td><code>payment_details.amount.currency</code></td>
+<td><code>string</code></td>
+<td>Yes</td>
+<td>The three-letter <a href="https://www.iso.org/iso-4217-currency-codes.html">ISO currency code</a> of the monetary amount. Example: <code>GBP</code></td>
+</tr>
+<tr>
+<td><code>payment_details.amount.value</code></td>
+<td><code>string</code></td>
+<td>Yes</td>
+<td>The value of the monetary amount. The value is formatted with the number of decimal places for the respective currency. Example: <code>10.98</code></td>
+</tr>
+<tr>
+<td><code>payment_details.recipient</code></td>
+<td><code>object</code></td>
+<td>Yes</td>
+<td>Details of the recipient of the payment</td>
+</tr>
+<tr>
+<td><code>payment_details.recipient.account_number</code></td>
+<td><code>string</code></td>
+<td>Yes</td>
+<td>Account identifier of the recipient</td>
+</tr>
+<tr>
+<td><code>payment_details.recipient.name</code></td>
+<td><code>string</code></td>
+<td>Yes</td>
+<td>Account holder name of the recipient</td>
+</tr>
+<tr>
+<td><code>payment_details.recipient.type</code></td>
+<td><code>enum: SortCodeAccountNumber, IBAN</code></td>
+<td>Yes</td>
+<td>The account type structure for the payment sender or receiver</td>
+</tr>
+<tr>
+<td><code>payment_details.reference</code></td>
+<td><code>string</code></td>
+<td>Yes</td>
+<td>The payment reference</td>
+</tr>
+<tr>
+<td><code>payment_details.sender</code></td>
+<td><code>object</code></td>
+<td>Yes</td>
+<td>Details of the payment sender</td>
+</tr>
+<tr>
+<td><code>payment_details.sender.account_number</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>Account identifier of the sender</td>
+</tr>
+<tr>
+<td><code>payment_details.sender.name</code></td>
+<td><code>string</code></td>
+<td>Yes</td>
+<td>Account holder name of the sender</td>
+</tr>
+<tr>
+<td><code>payment_details.sender.provider</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>The name (identifier) of the payment provider</td>
+</tr>
+<tr>
+<td><code>payment_details.sender.type</code></td>
+<td><code>enum: SortCodeAccountNumber, IBAN</code></td>
+<td>No</td>
+<td>The account type structure for the payment sender or receiver</td>
+</tr>
+<tr>
+<td><code>payment_details.sender.user_id</code></td>
+<td><code>string</code></td>
+<td>Yes</td>
+<td>A string that can be used to uniquely identify a user within the Client's application</td>
+</tr>
+<tr>
+<td><code>provider</code></td>
+<td><code>string</code></td>
+<td>Yes</td>
+<td>The name (identifier) of the payment provider</td>
+</tr>
+<tr>
+<td><code>provider_types</code></td>
+<td><code>array of enum: business, retail, sandbox</code></td>
+<td>No</td>
+<td>One or more provider types that can be used to filter the list of providers that are shown to the customer during the connection flow. If no filter is applied, all types of provider are returned. Note that on Bud's sandbox environment, only sandbox providers will be returned.</td>
+</tr>
+<tr>
+<td><code>redirect_url</code></td>
+<td><code>string</code></td>
+<td>Yes</td>
+<td>URL where the user will be redirected to once they have completed the TPP Connection flow. This can be a web based URL or a mobile application internal URL.</td>
+</tr>
+</tbody>
+</table>
+<h4 id="responses-1">Responses</h4>
+<h5 id="200-successful-request-1" class="status" data-status="2xx">200: Successful request</h5>
+<p><code>application/json</code></p>
+<table>
+<thead>
+<tr>
+<th>Property</th>
+<th>Type</th>
+<th>Required</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>data</code></td>
+<td><code>object</code></td>
+<td>Yes</td>
+<td>Bud Pay URL Object</td>
+</tr>
+<tr>
+<td><code>data.bud_pay_url</code></td>
+<td><code>string</code></td>
+<td>Yes</td>
+<td>A Bud Pay URL, allowing Customers to complete (authenticate) a relevant payment resource with the relevant payment service provider.</td>
+</tr>
+<tr>
+<td><code>data.payment_id</code></td>
+<td><code>string</code></td>
+<td>Yes</td>
+<td>Unique identifier for the payment</td>
+</tr>
+<tr>
+<td><code>operation_id</code></td>
+<td><code>string</code></td>
+<td>Yes</td>
+<td>A unique identifier/reference associated with a given endpoint/operation</td>
+</tr>
+</tbody>
+</table>
+<p>Example response:</p>
+<pre><code class="language-json">{
+  &quot;data&quot;: {
+    &quot;bud_pay_url&quot;: &quot;https://www.thisisbud.com/v1/payment/bud-pay&quot;,
+    &quot;payment_id&quot;: &quot;56caec01-85cc-4fc6-8080-cc0f7ed03a7e&quot;
+  },
+  &quot;operation_id&quot;: &quot;v1_payments_single_bud_pay_url_post&quot;
+}
+</code></pre>
+<h5 id="400-the-request-contains-an-invalid-payload-1" class="status" data-status="4xx">400: The request contains an invalid payload</h5>
+<p><code>application/json</code></p>
+<table>
+<thead>
+<tr>
+<th>Property</th>
+<th>Type</th>
+<th>Required</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>code_id</code></td>
+<td><code>string</code></td>
+<td>Yes</td>
+<td>A descriptive enough string that is linked to the reason for the error.</td>
+</tr>
+<tr>
+<td><code>errors</code></td>
+<td><code>object or object</code></td>
+<td>Yes</td>
+<td></td>
+</tr>
+<tr>
+<td><code>message</code></td>
+<td><code>string</code></td>
+<td>Yes</td>
+<td></td>
+</tr>
+<tr>
+<td><code>operation_id</code></td>
+<td><code>string</code></td>
+<td>Yes</td>
+<td>A unique identifier/reference associated with a given endpoint/operation</td>
+</tr>
+</tbody>
+</table>
+<p>Example response:</p>
+<pre><code class="language-json">{
+  &quot;code_id&quot;: &quot;failed_validation&quot;,
+  &quot;errors&quot;: {
+    &quot;redirect_url&quot;: &quot;This value should not be blank&quot;
+  },
+  &quot;message&quot;: &quot;Failed validation&quot;,
+  &quot;operation_id&quot;: &quot;v1_payments_single_bud_pay_url_post&quot;
+}
+</code></pre>
+<h5 id="401-unauthorised-request-1" class="status" data-status="4xx">401: Unauthorised request</h5>
+<h5 id="405-an-unexpected-http-method-was-used-1" class="status" data-status="4xx">405: An unexpected HTTP method was used</h5>
+<h5 id="5xx-an-unexpected-error-occurred-on-the-server-side-1">5XX: An unexpected error occurred on the server side</h5>
+<h3 id="post-v1paymentsstanding-orderbud-pay-url" class="operation" data-method="post"><code>POST</code> /v1/payments/standing-order/bud-pay-url</h3>
+<p>Operation ID: <code>v1_payments_standing_order_bud_pay_url_post</code>.</p>
+<p>Authentication: oauth2 (<code>OAuth2</code>).</p>
+<h4 id="parameters-2">Parameters</h4>
+<p>| Parameter | In | Type | Required | Description |
+| --- | --- | --- | --- |
+| <code>X-Client-Id</code> | <code>header</code> | <code>string</code> | Yes | The API Client Identifier (Service Application Identifier). |</p>
+<h4 id="request-body-2">Request body</h4>
+<p><code>application/json</code></p>
+<table>
+<thead>
+<tr>
+<th>Property</th>
+<th>Type</th>
+<th>Required</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>provider</code></td>
+<td><code>string</code></td>
+<td>Yes</td>
+<td>The name (identifier) of the payment provider</td>
+</tr>
+<tr>
+<td><code>provider_types</code></td>
+<td><code>array of enum: business, retail, sandbox</code></td>
+<td>No</td>
+<td>One or more provider types that can be used to filter the list of providers that are shown to the customer during the connection flow. If no filter is applied, all types of provider are returned. Note that on Bud's sandbox environment, only sandbox providers will be returned.</td>
+</tr>
+<tr>
+<td><code>redirect_url</code></td>
+<td><code>string</code></td>
+<td>Yes</td>
+<td>URL where the user will be redirected to once they have completed the TPP Connection flow. This can be a web based URL or a mobile application internal URL.</td>
+</tr>
+<tr>
+<td><code>standing_order_details</code></td>
+<td><code>object</code></td>
+<td>Yes</td>
+<td>Details of the standing order</td>
+</tr>
+<tr>
+<td><code>standing_order_details.first_payment_date</code></td>
+<td><code>string (date-time)</code></td>
+<td>Yes</td>
+<td>Date-time (ISO 8601) the first payment should be made. Must be a minimum of 3 business days in the future and must be on a business day.</td>
+</tr>
+<tr>
+<td><code>standing_order_details.frequency</code></td>
+<td><code>enum: daily, weekly, fortnightly, monthly, quarterly, semiannually, ...</code></td>
+<td>Yes</td>
+<td>The payment frequency for a Standing Order</td>
+</tr>
+<tr>
+<td><code>standing_order_details.last_payment_date</code></td>
+<td><code>string (date-time)</code></td>
+<td>No</td>
+<td>Date-time (ISO 8601) after which payments should stop. Must be after <code>first_payment_date</code>.</td>
+</tr>
+<tr>
+<td><code>standing_order_details.recipient</code></td>
+<td><code>object</code></td>
+<td>Yes</td>
+<td>Details of the recipient of the payment</td>
+</tr>
+<tr>
+<td><code>standing_order_details.recipient.account_number</code></td>
+<td><code>string</code></td>
+<td>Yes</td>
+<td>Account identifier of the recipient</td>
+</tr>
+<tr>
+<td><code>standing_order_details.recipient.name</code></td>
+<td><code>string</code></td>
+<td>Yes</td>
+<td>Account holder name of the recipient</td>
+</tr>
+<tr>
+<td><code>standing_order_details.recipient.type</code></td>
+<td><code>enum: SortCodeAccountNumber, IBAN</code></td>
+<td>Yes</td>
+<td>The account type structure for the payment sender or receiver</td>
+</tr>
+<tr>
+<td><code>standing_order_details.recurring_amount</code></td>
+<td><code>object</code></td>
+<td>Yes</td>
+<td>The monetary amount.</td>
+</tr>
+<tr>
+<td><code>standing_order_details.recurring_amount.currency</code></td>
+<td><code>string</code></td>
+<td>Yes</td>
+<td>The three-letter <a href="https://www.iso.org/iso-4217-currency-codes.html">ISO currency code</a> of the monetary amount. Example: <code>GBP</code></td>
+</tr>
+<tr>
+<td><code>standing_order_details.recurring_amount.value</code></td>
+<td><code>string</code></td>
+<td>Yes</td>
+<td>The value of the monetary amount. The value is formatted with the number of decimal places for the respective currency. Example: <code>10.98</code></td>
+</tr>
+<tr>
+<td><code>standing_order_details.reference</code></td>
+<td><code>string</code></td>
+<td>Yes</td>
+<td>Reference to use for payments made through this Standing Order</td>
+</tr>
+<tr>
+<td><code>standing_order_details.sender</code></td>
+<td><code>object</code></td>
+<td>Yes</td>
+<td>Details of the payment sender</td>
+</tr>
+<tr>
+<td><code>standing_order_details.sender.account_number</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>Account identifier of the sender</td>
+</tr>
+<tr>
+<td><code>standing_order_details.sender.name</code></td>
+<td><code>string</code></td>
+<td>Yes</td>
+<td>Account holder name of the sender</td>
+</tr>
+<tr>
+<td><code>standing_order_details.sender.provider</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>The name (identifier) of the payment provider</td>
+</tr>
+<tr>
+<td><code>standing_order_details.sender.type</code></td>
+<td><code>enum: SortCodeAccountNumber, IBAN</code></td>
+<td>No</td>
+<td>The account type structure for the payment sender or receiver</td>
+</tr>
+<tr>
+<td><code>standing_order_details.sender.user_id</code></td>
+<td><code>string</code></td>
+<td>Yes</td>
+<td>A string that can be used to uniquely identify a user within the Client's application</td>
+</tr>
+</tbody>
+</table>
+<p>Example request body:</p>
+<pre><code class="language-json">{
+  &quot;provider&quot;: &quot;BankOfBudOBUK&quot;,
+  &quot;provider_types&quot;: [
+    &quot;retail&quot;
+  ],
+  &quot;redirect_url&quot;: &quot;https://client-redirect-url/example&quot;,
+  &quot;standing_order_details&quot;: {
+    &quot;first_payment_date&quot;: &quot;2023-02-10T15:00:00Z&quot;,
+    &quot;frequency&quot;: &quot;monthly&quot;,
+    &quot;last_payment_date&quot;: &quot;2023-02-10T15:00:00Z&quot;,
+    &quot;recipient&quot;: {
+      &quot;account_number&quot;: &quot;01234501234567&quot;,
+      &quot;name&quot;: &quot;MR TEST RECIPIENT&quot;,
+      &quot;type&quot;: &quot;SortCodeAccountNumber&quot;
+    },
+    &quot;recurring_amount&quot;: {
+      &quot;currency&quot;: &quot;GBP&quot;,
+      &quot;value&quot;: &quot;2.50&quot;
+    },
+    &quot;reference&quot;: &quot;PAYMENT REFERENCE&quot;,
+    &quot;sender&quot;: {
+      &quot;name&quot;: &quot;MR TEST SENDER&quot;,
+      &quot;user_id&quot;: &quot;client-defined-user-id&quot;
+    }
+  }
+}
+</code></pre>
+<h4 id="responses-2">Responses</h4>
+<h5 id="200-successful-request-2" class="status" data-status="2xx">200: Successful request</h5>
+<p><code>application/json</code></p>
+<table>
+<thead>
+<tr>
+<th>Property</th>
+<th>Type</th>
+<th>Required</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>data</code></td>
+<td><code>object</code></td>
+<td>Yes</td>
+<td>Bud Pay URL Object</td>
+</tr>
+<tr>
+<td><code>data.bud_pay_url</code></td>
+<td><code>string</code></td>
+<td>Yes</td>
+<td>A Bud Pay URL, allowing Customers to complete (authenticate) a relevant payment resource with the relevant payment service provider.</td>
+</tr>
+<tr>
+<td><code>data.payment_id</code></td>
+<td><code>string</code></td>
+<td>Yes</td>
+<td>Unique identifier for the payment</td>
+</tr>
+<tr>
+<td><code>operation_id</code></td>
+<td><code>string</code></td>
+<td>Yes</td>
+<td>A unique identifier/reference associated with a given endpoint/operation</td>
+</tr>
+</tbody>
+</table>
+<p>Example response:</p>
+<pre><code class="language-json">{
+  &quot;data&quot;: {
+    &quot;bud_pay_url&quot;: &quot;https://www.thisisbud.com/v1/payment/bud-pay&quot;,
+    &quot;payment_id&quot;: &quot;56caec01-85cc-4fc6-8080-cc0f7ed03a7e&quot;
+  },
+  &quot;operation_id&quot;: &quot;v1_payments_standing_order_bud_pay_url_post&quot;
+}
+</code></pre>
+<h5 id="400-the-request-contains-an-invalid-payload-2" class="status" data-status="4xx">400: The request contains an invalid payload</h5>
+<p><code>application/json</code></p>
+<table>
+<thead>
+<tr>
+<th>Property</th>
+<th>Type</th>
+<th>Required</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>code_id</code></td>
+<td><code>string</code></td>
+<td>Yes</td>
+<td>A descriptive enough string that is linked to the reason for the error.</td>
+</tr>
+<tr>
+<td><code>errors</code></td>
+<td><code>object or object</code></td>
+<td>Yes</td>
+<td></td>
+</tr>
+<tr>
+<td><code>message</code></td>
+<td><code>string</code></td>
+<td>Yes</td>
+<td></td>
+</tr>
+<tr>
+<td><code>operation_id</code></td>
+<td><code>string</code></td>
+<td>Yes</td>
+<td>A unique identifier/reference associated with a given endpoint/operation</td>
+</tr>
+</tbody>
+</table>
+<p>Example response:</p>
+<pre><code class="language-json">{
+  &quot;code_id&quot;: &quot;failed_validation&quot;,
+  &quot;errors&quot;: {
+    &quot;redirect_url&quot;: &quot;This value should not be blank&quot;
+  },
+  &quot;message&quot;: &quot;Failed validation&quot;,
+  &quot;operation_id&quot;: &quot;v1_payments_standing_order_bud_pay_url_post&quot;
+}
+</code></pre>
+<h5 id="401-unauthorised-request-2" class="status" data-status="4xx">401: Unauthorised request</h5>
+<h5 id="405-an-unexpected-http-method-was-used-2" class="status" data-status="4xx">405: An unexpected HTTP method was used</h5>
+<h5 id="5xx-an-unexpected-error-occurred-on-the-server-side-2">5XX: An unexpected error occurred on the server side</h5>
+<h2 id="list">list</h2>
+<h3 id="get-v1paymentsproviders" class="operation" data-method="get"><code>GET</code> /v1/payments/providers</h3>
+<p>Operation ID: <code>v1_payments_providers_get</code>.</p>
+<p>Authentication: oauth2 (<code>OAuth2</code>).</p>
+<h4 id="parameters-3">Parameters</h4>
+<p>| Parameter | In | Type | Required | Description |
+| --- | --- | --- | --- |
+| <code>X-Client-Id</code> | <code>header</code> | <code>string</code> | Yes | The API Client Identifier (Service Application Identifier). |
+| <code>country</code> | <code>query</code> | <code>string</code> | No | Country filter as a comma separated list of country codes following the ISO 3166 alpha-3 code format. |
+| <code>product</code> | <code>query</code> | <code>array of enum: domestic-single-payment, domestic-standing-order, domestic-scheduled-payment</code> | No | Product filter as a comma separated list of bud supported products |
+| <code>type</code> | <code>query</code> | <code>enum: sandbox, business, retail</code> | No | A comma separated list of Bud support provider types to be shown. If no filter is applied, all the providers are returned. |</p>
+<h4 id="responses-3">Responses</h4>
+<h5 id="200-successful-request-3" class="status" data-status="2xx">200: Successful request</h5>
+<p><code>application/json</code></p>
+<table>
+<thead>
+<tr>
+<th>Property</th>
+<th>Type</th>
+<th>Required</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>data</code></td>
+<td><code>array of object</code></td>
+<td>Yes</td>
+<td>A list of the supported payment providers</td>
+</tr>
+<tr>
+<td><code>data[].country_code</code></td>
+<td><code>string</code></td>
+<td>Yes</td>
+<td>Provider country code following the ISO 3166 alpha-3 code format</td>
+</tr>
+<tr>
+<td><code>data[].display_name</code></td>
+<td><code>string</code></td>
+<td>Yes</td>
+<td>The name of the payment provider to be used for display purposes (for example within a frontend application)</td>
+</tr>
+<tr>
+<td><code>data[].icon</code></td>
+<td><code>string</code></td>
+<td>Yes</td>
+<td>A URL for the icon of the corresponding provider</td>
+</tr>
+<tr>
+<td><code>data[].implementation_type</code></td>
+<td><code>enum: OpenbankingUK, BerlinGroup, CBIGlobe</code></td>
+<td>Yes</td>
+<td>The implementation standard adopted by the provider</td>
+</tr>
+<tr>
+<td><code>data[].maintenance_status</code></td>
+<td><code>enum: active, inactive</code></td>
+<td>Yes</td>
+<td>The status of the maintenance window associated with the provider</td>
+</tr>
+<tr>
+<td><code>data[].maintenance_window</code></td>
+<td><code>object or object</code></td>
+<td>Yes</td>
+<td></td>
+</tr>
+<tr>
+<td><code>data[].provider</code></td>
+<td><code>string</code></td>
+<td>Yes</td>
+<td>The name (identifier) of the payment provider</td>
+</tr>
+<tr>
+<td><code>data[].required_actions</code></td>
+<td><code>any</code></td>
+<td>Yes</td>
+<td>An array of enum fields to indicate if any additional actions are required in order to complete a given payment flow for the given provider. | Value | Description | |:-------|:-------------| | <code>confirm_single_payment</code> | If present, this value indicates that clients must complete an additional step in the single payments flow whereby they must confirm the payment once the customer has successfully authorised the payment with the provider. This confirmation can be accomplished using the Confirm Single Payment API Endpoint. Please note this step is only relevant for clients using Bud as a Technical Service Provider (TSP) | | <code>confirm_standing_order</code> | If present, this value indicates that clients must complete an additional step in the standing order payments flow whereby they must confirm the payment once the customer has successfully authorised the standing order with the provider. This confirmation can be accomplished using the Confirm Standing Order API Endpoint. Please note this step is only relevant for clients using Bud as a Technical Service Provider (TSP) | | <code>confirm_scheduled_payment</code> | If present, this value indicates that clients must complete an additional step in the scheduled payments flow whereby they must confirm the payment once the customer has successfully authorised the scheduled order with the provider. This confirmation can be accomplished using the Confirm Scheduled Payment API Endpoint. Please note this step is only relevant for clients using Bud as a Technical Service Provider (TSP) |</td>
+</tr>
+<tr>
+<td><code>data[].services</code></td>
+<td><code>array of enum: domestic-single-payment, domestic-standing-order, domestic-scheduled-payment</code></td>
+<td>Yes</td>
+<td>A payment service supported by a payment provider</td>
+</tr>
+<tr>
+<td><code>data[].supported_currencies</code></td>
+<td><code>array of enum: GBP, EUR</code></td>
+<td>Yes</td>
+<td>The currencies supported by the payment provider</td>
+</tr>
+<tr>
+<td><code>operation_id</code></td>
+<td><code>string</code></td>
+<td>Yes</td>
+<td>A unique identifier/reference associated with a given endpoint/operation</td>
+</tr>
+</tbody>
+</table>
+<p>Example response:</p>
+<pre><code class="language-json">{
+  &quot;data&quot;: [
+    {
+      &quot;country_code&quot;: &quot;GBR&quot;,
+      &quot;display_name&quot;: &quot;Barclays&quot;,
+      &quot;icon&quot;: &quot;https://www.thisisbud.com/provider/resource/#1&quot;,
+      &quot;implementation_type&quot;: &quot;OpenbankingUK&quot;,
+      &quot;maintenance_status&quot;: &quot;active&quot;,
+      &quot;maintenance_window&quot;: {
+        &quot;end&quot;: &quot;2019-08-07T11:00:00+0000&quot;,
+        &quot;start&quot;: &quot;2019-08-07T11:48:00+0000&quot;
+      },
+      &quot;provider&quot;: &quot;barclays&quot;,
+      &quot;required_actions&quot;: [
+        &quot;confirm_single_payment&quot;,
+        &quot;confirm_standing_order&quot;
+      ],
+      &quot;services&quot;: [
+        &quot;domestic-single-payment&quot;,
+        &quot;domestic-standing-order&quot;,
+        &quot;domestic-scheduled-payment&quot;
+      ],
+      &quot;supported_currencies&quot;: [
+        &quot;GBP&quot;
+      ]
+    }
+  ],
+  &quot;operation_id&quot;: &quot;v1_payments_providers_get&quot;
+}
+</code></pre>
+<h5 id="401-unauthorised-request-3" class="status" data-status="4xx">401: Unauthorised request</h5>
+<h5 id="405-an-unexpected-http-method-was-used-3" class="status" data-status="4xx">405: An unexpected HTTP method was used</h5>
+<h5 id="5xx-an-unexpected-error-occurred-on-the-server-side-3">5XX: An unexpected error occurred on the server side</h5>
+</main></div>
+<script src="../assets/search.js" defer></script></body></html>

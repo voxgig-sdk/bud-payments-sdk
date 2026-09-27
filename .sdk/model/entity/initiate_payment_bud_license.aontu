@@ -1,0 +1,349 @@
+# Entity: initiate_payment_bud_license
+
+main: kit: entity: initiate_payment_bud_license: {
+
+  alias: field: {}
+
+  fields: {
+    bud_pay_url: {
+      h: "Bud Pay Url"
+      n: "bud_pay_url"
+      r: true
+      sh: "A Bud Pay URL, allowing Customers to complete (authenticate) a relevant payment resource with the relevant payment service provider."
+      t: "`$STRING`"
+    }
+    country_code: {
+      h: "Country Code"
+      n: "country_code"
+      r: true
+      sh: "Provider country code following the ISO 3166 alpha-3 code format"
+      t: "`$STRING`"
+    }
+    display_name: {
+      h: "Display Name"
+      n: "display_name"
+      r: true
+      sh: "The name of the payment provider to be used for display purposes (e.g."
+      t: "`$STRING`"
+    }
+    icon: {
+      h: "Icon"
+      n: "icon"
+      r: true
+      sh: "A URL for the icon of the corresponding provider"
+      t: "`$STRING`"
+    }
+    implementation_type: {
+      h: "Implementation Type"
+      n: "implementation_type"
+      r: true
+      sh: "The implementation standard adopted by the provider"
+      t: "`$STRING`"
+    }
+    maintenance_status: {
+      h: "Maintenance Status"
+      n: "maintenance_status"
+      r: true
+      sh: "The status of the maintenance window associated with the provider"
+      t: "`$STRING`"
+    }
+    maintenance_window: {
+      h: "Maintenance Window"
+      n: "maintenance_window"
+      r: true
+      t: "`$ANY`"
+      union: {
+        branches: 2
+        count: 1
+        depth: 0
+      }
+    }
+    payment_details: {
+      h: "Payment Details"
+      n: "payment_details"
+      r: true
+      sh: "Payment details required to make a Single Payment"
+      t: "`$OBJECT`"
+    }
+    payment_id: {
+      h: "Payment Id"
+      n: "payment_id"
+      r: true
+      sh: "Unique identifier for the payment"
+      t: "`$STRING`"
+    }
+    provider: {
+      h: "Provider"
+      n: "provider"
+      r: true
+      sh: "The name (identifier) of the payment provider"
+      t: "`$STRING`"
+    }
+    provider_types: {
+      h: "Provider Types"
+      n: "provider_types"
+      r: false
+      sh: "One or more provider types that can be used to filter the list of providers that are shown to the customer during the connection flow."
+      t: "`$ARRAY`"
+    }
+    redirect_url: {
+      h: "Redirect Url"
+      n: "redirect_url"
+      r: true
+      sh: "URL where the user will be redirected to once they have completed the TPP Connection flow."
+      t: "`$STRING`"
+    }
+    required_actions: {
+      h: "Required Actions"
+      n: "required_actions"
+      r: true
+      sh: "An array of enum fields to indicate if any additional actions are required in order to complete a given payment flow for the given provider."
+      t: "`$ANY`"
+    }
+    scheduled_payment_details: {
+      h: "Scheduled Payment Details"
+      n: "scheduled_payment_details"
+      r: true
+      sh: "Details of the scheduled payment"
+      t: "`$OBJECT`"
+    }
+    services: {
+      h: "Services"
+      n: "services"
+      r: true
+      sh: "A payment service supported by a payment provider"
+      t: "`$ARRAY`"
+    }
+    standing_order_details: {
+      h: "Standing Order Details"
+      n: "standing_order_details"
+      r: true
+      sh: "Details of the standing order"
+      t: "`$OBJECT`"
+    }
+    supported_currencies: {
+      h: "Supported Currencies"
+      n: "supported_currencies"
+      r: true
+      sh: "The currencies supported by the payment provider"
+      t: "`$ARRAY`"
+    }
+  }
+
+  name: "initiate_payment_bud_license"
+  op: {
+    create: {
+      name: "create"
+      points: [
+        {
+          co: {
+            id: "POST /v1/payments/scheduled/bud-pay-url"
+            source: "openapi3"
+            version: 2
+          }
+          g: {
+            header: [
+              {
+                ex: "8711bbef-b357-4c2d-97ca-0d9df4206e9a"
+                k: "header"
+                n: "x_client_id"
+                or: "x_client_id"
+                r: true
+                t: "`$STRING`"
+              }
+            ]
+          }
+          m: "POST"
+          o: "/v1/payments/scheduled/bud-pay-url"
+          q: {
+            exist: [
+              "x_client_id"
+            ]
+          }
+          s: [
+            {
+              lit: "v1"
+            }
+            {
+              lit: "payments"
+            }
+            {
+              lit: "scheduled"
+            }
+            {
+              lit: "bud-pay-url"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body.data`"
+          }
+        }
+        {
+          co: {
+            id: "POST /v1/payments/single/bud-pay-url"
+            source: "openapi3"
+            version: 2
+          }
+          g: {
+            header: [
+              {
+                ex: "8711bbef-b357-4c2d-97ca-0d9df4206e9a"
+                k: "header"
+                n: "x_client_id"
+                or: "x_client_id"
+                r: true
+                t: "`$STRING`"
+              }
+            ]
+          }
+          m: "POST"
+          o: "/v1/payments/single/bud-pay-url"
+          q: {
+            exist: [
+              "x_client_id"
+            ]
+          }
+          s: [
+            {
+              lit: "v1"
+            }
+            {
+              lit: "payments"
+            }
+            {
+              lit: "single"
+            }
+            {
+              lit: "bud-pay-url"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body.data`"
+          }
+        }
+        {
+          co: {
+            id: "POST /v1/payments/standing-order/bud-pay-url"
+            source: "openapi3"
+            version: 2
+          }
+          g: {
+            header: [
+              {
+                ex: "8711bbef-b357-4c2d-97ca-0d9df4206e9a"
+                k: "header"
+                n: "x_client_id"
+                or: "x_client_id"
+                r: true
+                t: "`$STRING`"
+              }
+            ]
+          }
+          m: "POST"
+          o: "/v1/payments/standing-order/bud-pay-url"
+          q: {
+            exist: [
+              "x_client_id"
+            ]
+          }
+          s: [
+            {
+              lit: "v1"
+            }
+            {
+              lit: "payments"
+            }
+            {
+              lit: "standing-order"
+            }
+            {
+              lit: "bud-pay-url"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body.data`"
+          }
+        }
+      ]
+    }
+    list: {
+      name: "list"
+      points: [
+        {
+          co: {
+            id: "GET /v1/payments/providers"
+            source: "openapi3"
+            version: 2
+          }
+          g: {
+            header: [
+              {
+                ex: "8711bbef-b357-4c2d-97ca-0d9df4206e9a"
+                k: "header"
+                n: "x_client_id"
+                or: "x_client_id"
+                r: true
+                t: "`$STRING`"
+              }
+            ]
+            query: [
+              {
+                ex: "GBR,DEU"
+                k: "query"
+                n: "country"
+                or: "country"
+                r: false
+                t: "`$STRING`"
+              }
+              {
+                k: "query"
+                n: "product"
+                or: "product"
+                r: false
+                t: "`$ARRAY`"
+              }
+              {
+                k: "query"
+                n: "type"
+                or: "type"
+                r: false
+                t: "`$STRING`"
+              }
+            ]
+          }
+          m: "GET"
+          o: "/v1/payments/providers"
+          q: {
+            exist: [
+              "country"
+              "product"
+              "type"
+              "x_client_id"
+            ]
+          }
+          s: [
+            {
+              lit: "v1"
+            }
+            {
+              lit: "payments"
+            }
+            {
+              lit: "providers"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body.data`"
+          }
+        }
+      ]
+    }
+  }
+
+
+
+}

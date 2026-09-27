@@ -1,0 +1,165 @@
+{
+  "existing": {
+    "manage_payment": {
+      "MANAGE_PAYMENT00": {
+        "amount": {},
+        "client_id": "CLIENT01",
+        "created_at": "sde",
+        "data": {},
+        "errors": [],
+        "first_payment_date": "se1",
+        "frequency": "se2",
+        "known_charges": {},
+        "last_payment_date": "se4",
+        "metadata": {},
+        "method": "se6",
+        "operation_id": "OPERATION01",
+        "organisation_id": "ORGANISATION01",
+        "payment_id": "PAYMENT01",
+        "recipient": {},
+        "recurring_amount": {},
+        "reference": "sec",
+        "requested_execution_date": "sed",
+        "required_action": "see",
+        "sender": {},
+        "state": {},
+        "supplementary_status": {},
+        "scheduled_id": "SCHEDULED01",
+        "single_id": "SINGLE01",
+        "standing_order_id": "STANDING_ORDER01",
+        "id": "MANAGE_PAYMENT00"
+      },
+      "MANAGE_PAYMENT01": {
+        "amount": {},
+        "client_id": "CLIENT01",
+        "created_at": "s1ba",
+        "data": {},
+        "errors": [],
+        "first_payment_date": "s1bd",
+        "frequency": "s1be",
+        "known_charges": {},
+        "last_payment_date": "s1c0",
+        "metadata": {},
+        "method": "s1c2",
+        "operation_id": "OPERATION01",
+        "organisation_id": "ORGANISATION01",
+        "payment_id": "PAYMENT01",
+        "recipient": {},
+        "recurring_amount": {},
+        "reference": "s1c8",
+        "requested_execution_date": "s1c9",
+        "required_action": "s1ca",
+        "sender": {},
+        "state": {},
+        "supplementary_status": {},
+        "scheduled_id": "SCHEDULED01",
+        "single_id": "SINGLE01",
+        "standing_order_id": "STANDING_ORDER01",
+        "id": "MANAGE_PAYMENT01"
+      },
+      "MANAGE_PAYMENT02": {
+        "amount": {},
+        "client_id": "CLIENT01",
+        "created_at": "s296",
+        "data": {},
+        "errors": [],
+        "first_payment_date": "s299",
+        "frequency": "s29a",
+        "known_charges": {},
+        "last_payment_date": "s29c",
+        "metadata": {},
+        "method": "s29e",
+        "operation_id": "OPERATION01",
+        "organisation_id": "ORGANISATION01",
+        "payment_id": "PAYMENT01",
+        "recipient": {},
+        "recurring_amount": {},
+        "reference": "s2a4",
+        "requested_execution_date": "s2a5",
+        "required_action": "s2a6",
+        "sender": {},
+        "state": {},
+        "supplementary_status": {},
+        "scheduled_id": "SCHEDULED01",
+        "single_id": "SINGLE01",
+        "standing_order_id": "STANDING_ORDER01",
+        "id": "MANAGE_PAYMENT02"
+      }
+    }
+  },
+  "new": {
+    "manage_payment": {
+      "manage_payment_ref01": {
+        "amount": {},
+        "client_id": "CLIENT01",
+        "created_at": "s372",
+        "data": {},
+        "errors": [],
+        "first_payment_date": "s375",
+        "frequency": "s376",
+        "known_charges": {},
+        "last_payment_date": "s378",
+        "metadata": {},
+        "method": "s37a",
+        "operation_id": "OPERATION01",
+        "organisation_id": "ORGANISATION01",
+        "payment_id": "PAYMENT01",
+        "recipient": {},
+        "recurring_amount": {},
+        "reference": "s380",
+        "requested_execution_date": "s381",
+        "required_action": "s382",
+        "sender": {},
+        "state": {},
+        "supplementary_status": {}
+      }
+    }
+  },
+  "requests": {
+    "POST /v1/payments/scheduled/{payment_id}/confirm": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    },
+    "POST /v1/payments/single/{payment_id}/confirm": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    },
+    "POST /v1/payments/standing-order/{payment_id}/confirm": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    },
+    "GET /v1/payments/scheduled": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    },
+    "GET /v1/payments/single": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    },
+    "GET /v1/payments/standing-order": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    },
+    "GET /v1/payments/scheduled/{payment_id}": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    },
+    "GET /v1/payments/single/{payment_id}": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    },
+    "GET /v1/payments/standing-order/{payment_id}": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    }
+  }
+}

@@ -1,1 +1,3463 @@
-{"name":"bud-payments"}
+{
+  "NAME": "BUD-PAYMENTS",
+  "Name": "BudPayments",
+  "def": "bud-payments-openapi.json",
+  "main": {
+    "api": {
+      "entity": {},
+      "guide": {}
+    },
+    "custom": {
+      "plurals": {}
+    },
+    "def": {
+      "desc": ""
+    },
+    "kit": {
+      "author": {
+        "name": "",
+        "url": ""
+      },
+      "config": {
+        "docs_order": [
+          "ts",
+          "py",
+          "php",
+          "go",
+          "rb",
+          "lua"
+        ],
+        "headers": {
+          "content-type": "application/json"
+        },
+        "repr": "auto"
+      },
+      "contributor": {},
+      "doc": {
+        "active": true,
+        "assets": {
+          "path": ".sdk/doc/assets"
+        },
+        "brand": {
+          "label": "",
+          "notice": "",
+          "shortNotice": "",
+          "url": ""
+        },
+        "ci": {
+          "active": true,
+          "branch": "main"
+        },
+        "content": {
+          "path": ".sdk/doc/content"
+        },
+        "edition": {
+          "github-pages": {
+            "active": true,
+            "base": "node_modules/@voxgig/docgen/project/.sdk",
+            "brand": {},
+            "filter": {
+              "entities": [],
+              "features": [],
+              "targets": []
+            },
+            "kind": "github-pages",
+            "name": "github-pages",
+            "origname": "",
+            "output": {
+              "path": "docs"
+            },
+            "package": "@voxgig/docgen",
+            "published": false,
+            "site": {
+              "active": true
+            },
+            "style": {},
+            "title": ""
+          },
+          "summary": {
+            "active": true,
+            "base": "node_modules/@voxgig/docgen/project/.sdk",
+            "brand": {},
+            "filter": {
+              "entities": [],
+              "features": [],
+              "targets": []
+            },
+            "kind": "summary",
+            "name": "summary",
+            "origname": "",
+            "output": {
+              "path": "SUMMARY.md"
+            },
+            "package": "@voxgig/docgen",
+            "published": false,
+            "site": {
+              "active": true
+            },
+            "style": {},
+            "title": ""
+          }
+        },
+        "qa": {
+          "vocabulary": []
+        },
+        "style": {
+          "color": {
+            "accent": "#00c6d8",
+            "background": "#f5f5f9",
+            "darkBackground": "#0f1117",
+            "darkText": "#e6edf3",
+            "primary": "#e70042",
+            "text": "#0a0a0a"
+          },
+          "font": "Nunito, system-ui, sans-serif",
+          "fontFile": "",
+          "headingFont": "Nunito, system-ui, sans-serif",
+          "headingFontFile": "",
+          "logo": "",
+          "mode": "light",
+          "mono": "ui-monospace, monospace",
+          "monoFile": ""
+        },
+        "target": {}
+      },
+      "entity": {
+        "initiate_payment_bud_license": {
+          "active": true,
+          "alias": {
+            "field": {}
+          },
+          "fields": {
+            "bud_pay_url": {
+              "a": true,
+              "h": "Bud Pay Url",
+              "n": "bud_pay_url",
+              "r": true,
+              "sh": "A Bud Pay URL, allowing Customers to complete (authenticate) a relevant payment resource with the relevant payment service provider.",
+              "t": "`$STRING`"
+            },
+            "country_code": {
+              "a": true,
+              "h": "Country Code",
+              "n": "country_code",
+              "r": true,
+              "sh": "Provider country code following the ISO 3166 alpha-3 code format",
+              "t": "`$STRING`"
+            },
+            "display_name": {
+              "a": true,
+              "h": "Display Name",
+              "n": "display_name",
+              "r": true,
+              "sh": "The name of the payment provider to be used for display purposes (e.g.",
+              "t": "`$STRING`"
+            },
+            "icon": {
+              "a": true,
+              "h": "Icon",
+              "n": "icon",
+              "r": true,
+              "sh": "A URL for the icon of the corresponding provider",
+              "t": "`$STRING`"
+            },
+            "implementation_type": {
+              "a": true,
+              "h": "Implementation Type",
+              "n": "implementation_type",
+              "r": true,
+              "sh": "The implementation standard adopted by the provider",
+              "t": "`$STRING`"
+            },
+            "maintenance_status": {
+              "a": true,
+              "h": "Maintenance Status",
+              "n": "maintenance_status",
+              "r": true,
+              "sh": "The status of the maintenance window associated with the provider",
+              "t": "`$STRING`"
+            },
+            "maintenance_window": {
+              "a": true,
+              "h": "Maintenance Window",
+              "n": "maintenance_window",
+              "r": true,
+              "t": "`$ANY`",
+              "union": {
+                "branches": 2,
+                "count": 1,
+                "depth": 0
+              }
+            },
+            "payment_details": {
+              "a": true,
+              "h": "Payment Details",
+              "n": "payment_details",
+              "r": true,
+              "sh": "Payment details required to make a Single Payment",
+              "t": "`$OBJECT`"
+            },
+            "payment_id": {
+              "a": true,
+              "h": "Payment Id",
+              "n": "payment_id",
+              "r": true,
+              "sh": "Unique identifier for the payment",
+              "t": "`$STRING`"
+            },
+            "provider": {
+              "a": true,
+              "h": "Provider",
+              "n": "provider",
+              "r": true,
+              "sh": "The name (identifier) of the payment provider",
+              "t": "`$STRING`"
+            },
+            "provider_types": {
+              "a": true,
+              "h": "Provider Types",
+              "n": "provider_types",
+              "r": false,
+              "sh": "One or more provider types that can be used to filter the list of providers that are shown to the customer during the connection flow.",
+              "t": "`$ARRAY`"
+            },
+            "redirect_url": {
+              "a": true,
+              "h": "Redirect Url",
+              "n": "redirect_url",
+              "r": true,
+              "sh": "URL where the user will be redirected to once they have completed the TPP Connection flow.",
+              "t": "`$STRING`"
+            },
+            "required_actions": {
+              "a": true,
+              "h": "Required Actions",
+              "n": "required_actions",
+              "r": true,
+              "sh": "An array of enum fields to indicate if any additional actions are required in order to complete a given payment flow for the given provider.",
+              "t": "`$ANY`"
+            },
+            "scheduled_payment_details": {
+              "a": true,
+              "h": "Scheduled Payment Details",
+              "n": "scheduled_payment_details",
+              "r": true,
+              "sh": "Details of the scheduled payment",
+              "t": "`$OBJECT`"
+            },
+            "services": {
+              "a": true,
+              "h": "Services",
+              "n": "services",
+              "r": true,
+              "sh": "A payment service supported by a payment provider",
+              "t": "`$ARRAY`"
+            },
+            "standing_order_details": {
+              "a": true,
+              "h": "Standing Order Details",
+              "n": "standing_order_details",
+              "r": true,
+              "sh": "Details of the standing order",
+              "t": "`$OBJECT`"
+            },
+            "supported_currencies": {
+              "a": true,
+              "h": "Supported Currencies",
+              "n": "supported_currencies",
+              "r": true,
+              "sh": "The currencies supported by the payment provider",
+              "t": "`$ARRAY`"
+            }
+          },
+          "name": "initiate_payment_bud_license",
+          "op": {
+            "create": {
+              "input": "data",
+              "name": "create",
+              "points": [
+                {
+                  "a": true,
+                  "co": {
+                    "id": "POST /v1/payments/scheduled/bud-pay-url",
+                    "source": "openapi3",
+                    "version": 2
+                  },
+                  "g": {
+                    "header": [
+                      {
+                        "a": true,
+                        "ex": "8711bbef-b357-4c2d-97ca-0d9df4206e9a",
+                        "k": "header",
+                        "n": "x_client_id",
+                        "or": "x_client_id",
+                        "r": true,
+                        "t": "`$STRING`"
+                      }
+                    ]
+                  },
+                  "k": "http",
+                  "m": "POST",
+                  "o": "/v1/payments/scheduled/bud-pay-url",
+                  "q": {
+                    "exist": [
+                      "x_client_id"
+                    ]
+                  },
+                  "r": {},
+                  "s": [
+                    {
+                      "lit": "v1"
+                    },
+                    {
+                      "lit": "payments"
+                    },
+                    {
+                      "lit": "scheduled"
+                    },
+                    {
+                      "lit": "bud-pay-url"
+                    }
+                  ],
+                  "t": {
+                    "req": "`reqdata`",
+                    "res": "`body.data`"
+                  }
+                },
+                {
+                  "a": true,
+                  "co": {
+                    "id": "POST /v1/payments/single/bud-pay-url",
+                    "source": "openapi3",
+                    "version": 2
+                  },
+                  "g": {
+                    "header": [
+                      {
+                        "a": true,
+                        "ex": "8711bbef-b357-4c2d-97ca-0d9df4206e9a",
+                        "k": "header",
+                        "n": "x_client_id",
+                        "or": "x_client_id",
+                        "r": true,
+                        "t": "`$STRING`"
+                      }
+                    ]
+                  },
+                  "k": "http",
+                  "m": "POST",
+                  "o": "/v1/payments/single/bud-pay-url",
+                  "q": {
+                    "exist": [
+                      "x_client_id"
+                    ]
+                  },
+                  "r": {},
+                  "s": [
+                    {
+                      "lit": "v1"
+                    },
+                    {
+                      "lit": "payments"
+                    },
+                    {
+                      "lit": "single"
+                    },
+                    {
+                      "lit": "bud-pay-url"
+                    }
+                  ],
+                  "t": {
+                    "req": "`reqdata`",
+                    "res": "`body.data`"
+                  }
+                },
+                {
+                  "a": true,
+                  "co": {
+                    "id": "POST /v1/payments/standing-order/bud-pay-url",
+                    "source": "openapi3",
+                    "version": 2
+                  },
+                  "g": {
+                    "header": [
+                      {
+                        "a": true,
+                        "ex": "8711bbef-b357-4c2d-97ca-0d9df4206e9a",
+                        "k": "header",
+                        "n": "x_client_id",
+                        "or": "x_client_id",
+                        "r": true,
+                        "t": "`$STRING`"
+                      }
+                    ]
+                  },
+                  "k": "http",
+                  "m": "POST",
+                  "o": "/v1/payments/standing-order/bud-pay-url",
+                  "q": {
+                    "exist": [
+                      "x_client_id"
+                    ]
+                  },
+                  "r": {},
+                  "s": [
+                    {
+                      "lit": "v1"
+                    },
+                    {
+                      "lit": "payments"
+                    },
+                    {
+                      "lit": "standing-order"
+                    },
+                    {
+                      "lit": "bud-pay-url"
+                    }
+                  ],
+                  "t": {
+                    "req": "`reqdata`",
+                    "res": "`body.data`"
+                  }
+                }
+              ]
+            },
+            "list": {
+              "input": "data",
+              "name": "list",
+              "points": [
+                {
+                  "a": true,
+                  "co": {
+                    "id": "GET /v1/payments/providers",
+                    "source": "openapi3",
+                    "version": 2
+                  },
+                  "g": {
+                    "header": [
+                      {
+                        "a": true,
+                        "ex": "8711bbef-b357-4c2d-97ca-0d9df4206e9a",
+                        "k": "header",
+                        "n": "x_client_id",
+                        "or": "x_client_id",
+                        "r": true,
+                        "t": "`$STRING`"
+                      }
+                    ],
+                    "query": [
+                      {
+                        "a": true,
+                        "ex": "GBR,DEU",
+                        "k": "query",
+                        "n": "country",
+                        "or": "country",
+                        "r": false,
+                        "t": "`$STRING`"
+                      },
+                      {
+                        "a": true,
+                        "k": "query",
+                        "n": "product",
+                        "or": "product",
+                        "r": false,
+                        "t": "`$ARRAY`"
+                      },
+                      {
+                        "a": true,
+                        "k": "query",
+                        "n": "type",
+                        "or": "type",
+                        "r": false,
+                        "t": "`$STRING`"
+                      }
+                    ]
+                  },
+                  "k": "http",
+                  "m": "GET",
+                  "o": "/v1/payments/providers",
+                  "q": {
+                    "exist": [
+                      "country",
+                      "product",
+                      "type",
+                      "x_client_id"
+                    ]
+                  },
+                  "r": {},
+                  "s": [
+                    {
+                      "lit": "v1"
+                    },
+                    {
+                      "lit": "payments"
+                    },
+                    {
+                      "lit": "providers"
+                    }
+                  ],
+                  "t": {
+                    "req": "`reqdata`",
+                    "res": "`body.data`"
+                  }
+                }
+              ]
+            }
+          },
+          "relations": {
+            "ancestors": []
+          }
+        },
+        "initiate_payment_client_license": {
+          "active": true,
+          "alias": {
+            "field": {}
+          },
+          "fields": {
+            "authorisation_url": {
+              "a": true,
+              "h": "Authorisation Url",
+              "n": "authorisation_url",
+              "r": true,
+              "sh": "The authorisation URL for a relevant payment provider.",
+              "t": "`$STRING`"
+            },
+            "code": {
+              "a": true,
+              "h": "Code",
+              "n": "code",
+              "r": false,
+              "sh": "Code parameter returned in redirect parameters",
+              "t": "`$STRING`"
+            },
+            "payment_details": {
+              "a": true,
+              "h": "Payment Details",
+              "n": "payment_details",
+              "r": true,
+              "sh": "Payment details required to make a Single Payment",
+              "t": "`$OBJECT`"
+            },
+            "payment_id": {
+              "a": true,
+              "h": "Payment Id",
+              "n": "payment_id",
+              "op": {
+                "create": {
+                  "req": true,
+                  "type": "`$STRING`"
+                }
+              },
+              "r": false,
+              "sh": "Payment Identifier",
+              "t": "`$STRING`"
+            },
+            "payment_type": {
+              "a": true,
+              "h": "Payment Type",
+              "n": "payment_type",
+              "r": false,
+              "sh": "The type of payment iniated through Bud's Payments Service",
+              "t": "`$STRING`"
+            },
+            "provider": {
+              "a": true,
+              "h": "Provider",
+              "n": "provider",
+              "r": true,
+              "sh": "The name (identifier) of the payment provider",
+              "t": "`$STRING`"
+            },
+            "provider_redirect_url": {
+              "a": true,
+              "h": "Provider Redirect Url",
+              "n": "provider_redirect_url",
+              "r": false,
+              "sh": "This is the url that your Customer will be redirected to once they have authorised with the relevant provider.",
+              "t": "`$STRING`"
+            },
+            "provider_types": {
+              "a": true,
+              "h": "Provider Types",
+              "n": "provider_types",
+              "r": false,
+              "sh": "One or more provider types that can be used to filter the list of providers that are shown to the customer during the connection flow.",
+              "t": "`$ARRAY`"
+            },
+            "redirect_url": {
+              "a": true,
+              "h": "Redirect Url",
+              "n": "redirect_url",
+              "r": false,
+              "sh": "This is the url that your Customer will be redirected to when using the Bud user interface.",
+              "t": "`$STRING`"
+            },
+            "required_action": {
+              "a": true,
+              "h": "Required Action",
+              "n": "required_action",
+              "r": false,
+              "sh": "If present, this fild will indicate the next required action (if any) to be taken by the client in order to complete the payment flow | Value | Description | |:-------|:-------------| | confirm_scheduled_payment | Indicates that the client…",
+              "t": "`$STRING`"
+            },
+            "result": {
+              "a": true,
+              "h": "Result",
+              "n": "result",
+              "r": false,
+              "t": "`$STRING`"
+            },
+            "scheduled_payment_details": {
+              "a": true,
+              "h": "Scheduled Payment Details",
+              "n": "scheduled_payment_details",
+              "r": true,
+              "sh": "Details of the scheduled payment",
+              "t": "`$OBJECT`"
+            },
+            "standing_order_details": {
+              "a": true,
+              "h": "Standing Order Details",
+              "n": "standing_order_details",
+              "r": true,
+              "sh": "Details of the standing order",
+              "t": "`$OBJECT`"
+            },
+            "state": {
+              "a": true,
+              "h": "State",
+              "n": "state",
+              "r": true,
+              "sh": "The task ID",
+              "t": "`$STRING`"
+            }
+          },
+          "name": "initiate_payment_client_license",
+          "op": {
+            "create": {
+              "input": "data",
+              "name": "create",
+              "points": [
+                {
+                  "a": true,
+                  "co": {
+                    "id": "POST /v1/payments/authorisation-codes",
+                    "source": "openapi3",
+                    "version": 2
+                  },
+                  "g": {
+                    "header": [
+                      {
+                        "a": true,
+                        "ex": "8711bbef-b357-4c2d-97ca-0d9df4206e9a",
+                        "k": "header",
+                        "n": "x_client_id",
+                        "or": "x_client_id",
+                        "r": true,
+                        "t": "`$STRING`"
+                      }
+                    ]
+                  },
+                  "k": "http",
+                  "m": "POST",
+                  "o": "/v1/payments/authorisation-codes",
+                  "q": {
+                    "exist": [
+                      "x_client_id"
+                    ]
+                  },
+                  "r": {},
+                  "s": [
+                    {
+                      "lit": "v1"
+                    },
+                    {
+                      "lit": "payments"
+                    },
+                    {
+                      "lit": "authorisation-codes"
+                    }
+                  ],
+                  "t": {
+                    "req": "`reqdata`",
+                    "res": "`body.data`"
+                  }
+                },
+                {
+                  "a": true,
+                  "co": {
+                    "id": "POST /v1/payments/scheduled",
+                    "source": "openapi3",
+                    "version": 2
+                  },
+                  "g": {
+                    "header": [
+                      {
+                        "a": true,
+                        "ex": "8711bbef-b357-4c2d-97ca-0d9df4206e9a",
+                        "k": "header",
+                        "n": "x_client_id",
+                        "or": "x_client_id",
+                        "r": true,
+                        "t": "`$STRING`"
+                      }
+                    ]
+                  },
+                  "k": "http",
+                  "m": "POST",
+                  "o": "/v1/payments/scheduled",
+                  "q": {
+                    "exist": [
+                      "x_client_id"
+                    ]
+                  },
+                  "r": {},
+                  "s": [
+                    {
+                      "lit": "v1"
+                    },
+                    {
+                      "lit": "payments"
+                    },
+                    {
+                      "lit": "scheduled"
+                    }
+                  ],
+                  "t": {
+                    "req": "`reqdata`",
+                    "res": "`body.data`"
+                  }
+                },
+                {
+                  "a": true,
+                  "co": {
+                    "id": "POST /v1/payments/single",
+                    "source": "openapi3",
+                    "version": 2
+                  },
+                  "g": {
+                    "header": [
+                      {
+                        "a": true,
+                        "ex": "8711bbef-b357-4c2d-97ca-0d9df4206e9a",
+                        "k": "header",
+                        "n": "x_client_id",
+                        "or": "x_client_id",
+                        "r": true,
+                        "t": "`$STRING`"
+                      }
+                    ]
+                  },
+                  "k": "http",
+                  "m": "POST",
+                  "o": "/v1/payments/single",
+                  "q": {
+                    "exist": [
+                      "x_client_id"
+                    ]
+                  },
+                  "r": {},
+                  "s": [
+                    {
+                      "lit": "v1"
+                    },
+                    {
+                      "lit": "payments"
+                    },
+                    {
+                      "lit": "single"
+                    }
+                  ],
+                  "t": {
+                    "req": "`reqdata`",
+                    "res": "`body.data`"
+                  }
+                },
+                {
+                  "a": true,
+                  "co": {
+                    "id": "POST /v1/payments/standing-order",
+                    "source": "openapi3",
+                    "version": 2
+                  },
+                  "g": {
+                    "header": [
+                      {
+                        "a": true,
+                        "ex": "8711bbef-b357-4c2d-97ca-0d9df4206e9a",
+                        "k": "header",
+                        "n": "x_client_id",
+                        "or": "x_client_id",
+                        "r": true,
+                        "t": "`$STRING`"
+                      }
+                    ]
+                  },
+                  "k": "http",
+                  "m": "POST",
+                  "o": "/v1/payments/standing-order",
+                  "q": {
+                    "exist": [
+                      "x_client_id"
+                    ]
+                  },
+                  "r": {},
+                  "s": [
+                    {
+                      "lit": "v1"
+                    },
+                    {
+                      "lit": "payments"
+                    },
+                    {
+                      "lit": "standing-order"
+                    }
+                  ],
+                  "t": {
+                    "req": "`reqdata`",
+                    "res": "`body.data`"
+                  }
+                }
+              ]
+            }
+          },
+          "relations": {
+            "ancestors": []
+          }
+        },
+        "manage_payment": {
+          "active": true,
+          "alias": {
+            "field": {}
+          },
+          "fields": {
+            "amount": {
+              "a": true,
+              "h": "Amount",
+              "n": "amount",
+              "r": true,
+              "sh": "The monetary amount.",
+              "t": "`$OBJECT`"
+            },
+            "client_id": {
+              "a": true,
+              "h": "Client Id",
+              "n": "client_id",
+              "r": true,
+              "sh": "Bud's Client/App Identifier",
+              "t": "`$STRING`"
+            },
+            "created_at": {
+              "a": true,
+              "fo": "date-time",
+              "h": "Created At",
+              "n": "created_at",
+              "r": true,
+              "sh": "The created at timestamp for the payment",
+              "t": "`$STRING`"
+            },
+            "data": {
+              "a": true,
+              "h": "Data",
+              "n": "data",
+              "r": true,
+              "sh": "Data structure for the Scheduled Payment object",
+              "t": "`$OBJECT`"
+            },
+            "errors": {
+              "a": true,
+              "h": "Errors",
+              "n": "errors",
+              "r": true,
+              "sh": "A list of any errors that may be associated with the payment",
+              "t": "`$ARRAY`"
+            },
+            "first_payment_date": {
+              "a": true,
+              "fo": "date-time",
+              "h": "First Payment Date",
+              "n": "first_payment_date",
+              "r": true,
+              "sh": "Date-time (ISO 8601) the first payment should be made.",
+              "t": "`$STRING`"
+            },
+            "frequency": {
+              "a": true,
+              "h": "Frequency",
+              "n": "frequency",
+              "r": true,
+              "sh": "The payment frequency for a Standing Order",
+              "t": "`$STRING`"
+            },
+            "known_charges": {
+              "a": true,
+              "h": "Known Charges",
+              "n": "known_charges",
+              "r": true,
+              "sh": "A list detailing information surrounding any known charges that may be associated with the payment",
+              "t": "`$OBJECT`"
+            },
+            "last_payment_date": {
+              "a": true,
+              "fo": "date-time",
+              "h": "Last Payment Date",
+              "n": "last_payment_date",
+              "r": false,
+              "sh": "Date-time (ISO 8601) after which payments should stop.",
+              "t": "`$STRING`"
+            },
+            "metadata": {
+              "a": true,
+              "h": "Metadata",
+              "n": "metadata",
+              "r": false,
+              "t": "`$OBJECT`"
+            },
+            "method": {
+              "a": true,
+              "h": "Method",
+              "n": "method",
+              "r": true,
+              "sh": "The payment method",
+              "t": "`$STRING`"
+            },
+            "operation_id": {
+              "a": true,
+              "h": "Operation Id",
+              "n": "operation_id",
+              "r": true,
+              "sh": "A unique identifier/reference associated with a given endpoint/operation",
+              "t": "`$STRING`"
+            },
+            "organisation_id": {
+              "a": true,
+              "h": "Organisation Id",
+              "n": "organisation_id",
+              "r": true,
+              "sh": "Bud's Organisation Identifier",
+              "t": "`$STRING`"
+            },
+            "payment_id": {
+              "a": true,
+              "h": "Payment Id",
+              "n": "payment_id",
+              "r": true,
+              "sh": "Payment Identifier",
+              "t": "`$STRING`"
+            },
+            "recipient": {
+              "a": true,
+              "h": "Recipient",
+              "n": "recipient",
+              "r": true,
+              "sh": "Details of the recipient of the payment",
+              "t": "`$OBJECT`"
+            },
+            "recurring_amount": {
+              "a": true,
+              "h": "Recurring Amount",
+              "n": "recurring_amount",
+              "r": true,
+              "sh": "The monetary amount.",
+              "t": "`$OBJECT`"
+            },
+            "reference": {
+              "a": true,
+              "h": "Reference",
+              "n": "reference",
+              "r": true,
+              "sh": "Reference to use for this payment",
+              "t": "`$STRING`"
+            },
+            "requested_execution_date": {
+              "a": true,
+              "fo": "date-time",
+              "h": "Requested Execution Date",
+              "n": "requested_execution_date",
+              "r": true,
+              "sh": "Date-time (ISO 8601) the Scheduled Payment should be made.",
+              "t": "`$STRING`"
+            },
+            "required_action": {
+              "a": true,
+              "h": "Required Action",
+              "n": "required_action",
+              "op": {
+                "list": {
+                  "req": false,
+                  "type": "`$STRING`"
+                }
+              },
+              "r": true,
+              "sh": "This field will indicate that there is an action required to be taken by the client in order to complete the payment.",
+              "t": "`$STRING`"
+            },
+            "sender": {
+              "a": true,
+              "h": "Sender",
+              "n": "sender",
+              "r": true,
+              "sh": "Details of the payment sender",
+              "t": "`$OBJECT`"
+            },
+            "state": {
+              "a": true,
+              "h": "State",
+              "n": "state",
+              "r": true,
+              "sh": "Details of the payment state and history",
+              "t": "`$OBJECT`"
+            },
+            "supplementary_status": {
+              "a": true,
+              "h": "Supplementary Status",
+              "n": "supplementary_status",
+              "r": true,
+              "sh": "A list of supplementary states associated with the payment as described by the specific provider",
+              "t": "`$OBJECT`"
+            }
+          },
+          "name": "manage_payment",
+          "op": {
+            "create": {
+              "input": "data",
+              "name": "create",
+              "points": [
+                {
+                  "a": true,
+                  "co": {
+                    "id": "POST /v1/payments/scheduled/{payment_id}/confirm",
+                    "source": "openapi3",
+                    "version": 2
+                  },
+                  "g": {
+                    "header": [
+                      {
+                        "a": true,
+                        "ex": "8711bbef-b357-4c2d-97ca-0d9df4206e9a",
+                        "k": "header",
+                        "n": "x_client_id",
+                        "or": "x_client_id",
+                        "r": true,
+                        "t": "`$STRING`"
+                      }
+                    ],
+                    "params": [
+                      {
+                        "a": true,
+                        "k": "param",
+                        "n": "scheduled_id",
+                        "or": "payment_id",
+                        "r": true,
+                        "t": "`$STRING`"
+                      }
+                    ]
+                  },
+                  "k": "http",
+                  "m": "POST",
+                  "o": "/v1/payments/scheduled/{payment_id}/confirm",
+                  "q": {
+                    "$action": "confirm",
+                    "exist": [
+                      "scheduled_id",
+                      "x_client_id"
+                    ]
+                  },
+                  "r": {
+                    "param": {
+                      "payment_id": "scheduled_id"
+                    }
+                  },
+                  "s": [
+                    {
+                      "lit": "v1"
+                    },
+                    {
+                      "lit": "payments"
+                    },
+                    {
+                      "lit": "scheduled"
+                    },
+                    {
+                      "var": "scheduled_id"
+                    },
+                    {
+                      "lit": "confirm"
+                    }
+                  ],
+                  "t": {
+                    "req": "`reqdata`",
+                    "res": "`body`"
+                  }
+                },
+                {
+                  "a": true,
+                  "co": {
+                    "id": "POST /v1/payments/single/{payment_id}/confirm",
+                    "source": "openapi3",
+                    "version": 2
+                  },
+                  "g": {
+                    "header": [
+                      {
+                        "a": true,
+                        "ex": "8711bbef-b357-4c2d-97ca-0d9df4206e9a",
+                        "k": "header",
+                        "n": "x_client_id",
+                        "or": "x_client_id",
+                        "r": true,
+                        "t": "`$STRING`"
+                      }
+                    ],
+                    "params": [
+                      {
+                        "a": true,
+                        "k": "param",
+                        "n": "single_id",
+                        "or": "payment_id",
+                        "r": true,
+                        "t": "`$STRING`"
+                      }
+                    ]
+                  },
+                  "k": "http",
+                  "m": "POST",
+                  "o": "/v1/payments/single/{payment_id}/confirm",
+                  "q": {
+                    "$action": "confirm",
+                    "exist": [
+                      "single_id",
+                      "x_client_id"
+                    ]
+                  },
+                  "r": {
+                    "param": {
+                      "payment_id": "single_id"
+                    }
+                  },
+                  "s": [
+                    {
+                      "lit": "v1"
+                    },
+                    {
+                      "lit": "payments"
+                    },
+                    {
+                      "lit": "single"
+                    },
+                    {
+                      "var": "single_id"
+                    },
+                    {
+                      "lit": "confirm"
+                    }
+                  ],
+                  "t": {
+                    "req": "`reqdata`",
+                    "res": "`body`"
+                  }
+                },
+                {
+                  "a": true,
+                  "co": {
+                    "id": "POST /v1/payments/standing-order/{payment_id}/confirm",
+                    "source": "openapi3",
+                    "version": 2
+                  },
+                  "g": {
+                    "header": [
+                      {
+                        "a": true,
+                        "ex": "8711bbef-b357-4c2d-97ca-0d9df4206e9a",
+                        "k": "header",
+                        "n": "x_client_id",
+                        "or": "x_client_id",
+                        "r": true,
+                        "t": "`$STRING`"
+                      }
+                    ],
+                    "params": [
+                      {
+                        "a": true,
+                        "k": "param",
+                        "n": "standing_order_id",
+                        "or": "payment_id",
+                        "r": true,
+                        "t": "`$STRING`"
+                      }
+                    ]
+                  },
+                  "k": "http",
+                  "m": "POST",
+                  "o": "/v1/payments/standing-order/{payment_id}/confirm",
+                  "q": {
+                    "$action": "confirm",
+                    "exist": [
+                      "standing_order_id",
+                      "x_client_id"
+                    ]
+                  },
+                  "r": {
+                    "param": {
+                      "payment_id": "standing_order_id"
+                    }
+                  },
+                  "s": [
+                    {
+                      "lit": "v1"
+                    },
+                    {
+                      "lit": "payments"
+                    },
+                    {
+                      "lit": "standing-order"
+                    },
+                    {
+                      "var": "standing_order_id"
+                    },
+                    {
+                      "lit": "confirm"
+                    }
+                  ],
+                  "t": {
+                    "req": "`reqdata`",
+                    "res": "`body`"
+                  }
+                }
+              ]
+            },
+            "list": {
+              "input": "data",
+              "name": "list",
+              "points": [
+                {
+                  "a": true,
+                  "co": {
+                    "id": "GET /v1/payments/scheduled",
+                    "source": "openapi3",
+                    "version": 2
+                  },
+                  "g": {
+                    "header": [
+                      {
+                        "a": true,
+                        "ex": "10.00",
+                        "k": "header",
+                        "n": "x_amount_from",
+                        "or": "x_amount_from",
+                        "r": false,
+                        "t": "`$STRING`"
+                      },
+                      {
+                        "a": true,
+                        "ex": "10000.00",
+                        "k": "header",
+                        "n": "x_amount_to",
+                        "or": "x_amount_to",
+                        "r": false,
+                        "t": "`$STRING`"
+                      },
+                      {
+                        "a": true,
+                        "ex": "8711bbef-b357-4c2d-97ca-0d9df4206e9a",
+                        "k": "header",
+                        "n": "x_client_id",
+                        "or": "x_client_id",
+                        "r": true,
+                        "t": "`$STRING`"
+                      },
+                      {
+                        "a": true,
+                        "ex": "2020-06-01T15:00:00Z",
+                        "k": "header",
+                        "n": "x_date_from",
+                        "or": "x_date_from",
+                        "r": false,
+                        "t": "`$STRING`"
+                      },
+                      {
+                        "a": true,
+                        "ex": "2020-06-01T15:00:00Z",
+                        "k": "header",
+                        "n": "x_date_to",
+                        "or": "x_date_to",
+                        "r": false,
+                        "t": "`$STRING`"
+                      },
+                      {
+                        "a": true,
+                        "ex": "1",
+                        "k": "header",
+                        "n": "x_page_number",
+                        "or": "x_page_number",
+                        "r": false,
+                        "t": "`$STRING`"
+                      },
+                      {
+                        "a": true,
+                        "ex": "84470aa9-71a2-4da2-8fa4-660adbf2c9b2",
+                        "k": "header",
+                        "n": "x_payment_id",
+                        "or": "x_payment_id",
+                        "r": false,
+                        "t": "`$STRING`"
+                      },
+                      {
+                        "a": true,
+                        "ex": "Lloyds,Nationwide",
+                        "k": "header",
+                        "n": "x_sender_provider",
+                        "or": "x_sender_provider",
+                        "r": false,
+                        "t": "`$STRING`"
+                      },
+                      {
+                        "a": true,
+                        "ex": [
+                          "CREATED",
+                          "SETTLED"
+                        ],
+                        "k": "header",
+                        "n": "x_status_code",
+                        "or": "x_status_code",
+                        "r": false,
+                        "t": "`$ARRAY`"
+                      }
+                    ]
+                  },
+                  "k": "http",
+                  "m": "GET",
+                  "o": "/v1/payments/scheduled",
+                  "q": {
+                    "exist": [
+                      "x_amount_from",
+                      "x_amount_to",
+                      "x_client_id",
+                      "x_date_from",
+                      "x_date_to",
+                      "x_page_number",
+                      "x_payment_id",
+                      "x_sender_provider",
+                      "x_status_code"
+                    ]
+                  },
+                  "r": {},
+                  "s": [
+                    {
+                      "lit": "v1"
+                    },
+                    {
+                      "lit": "payments"
+                    },
+                    {
+                      "lit": "scheduled"
+                    }
+                  ],
+                  "t": {
+                    "req": "`reqdata`",
+                    "res": "`body`"
+                  }
+                },
+                {
+                  "a": true,
+                  "co": {
+                    "id": "GET /v1/payments/single",
+                    "source": "openapi3",
+                    "version": 2
+                  },
+                  "g": {
+                    "header": [
+                      {
+                        "a": true,
+                        "ex": "10.00",
+                        "k": "header",
+                        "n": "x_amount_from",
+                        "or": "x_amount_from",
+                        "r": false,
+                        "t": "`$STRING`"
+                      },
+                      {
+                        "a": true,
+                        "ex": "10000.00",
+                        "k": "header",
+                        "n": "x_amount_to",
+                        "or": "x_amount_to",
+                        "r": false,
+                        "t": "`$STRING`"
+                      },
+                      {
+                        "a": true,
+                        "ex": "8711bbef-b357-4c2d-97ca-0d9df4206e9a",
+                        "k": "header",
+                        "n": "x_client_id",
+                        "or": "x_client_id",
+                        "r": true,
+                        "t": "`$STRING`"
+                      },
+                      {
+                        "a": true,
+                        "ex": "2020-06-01T15:00:00Z",
+                        "k": "header",
+                        "n": "x_date_from",
+                        "or": "x_date_from",
+                        "r": false,
+                        "t": "`$STRING`"
+                      },
+                      {
+                        "a": true,
+                        "ex": "2020-06-01T15:00:00Z",
+                        "k": "header",
+                        "n": "x_date_to",
+                        "or": "x_date_to",
+                        "r": false,
+                        "t": "`$STRING`"
+                      },
+                      {
+                        "a": true,
+                        "ex": "1",
+                        "k": "header",
+                        "n": "x_page_number",
+                        "or": "x_page_number",
+                        "r": false,
+                        "t": "`$STRING`"
+                      },
+                      {
+                        "a": true,
+                        "ex": "84470aa9-71a2-4da2-8fa4-660adbf2c9b2",
+                        "k": "header",
+                        "n": "x_payment_id",
+                        "or": "x_payment_id",
+                        "r": false,
+                        "t": "`$STRING`"
+                      },
+                      {
+                        "a": true,
+                        "ex": "Lloyds,Nationwide",
+                        "k": "header",
+                        "n": "x_sender_provider",
+                        "or": "x_sender_provider",
+                        "r": false,
+                        "t": "`$STRING`"
+                      },
+                      {
+                        "a": true,
+                        "ex": [
+                          "CREATED",
+                          "SETTLED"
+                        ],
+                        "k": "header",
+                        "n": "x_status_code",
+                        "or": "x_status_code",
+                        "r": false,
+                        "t": "`$ARRAY`"
+                      }
+                    ]
+                  },
+                  "k": "http",
+                  "m": "GET",
+                  "o": "/v1/payments/single",
+                  "q": {
+                    "exist": [
+                      "x_amount_from",
+                      "x_amount_to",
+                      "x_client_id",
+                      "x_date_from",
+                      "x_date_to",
+                      "x_page_number",
+                      "x_payment_id",
+                      "x_sender_provider",
+                      "x_status_code"
+                    ]
+                  },
+                  "r": {},
+                  "s": [
+                    {
+                      "lit": "v1"
+                    },
+                    {
+                      "lit": "payments"
+                    },
+                    {
+                      "lit": "single"
+                    }
+                  ],
+                  "t": {
+                    "req": "`reqdata`",
+                    "res": "`body`"
+                  }
+                },
+                {
+                  "a": true,
+                  "co": {
+                    "id": "GET /v1/payments/standing-order",
+                    "source": "openapi3",
+                    "version": 2
+                  },
+                  "g": {
+                    "header": [
+                      {
+                        "a": true,
+                        "ex": "10.00",
+                        "k": "header",
+                        "n": "x_amount_from",
+                        "or": "x_amount_from",
+                        "r": false,
+                        "t": "`$STRING`"
+                      },
+                      {
+                        "a": true,
+                        "ex": "10000.00",
+                        "k": "header",
+                        "n": "x_amount_to",
+                        "or": "x_amount_to",
+                        "r": false,
+                        "t": "`$STRING`"
+                      },
+                      {
+                        "a": true,
+                        "ex": "8711bbef-b357-4c2d-97ca-0d9df4206e9a",
+                        "k": "header",
+                        "n": "x_client_id",
+                        "or": "x_client_id",
+                        "r": true,
+                        "t": "`$STRING`"
+                      },
+                      {
+                        "a": true,
+                        "ex": "2020-06-01T15:00:00Z",
+                        "k": "header",
+                        "n": "x_date_from",
+                        "or": "x_date_from",
+                        "r": false,
+                        "t": "`$STRING`"
+                      },
+                      {
+                        "a": true,
+                        "ex": "2020-06-01T15:00:00Z",
+                        "k": "header",
+                        "n": "x_date_to",
+                        "or": "x_date_to",
+                        "r": false,
+                        "t": "`$STRING`"
+                      },
+                      {
+                        "a": true,
+                        "ex": "1",
+                        "k": "header",
+                        "n": "x_page_number",
+                        "or": "x_page_number",
+                        "r": false,
+                        "t": "`$STRING`"
+                      },
+                      {
+                        "a": true,
+                        "ex": "84470aa9-71a2-4da2-8fa4-660adbf2c9b2",
+                        "k": "header",
+                        "n": "x_payment_id",
+                        "or": "x_payment_id",
+                        "r": false,
+                        "t": "`$STRING`"
+                      },
+                      {
+                        "a": true,
+                        "ex": "Lloyds,Nationwide",
+                        "k": "header",
+                        "n": "x_sender_provider",
+                        "or": "x_sender_provider",
+                        "r": false,
+                        "t": "`$STRING`"
+                      },
+                      {
+                        "a": true,
+                        "ex": [
+                          "CREATED",
+                          "SETTLED"
+                        ],
+                        "k": "header",
+                        "n": "x_status_code",
+                        "or": "x_status_code",
+                        "r": false,
+                        "t": "`$ARRAY`"
+                      }
+                    ]
+                  },
+                  "k": "http",
+                  "m": "GET",
+                  "o": "/v1/payments/standing-order",
+                  "q": {
+                    "exist": [
+                      "x_amount_from",
+                      "x_amount_to",
+                      "x_client_id",
+                      "x_date_from",
+                      "x_date_to",
+                      "x_page_number",
+                      "x_payment_id",
+                      "x_sender_provider",
+                      "x_status_code"
+                    ]
+                  },
+                  "r": {},
+                  "s": [
+                    {
+                      "lit": "v1"
+                    },
+                    {
+                      "lit": "payments"
+                    },
+                    {
+                      "lit": "standing-order"
+                    }
+                  ],
+                  "t": {
+                    "req": "`reqdata`",
+                    "res": "`body`"
+                  }
+                }
+              ]
+            },
+            "load": {
+              "input": "data",
+              "name": "load",
+              "points": [
+                {
+                  "a": true,
+                  "co": {
+                    "id": "GET /v1/payments/scheduled/{payment_id}",
+                    "source": "openapi3",
+                    "version": 2
+                  },
+                  "g": {
+                    "header": [
+                      {
+                        "a": true,
+                        "ex": "8711bbef-b357-4c2d-97ca-0d9df4206e9a",
+                        "k": "header",
+                        "n": "x_client_id",
+                        "or": "x_client_id",
+                        "r": true,
+                        "t": "`$STRING`"
+                      }
+                    ],
+                    "params": [
+                      {
+                        "a": true,
+                        "k": "param",
+                        "n": "payment_id",
+                        "or": "payment_id",
+                        "r": true,
+                        "t": "`$STRING`"
+                      }
+                    ]
+                  },
+                  "k": "http",
+                  "m": "GET",
+                  "o": "/v1/payments/scheduled/{payment_id}",
+                  "q": {
+                    "exist": [
+                      "payment_id",
+                      "x_client_id"
+                    ]
+                  },
+                  "r": {},
+                  "s": [
+                    {
+                      "lit": "v1"
+                    },
+                    {
+                      "lit": "payments"
+                    },
+                    {
+                      "lit": "scheduled"
+                    },
+                    {
+                      "var": "payment_id"
+                    }
+                  ],
+                  "t": {
+                    "req": "`reqdata`",
+                    "res": "`body`"
+                  }
+                },
+                {
+                  "a": true,
+                  "co": {
+                    "id": "GET /v1/payments/single/{payment_id}",
+                    "source": "openapi3",
+                    "version": 2
+                  },
+                  "g": {
+                    "header": [
+                      {
+                        "a": true,
+                        "ex": "8711bbef-b357-4c2d-97ca-0d9df4206e9a",
+                        "k": "header",
+                        "n": "x_client_id",
+                        "or": "x_client_id",
+                        "r": true,
+                        "t": "`$STRING`"
+                      }
+                    ],
+                    "params": [
+                      {
+                        "a": true,
+                        "k": "param",
+                        "n": "payment_id",
+                        "or": "payment_id",
+                        "r": true,
+                        "t": "`$STRING`"
+                      }
+                    ]
+                  },
+                  "k": "http",
+                  "m": "GET",
+                  "o": "/v1/payments/single/{payment_id}",
+                  "q": {
+                    "exist": [
+                      "payment_id",
+                      "x_client_id"
+                    ]
+                  },
+                  "r": {},
+                  "s": [
+                    {
+                      "lit": "v1"
+                    },
+                    {
+                      "lit": "payments"
+                    },
+                    {
+                      "lit": "single"
+                    },
+                    {
+                      "var": "payment_id"
+                    }
+                  ],
+                  "t": {
+                    "req": "`reqdata`",
+                    "res": "`body.data`"
+                  }
+                },
+                {
+                  "a": true,
+                  "co": {
+                    "id": "GET /v1/payments/standing-order/{payment_id}",
+                    "source": "openapi3",
+                    "version": 2
+                  },
+                  "g": {
+                    "header": [
+                      {
+                        "a": true,
+                        "ex": "8711bbef-b357-4c2d-97ca-0d9df4206e9a",
+                        "k": "header",
+                        "n": "x_client_id",
+                        "or": "x_client_id",
+                        "r": true,
+                        "t": "`$STRING`"
+                      }
+                    ],
+                    "params": [
+                      {
+                        "a": true,
+                        "k": "param",
+                        "n": "payment_id",
+                        "or": "payment_id",
+                        "r": true,
+                        "t": "`$STRING`"
+                      }
+                    ]
+                  },
+                  "k": "http",
+                  "m": "GET",
+                  "o": "/v1/payments/standing-order/{payment_id}",
+                  "q": {
+                    "exist": [
+                      "payment_id",
+                      "x_client_id"
+                    ]
+                  },
+                  "r": {},
+                  "s": [
+                    {
+                      "lit": "v1"
+                    },
+                    {
+                      "lit": "payments"
+                    },
+                    {
+                      "lit": "standing-order"
+                    },
+                    {
+                      "var": "payment_id"
+                    }
+                  ],
+                  "t": {
+                    "req": "`reqdata`",
+                    "res": "`body.data`"
+                  }
+                }
+              ]
+            }
+          },
+          "relations": {
+            "ancestors": []
+          }
+        }
+      },
+      "feature": {
+        "debug": {
+          "active": true,
+          "base": "node_modules/@voxgig/sdkgen/project/.sdk",
+          "config": {
+            "options": {
+              "active": false,
+              "max": 100,
+              "redact": [
+                "authorization",
+                "cookie",
+                "set-cookie",
+                "api-key",
+                "apikey",
+                "x-api-key",
+                "idempotency-key"
+              ]
+            },
+            "optspec": {
+              "now": "`$FUNCTION`",
+              "onEntry": "`$FUNCTION`"
+            },
+            "strict": false
+          },
+          "description": "Request/response capture ring buffer for debugging",
+          "hook": {
+            "GetData": {
+              "active": false,
+              "await": false
+            },
+            "GetMatch": {
+              "active": false,
+              "await": false
+            },
+            "PostConstruct": {
+              "active": false,
+              "await": false
+            },
+            "PostConstructEntity": {
+              "active": false,
+              "await": false
+            },
+            "PostOperation": {
+              "active": false,
+              "await": false
+            },
+            "PreDone": {
+              "active": true,
+              "await": false
+            },
+            "PreRequest": {
+              "active": true,
+              "await": false
+            },
+            "PreResponse": {
+              "active": true,
+              "await": false
+            },
+            "PreResult": {
+              "active": false,
+              "await": false
+            },
+            "PreSpec": {
+              "active": false,
+              "await": false
+            },
+            "PreTarget": {
+              "active": false,
+              "await": false
+            },
+            "PreUnexpected": {
+              "active": true,
+              "await": false
+            },
+            "SetData": {
+              "active": false,
+              "await": false
+            }
+          },
+          "name": "debug",
+          "needs": {},
+          "origname": "",
+          "package": "@voxgig/sdkgen",
+          "plugin": {},
+          "spec": {},
+          "target": {
+            "go": {
+              "deps": {}
+            },
+            "go-cli": {
+              "deps": {}
+            },
+            "go-mcp": {
+              "deps": {}
+            },
+            "js": {
+              "deps": {}
+            },
+            "lua": {
+              "deps": {}
+            },
+            "php": {
+              "deps": {}
+            },
+            "py": {
+              "deps": {}
+            },
+            "ts": {
+              "deps": {}
+            }
+          },
+          "title": "Debug capture",
+          "transport": "none",
+          "version": "0.0.1"
+        },
+        "idempotency": {
+          "active": true,
+          "base": "node_modules/@voxgig/sdkgen/project/.sdk",
+          "config": {
+            "options": {
+              "active": false,
+              "header": "Idempotency-Key",
+              "methods": [
+                "POST",
+                "PUT",
+                "PATCH",
+                "DELETE"
+              ],
+              "ops": [
+                "create",
+                "update",
+                "remove"
+              ]
+            },
+            "optspec": {
+              "keygen": "`$FUNCTION`"
+            },
+            "strict": false
+          },
+          "description": "Idempotency keys for safe retries of mutating operations",
+          "hook": {
+            "GetData": {
+              "active": false,
+              "await": false
+            },
+            "GetMatch": {
+              "active": false,
+              "await": false
+            },
+            "PostConstruct": {
+              "active": false,
+              "await": false
+            },
+            "PostConstructEntity": {
+              "active": false,
+              "await": false
+            },
+            "PostOperation": {
+              "active": false,
+              "await": false
+            },
+            "PreRequest": {
+              "active": true,
+              "await": false
+            },
+            "PreResponse": {
+              "active": false,
+              "await": false
+            },
+            "PreResult": {
+              "active": false,
+              "await": false
+            },
+            "PreSpec": {
+              "active": false,
+              "await": false
+            },
+            "PreTarget": {
+              "active": false,
+              "await": false
+            },
+            "SetData": {
+              "active": false,
+              "await": false
+            }
+          },
+          "name": "idempotency",
+          "needs": {},
+          "origname": "",
+          "package": "@voxgig/sdkgen",
+          "plugin": {},
+          "spec": {},
+          "target": {
+            "go": {
+              "deps": {}
+            },
+            "go-cli": {
+              "deps": {}
+            },
+            "go-mcp": {
+              "deps": {}
+            },
+            "js": {
+              "deps": {}
+            },
+            "lua": {
+              "deps": {}
+            },
+            "php": {
+              "deps": {}
+            },
+            "py": {
+              "deps": {}
+            },
+            "ts": {
+              "deps": {}
+            }
+          },
+          "title": "Idempotency",
+          "transport": "none",
+          "version": "0.0.1"
+        },
+        "metrics": {
+          "active": true,
+          "base": "node_modules/@voxgig/sdkgen/project/.sdk",
+          "config": {
+            "options": {
+              "active": false
+            },
+            "optspec": {
+              "now": "`$FUNCTION`"
+            },
+            "strict": false
+          },
+          "description": "Statistics capture: per-operation counters and latency",
+          "hook": {
+            "GetData": {
+              "active": false,
+              "await": false
+            },
+            "GetMatch": {
+              "active": false,
+              "await": false
+            },
+            "PostConstruct": {
+              "active": false,
+              "await": false
+            },
+            "PostConstructEntity": {
+              "active": false,
+              "await": false
+            },
+            "PostOperation": {
+              "active": false,
+              "await": false
+            },
+            "PreDone": {
+              "active": true,
+              "await": false
+            },
+            "PrePoint": {
+              "active": true,
+              "await": false
+            },
+            "PreRequest": {
+              "active": false,
+              "await": false
+            },
+            "PreResponse": {
+              "active": false,
+              "await": false
+            },
+            "PreResult": {
+              "active": false,
+              "await": false
+            },
+            "PreSpec": {
+              "active": false,
+              "await": false
+            },
+            "PreTarget": {
+              "active": false,
+              "await": false
+            },
+            "PreUnexpected": {
+              "active": true,
+              "await": false
+            },
+            "SetData": {
+              "active": false,
+              "await": false
+            }
+          },
+          "name": "metrics",
+          "needs": {},
+          "origname": "",
+          "package": "@voxgig/sdkgen",
+          "plugin": {},
+          "spec": {},
+          "target": {
+            "go": {
+              "deps": {}
+            },
+            "go-cli": {
+              "deps": {}
+            },
+            "go-mcp": {
+              "deps": {}
+            },
+            "js": {
+              "deps": {}
+            },
+            "lua": {
+              "deps": {}
+            },
+            "php": {
+              "deps": {}
+            },
+            "py": {
+              "deps": {}
+            },
+            "ts": {
+              "deps": {}
+            }
+          },
+          "title": "Metrics",
+          "transport": "none",
+          "version": "0.0.1"
+        },
+        "paging": {
+          "active": true,
+          "base": "node_modules/@voxgig/sdkgen/project/.sdk",
+          "config": {
+            "options": {
+              "active": false,
+              "afterVar": "after",
+              "cursorParam": "cursor",
+              "firstVar": "first",
+              "limitParam": "limit",
+              "pageParam": "page",
+              "startPage": 1
+            },
+            "optspec": {
+              "limit": "`$NUMBER`",
+              "ops": "`$LIST`"
+            },
+            "strict": false
+          },
+          "description": "Pagination signals for list operations",
+          "hook": {
+            "GetData": {
+              "active": false,
+              "await": false
+            },
+            "GetMatch": {
+              "active": false,
+              "await": false
+            },
+            "PostConstruct": {
+              "active": false,
+              "await": false
+            },
+            "PostConstructEntity": {
+              "active": false,
+              "await": false
+            },
+            "PostOperation": {
+              "active": false,
+              "await": false
+            },
+            "PreRequest": {
+              "active": true,
+              "await": false
+            },
+            "PreResponse": {
+              "active": false,
+              "await": false
+            },
+            "PreResult": {
+              "active": true,
+              "await": false
+            },
+            "PreSpec": {
+              "active": false,
+              "await": false
+            },
+            "PreTarget": {
+              "active": false,
+              "await": false
+            },
+            "SetData": {
+              "active": false,
+              "await": false
+            }
+          },
+          "name": "paging",
+          "needs": {},
+          "origname": "",
+          "package": "@voxgig/sdkgen",
+          "plugin": {},
+          "spec": {},
+          "target": {
+            "go": {
+              "deps": {}
+            },
+            "go-cli": {
+              "deps": {}
+            },
+            "go-mcp": {
+              "deps": {}
+            },
+            "js": {
+              "deps": {}
+            },
+            "lua": {
+              "deps": {}
+            },
+            "php": {
+              "deps": {}
+            },
+            "py": {
+              "deps": {}
+            },
+            "ts": {
+              "deps": {}
+            }
+          },
+          "title": "Paging",
+          "transport": "none",
+          "version": "0.0.1"
+        },
+        "ratelimit": {
+          "active": true,
+          "base": "node_modules/@voxgig/sdkgen/project/.sdk",
+          "config": {
+            "options": {
+              "active": false,
+              "burst": 5,
+              "rate": 5
+            },
+            "optspec": {
+              "now": "`$FUNCTION`",
+              "sleep": "`$FUNCTION`"
+            },
+            "strict": false
+          },
+          "description": "Client-side rate limiting via a token bucket",
+          "hook": {
+            "GetData": {
+              "active": false,
+              "await": false
+            },
+            "GetMatch": {
+              "active": false,
+              "await": false
+            },
+            "PostConstruct": {
+              "active": false,
+              "await": false
+            },
+            "PostConstructEntity": {
+              "active": false,
+              "await": false
+            },
+            "PostOperation": {
+              "active": false,
+              "await": false
+            },
+            "PreRequest": {
+              "active": false,
+              "await": false
+            },
+            "PreResponse": {
+              "active": false,
+              "await": false
+            },
+            "PreResult": {
+              "active": false,
+              "await": false
+            },
+            "PreSpec": {
+              "active": false,
+              "await": false
+            },
+            "PreTarget": {
+              "active": false,
+              "await": false
+            },
+            "SetData": {
+              "active": false,
+              "await": false
+            }
+          },
+          "name": "ratelimit",
+          "needs": {},
+          "origname": "",
+          "package": "@voxgig/sdkgen",
+          "plugin": {},
+          "spec": {},
+          "target": {
+            "go": {
+              "deps": {}
+            },
+            "go-cli": {
+              "deps": {}
+            },
+            "go-mcp": {
+              "deps": {}
+            },
+            "js": {
+              "deps": {}
+            },
+            "lua": {
+              "deps": {}
+            },
+            "php": {
+              "deps": {}
+            },
+            "py": {
+              "deps": {}
+            },
+            "ts": {
+              "deps": {}
+            }
+          },
+          "title": "Rate limiting",
+          "transport": "wrap",
+          "version": "0.0.1"
+        },
+        "retry": {
+          "active": true,
+          "base": "node_modules/@voxgig/sdkgen/project/.sdk",
+          "config": {
+            "options": {
+              "active": false,
+              "factor": 2,
+              "maxDelay": 2000,
+              "minDelay": 50,
+              "retries": 2,
+              "statuses": [
+                408,
+                425,
+                429,
+                500,
+                502,
+                503,
+                504
+              ]
+            },
+            "optspec": {
+              "jitter": "`$BOOLEAN`",
+              "sleep": "`$FUNCTION`"
+            },
+            "strict": false
+          },
+          "description": "Automatic retry of transient failures with exponential backoff",
+          "hook": {
+            "GetData": {
+              "active": false,
+              "await": false
+            },
+            "GetMatch": {
+              "active": false,
+              "await": false
+            },
+            "PostConstruct": {
+              "active": false,
+              "await": false
+            },
+            "PostConstructEntity": {
+              "active": false,
+              "await": false
+            },
+            "PostOperation": {
+              "active": false,
+              "await": false
+            },
+            "PreRequest": {
+              "active": false,
+              "await": false
+            },
+            "PreResponse": {
+              "active": false,
+              "await": false
+            },
+            "PreResult": {
+              "active": false,
+              "await": false
+            },
+            "PreSpec": {
+              "active": false,
+              "await": false
+            },
+            "PreTarget": {
+              "active": false,
+              "await": false
+            },
+            "SetData": {
+              "active": false,
+              "await": false
+            }
+          },
+          "name": "retry",
+          "needs": {},
+          "origname": "",
+          "package": "@voxgig/sdkgen",
+          "plugin": {},
+          "spec": {},
+          "target": {
+            "go": {
+              "deps": {}
+            },
+            "go-cli": {
+              "deps": {}
+            },
+            "go-mcp": {
+              "deps": {}
+            },
+            "js": {
+              "deps": {}
+            },
+            "lua": {
+              "deps": {}
+            },
+            "php": {
+              "deps": {}
+            },
+            "py": {
+              "deps": {}
+            },
+            "ts": {
+              "deps": {}
+            }
+          },
+          "title": "Retry",
+          "transport": "wrap",
+          "version": "0.0.1"
+        },
+        "test": {
+          "active": true,
+          "base": "node_modules/@voxgig/sdkgen/project/.sdk",
+          "config": {
+            "options": {
+              "active": false
+            },
+            "optspec": {
+              "entity": "`$MAP`",
+              "net": "`$MAP`"
+            },
+            "strict": false
+          },
+          "description": "In-memory mock transport for testing without a live server",
+          "hook": {
+            "GetData": {
+              "active": true,
+              "await": false
+            },
+            "GetMatch": {
+              "active": true,
+              "await": false
+            },
+            "PostConstruct": {
+              "active": true,
+              "await": false
+            },
+            "PostConstructEntity": {
+              "active": true,
+              "await": false
+            },
+            "PostOperation": {
+              "active": false,
+              "await": false
+            },
+            "PrePoint": {
+              "active": true,
+              "await": false
+            },
+            "PreRequest": {
+              "active": true,
+              "await": false
+            },
+            "PreResponse": {
+              "active": true,
+              "await": false
+            },
+            "PreResult": {
+              "active": true,
+              "await": false
+            },
+            "PreSpec": {
+              "active": true,
+              "await": false
+            },
+            "PreTarget": {
+              "active": false,
+              "await": false
+            },
+            "SetData": {
+              "active": true,
+              "await": false
+            },
+            "SetMatch": {
+              "active": true,
+              "await": false
+            }
+          },
+          "name": "test",
+          "needs": {},
+          "origname": "",
+          "package": "@voxgig/sdkgen",
+          "plugin": {},
+          "spec": {},
+          "target": {
+            "go": {
+              "deps": {}
+            },
+            "go-cli": {
+              "deps": {}
+            },
+            "go-mcp": {
+              "deps": {}
+            },
+            "js": {
+              "deps": {}
+            },
+            "lua": {
+              "deps": {}
+            },
+            "php": {
+              "deps": {}
+            },
+            "py": {
+              "deps": {}
+            },
+            "ts": {
+              "deps": {}
+            }
+          },
+          "title": "Test transport",
+          "transport": "base",
+          "version": "0.0.1"
+        },
+        "timeout": {
+          "active": true,
+          "base": "node_modules/@voxgig/sdkgen/project/.sdk",
+          "config": {
+            "options": {
+              "active": false,
+              "ms": 30000
+            },
+            "optspec": {
+              "clearTimer": "`$FUNCTION`",
+              "setTimer": "`$FUNCTION`"
+            },
+            "strict": false
+          },
+          "description": "Per-request timeout with transport abort",
+          "hook": {
+            "GetData": {
+              "active": false,
+              "await": false
+            },
+            "GetMatch": {
+              "active": false,
+              "await": false
+            },
+            "PostConstruct": {
+              "active": false,
+              "await": false
+            },
+            "PostConstructEntity": {
+              "active": false,
+              "await": false
+            },
+            "PostOperation": {
+              "active": false,
+              "await": false
+            },
+            "PreRequest": {
+              "active": false,
+              "await": false
+            },
+            "PreResponse": {
+              "active": false,
+              "await": false
+            },
+            "PreResult": {
+              "active": false,
+              "await": false
+            },
+            "PreSpec": {
+              "active": false,
+              "await": false
+            },
+            "PreTarget": {
+              "active": false,
+              "await": false
+            },
+            "SetData": {
+              "active": false,
+              "await": false
+            }
+          },
+          "name": "timeout",
+          "needs": {},
+          "origname": "",
+          "package": "@voxgig/sdkgen",
+          "plugin": {},
+          "spec": {},
+          "target": {
+            "go": {
+              "deps": {}
+            },
+            "go-cli": {
+              "deps": {}
+            },
+            "go-mcp": {
+              "deps": {}
+            },
+            "js": {
+              "deps": {}
+            },
+            "lua": {
+              "deps": {}
+            },
+            "php": {
+              "deps": {}
+            },
+            "py": {
+              "deps": {}
+            },
+            "ts": {
+              "deps": {}
+            }
+          },
+          "title": "Timeout",
+          "transport": "wrap",
+          "version": "0.0.1"
+        }
+      },
+      "flow": {
+        "BasicInitiatePaymentBudLicenseFlow": {
+          "active": true,
+          "entity": "initiate_payment_bud_license",
+          "key$": "BasicInitiatePaymentBudLicenseFlow",
+          "kind": "basic",
+          "name": "BasicInitiatePaymentBudLicenseFlow",
+          "param": {},
+          "step": [
+            {
+              "a": true,
+              "d": {},
+              "i": {
+                "ref": "initiate_payment_bud_license_ref01"
+              },
+              "m": {},
+              "o": "create",
+              "s": [],
+              "v": []
+            },
+            {
+              "a": true,
+              "d": {},
+              "i": {},
+              "m": {},
+              "o": "list",
+              "s": [],
+              "v": [
+                {
+                  "apply": "ItemExists",
+                  "def": {
+                    "ref": "initiate_payment_bud_license_ref01"
+                  }
+                }
+              ]
+            }
+          ]
+        },
+        "BasicInitiatePaymentClientLicenseFlow": {
+          "active": true,
+          "entity": "initiate_payment_client_license",
+          "key$": "BasicInitiatePaymentClientLicenseFlow",
+          "kind": "basic",
+          "name": "BasicInitiatePaymentClientLicenseFlow",
+          "param": {},
+          "step": [
+            {
+              "a": true,
+              "d": {},
+              "i": {
+                "ref": "initiate_payment_client_license_ref01"
+              },
+              "m": {},
+              "o": "create",
+              "s": [],
+              "v": []
+            }
+          ]
+        },
+        "BasicManagePaymentFlow": {
+          "active": true,
+          "entity": "manage_payment",
+          "key$": "BasicManagePaymentFlow",
+          "kind": "basic",
+          "name": "BasicManagePaymentFlow",
+          "param": {},
+          "step": [
+            {
+              "a": true,
+              "d": {},
+              "i": {
+                "ref": "manage_payment_ref01"
+              },
+              "m": {
+                "standing_order_id": "standing_order01"
+              },
+              "o": "create",
+              "s": [],
+              "v": []
+            },
+            {
+              "a": true,
+              "d": {},
+              "i": {},
+              "m": {},
+              "o": "list",
+              "s": [],
+              "v": [
+                {
+                  "apply": "ItemExists",
+                  "def": {
+                    "ref": "manage_payment_ref01"
+                  }
+                }
+              ]
+            },
+            {
+              "a": true,
+              "d": {},
+              "i": {
+                "ref": "manage_payment_ref01",
+                "srcdatavar": "manage_payment_ref01_data",
+                "suffix": "_dt0"
+              },
+              "m": {
+                "id": "manage_payment01"
+              },
+              "o": "load",
+              "s": [],
+              "v": [
+                {
+                  "apply": "TextFieldMark",
+                  "def": {
+                    "mark": "Mark01-manage_payment_ref01"
+                  }
+                }
+              ]
+            }
+          ]
+        }
+      },
+      "info": {
+        "contact": {
+          "email": "contact@thisisbud.com",
+          "name": "API Support",
+          "url": "http://www.thisisbud.com/support"
+        },
+        "description": "\nThese endpoints allow Bud's Clients to initiate (i.e. make) payments through the use of Open Banking Payment APIs.\nBud manages the connections to each of the payment providers, and serves these connections under a single set of API endpoints, enabling Bud's clients (and in turn their customers) to initiate a payment from one of these providers to a chosen recipient.\n\nBud currently supports two methods for initiating payments with available providers:\n\n1. If you are not regulated to provide payment initiation services, or if you are regulated but do not wish to use\nyour own permissions, then use Bud's [TPP Initiation](#tag/TPP-Initiation) endpoints.\n2. If on the other hand, your are regulated as an Payment Initiation Service Provider (PISP), then you are able to use Bud\nas a Technical Service Provider (see [TSP Initiation](#tag/TSP-Initiation)).\n",
+        "security": {
+          "in": "header",
+          "name": "Authorization",
+          "prefix": "Bearer",
+          "scheme": "OAuth2",
+          "type": "oauth2"
+        },
+        "servers": [
+          {
+            "description": "Bud sandbox",
+            "url": "https://api-sandbox.thisisbud.com"
+          }
+        ],
+        "summary": "These endpoints allow Bud's Clients to initiate (i.e.",
+        "title": "Payments API",
+        "version": "1.0.0",
+        "website": "https://thisisbud.com",
+        "x-logo": {
+          "url": "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAATAAAABuCAQAAAAKAYdLAAAACXBIWXMAAC4jAAAuIwF4pT92AAAAB3RJTUUH4wQDDggcbXcx7wAABeJJREFUeNrt3W2IFVUcx/HvXRW1VdQedy1bZVfoYX0osVQyfSGElKbRA5oFIaIlhAkWUYm6gvqqDMHMoBeKlhayCCZC2AMRPay7aJrSZmauZhQqaj7t7u1Fi965987s7D1n7pk7/j73zX2Y85//mXt2Zu45Z2ZBREREREREREREREREREREREREREREREREREREREREREREREREROIiZSFGH+YxgsOs5U/X1bFiPDPpQT3bu1DmcaZyg+vErWpjD+s47zoN6Mte0qRJc4Iq18lYMJv2jvosD11mRUeJpD32UO7664BFGQl94DoZY704fbU2rQwKVWYwbc6bQlSPBaYbtMz4K7nP53lpGkK/q8+7MTxUmeEWtmJcGX+j5psmM0I3l9vCirKAV36OuE46QsbfaHL/9opnL9tcpxBf3V0nkAgzWMRj9HadhrH+3Gk7pBqYDZdY3oXfnHE2gc1U2gyoQ6Rk+pKZdgOqgYnXF7TYDGe3gcWgW85QH9cJxMAVm8HsNrBqhhV1U9g33XUCzo1gsM1wdhtYio8ZWsytYdksFrpOwbGhbLYb0PavyLs5wA+c9v28lRa+Zzt/+y5RwwKqaOCdgCjZRvEit/A1a7jou8xwJjOMAb7D+ylqqCmw1imeZ0oCBrv7Mzp+/QofFTDCdZG13Jw3Wi1nOpbZT9+QGUziUkeZ3T49z+P4pqCRuCkhM1jjfMwwqsdG182rsAaWJs0JxuWJ9knGEq+EzODHjDLTcj5NsbjgwehwDazm6vyL5D2MG5i7booKdjE25917M57XhoxUG1hmJUsjrmWtlVl18ZQ2DeCyH6ycT7kpIJ+wuQWVeZJXI69HcpsXHDQN4LajtZIlkcbvzWqn9St1R3nPNIT93wzt/MSZPO+nqKA65699Nos5FdHmgZkMzHnvIj9zLm9+Q7jd0nqP8VtkdSqWNppYxT+u08g+yW8OnKRXw4ac08hnPUscyvjkw5AZXM4os9jzyY6sdZ3h5YC++jLm0lrASf50T5krzEn0QbOLbB8in2FvwKfNPJczCXd0hLV7wPPqL8bybt691//aWWfhkPo2681PjZPDbgP7lYZOl1nNJs9rW4elXD2zfkK8wIFOy2w1XuuWyOpTkuw2sHOhlqrzvIqu59gbuYEdIcqcjSyb65SLX5EHOepgrbuKtJ6nHNQtxtx0U5xM8DoXMkez7K5xM7Tp4iS4WOvszvss5feSP9Fvo5EVnDDfHGJfpd157Y48xFRGmfaEaWcu/qqYZxpCDcxcqR8Mg9xlGkANzNz+BDcx4zEJNTBzv5gPCSeXTvJtmM+3PJqIKdNj6GE3pJsG5mIwOMp1ptnABgd1sq+G7ebnXZncHCKjG3+M1zpLTzMz7AZ00cBG5pmlFb3JmkQTSpPd21HZbWD9Qy21zPPK/zricNH6+B7mvZFreTpEtAFWt0dpsnoWZreBVTG+kyVS1GVN4/vDd9lJVIRY5yzfPdPlrPHHdTwYItr1bkLcTia8M1qPM9F3yRRjcuaYprNmHxzyfNbQyQlnGTM47ynhndFan7WuCywLODz35I2sC9DCXheZHBNpsXvZmu1fkZXs5rjPnPzb8hyAzrIzINr9HOBIwNXat+ZcleS1hame1714izc55jNvbVDBtz7pyWuJuI15P/tnx1F0UwzsQpprO5nil2KIQSZbqcspnwp57+iu2MQT1mMmhNue/MMR3xfwMi8VYRhnmJqXP/MG1lZwyVNMy9l/FR4tf/mdvB553Uz2sXFn+n1YaGCNBZZr5mH25by7xzCb3PKrmM+lgmK1BV4hdc0+2g2zjq8m1wlAOY1dvqXGKep87oZYzUmDW3Vs8+myuIf6Am6AsiT0Nljp/CYl0Twaze9ZaaN3u5w5jAy5L2ylhe/4nAu+S1Qwl+oCsrjCV2wM2KXfwSPUcmPIGv9LPZ91Ye1TEnEb80ztNLE+Dv8MS0RERERERERERERERERERERERERERERERERERERERERERERERERs+Q/rhi5WauEgfQAAAABJRU5ErkJggg=="
+        }
+      },
+      "option": {},
+      "optspec": {
+        "allow": {
+          "method": "GET,PUT,POST,PATCH,DELETE,OPTIONS",
+          "op": "create,update,load,list,remove,command,direct,graphql"
+        },
+        "apikey": "",
+        "auth": {
+          "basic": false,
+          "in": "",
+          "name": "",
+          "prefix": ""
+        },
+        "base": "http://localhost:8000",
+        "clean": {
+          "keys": "key,token,id"
+        },
+        "entity": {
+          "`$CHILD`": {
+            "`$OPEN`": true,
+            "active": false,
+            "alias": {}
+          }
+        },
+        "extend": "`$ANY`",
+        "headers": {
+          "`$CHILD`": "`$STRING`"
+        },
+        "prefix": "",
+        "secret": "",
+        "server": {
+          "`$CHILD`": ""
+        },
+        "suffix": "",
+        "system": {
+          "fetch": "`$ANY`"
+        },
+        "test": {
+          "active": false,
+          "entity": {
+            "`$OPEN`": true
+          }
+        },
+        "utility": {}
+      },
+      "phase": {
+        "build": {
+          "active": true
+        },
+        "top": {
+          "active": true
+        }
+      },
+      "repo": {
+        "host": "github.com",
+        "path": ""
+      },
+      "target": {
+        "go": {
+          "active": true,
+          "author": {
+            "name": "",
+            "url": ""
+          },
+          "base": "node_modules/@voxgig/sdkgen/project/.sdk",
+          "comment": {
+            "line": "//"
+          },
+          "deps": {},
+          "ext": "go",
+          "feature": {
+            "fullset": [
+              "test/feature_test.go"
+            ],
+            "trim": true
+          },
+          "module": {
+            "goversion": "",
+            "name": "bud-payments",
+            "package": "",
+            "path": ""
+          },
+          "name": "go",
+          "origname": "",
+          "output": {
+            "adopt": false,
+            "create": true,
+            "path": "",
+            "repo": "",
+            "root": false,
+            "sdkrel": ""
+          },
+          "package": "@voxgig/sdkgen",
+          "provides": {
+            "schema": true,
+            "sekreto": true
+          },
+          "publish": {
+            "registry": {
+              "active": false,
+              "name": "",
+              "package": "",
+              "state": "pending",
+              "url": "",
+              "vault": {
+                "alias": "",
+                "env": "",
+                "recipe": ""
+              }
+            },
+            "tag": {
+              "active": true,
+              "prefix": "",
+              "vault": {
+                "alias": "github",
+                "recipe": "github"
+              },
+              "via": "port"
+            },
+            "version": "0.0.1"
+          },
+          "srcfeature": false,
+          "superseded": [
+            "test/runner_test.go",
+            "test/struct_runner_test.go"
+          ],
+          "title": "Golang"
+        },
+        "go-cli": {
+          "active": true,
+          "author": {
+            "name": "",
+            "url": ""
+          },
+          "base": "node_modules/@voxgig/sdkgen/project/.sdk",
+          "comment": {
+            "line": "//"
+          },
+          "deps": {},
+          "ext": "go",
+          "feature": {
+            "fullset": [],
+            "trim": true
+          },
+          "module": {
+            "goversion": "",
+            "name": "bud-payments",
+            "package": "",
+            "path": ""
+          },
+          "name": "go-cli",
+          "origname": "",
+          "output": {
+            "adopt": false,
+            "create": true,
+            "path": "",
+            "repo": "",
+            "root": false,
+            "sdkrel": ""
+          },
+          "package": "@voxgig/sdkgen",
+          "phase": {
+            "agentguide": {
+              "active": false
+            },
+            "entity": {
+              "active": false
+            },
+            "feature": {
+              "active": false
+            },
+            "readme": {
+              "active": false
+            },
+            "test": {
+              "active": false
+            }
+          },
+          "provides": {},
+          "publish": {
+            "registry": {
+              "active": false,
+              "name": "",
+              "package": "",
+              "state": "pending",
+              "url": "",
+              "vault": {
+                "alias": "",
+                "env": "",
+                "recipe": ""
+              }
+            },
+            "tag": {
+              "active": true,
+              "prefix": "",
+              "vault": {
+                "alias": "github",
+                "recipe": "github"
+              },
+              "via": "root"
+            },
+            "version": "0.0.1"
+          },
+          "superseded": [],
+          "title": "Go CLI"
+        },
+        "go-mcp": {
+          "active": true,
+          "author": {
+            "name": "",
+            "url": ""
+          },
+          "base": "node_modules/@voxgig/sdkgen/project/.sdk",
+          "comment": {
+            "line": "//"
+          },
+          "deps": {},
+          "ext": "go",
+          "feature": {
+            "fullset": [],
+            "trim": true
+          },
+          "module": {
+            "goversion": "",
+            "name": "bud-payments",
+            "package": "",
+            "path": ""
+          },
+          "name": "go-mcp",
+          "origname": "",
+          "output": {
+            "adopt": false,
+            "create": true,
+            "path": "",
+            "repo": "",
+            "root": false,
+            "sdkrel": ""
+          },
+          "package": "@voxgig/sdkgen",
+          "phase": {
+            "agentguide": {
+              "active": false
+            },
+            "entity": {
+              "active": false
+            },
+            "feature": {
+              "active": false
+            },
+            "readme": {
+              "active": false
+            },
+            "test": {
+              "active": false
+            }
+          },
+          "provides": {},
+          "publish": {
+            "registry": {
+              "active": false,
+              "name": "",
+              "package": "",
+              "state": "pending",
+              "url": "",
+              "vault": {
+                "alias": "",
+                "env": "",
+                "recipe": ""
+              }
+            },
+            "tag": {
+              "active": true,
+              "prefix": "",
+              "vault": {
+                "alias": "github",
+                "recipe": "github"
+              },
+              "via": "root"
+            },
+            "version": "0.0.1"
+          },
+          "superseded": [],
+          "title": "Go MCP server"
+        },
+        "js": {
+          "active": true,
+          "author": {
+            "name": "",
+            "url": ""
+          },
+          "base": "node_modules/@voxgig/sdkgen/project/.sdk",
+          "comment": {
+            "line": "//"
+          },
+          "deps": {
+            "dotenv": {
+              "active": true,
+              "kind": "dev",
+              "version": "^17.4.2"
+            }
+          },
+          "ext": "js",
+          "feature": {
+            "fullset": [],
+            "trim": true
+          },
+          "module": {
+            "goversion": "",
+            "name": "bud-payments",
+            "package": "",
+            "path": ""
+          },
+          "name": "js",
+          "origname": "",
+          "output": {
+            "adopt": false,
+            "create": true,
+            "path": "",
+            "repo": "",
+            "root": false,
+            "sdkrel": ""
+          },
+          "package": "@voxgig/sdkgen",
+          "provides": {
+            "schema": true,
+            "sekreto": true
+          },
+          "publish": {
+            "registry": {
+              "active": false,
+              "name": "npm",
+              "package": "",
+              "state": "pending",
+              "url": "https://registry.npmjs.org",
+              "vault": {
+                "alias": "npm",
+                "env": "",
+                "recipe": "npm"
+              }
+            },
+            "tag": {
+              "active": true,
+              "prefix": "",
+              "vault": {
+                "alias": "github",
+                "recipe": "github"
+              },
+              "via": "port"
+            },
+            "version": "0.0.1"
+          },
+          "superseded": [
+            "test/runner.js"
+          ],
+          "title": "JavaScript"
+        },
+        "lua": {
+          "active": true,
+          "author": {
+            "name": "",
+            "url": ""
+          },
+          "base": "node_modules/@voxgig/sdkgen/project/.sdk",
+          "comment": {
+            "line": "--"
+          },
+          "deps": {
+            "dkjson": {
+              "active": true,
+              "kind": "prod",
+              "version": "2.5"
+            }
+          },
+          "ext": "lua",
+          "feature": {
+            "fullset": [],
+            "trim": true
+          },
+          "module": {
+            "goversion": "",
+            "name": "bud-payments",
+            "package": "",
+            "path": ""
+          },
+          "name": "lua",
+          "origname": "",
+          "output": {
+            "adopt": false,
+            "create": true,
+            "path": "",
+            "repo": "",
+            "root": false,
+            "sdkrel": ""
+          },
+          "package": "@voxgig/sdkgen",
+          "provides": {
+            "schema": true,
+            "sekreto": true
+          },
+          "publish": {
+            "registry": {
+              "active": false,
+              "name": "luarocks",
+              "package": "",
+              "state": "pending",
+              "url": "https://luarocks.org",
+              "vault": {
+                "alias": "luarocks",
+                "env": "LUAROCKS_API_KEY",
+                "recipe": ""
+              }
+            },
+            "tag": {
+              "active": true,
+              "prefix": "",
+              "vault": {
+                "alias": "github",
+                "recipe": "github"
+              },
+              "via": "port"
+            },
+            "version": "0.0.1"
+          },
+          "srcfeature": false,
+          "superseded": [
+            "test/struct_runner.lua"
+          ],
+          "title": "Lua"
+        },
+        "php": {
+          "active": true,
+          "author": {
+            "name": "",
+            "url": ""
+          },
+          "base": "node_modules/@voxgig/sdkgen/project/.sdk",
+          "comment": {
+            "line": "//"
+          },
+          "deps": {},
+          "ext": "php",
+          "feature": {
+            "fullset": [],
+            "trim": true
+          },
+          "module": {
+            "goversion": "",
+            "name": "bud-payments",
+            "package": "",
+            "path": ""
+          },
+          "name": "php",
+          "origname": "",
+          "output": {
+            "adopt": false,
+            "create": true,
+            "path": "",
+            "repo": "",
+            "root": false,
+            "sdkrel": ""
+          },
+          "package": "@voxgig/sdkgen",
+          "provides": {
+            "schema": true,
+            "sekreto": true
+          },
+          "publish": {
+            "registry": {
+              "active": false,
+              "name": "packagist",
+              "package": "",
+              "state": "pending",
+              "url": "https://packagist.org",
+              "vault": {
+                "alias": "packagist",
+                "env": "PACKAGIST_API_TOKEN",
+                "recipe": ""
+              }
+            },
+            "tag": {
+              "active": true,
+              "prefix": "",
+              "vault": {
+                "alias": "github",
+                "recipe": "github"
+              },
+              "via": "port"
+            },
+            "version": "0.0.1"
+          },
+          "srcfeature": false,
+          "superseded": [
+            "test/StructRunner.php"
+          ],
+          "title": "PHP"
+        },
+        "py": {
+          "active": true,
+          "author": {
+            "name": "",
+            "url": ""
+          },
+          "base": "node_modules/@voxgig/sdkgen/project/.sdk",
+          "comment": {
+            "line": "#"
+          },
+          "deps": {
+            "requests": {
+              "active": true,
+              "kind": "prod",
+              "version": "2.33"
+            }
+          },
+          "ext": "py",
+          "feature": {
+            "fullset": [],
+            "trim": true
+          },
+          "module": {
+            "goversion": "",
+            "name": "bud-payments",
+            "package": "",
+            "path": ""
+          },
+          "name": "py",
+          "origname": "",
+          "output": {
+            "adopt": false,
+            "create": true,
+            "path": "",
+            "repo": "",
+            "root": false,
+            "sdkrel": ""
+          },
+          "package": "@voxgig/sdkgen",
+          "provides": {
+            "schema": true,
+            "sekreto": true
+          },
+          "publish": {
+            "registry": {
+              "active": false,
+              "name": "pypi",
+              "package": "",
+              "state": "pending",
+              "url": "https://pypi.org",
+              "vault": {
+                "alias": "pypi",
+                "env": "",
+                "recipe": "pypi"
+              }
+            },
+            "tag": {
+              "active": true,
+              "prefix": "",
+              "vault": {
+                "alias": "github",
+                "recipe": "github"
+              },
+              "via": "port"
+            },
+            "version": "0.0.1"
+          },
+          "srcfeature": false,
+          "superseded": [
+            "test/struct_runner.py"
+          ],
+          "title": "Python"
+        },
+        "ts": {
+          "active": true,
+          "author": {
+            "name": "",
+            "url": ""
+          },
+          "base": "node_modules/@voxgig/sdkgen/project/.sdk",
+          "comment": {
+            "line": "//"
+          },
+          "deps": {
+            "@types/node": {
+              "active": true,
+              "kind": "dev",
+              "version": "^25.6.0"
+            },
+            "typescript": {
+              "active": true,
+              "kind": "dev",
+              "version": "^5.9.3"
+            }
+          },
+          "ext": "ts",
+          "feature": {
+            "fullset": [],
+            "trim": true
+          },
+          "module": {
+            "goversion": "",
+            "name": "bud-payments",
+            "package": "",
+            "path": ""
+          },
+          "name": "ts",
+          "origname": "",
+          "output": {
+            "adopt": false,
+            "create": true,
+            "path": "",
+            "repo": "",
+            "root": false,
+            "sdkrel": ""
+          },
+          "package": "@voxgig/sdkgen",
+          "provides": {
+            "schema": true,
+            "sekreto": true
+          },
+          "publish": {
+            "registry": {
+              "active": false,
+              "name": "npm",
+              "package": "",
+              "state": "pending",
+              "url": "https://registry.npmjs.org",
+              "vault": {
+                "alias": "npm",
+                "env": "",
+                "recipe": "npm"
+              }
+            },
+            "tag": {
+              "active": true,
+              "prefix": "",
+              "vault": {
+                "alias": "github",
+                "recipe": "github"
+              },
+              "via": "port"
+            },
+            "version": "0.0.1"
+          },
+          "superseded": [
+            "test/runner.ts",
+            "test/vendor/omni/compat.ts",
+            "src/feature/secrets/sekreto/Providers.ts",
+            "src/feature/secrets/sekreto/Sigv4.ts",
+            "src/feature/secrets/sekreto/provider/Registry.ts",
+            "src/feature/secrets/sekreto/provider/http.ts"
+          ],
+          "title": "TypeScript"
+        }
+      },
+      "test": {
+        "live": {
+          "app": false,
+          "base": "",
+          "strict": true
+        }
+      }
+    }
+  },
+  "name": "bud-payments",
+  "name-": "bud-payments",
+  "name_": "bud_payments",
+  "name__orig": "bud-payments",
+  "origin": "voxgig-sdk"
+}

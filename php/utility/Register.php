@@ -1,0 +1,70 @@
+<?php
+declare(strict_types=1);
+
+// BudPayments SDK utility registration
+
+require_once __DIR__ . '/../core/UtilityType.php';
+require_once __DIR__ . '/Clean.php';
+require_once __DIR__ . '/Done.php';
+require_once __DIR__ . '/MakeError.php';
+require_once __DIR__ . '/FeatureAdd.php';
+require_once __DIR__ . '/FeatureHook.php';
+require_once __DIR__ . '/FeatureInit.php';
+require_once __DIR__ . '/Fetcher.php';
+require_once __DIR__ . '/MakeFetchDef.php';
+require_once __DIR__ . '/MakeContext.php';
+require_once __DIR__ . '/MakeOptions.php';
+require_once __DIR__ . '/MakeRequest.php';
+require_once __DIR__ . '/MakeResponse.php';
+require_once __DIR__ . '/MakeResult.php';
+require_once __DIR__ . '/MakePoint.php';
+require_once __DIR__ . '/MakeSpec.php';
+require_once __DIR__ . '/MakeUrl.php';
+require_once __DIR__ . '/Param.php';
+require_once __DIR__ . '/PrepareAuth.php';
+require_once __DIR__ . '/PrepareBody.php';
+require_once __DIR__ . '/Graphql.php';
+require_once __DIR__ . '/PrepareHeaders.php';
+require_once __DIR__ . '/PrepareMethod.php';
+require_once __DIR__ . '/PrepareParams.php';
+require_once __DIR__ . '/PreparePath.php';
+require_once __DIR__ . '/PrepareQuery.php';
+require_once __DIR__ . '/ResultBasic.php';
+require_once __DIR__ . '/ResultBody.php';
+require_once __DIR__ . '/ResultHeaders.php';
+require_once __DIR__ . '/TransformRequest.php';
+require_once __DIR__ . '/TransformResponse.php';
+
+BudPaymentsUtility::setRegistrar(function (BudPaymentsUtility $u): void {
+    $u->clean = [BudPaymentsClean::class, 'call'];
+    $u->done = [BudPaymentsDone::class, 'call'];
+    $u->make_error = [BudPaymentsMakeError::class, 'call'];
+    $u->feature_add = [BudPaymentsFeatureAdd::class, 'call'];
+    $u->feature_hook = [BudPaymentsFeatureHook::class, 'call'];
+    $u->feature_init = [BudPaymentsFeatureInit::class, 'call'];
+    $u->fetcher = [BudPaymentsFetcher::class, 'call'];
+    $u->make_fetch_def = [BudPaymentsMakeFetchDef::class, 'call'];
+    $u->make_context = [BudPaymentsMakeContext::class, 'call'];
+    $u->make_options = [BudPaymentsMakeOptions::class, 'call'];
+    $u->make_request = [BudPaymentsMakeRequest::class, 'call'];
+    $u->make_response = [BudPaymentsMakeResponse::class, 'call'];
+    $u->make_result = [BudPaymentsMakeResult::class, 'call'];
+    $u->make_point = [BudPaymentsMakePoint::class, 'call'];
+    $u->make_spec = [BudPaymentsMakeSpec::class, 'call'];
+    $u->make_url = [BudPaymentsMakeUrl::class, 'call'];
+    $u->param = [BudPaymentsParam::class, 'call'];
+    $u->prepare_auth = [BudPaymentsPrepareAuth::class, 'call'];
+    $u->prepare_body = [BudPaymentsPrepareBody::class, 'call'];
+    $u->prepare_headers = [BudPaymentsPrepareHeaders::class, 'call'];
+    $u->prepare_method = [BudPaymentsPrepareMethod::class, 'call'];
+    $u->prepare_params = [BudPaymentsPrepareParams::class, 'call'];
+    $u->prepare_path = [BudPaymentsPreparePath::class, 'call'];
+    $u->prepare_query = [BudPaymentsPrepareQuery::class, 'call'];
+    $u->graphql_body = [BudPaymentsGraphql::class, 'body'];
+    $u->graphql_errors = [BudPaymentsGraphql::class, 'errors'];
+    $u->result_basic = [BudPaymentsResultBasic::class, 'call'];
+    $u->result_body = [BudPaymentsResultBody::class, 'call'];
+    $u->result_headers = [BudPaymentsResultHeaders::class, 'call'];
+    $u->transform_request = [BudPaymentsTransformRequest::class, 'call'];
+    $u->transform_response = [BudPaymentsTransformResponse::class, 'call'];
+});

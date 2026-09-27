@@ -1,0 +1,30 @@
+# BasicInitiatePaymentBudLicenseFlow
+
+main: kit: flow: BasicInitiatePaymentBudLicenseFlow:
+{
+  entity: "initiate_payment_bud_license",
+  kind: "basic",
+  name: "BasicInitiatePaymentBudLicenseFlow",
+  step: [
+    {
+      i: {
+        ref: "initiate_payment_bud_license_ref01"
+      }
+
+      o: "create"
+    }
+
+    {
+      o: "list",
+      v: [
+        {
+          apply: "ItemExists",
+          def: {
+            ref: "initiate_payment_bud_license_ref01"
+          }
+        }
+      ]
+    }
+  ],
+  "key$": "BasicInitiatePaymentBudLicenseFlow"
+}

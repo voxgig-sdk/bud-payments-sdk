@@ -1,0 +1,5 @@
+# Flows
+
+@"./BasicInitiatePaymentBudLicenseFlow.aontu"
+@"./BasicInitiatePaymentClientLicenseFlow.aontu"
+@"./BasicManagePaymentFlow.aontu"

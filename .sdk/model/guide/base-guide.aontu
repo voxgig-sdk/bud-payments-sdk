@@ -1,0 +1,87 @@
+# Generated from the API definition and overwritten on every build: do not
+# edit this file. Put customizations in the guide entry file, which includes
+# this one and overrides its defaults:
+#   guide.aontu
+
+guide: {
+  metrics: count: entity: 3
+  metrics: count: path: 14
+  metrics: count: method: 17
+
+  entity: initiate_payment_bud_license: {
+    path: "/v1/payments/providers": {
+      op: list: method: *GET
+      op: list: transform: res: *("`body.data`")|top
+    }
+    path: "/v1/payments/scheduled/bud-pay-url": {
+      op: create: method: *POST
+      op: create: transform: res: *("`body.data`")|top
+    }
+    path: "/v1/payments/single/bud-pay-url": {
+      op: create: method: *POST
+      op: create: transform: res: *("`body.data`")|top
+    }
+    path: "/v1/payments/standing-order/bud-pay-url": {
+      op: create: method: *POST
+      op: create: transform: res: *("`body.data`")|top
+    }
+  }
+
+  entity: initiate_payment_client_license: {
+    path: "/v1/payments/authorisation-codes": {
+      op: create: method: *POST
+      op: create: transform: res: *("`body.data`")|top
+    }
+    path: "/v1/payments/scheduled": {
+      op: create: method: *POST
+      op: create: transform: res: *("`body.data`")|top
+    }
+    path: "/v1/payments/single": {
+      op: create: method: *POST
+      op: create: transform: res: *("`body.data`")|top
+    }
+    path: "/v1/payments/standing-order": {
+      op: create: method: *POST
+      op: create: transform: res: *("`body.data`")|top
+    }
+  }
+
+  entity: manage_payment: {
+    path: "/v1/payments/scheduled": {
+      op: list: method: *GET
+    }
+    path: "/v1/payments/scheduled/{payment_id}": {
+      op: load: method: *GET
+    }
+    path: "/v1/payments/scheduled/{payment_id}/confirm": {
+      action: "confirm": {}
+      rename: param: "payment_id": *"scheduled_id"
+      op: create: method: *POST
+    }
+    path: "/v1/payments/single": {
+      op: list: method: *GET
+    }
+    path: "/v1/payments/single/{payment_id}": {
+      op: load: method: *GET
+      op: load: transform: res: *("`body.data`")|top
+    }
+    path: "/v1/payments/single/{payment_id}/confirm": {
+      action: "confirm": {}
+      rename: param: "payment_id": *"single_id"
+      op: create: method: *POST
+    }
+    path: "/v1/payments/standing-order": {
+      op: list: method: *GET
+    }
+    path: "/v1/payments/standing-order/{payment_id}": {
+      op: load: method: *GET
+      op: load: transform: res: *("`body.data`")|top
+    }
+    path: "/v1/payments/standing-order/{payment_id}/confirm": {
+      action: "confirm": {}
+      rename: param: "payment_id": *"standing_order_id"
+      op: create: method: *POST
+    }
+  }
+
+}

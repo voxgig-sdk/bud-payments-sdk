@@ -1,0 +1,18 @@
+# BasicInitiatePaymentClientLicenseFlow
+
+main: kit: flow: BasicInitiatePaymentClientLicenseFlow:
+{
+  entity: "initiate_payment_client_license",
+  kind: "basic",
+  name: "BasicInitiatePaymentClientLicenseFlow",
+  step: [
+    {
+      i: {
+        ref: "initiate_payment_client_license_ref01"
+      }
+
+      o: "create"
+    }
+  ],
+  "key$": "BasicInitiatePaymentClientLicenseFlow"
+}

@@ -1,0 +1,288 @@
+# Entity: initiate_payment_client_license
+
+main: kit: entity: initiate_payment_client_license: {
+
+  alias: field: {}
+
+  fields: {
+    authorisation_url: {
+      h: "Authorisation Url"
+      n: "authorisation_url"
+      r: true
+      sh: "The authorisation URL for a relevant payment provider."
+      t: "`$STRING`"
+    }
+    code: {
+      h: "Code"
+      n: "code"
+      r: false
+      sh: "Code parameter returned in redirect parameters"
+      t: "`$STRING`"
+    }
+    payment_details: {
+      h: "Payment Details"
+      n: "payment_details"
+      r: true
+      sh: "Payment details required to make a Single Payment"
+      t: "`$OBJECT`"
+    }
+    payment_id: {
+      h: "Payment Id"
+      n: "payment_id"
+      op: {
+        create: {
+          req: true
+          type: "`$STRING`"
+        }
+      }
+      r: false
+      sh: "Payment Identifier"
+      t: "`$STRING`"
+    }
+    payment_type: {
+      h: "Payment Type"
+      n: "payment_type"
+      r: false
+      sh: "The type of payment iniated through Bud's Payments Service"
+      t: "`$STRING`"
+    }
+    provider: {
+      h: "Provider"
+      n: "provider"
+      r: true
+      sh: "The name (identifier) of the payment provider"
+      t: "`$STRING`"
+    }
+    provider_redirect_url: {
+      h: "Provider Redirect Url"
+      n: "provider_redirect_url"
+      r: false
+      sh: "This is the url that your Customer will be redirected to once they have authorised with the relevant provider."
+      t: "`$STRING`"
+    }
+    provider_types: {
+      h: "Provider Types"
+      n: "provider_types"
+      r: false
+      sh: "One or more provider types that can be used to filter the list of providers that are shown to the customer during the connection flow."
+      t: "`$ARRAY`"
+    }
+    redirect_url: {
+      h: "Redirect Url"
+      n: "redirect_url"
+      r: false
+      sh: "This is the url that your Customer will be redirected to when using the Bud user interface."
+      t: "`$STRING`"
+    }
+    required_action: {
+      h: "Required Action"
+      n: "required_action"
+      r: false
+      sh: "If present, this fild will indicate the next required action (if any) to be taken by the client in order to complete the payment flow | Value | Description | |:-------|:-------------| | confirm_scheduled_payment | Indicates that the client…"
+      t: "`$STRING`"
+    }
+    result: {
+      h: "Result"
+      n: "result"
+      r: false
+      t: "`$STRING`"
+    }
+    scheduled_payment_details: {
+      h: "Scheduled Payment Details"
+      n: "scheduled_payment_details"
+      r: true
+      sh: "Details of the scheduled payment"
+      t: "`$OBJECT`"
+    }
+    standing_order_details: {
+      h: "Standing Order Details"
+      n: "standing_order_details"
+      r: true
+      sh: "Details of the standing order"
+      t: "`$OBJECT`"
+    }
+    state: {
+      h: "State"
+      n: "state"
+      r: true
+      sh: "The task ID"
+      t: "`$STRING`"
+    }
+  }
+
+  name: "initiate_payment_client_license"
+  op: {
+    create: {
+      name: "create"
+      points: [
+        {
+          co: {
+            id: "POST /v1/payments/authorisation-codes"
+            source: "openapi3"
+            version: 2
+          }
+          g: {
+            header: [
+              {
+                ex: "8711bbef-b357-4c2d-97ca-0d9df4206e9a"
+                k: "header"
+                n: "x_client_id"
+                or: "x_client_id"
+                r: true
+                t: "`$STRING`"
+              }
+            ]
+          }
+          m: "POST"
+          o: "/v1/payments/authorisation-codes"
+          q: {
+            exist: [
+              "x_client_id"
+            ]
+          }
+          s: [
+            {
+              lit: "v1"
+            }
+            {
+              lit: "payments"
+            }
+            {
+              lit: "authorisation-codes"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body.data`"
+          }
+        }
+        {
+          co: {
+            id: "POST /v1/payments/scheduled"
+            source: "openapi3"
+            version: 2
+          }
+          g: {
+            header: [
+              {
+                ex: "8711bbef-b357-4c2d-97ca-0d9df4206e9a"
+                k: "header"
+                n: "x_client_id"
+                or: "x_client_id"
+                r: true
+                t: "`$STRING`"
+              }
+            ]
+          }
+          m: "POST"
+          o: "/v1/payments/scheduled"
+          q: {
+            exist: [
+              "x_client_id"
+            ]
+          }
+          s: [
+            {
+              lit: "v1"
+            }
+            {
+              lit: "payments"
+            }
+            {
+              lit: "scheduled"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body.data`"
+          }
+        }
+        {
+          co: {
+            id: "POST /v1/payments/single"
+            source: "openapi3"
+            version: 2
+          }
+          g: {
+            header: [
+              {
+                ex: "8711bbef-b357-4c2d-97ca-0d9df4206e9a"
+                k: "header"
+                n: "x_client_id"
+                or: "x_client_id"
+                r: true
+                t: "`$STRING`"
+              }
+            ]
+          }
+          m: "POST"
+          o: "/v1/payments/single"
+          q: {
+            exist: [
+              "x_client_id"
+            ]
+          }
+          s: [
+            {
+              lit: "v1"
+            }
+            {
+              lit: "payments"
+            }
+            {
+              lit: "single"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body.data`"
+          }
+        }
+        {
+          co: {
+            id: "POST /v1/payments/standing-order"
+            source: "openapi3"
+            version: 2
+          }
+          g: {
+            header: [
+              {
+                ex: "8711bbef-b357-4c2d-97ca-0d9df4206e9a"
+                k: "header"
+                n: "x_client_id"
+                or: "x_client_id"
+                r: true
+                t: "`$STRING`"
+              }
+            ]
+          }
+          m: "POST"
+          o: "/v1/payments/standing-order"
+          q: {
+            exist: [
+              "x_client_id"
+            ]
+          }
+          s: [
+            {
+              lit: "v1"
+            }
+            {
+              lit: "payments"
+            }
+            {
+              lit: "standing-order"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body.data`"
+          }
+        }
+      ]
+    }
+  }
+
+
+
+}

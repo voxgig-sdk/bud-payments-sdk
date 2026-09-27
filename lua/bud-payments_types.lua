@@ -1,0 +1,162 @@
+-- Typed models for the BudPayments SDK (LuaLS annotations).
+--
+-- GENERATED from the API model: main.kit.entity.<e>.fields{} and per-op
+-- params (op.<name>.points[].g.params[]). Field/param types come from the
+-- canonical type sentinels via @voxgig/sdkgen canonToType (source of truth:
+-- @voxgig/apidef VALID_CANON). Annotations only — no runtime effect. Do not
+-- edit by hand.
+
+---@class InitiatePaymentBudLicense
+---@field bud_pay_url string
+---@field country_code string
+---@field display_name string
+---@field icon string
+---@field implementation_type string
+---@field maintenance_status string
+---@field maintenance_window any
+---@field payment_details table
+---@field payment_id string
+---@field provider string
+---@field provider_types? table
+---@field redirect_url string
+---@field required_actions any
+---@field scheduled_payment_details table
+---@field services table
+---@field standing_order_details table
+---@field supported_currencies table
+
+---@class InitiatePaymentBudLicenseListMatch
+---@field country? string
+---@field product? table
+---@field type? string
+
+---@class InitiatePaymentBudLicenseCreateData
+---@field bud_pay_url string
+---@field country_code string
+---@field display_name string
+---@field icon string
+---@field implementation_type string
+---@field maintenance_status string
+---@field maintenance_window any
+---@field payment_details table
+---@field payment_id string
+---@field provider string
+---@field provider_types? table
+---@field redirect_url string
+---@field required_actions any
+---@field scheduled_payment_details table
+---@field services table
+---@field standing_order_details table
+---@field supported_currencies table
+
+---@class InitiatePaymentClientLicense
+---@field authorisation_url string
+---@field code? string
+---@field payment_details table
+---@field payment_id? string
+---@field payment_type? string
+---@field provider string
+---@field provider_redirect_url? string
+---@field provider_types? table
+---@field redirect_url? string
+---@field required_action? string
+---@field result? string
+---@field scheduled_payment_details table
+---@field standing_order_details table
+---@field state string
+
+---@class InitiatePaymentClientLicenseCreateData
+---@field authorisation_url string
+---@field code? string
+---@field payment_details table
+---@field payment_id? string
+---@field payment_type? string
+---@field provider string
+---@field provider_redirect_url? string
+---@field provider_types? table
+---@field redirect_url? string
+---@field required_action? string
+---@field result? string
+---@field scheduled_payment_details table
+---@field standing_order_details table
+---@field state string
+
+---@class ManagePayment
+---@field amount table
+---@field client_id string
+---@field created_at string
+---@field data table
+---@field errors table
+---@field first_payment_date string
+---@field frequency string
+---@field known_charges table
+---@field last_payment_date? string
+---@field metadata? table
+---@field method string
+---@field operation_id string
+---@field organisation_id string
+---@field payment_id string
+---@field recipient table
+---@field recurring_amount table
+---@field reference string
+---@field requested_execution_date string
+---@field required_action string
+---@field sender table
+---@field state table
+---@field supplementary_status table
+
+---@class ManagePaymentLoadMatch
+---@field payment_id string
+
+---@class ManagePaymentListMatch
+---@field amount? table
+---@field client_id? string
+---@field created_at? string
+---@field data? table
+---@field errors? table
+---@field first_payment_date? string
+---@field frequency? string
+---@field known_charges? table
+---@field last_payment_date? string
+---@field metadata? table
+---@field method? string
+---@field operation_id? string
+---@field organisation_id? string
+---@field payment_id? string
+---@field recipient? table
+---@field recurring_amount? table
+---@field reference? string
+---@field requested_execution_date? string
+---@field required_action? string
+---@field sender? table
+---@field state? table
+---@field supplementary_status? table
+
+---@class ManagePaymentCreateData
+---@field scheduled_id string
+---@field amount table
+---@field client_id string
+---@field created_at string
+---@field data table
+---@field errors table
+---@field first_payment_date string
+---@field frequency string
+---@field known_charges table
+---@field last_payment_date? string
+---@field metadata? table
+---@field method string
+---@field operation_id string
+---@field organisation_id string
+---@field payment_id string
+---@field recipient table
+---@field recurring_amount table
+---@field reference string
+---@field requested_execution_date string
+---@field required_action string
+---@field sender table
+---@field state table
+---@field supplementary_status table
+
+local M = {}
+
+return M
